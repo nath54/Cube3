@@ -11,10 +11,15 @@ public class World : Spatial
     {
         pause_menu = (Control)GetNode("Pause_Menu");
         pause_menu.Visible=false;
-        pause_menu.Connect("resume", this, nameof(Resume));
+        pause_menu.Connect("resume", this, nameof(onPauseMenuBtResumePress));
         Input.SetMouseMode(Input.MouseMode.Captured);
         //
         player= (Player)GetNode("Player");
+    }
+
+    public void onPauseMenuBtResumePress(){
+        GD.Print("resume !");
+        Resume();
     }
 
     public void Resume(){

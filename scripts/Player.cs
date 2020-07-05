@@ -22,6 +22,9 @@ public class Player : KinematicBody
 	{
 		cam = (Spatial)GetNode("CamBase");
 		cube = (Spatial)GetNode("cube");
+
+		String os_name = OS.GetName();
+		GD.Print("os name : "+os_name);
 	}
 
 	

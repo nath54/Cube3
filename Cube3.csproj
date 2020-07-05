@@ -57,6 +57,7 @@
     <Compile Include="scripts\MainMenu.cs" />
     <Compile Include="scripts\Pause_Menu.cs" />
     <Compile Include="scripts\Player.cs" />
+    <Compile Include="scripts\SwipeDetector.cs" />
     <Compile Include="scripts\World.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -24,14 +24,14 @@ public class MainMenu : Control
     }
 
     public void onBtStartArcadePress(){
-
+        GetTree().ChangeScene("res://levels/World.tscn");
     }
     public void onBtStartAdventurePress(){
 
     }
 
     public void onBtSettingsPress(){
-
+        ç
     }
     
     public void onBtQuitPress(){

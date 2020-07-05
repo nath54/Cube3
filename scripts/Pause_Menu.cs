@@ -19,6 +19,7 @@ public class Pause_Menu : Control
 
     public void onBtResumePress(){
         EmitSignal("resume");
+        
     }
 
     public void onBtQuitToMenuPress(){
