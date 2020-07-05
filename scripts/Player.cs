@@ -47,6 +47,21 @@ public class Player : KinematicBody
 		move_vec=move_vec.rotated(Vector3(0,1,0), rotation.y);
 		move_vec *= MOVE_SPEED;
 		move_and_slide(move_vec, Vector3(0, 1, 0));
+
+		bool grounded=isOnFloor();
+		y_velo -= GRAVITY;
+		bool just_jumped = false;
+		if(grounded && _Input.is_action_pressed("jump")){
+			just_jumped=true;
+			y_velo=JUMP_FORCE;
+		}
+		if(grounded && y_velo<=0){
+			y_velo = -0.1;
+		}
+		if(y_velo < -MAX_FALL_SPEED){
+			y_velo=-MAX_FALL_SPEED;
+		}
+
 	}
 
 //  // Called every frame. 'delta' is the elapsed time since the previous frame.
