@@ -5,68 +5,97 @@ public class Player : KinematicBody
 {
 	public float MOVE_SPEED = 12;
 	public float JUMP_FORCE = 30;
-	public float GRAVITY = 0.98;
+	public float GRAVITY = 0.98F;
 	public float MAX_FALL_SPEED = 30;
-	public float H_LOOK_SENS = 1.0;
-	public float V_LOOK_SENS = 1.0;
+	public float H_LOOK_SENS = 0.2F;
+	public float V_LOOK_SENS = 0.2F;
 	public float y_velo = 0;
-
+	private Spatial cube;
+	private bool just_jumped=false;
+	private Control pause_menu;
 	private Spatial cam;
+
+	public bool paused = false;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		cam = (Spatial)GetNode("CamBase");
+		cube = (Spatial)GetNode("cube");
 	}
 
-	public override void _Input(Input Event)
+	
+	public override void _Input(InputEvent @event)
 	{
-		if(Event is InputEventMouseMotion){
-			cam.rotation_degrees.x -= Event.relative.y * V_LOOK_SENS;
-			cam.rotation_degrees.x = Math.Clamp(cam.rotation_degrees.x, -90,90);
-			rotation_degrees.y -= Event.relative.x * H_LOOK_SENS; 
+		if(@event is InputEventMouseMotion && !paused){
+			Vector3 rot_deg=cam.RotationDegrees;
+			InputEventMouseMotion ie=(InputEventMouseMotion)@event;
+			rot_deg.x -= ie.Relative.y * V_LOOK_SENS;
+			if(rot_deg.x < -90){ rot_deg.x=-90; }
+			if(rot_deg.x > 90){ rot_deg.x=90; }
+			rot_deg.y -= ie.Relative.x * H_LOOK_SENS;
+			
+			//cam.rotation_degrees.x -= @event.relative.y * V_LOOK_SENS;
+			//cam.rotation_degrees.x = Math.Clamp(cam.rotation_degrees.x, -90,90);
+			//rotation_degrees.y -= @event.relative.x * H_LOOK_SENS; 
+			cam.RotationDegrees=rot_deg;
 		}
 	}
-
-	public override void _PhysicProcess(float delta)
+	
+	public override void _PhysicsProcess(float delta)
 	{
-		move_vec=Vector3();
-		if(Input.is_action_pressed("move_forward")){
-			move_vec.z -= 1;
-		}
-		if(Input.is_action_pressed("move_backward")){
-			move_vec.z += 1;
-		}
-		if(Input.is_action_pressed("move_left")){
-			move_vec.x -= 1;
-		}
-		if(Input.is_action_pressed("move_right")){
-			move_vec.x += 1;
-		}
-		move_vec=move_vec.normalized();
-		move_vec=move_vec.rotated(Vector3(0,1,0), rotation.y);
-		move_vec *= MOVE_SPEED;
-		move_and_slide(move_vec, Vector3(0, 1, 0));
+		if(!paused){
+			Vector3 v3;
+			v3.x=0;
+			v3.y=1;
+			v3.z=0;
+			//
+			Vector3 move_vec;
+			move_vec.x=0;
+			move_vec.y=0;
+			move_vec.z=0;
+			if(Input.IsActionPressed("move_forward")){
+				move_vec.z -= 1;
+			}
+			if(Input.IsActionPressed("move_backward")){
+				move_vec.z += 1;
+			}
+			if(Input.IsActionPressed("move_left")){
+				move_vec.x -= 1;
+			}
+			if(Input.IsActionPressed("move_right")){
+				move_vec.x += 1;
+			}
+			move_vec=move_vec.Normalized();
 
-		bool grounded=isOnFloor();
-		y_velo -= GRAVITY;
-		bool just_jumped = false;
-		if(grounded && _Input.is_action_pressed("jump")){
-			just_jumped=true;
-			y_velo=JUMP_FORCE;
-		}
-		if(grounded && y_velo<=0){
-			y_velo = -0.1;
-		}
-		if(y_velo < -MAX_FALL_SPEED){
-			y_velo=-MAX_FALL_SPEED;
+			move_vec=move_vec.Rotated(new Vector3(0,1,0), cam.RotationDegrees.y*3.141592654F/180.0F);
+			move_vec *= MOVE_SPEED;
+
+			if(move_vec.Length() >= 0.1F){
+				Vector3 rot_deg=cube.RotationDegrees;
+				rot_deg.y=cam.RotationDegrees.y;
+				cube.RotationDegrees=rot_deg;
+			}
+
+			just_jumped=false;
+			bool grounded=IsOnFloor();
+			y_velo -= GRAVITY;
+			
+			if(grounded && Input.IsActionPressed("jump")){
+				just_jumped=true;
+				y_velo=JUMP_FORCE;
+			}
+			if(grounded && y_velo<=0){
+				y_velo = -0.1F;
+			}
+			if(y_velo < -MAX_FALL_SPEED){
+				y_velo=-MAX_FALL_SPEED;
+			}
+			move_vec.y=y_velo;
+
+			MoveAndSlide(move_vec, v3);
 		}
 
 	}
 
-//  // Called every frame. 'delta' is the elapsed time since the previous frame.
-//  public override void _Process(float delta)
-//  {
-//      
-//  }
 }
