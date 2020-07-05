@@ -9,9 +9,17 @@ public class Player : KinematicBody
 	public float MAX_FALL_SPEED = 30;
 	public float H_LOOK_SENS = 1.0;
 	public float V_LOOK_SENS = 1.0;
-	
+	public float y_velo = 0;
+
+	private Spatial CamBase;
+
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
+	{
+		CamBase = (Spatial)GetNode("CamBase");
+	}
+
+	public override void _Input()
 	{
 		
 	}
