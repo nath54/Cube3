@@ -31,7 +31,7 @@ public class MainMenu : Control
     }
 
     public void onBtSettingsPress(){
-        ç
+        
     }
     
     public void onBtQuitPress(){
