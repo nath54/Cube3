@@ -11,15 +11,24 @@ public class Player : KinematicBody
 	public float V_LOOK_SENS = 1.0;
 	public float y_velo = 0;
 
-	private Spatial CamBase;
+	private Spatial cam;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		CamBase = (Spatial)GetNode("CamBase");
+		cam = (Spatial)GetNode("CamBase");
 	}
 
-	public override void _Input()
+	public override void _Input(Input Event)
+	{
+		if(Event is InputEventMouseMotion){
+			cam.rotation_degrees.x -= Event.relative.y * V_LOOK_SENS;
+			cam.rotation_degrees.x = Math.Clamp(cam.rotation_degrees.x, -90,90);
+			cam.rotation_degrees.y -= Event.relative.x * H_LOOK_SENS; 
+		}
+	}
+
+	public override void _PhysicProcess(float delta)
 	{
 		
 	}
