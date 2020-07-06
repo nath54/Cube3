@@ -15,11 +15,16 @@ public class World : Spatial
         //Input.SetMouseMode(Input.MouseMode.Captured);
         //
         player= (Player)GetNode("Player");
+        player.Connect("pause_bt_press", this, nameof(onPauseBtPress));
     }
 
     public void onPauseMenuBtResumePress(){
-        GD.Print("resume !");
+        //GD.Print("resume !");
         Resume();
+    }
+
+    public void onPauseBtPress(){
+        Pause();
     }
 
     public void Resume(){
@@ -28,15 +33,19 @@ public class World : Spatial
         player.paused=false;
     }
 
+    public void Pause(){
+        pause_menu.Visible=true;
+        Input.SetMouseMode(Input.MouseMode.Visible);
+        player.paused=true;
+    }
+
     public override void _Input(InputEvent @event){
         if(Input.IsActionJustPressed("menu")){
             if(pause_menu.Visible){
                 Resume();
             }
             else{
-                pause_menu.Visible=true;
-                Input.SetMouseMode(Input.MouseMode.Visible);
-                player.paused=true;
+                Pause();
             }
         }
     }

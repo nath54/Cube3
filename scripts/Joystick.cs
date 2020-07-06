@@ -14,9 +14,12 @@ public class Joystick : Sprite
     public delegate void camera_begin_press();
     [Signal]
     public delegate void camera_end_press();
-
     [Signal]
     public delegate void pause_bt_press();
+    [Signal]
+    public delegate void j_bt_down();
+    [Signal]
+    public delegate void j_bt_up();
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
@@ -41,6 +44,14 @@ public class Joystick : Sprite
 
     public void _on_Bt_pause_pressed(){
         EmitSignal("pause_bt_press");
+    }
+
+    public void _on_Bt_jump_button_down(){
+        EmitSignal("j_bt_down");
+    }
+
+    public void _on_Bt_jump_button_up(){
+        EmitSignal("j_bt_up");
     }
 
 }
