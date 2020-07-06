@@ -21,6 +21,8 @@ public class Player : KinematicBody
 
 	public bool paused = false;
 
+	public bool is_bt_jump_press = false;
+
 	[Signal]
     public delegate void pause_bt_press();
 
@@ -37,10 +39,15 @@ public class Player : KinematicBody
 		joystick.Connect("camera_begin_press", this, nameof(onJoyCameraBeginPress));
 		joystick.Connect("camera_end_press", this, nameof(onJoyCameraEndPress));
 		joystick.Connect("pause_bt_press", this, nameof(onPauseBtPress));
+		joystick.Connect("j_bt_down", this, nameof(onBtJumpDown));
+		joystick.Connect("j_bt_up", this, nameof(onBtJumpUp));
 
 		String os_name = OS.GetName();
 		GD.Print("os name : "+os_name);
 	}
+
+	public void onBtJumpDown(){ is_bt_jump_press=true; }
+	public void onBtJumpUp(){ is_bt_jump_press=false; }
 
 	public void onPauseBtPress(){ EmitSignal("pause_bt_press"); }
 
@@ -106,7 +113,7 @@ public class Player : KinematicBody
 			bool grounded=IsOnFloor();
 			y_velo -= GRAVITY;
 			
-			if(grounded && Input.IsActionPressed("jump")){
+			if(grounded && (Input.IsActionPressed("jump") || is_bt_jump_press) ){
 				just_jumped=true;
 				y_velo=JUMP_FORCE;
 			}

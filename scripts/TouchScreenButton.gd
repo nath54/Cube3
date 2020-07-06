@@ -37,9 +37,11 @@ func _input(event):
 			
 			ongoing_draw = event.get_index()
 	
-	if event is InputEventScreenTouch or event is InputEventScreenDrag and event.get_index() != ongoing_draw:
-		if event.is_pressed(): emit_signal("camera_begin_press")
-		else: emit_signal("camera_end_press")
+	if (event is InputEventScreenTouch or event is InputEventScreenDrag) and event.get_index() != ongoing_draw:
+		if event.is_pressed():
+			emit_signal("camera_begin_press")
+		else:
+			emit_signal("camera_end_press")
 
 	if event is InputEventScreenTouch and !event.is_pressed() and event.get_index()==ongoing_draw:
 		ongoing_draw = -1

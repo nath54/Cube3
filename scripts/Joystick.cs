@@ -20,6 +20,7 @@ public class Joystick : Sprite
     public delegate void j_bt_down();
     [Signal]
     public delegate void j_bt_up();
+    public Label textcam;
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
@@ -30,10 +31,18 @@ public class Joystick : Sprite
         tcbt.Connect("end_press", this, nameof(onEndPress));
         tcbt.Connect("camera_begin_press", this, nameof(onCameraBeginPress));
         tcbt.Connect("camera_end_press", this, nameof(onCameraEndPress));
+        //
+        textcam=(Label)GetNode("Is_Camera_press");
     }
 
-    public void onCameraBeginPress(){ EmitSignal("camera_begin_press"); }
-    public void onCameraEndPress(){ EmitSignal("camera_end_press"); }
+    public void onCameraBeginPress(){
+        EmitSignal("camera_begin_press");
+        textcam.Text="Camera press ON";
+    }
+    public void onCameraEndPress(){
+        EmitSignal("camera_end_press");
+        textcam.Text="Camera press OFF";
+    }
     public void onBeginPress(){ EmitSignal("begin_press"); }
     public void onEndPress(){ EmitSignal("end_press"); }
 

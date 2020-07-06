@@ -19,6 +19,12 @@ config/name="Cube3"
 run/main_scene="res://menus/MainMenu.tscn"
 config/icon="res://icon.png"
 
+[display]
+
+window/handheld/orientation="sensor_landscape"
+window/stretch/mode="viewport"
+window/stretch/aspect="keep"
+
 [input]
 
 move_forward={
