@@ -17,6 +17,7 @@ public class Player : KinematicBody
 	private Sprite joystick;
 	private Vector2 joystick_value = new Vector2(0,0);
 	private bool is_joy_pressed = false;
+	private bool is_joy_cam_pressed = false;
 
 	public bool paused = false;
 
@@ -29,6 +30,8 @@ public class Player : KinematicBody
 		joystick.Connect("get_value", this, nameof(onJoystickValue));
 		joystick.Connect("begin_press", this, nameof(onJoyBeginPress));
 		joystick.Connect("end_press", this, nameof(onJoyEndPress));
+		joystick.Connect("camera_begin_press", this, nameof(onJoyCameraBeginPress));
+		joystick.Connect("camera_end_press", this, nameof(onJoyCameraEndPress));
 
 		String os_name = OS.GetName();
 		GD.Print("os name : "+os_name);
@@ -36,7 +39,8 @@ public class Player : KinematicBody
 
 	public void onJoyBeginPress(){ is_joy_pressed=true; }
 	public void onJoyEndPress(){ is_joy_pressed=false; }
-
+	public void onJoyCameraBeginPress(){ is_joy_cam_pressed=true; }
+	public void onJoyCameraEndPress(){ is_joy_cam_pressed=false; }
 	public void onJoystickValue(Vector2 value){
 		//GD.Print("Player value getted : ",value);
 		joystick_value=value;
@@ -45,7 +49,7 @@ public class Player : KinematicBody
 
 	public override void _Input(InputEvent @event)
 	{
-		if(@event is InputEventMouseMotion && !paused && !is_joy_pressed){
+		if(@event is InputEventMouseMotion && !paused && (is_joy_cam_pressed || !is_joy_pressed) ){
 			Vector3 rot_deg=cam.RotationDegrees;
 			InputEventMouseMotion ie=(InputEventMouseMotion)@event;
 			rot_deg.x -= ie.Relative.y * V_LOOK_SENS;
