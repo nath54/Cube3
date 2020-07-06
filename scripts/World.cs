@@ -9,13 +9,57 @@ public class World : Spatial
 
     private Control loading;
 
-    public void mapCreation(){
+    public void GeneratePlatformMethod(){
+        //Base coordinates
+        int xx = 0,
+            yy = 0,
+            zz = 0;
+        int tx = 3,
+            ty = 2,
+            tz = 3;
+        //Create the Base Materials
+        SpatialMaterial groundMat = new SpatialMaterial();
+        groundMat.AlbedoColor = new Godot.Color(0.8F,0F,0F);
+        groundMat.Metallic=1;       
+
         
+        //Create the blocks
+        for(int w=0; w<10; w++){
+            //The Mesh : 
+            MeshInstance mesh = new MeshInstance();
+            mesh.Mesh = new CubeMesh();
+            mesh.Scale = new Vector3(tx,ty,tz);
+            mesh.Translation = new Vector3(xx,yy,zz);
+            //Add the collision
+            mesh.CreateTrimeshCollision();
+            //Add the material
+            mesh.MaterialOverride = groundMat;
+            //add it to the scene
+            AddChild(mesh);
+            //Change the coordinates for the next one
+            var rand = new Random();
+            xx+=rand.Next(-5,5)*tx;
+            zz+=rand.Next(-5,5)*ty;
+            if(xx!=0 && zz!=0){
+                yy+=rand.Next(-6,6);
+            }
+            if(zz<player.hauteur_min+ty){
+                zz=Convert.ToInt32(player.hauteur_min)+ty;
+            }
+        }
+    }
+
+    public void mapCreation(){
+        string method="platforms";
+        if(method == "platforms"){ GeneratePlatformMethod(); }
     }
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
+        //
+        player= (Player)GetNode("Player");
+        player.Connect("pause_bt_press", this, nameof(onPauseBtPress));
         //
         mapCreation();
         //
@@ -26,9 +70,7 @@ public class World : Spatial
         pause_menu.Visible=false;
         pause_menu.Connect("resume", this, nameof(onPauseMenuBtResumePress));
         Input.SetMouseMode(Input.MouseMode.Captured);
-        //
-        player= (Player)GetNode("Player");
-        player.Connect("pause_bt_press", this, nameof(onPauseBtPress));
+        
     }
 
     public void onPauseMenuBtResumePress(){
@@ -71,3 +113,4 @@ public class World : Spatial
 //      
 //  }
 }
+
