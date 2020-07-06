@@ -26,10 +26,6 @@ func _input(event):
 	if event is InputEventScreenDrag or ( event is InputEventScreenTouch and event.is_pressed() ):
 
 		var event_distance_from_center = ( event.position - get_parent().global_position).length()
-		
-		if event.get_index() != ongoing_draw:
-			if event.is_pressed(): emit_signal("camera_begin_press")
-			else: emit_signal("camera_end_press")
 
 		if event_distance_from_center <= boundary * global_scale.x or event.get_index() == ongoing_draw:
 			emit_signal("begin_press")
@@ -41,7 +37,9 @@ func _input(event):
 			
 			ongoing_draw = event.get_index()
 	
-
+	if event.get_index() != ongoing_draw:
+		if event.is_pressed(): emit_signal("camera_begin_press")
+		else: emit_signal("camera_end_press")
 
 	if event is InputEventScreenTouch and !event.is_pressed() and event.get_index()==ongoing_draw:
 		ongoing_draw = -1
