@@ -14,6 +14,8 @@ public class Player : KinematicBody
 	private bool just_jumped=false;
 	private Control pause_menu;
 	private Spatial cam;
+	private Sprite joystick;
+	private Vector2 joystick_value = new Vector2(0,0);
 
 	public bool paused = false;
 
@@ -22,12 +24,19 @@ public class Player : KinematicBody
 	{
 		cam = (Spatial)GetNode("CamBase");
 		cube = (Spatial)GetNode("cube");
+		joystick = (Sprite)GetNode("joystick");
+		joystick.Connect("get_value", this, nameof(onJoystickValue));
 
 		String os_name = OS.GetName();
 		GD.Print("os name : "+os_name);
 	}
 
-	
+	public void onJoystickValue(Vector2 value){
+		GD.Print("Player value getted : ",value);
+		joystick_value=value;
+		GD.Print(joystick_value);
+	}
+
 	public override void _Input(InputEvent @event)
 	{
 		if(@event is InputEventMouseMotion && !paused){
@@ -37,10 +46,6 @@ public class Player : KinematicBody
 			if(rot_deg.x < -90){ rot_deg.x=-90; }
 			if(rot_deg.x > 90){ rot_deg.x=90; }
 			rot_deg.y -= ie.Relative.x * H_LOOK_SENS;
-			
-			//cam.rotation_degrees.x -= @event.relative.y * V_LOOK_SENS;
-			//cam.rotation_degrees.x = Math.Clamp(cam.rotation_degrees.x, -90,90);
-			//rotation_degrees.y -= @event.relative.x * H_LOOK_SENS; 
 			cam.RotationDegrees=rot_deg;
 		}
 	}
@@ -57,16 +62,16 @@ public class Player : KinematicBody
 			move_vec.x=0;
 			move_vec.y=0;
 			move_vec.z=0;
-			if(Input.IsActionPressed("move_forward")){
+			if(Input.IsActionPressed("move_forward") || joystick_value.y<=-0.8){
 				move_vec.z -= 1;
 			}
-			if(Input.IsActionPressed("move_backward")){
+			if(Input.IsActionPressed("move_backward") || joystick_value.y>=0.8){
 				move_vec.z += 1;
 			}
-			if(Input.IsActionPressed("move_left")){
+			if(Input.IsActionPressed("move_left") || joystick_value.x<=-0.8){
 				move_vec.x -= 1;
 			}
-			if(Input.IsActionPressed("move_right")){
+			if(Input.IsActionPressed("move_right") || joystick_value.x>=0.8){
 				move_vec.x += 1;
 			}
 			move_vec=move_vec.Normalized();
