@@ -5,6 +5,9 @@ public class Joystick : Sprite
 {
     private TouchScreenButton tcbt;
 
+    [Signal]
+    public delegate void get_value(Vector2 value);
+
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
@@ -13,7 +16,7 @@ public class Joystick : Sprite
     }
 
     public void onGetValueSignal(Vector2 value){
-        GD.Print("Joystick value getted : ",value);
+        //GD.Print("Joystick value getted : ",value);
         EmitSignal("get_value", value);
     }
 

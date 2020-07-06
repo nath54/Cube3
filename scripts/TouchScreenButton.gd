@@ -16,7 +16,7 @@ func _process(delta):
 
 
 func get_button_pos():
-	return position - radius
+	return position + radius * global_scale
 
 func _input(event):
 	if event is InputEventScreenDrag or ( event is InputEventScreenTouch and event.is_pressed() ):

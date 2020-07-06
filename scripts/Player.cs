@@ -32,9 +32,9 @@ public class Player : KinematicBody
 	}
 
 	public void onJoystickValue(Vector2 value){
-		GD.Print("Player value getted : ",value);
+		//GD.Print("Player value getted : ",value);
 		joystick_value=value;
-		GD.Print(joystick_value);
+		//GD.Print(joystick_value);
 	}
 
 	public override void _Input(InputEvent @event)
