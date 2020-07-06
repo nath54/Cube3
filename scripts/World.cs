@@ -6,13 +6,26 @@ public class World : Spatial
     
     private Control pause_menu;
     private Player player;
+
+    private Control loading;
+
+    public void mapCreation(){
+        
+    }
+
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
+        //
+        mapCreation();
+        //
+        loading= (Control)GetNode("Loading");
+        loading.Visible=false;
+        //
         pause_menu = (Control)GetNode("Pause_Menu");
         pause_menu.Visible=false;
         pause_menu.Connect("resume", this, nameof(onPauseMenuBtResumePress));
-        //Input.SetMouseMode(Input.MouseMode.Captured);
+        Input.SetMouseMode(Input.MouseMode.Captured);
         //
         player= (Player)GetNode("Player");
         player.Connect("pause_bt_press", this, nameof(onPauseBtPress));

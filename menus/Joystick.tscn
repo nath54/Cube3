@@ -19,7 +19,7 @@ size = 22
 font_data = ExtResource( 10 )
 
 [node name="joystick" type="Sprite"]
-position = Vector2( 130.213, 455.262 )
+position = Vector2( 195.316, 524.855 )
 texture = ExtResource( 1 )
 script = ExtResource( 5 )
 
@@ -32,10 +32,10 @@ shape = SubResource( 1 )
 script = ExtResource( 2 )
 
 [node name="Bt_pause" type="TextureButton" parent="."]
-margin_left = -107.48
-margin_top = -428.507
-margin_right = -57.4802
-margin_bottom = -378.507
+margin_left = -159.113
+margin_top = -489.12
+margin_right = -109.113
+margin_bottom = -439.12
 texture_normal = ExtResource( 8 )
 texture_pressed = ExtResource( 7 )
 __meta__ = {
@@ -47,10 +47,10 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 473.0
-margin_top = -240.0
-margin_right = 620.0
-margin_bottom = -106.0
+margin_left = 618.92
+margin_top = -235.51
+margin_right = 765.92
+margin_bottom = -101.51
 texture_normal = ExtResource( 9 )
 texture_pressed = ExtResource( 6 )
 expand = true
@@ -63,9 +63,8 @@ margin_left = 352.0
 margin_top = -424.0
 margin_right = 492.0
 margin_bottom = -375.0
+rect_scale = Vector2( 0.987502, 0.963912 )
 custom_fonts/font = SubResource( 2 )
-text = "Camera off
-"
 __meta__ = {
 "_edit_use_anchors_": false
 }

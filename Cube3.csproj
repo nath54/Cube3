@@ -54,6 +54,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="scripts\global_arcade.cs" />
     <Compile Include="scripts\Joystick.cs" />
     <Compile Include="scripts\MainMenu.cs" />
     <Compile Include="scripts\Pause_Menu.cs" />

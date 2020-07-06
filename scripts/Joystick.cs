@@ -37,11 +37,11 @@ public class Joystick : Sprite
 
     public void onCameraBeginPress(){
         EmitSignal("camera_begin_press");
-        textcam.Text="Camera press ON";
+        //textcam.Text="Camera press ON";
     }
     public void onCameraEndPress(){
         EmitSignal("camera_end_press");
-        textcam.Text="Camera press OFF";
+        //textcam.Text="Camera press OFF";
     }
     public void onBeginPress(){ EmitSignal("begin_press"); }
     public void onEndPress(){ EmitSignal("end_press"); }

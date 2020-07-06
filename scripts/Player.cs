@@ -1,8 +1,10 @@
+using System.Threading;
 using Godot;
 using System;
 
 public class Player : KinematicBody
 {
+	public float hauteur_min = -40;
 	public float MOVE_SPEED = 12;
 	public float JUMP_FORCE = 30;
 	public float GRAVITY = 0.98F;
@@ -18,10 +20,9 @@ public class Player : KinematicBody
 	private Vector2 joystick_value = new Vector2(0,0);
 	private bool is_joy_pressed = false;
 	private bool is_joy_cam_pressed = false;
-
 	public bool paused = false;
-
 	public bool is_bt_jump_press = false;
+	public Vector3 spawnpoint;
 
 	[Signal]
     public delegate void pause_bt_press();
@@ -33,17 +34,24 @@ public class Player : KinematicBody
 		cam = (Spatial)GetNode("CamBase");
 		cube = (Spatial)GetNode("cube");
 		joystick = (Sprite)GetNode("joystick");
-		joystick.Connect("get_value", this, nameof(onJoystickValue));
-		joystick.Connect("begin_press", this, nameof(onJoyBeginPress));
-		joystick.Connect("end_press", this, nameof(onJoyEndPress));
-		joystick.Connect("camera_begin_press", this, nameof(onJoyCameraBeginPress));
-		joystick.Connect("camera_end_press", this, nameof(onJoyCameraEndPress));
-		joystick.Connect("pause_bt_press", this, nameof(onPauseBtPress));
-		joystick.Connect("j_bt_down", this, nameof(onBtJumpDown));
-		joystick.Connect("j_bt_up", this, nameof(onBtJumpUp));
 
-		String os_name = OS.GetName();
-		GD.Print("os name : "+os_name);
+		if( !(OS.GetName()=="Android" || OS.GetName()=="iOS") ){
+			joystick.Visible=false;
+		}
+		else{
+			joystick.Connect("get_value", this, nameof(onJoystickValue));
+			joystick.Connect("begin_press", this, nameof(onJoyBeginPress));
+			joystick.Connect("end_press", this, nameof(onJoyEndPress));
+			joystick.Connect("camera_begin_press", this, nameof(onJoyCameraBeginPress));
+			joystick.Connect("camera_end_press", this, nameof(onJoyCameraEndPress));
+			joystick.Connect("pause_bt_press", this, nameof(onPauseBtPress));
+			joystick.Connect("j_bt_down", this, nameof(onBtJumpDown));
+			joystick.Connect("j_bt_up", this, nameof(onBtJumpUp));
+		}
+		//
+		spawnpoint=Translation;
+		spawnpoint.y-=0.05F;
+		//
 	}
 
 	public void onBtJumpDown(){ is_bt_jump_press=true; }
@@ -74,6 +82,10 @@ public class Player : KinematicBody
 		}
 	}
 	
+	public void playerDeath(){
+		Translation=spawnpoint;
+	}
+
 	public override void _PhysicsProcess(float delta)
 	{
 		if(!paused){
@@ -126,8 +138,12 @@ public class Player : KinematicBody
 			move_vec.y=y_velo;
 
 			MoveAndSlide(move_vec, v3);
-		}
 
+			//Test Death
+			if( Translation.y <= hauteur_min){
+				playerDeath();
+			}
+		}
 	}
 
 }
