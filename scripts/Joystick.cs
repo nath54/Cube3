@@ -15,6 +15,9 @@ public class Joystick : Sprite
     [Signal]
     public delegate void camera_end_press();
 
+    [Signal]
+    public delegate void pause_bt_press();
+
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
@@ -36,5 +39,8 @@ public class Joystick : Sprite
         EmitSignal("get_value", value);
     }
 
+    public void _on_Bt_pause_pressed(){
+        EmitSignal("pause_bt_press");
+    }
 
 }

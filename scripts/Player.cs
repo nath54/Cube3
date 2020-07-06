@@ -21,6 +21,10 @@ public class Player : KinematicBody
 
 	public bool paused = false;
 
+	[Signal]
+    public delegate void pause_bt_press();
+
+
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -32,10 +36,13 @@ public class Player : KinematicBody
 		joystick.Connect("end_press", this, nameof(onJoyEndPress));
 		joystick.Connect("camera_begin_press", this, nameof(onJoyCameraBeginPress));
 		joystick.Connect("camera_end_press", this, nameof(onJoyCameraEndPress));
+		joystick.Connect("pause_bt_press", this, nameof(onPauseBtPress));
 
 		String os_name = OS.GetName();
 		GD.Print("os name : "+os_name);
 	}
+
+	public void onPauseBtPress(){ EmitSignal("pause_bt_press"); }
 
 	public void onJoyBeginPress(){ is_joy_pressed=true; }
 	public void onJoyEndPress(){ is_joy_pressed=false; }
