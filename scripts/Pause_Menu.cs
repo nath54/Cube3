@@ -6,6 +6,8 @@ public class Pause_Menu : Control
     private Button bt_resume;
     private Button bt_quit_to_menu;
 
+    [Signal]
+    public delegate void resume();
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
