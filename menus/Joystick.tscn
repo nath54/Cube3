@@ -48,3 +48,5 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 [connection signal="pressed" from="Bt_pause" to="." method="_on_Bt_pause_pressed"]
+[connection signal="button_down" from="Bt_jump" to="." method="_on_Bt_jump_button_down"]
+[connection signal="button_up" from="Bt_jump" to="." method="_on_Bt_jump_button_up"]
