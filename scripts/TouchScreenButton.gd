@@ -7,6 +7,8 @@ var return_accel = 20
 var threshold = 10
 
 signal get_value
+signal begin_press
+signal end_press
 
 func _process(delta):
 	if ongoing_draw == -1:
@@ -24,6 +26,8 @@ func _input(event):
 		var event_distance_from_center = ( event.position - get_parent().global_position).length()
 		
 		if event_distance_from_center <= boundary * global_scale.x or event.get_index() == ongoing_draw:
+			emit_signal("begin_press")
+
 			global_position = event.position - radius * global_scale
 
 			if get_button_pos().length() > boundary:
@@ -33,6 +37,7 @@ func _input(event):
 
 	if event is InputEventScreenTouch and !event.is_pressed() and event.get_index()==ongoing_draw:
 		ongoing_draw = -1
+		emit_signal("end_press")
 		
 func get_value():
 	if get_button_pos().length() > threshold:

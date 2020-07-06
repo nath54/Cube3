@@ -16,6 +16,7 @@ public class Player : KinematicBody
 	private Spatial cam;
 	private Sprite joystick;
 	private Vector2 joystick_value = new Vector2(0,0);
+	private bool is_joy_pressed = false;
 
 	public bool paused = false;
 
@@ -26,10 +27,15 @@ public class Player : KinematicBody
 		cube = (Spatial)GetNode("cube");
 		joystick = (Sprite)GetNode("joystick");
 		joystick.Connect("get_value", this, nameof(onJoystickValue));
+		joystick.Connect("begin_press", this, nameof(onJoyBeginPress));
+		joystick.Connect("end_press", this, nameof(onJoyEndPress));
 
 		String os_name = OS.GetName();
 		GD.Print("os name : "+os_name);
 	}
+
+	public void onJoyBeginPress(){ is_joy_pressed=true; }
+	public void onJoyEndPress(){ is_joy_pressed=false; }
 
 	public void onJoystickValue(Vector2 value){
 		//GD.Print("Player value getted : ",value);
@@ -39,7 +45,7 @@ public class Player : KinematicBody
 
 	public override void _Input(InputEvent @event)
 	{
-		if(@event is InputEventMouseMotion && !paused){
+		if(@event is InputEventMouseMotion && !paused && !is_joy_pressed){
 			Vector3 rot_deg=cam.RotationDegrees;
 			InputEventMouseMotion ie=(InputEventMouseMotion)@event;
 			rot_deg.x -= ie.Relative.y * V_LOOK_SENS;
@@ -62,16 +68,16 @@ public class Player : KinematicBody
 			move_vec.x=0;
 			move_vec.y=0;
 			move_vec.z=0;
-			if(Input.IsActionPressed("move_forward") || joystick_value.y<=-0.8){
+			if(Input.IsActionPressed("move_forward") || (is_joy_pressed && joystick_value.y<=-0.8)){
 				move_vec.z -= 1;
 			}
-			if(Input.IsActionPressed("move_backward") || joystick_value.y>=0.8){
+			if(Input.IsActionPressed("move_backward") || (is_joy_pressed && joystick_value.y>=0.8)){
 				move_vec.z += 1;
 			}
-			if(Input.IsActionPressed("move_left") || joystick_value.x<=-0.8){
+			if(Input.IsActionPressed("move_left") || (is_joy_pressed && joystick_value.x<=-0.8)){
 				move_vec.x -= 1;
 			}
-			if(Input.IsActionPressed("move_right") || joystick_value.x>=0.8){
+			if(Input.IsActionPressed("move_right") || (is_joy_pressed && joystick_value.x>=0.8)){
 				move_vec.x += 1;
 			}
 			move_vec=move_vec.Normalized();

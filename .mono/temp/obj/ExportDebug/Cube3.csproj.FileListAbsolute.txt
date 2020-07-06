@@ -1,0 +1,6 @@
+/home/nathan/Data/godoto/projects/Cube3/.mono/temp/bin/ExportDebug/Cube3.dll
+/home/nathan/Data/godoto/projects/Cube3/.mono/temp/bin/ExportDebug/Cube3.pdb
+/home/nathan/Data/godoto/projects/Cube3/.mono/temp/obj/ExportDebug/Cube3.csprojAssemblyReference.cache
+/home/nathan/Data/godoto/projects/Cube3/.mono/temp/obj/ExportDebug/Cube3.csproj.CoreCompileInputs.cache
+/home/nathan/Data/godoto/projects/Cube3/.mono/temp/obj/ExportDebug/Cube3.dll
+/home/nathan/Data/godoto/projects/Cube3/.mono/temp/obj/ExportDebug/Cube3.pdb
