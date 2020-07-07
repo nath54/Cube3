@@ -6,7 +6,7 @@
 [ext_resource path="res://menus/Loading.tscn" type="PackedScene" id=4]
 [ext_resource path="res://menus/UI_In_game.tscn" type="PackedScene" id=5]
 
-[sub_resource type="Environment" id=3]
+[sub_resource type="Environment" id=1]
 ambient_light_color = Color( 1, 1, 1, 1 )
 glow_enabled = true
 
@@ -16,16 +16,16 @@ script = ExtResource( 3 )
 [node name="Player" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.73908, 0 )
 
-[node name="Pause_Menu" parent="." instance=ExtResource( 2 )]
-
 [node name="Loading" parent="." instance=ExtResource( 4 )]
 visible = false
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource( 3 )
+environment = SubResource( 1 )
 
 [node name="GroundCubes" type="Spatial" parent="."]
 
 [node name="WallCubes2" type="Spatial" parent="."]
 
 [node name="UI_In_game" parent="." instance=ExtResource( 5 )]
+
+[node name="Pause_Menu" parent="." instance=ExtResource( 2 )]
