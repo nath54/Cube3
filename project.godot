@@ -77,4 +77,5 @@ pointing/emulate_touch_from_mouse=true
 
 [rendering]
 
+environment/default_clear_color=Color( 0.141176, 0.141176, 0.141176, 1 )
 environment/default_environment="res://default_env.tres"

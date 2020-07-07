@@ -23,6 +23,7 @@ public class Player : KinematicBody
 	public bool paused = false;
 	public bool is_bt_jump_press = false;
 	public Vector3 spawnpoint;
+	public CollisionShape cubeshape;
 
 	[Signal]
     public delegate void pause_bt_press();
@@ -33,6 +34,7 @@ public class Player : KinematicBody
 	{
 		cam = (Spatial)GetNode("CamBase");
 		cube = (Spatial)GetNode("cube");
+		cubeshape = (CollisionShape)GetNode("CollisionShape");
 		joystick = (Sprite)GetNode("joystick");
 
 		if( !(OS.GetName()=="Android" || OS.GetName()=="iOS") ){
@@ -119,6 +121,9 @@ public class Player : KinematicBody
 				Vector3 rot_deg=cube.RotationDegrees;
 				rot_deg.y=cam.RotationDegrees.y;
 				cube.RotationDegrees=rot_deg;
+				Vector3 rote_deg=cubeshape.RotationDegrees;
+				rote_deg.y=cam.RotationDegrees.y;
+				cubeshape.RotationDegrees=rote_deg;
 			}
 
 			just_jumped=false;
