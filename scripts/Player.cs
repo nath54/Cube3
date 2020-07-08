@@ -98,10 +98,10 @@ public class Player : KinematicBody
 			if(Input.IsActionPressed("move_backward") || joystick.get_value().y>=joystick.sensitivity_value){
 				move_vec.z += 1;
 			}
-			if(Input.IsActionPressed("move_left") || joystick.get_value().y<=-joystick.sensitivity_value){
+			if(Input.IsActionPressed("move_left") || joystick.get_value().x<=-joystick.sensitivity_value){
 				move_vec.x -= 1;
 			}
-			if(Input.IsActionPressed("move_right") || joystick.get_value().y>=joystick.sensitivity_value){
+			if(Input.IsActionPressed("move_right") || joystick.get_value().x>=joystick.sensitivity_value){
 				move_vec.x += 1;
 			}
 			move_vec=move_vec.Normalized();
