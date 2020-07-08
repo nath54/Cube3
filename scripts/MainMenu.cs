@@ -8,6 +8,8 @@ public class MainMenu : Control
     private Button bt_settings;
     private Button bt_quit;
 
+    private Control loading;
+
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
@@ -21,9 +23,13 @@ public class MainMenu : Control
         bt_settings.Connect("pressed", this, nameof(onBtSettingsPress));
         bt_quit.Connect("pressed", this, nameof(onBtQuitPress));
 
+        loading = (Control)GetNode("Loading");
+        loading.Visible=false;
+
     }
 
     public void onBtStartArcadePress(){
+        loading.Visible=true;
         GetTree().ChangeScene("res://levels/World.tscn");
     }
     public void onBtStartAdventurePress(){
