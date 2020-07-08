@@ -10,11 +10,12 @@ public class Joystick_Button : TouchScreenButton
     public float return_accel = 20;
     public float threshold = 10;
 
+    /*
     public override void _Process(float delta){
-        if(ongoing_drag==-1){
+        if(ongoing_drag==Convert.ToInt32(-1)){
             Vector2 pos_difference = (new Vector2(0,0)-radius*GlobalScale) - Position;
         }
-    }
+    }*/
 
     public Vector2 get_button_pos(){
         return Position + radius * GlobalScale;
@@ -45,6 +46,7 @@ public class Joystick_Button : TouchScreenButton
         }
         if(@event is InputEventScreenTouch iett && !iett.IsPressed() && iett.Index==ongoing_drag){
             ongoing_drag=-1;
+            Position = new Vector2(0,0) - radius*GlobalScale;
         }
     }
 

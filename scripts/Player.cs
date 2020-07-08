@@ -49,7 +49,7 @@ public class Player : KinematicBody
 	public override void _Input(InputEvent @event)
 	{
 		if(!paused){
-			if(is_mobile() || true){
+			if(is_mobile()){
 				if(@event is InputEventScreenDrag ie){
 					if(ie.Index==joystick.ongoing_drag){
 						return ;	
@@ -92,16 +92,16 @@ public class Player : KinematicBody
 			move_vec.x=0;
 			move_vec.y=0;
 			move_vec.z=0;
-			if(Input.IsActionPressed("move_forward")){
+			if(Input.IsActionPressed("move_forward") || joystick.get_value().y<=-0.7){
 				move_vec.z -= 1;
 			}
-			if(Input.IsActionPressed("move_backward")){
+			if(Input.IsActionPressed("move_backward") || joystick.get_value().y>=0.7){
 				move_vec.z += 1;
 			}
-			if(Input.IsActionPressed("move_left")){
+			if(Input.IsActionPressed("move_left") || joystick.get_value().y<=0.7){
 				move_vec.x -= 1;
 			}
-			if(Input.IsActionPressed("move_right")){
+			if(Input.IsActionPressed("move_right") || joystick.get_value().y>=0.7){
 				move_vec.x += 1;
 			}
 			move_vec=move_vec.Normalized();
