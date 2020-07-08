@@ -17,6 +17,8 @@ _global_script_class_icons={
 
 config/name="Cube3"
 run/main_scene="res://menus/MainMenu.tscn"
+boot_splash/image="res://splash_screen.png"
+boot_splash/use_filter=false
 config/icon="res://icon.png"
 config/windows_native_icon="res://icon.ico"
 config/quit_on_go_back=false
