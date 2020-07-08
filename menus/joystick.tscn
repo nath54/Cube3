@@ -3,7 +3,7 @@
 [ext_resource path="res://imgs/joystick.png" type="Texture" id=1]
 [ext_resource path="res://imgs/joystick_button_pressed.png" type="Texture" id=2]
 [ext_resource path="res://imgs/joystick_button.png" type="Texture" id=3]
-[ext_resource path="res://scripts/Joystick_Button.gd" type="Script" id=4]
+[ext_resource path="res://scripts/Joystick_Button.cs" type="Script" id=4]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 20.0

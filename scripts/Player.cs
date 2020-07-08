@@ -15,7 +15,7 @@ public class Player : KinematicBody
 	private Spatial cube;
 	private Control pause_menu;
 	private Spatial cam;
-	public TouchScreenButton joystick;
+	public Joystick_Button joystick;
 	public Vector3 spawnpoint;
 	public CollisionShape cubeshape;
 	private bool just_jumped=false;
@@ -31,7 +31,7 @@ public class Player : KinematicBody
 		cam = (Spatial)GetNode("CamBase");
 		cube = (Spatial)GetNode("cube");
 		cubeshape = (CollisionShape)GetNode("CollisionShape");
-		joystick = (TouchScreenButton)GetNode("joystick/Joystick_Button");
+		joystick = (Joystick_Button)GetNode("joystick/Joystick_Button");
 
 		if( is_mobile() ){
 		}
@@ -51,7 +51,7 @@ public class Player : KinematicBody
 		if(!paused){
 			if(is_mobile() || true){
 				if(@event is InputEventScreenDrag ie){
-					if(ie.Index==(float)joystick.Get("ongoing_drag")){
+					if(ie.Index==joystick.ongoing_drag){
 						return ;	
 					}
 					Vector3 rot_deg=cam.RotationDegrees;
@@ -122,7 +122,7 @@ public class Player : KinematicBody
 			bool grounded=IsOnFloor();
 			y_velo -= GRAVITY;
 			
-			if(grounded && (Input.IsActionPressed("jump") || is_bt_jump_press) ){
+			if(grounded && (Input.IsActionPressed("jump")) ){
 				just_jumped=true;
 				y_velo=JUMP_FORCE;
 			}
