@@ -19,13 +19,7 @@ public class Player : KinematicBody
 	public Vector3 spawnpoint;
 	public CollisionShape cubeshape;
 	private bool just_jumped=false;
-	private bool is_joy_pressed = false;
-	private bool is_joy_cam_pressed = false;
 	public bool paused = false;
-	public bool is_bt_jump_press = false;
-
-	[Signal]
-    public delegate void pause_bt_press();
 
 	public bool is_mobile(){
 		return (OS.GetName()=="Android" || OS.GetName()=="iOS");
@@ -55,7 +49,7 @@ public class Player : KinematicBody
 	public override void _Input(InputEvent @event)
 	{
 		if(!paused){
-			if(is_mobile()){
+			if(is_mobile() || true){
 				if(@event is InputEventScreenDrag ie){
 					if(ie.Index==(float)joystick.Get("ongoing_drag")){
 						return ;	
@@ -147,17 +141,6 @@ public class Player : KinematicBody
 				playerDeath();
 			}
 		}
-	}
-
-	public void _on_TSB_jump_pressed(){
-		is_bt_jump_press=true;
-	}
-	public void _on_TSB_jump_released(){
-		is_bt_jump_press=false;
-	}
-
-	public void _on_TSB_menu_pressed(){
-		EmitSignal("pause_bt_press");
 	}
 
 }
