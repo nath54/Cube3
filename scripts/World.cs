@@ -143,7 +143,7 @@ public class World : Spatial
         pause_menu = (Control)GetNode("Pause_Menu");
         pause_menu.Visible=false;
         pause_menu.Connect("resume", this, nameof(onPauseMenuBtResumePress));
-        Input.SetMouseMode(Input.MouseMode.Captured);
+        //Input.SetMouseMode(Input.MouseMode.Captured);
         
     }
 

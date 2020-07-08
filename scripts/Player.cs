@@ -13,17 +13,16 @@ public class Player : KinematicBody
 	public float V_LOOK_SENS = 0.2F;
 	public float y_velo = 0;
 	private Spatial cube;
-	private bool just_jumped=false;
 	private Control pause_menu;
 	private Spatial cam;
-	private Sprite joystick;
-	private Vector2 joystick_value = new Vector2(0,0);
+	public Vector3 spawnpoint;
+	public CollisionShape cubeshape;
+	private bool just_jumped=false;
 	private bool is_joy_pressed = false;
 	private bool is_joy_cam_pressed = false;
 	public bool paused = false;
 	public bool is_bt_jump_press = false;
-	public Vector3 spawnpoint;
-	public CollisionShape cubeshape;
+	
 
 	[Signal]
     public delegate void pause_bt_press();
@@ -35,20 +34,11 @@ public class Player : KinematicBody
 		cam = (Spatial)GetNode("CamBase");
 		cube = (Spatial)GetNode("cube");
 		cubeshape = (CollisionShape)GetNode("CollisionShape");
-		joystick = (Sprite)GetNode("joystick");
 
 		if( !(OS.GetName()=="Android" || OS.GetName()=="iOS") ){
-			joystick.Visible=false;
 		}
 		else{
-			joystick.Connect("get_value", this, nameof(onJoystickValue));
-			joystick.Connect("begin_press", this, nameof(onJoyBeginPress));
-			joystick.Connect("end_press", this, nameof(onJoyEndPress));
-			joystick.Connect("camera_begin_press", this, nameof(onJoyCameraBeginPress));
-			joystick.Connect("camera_end_press", this, nameof(onJoyCameraEndPress));
-			joystick.Connect("pause_bt_press", this, nameof(onPauseBtPress));
-			joystick.Connect("j_bt_down", this, nameof(onBtJumpDown));
-			joystick.Connect("j_bt_up", this, nameof(onBtJumpUp));
+			
 		}
 		//
 		spawnpoint=Translation;
@@ -56,20 +46,7 @@ public class Player : KinematicBody
 		//
 	}
 
-	public void onBtJumpDown(){ is_bt_jump_press=true; }
-	public void onBtJumpUp(){ is_bt_jump_press=false; }
 
-	public void onPauseBtPress(){ EmitSignal("pause_bt_press"); }
-
-	public void onJoyBeginPress(){ is_joy_pressed=true; }
-	public void onJoyEndPress(){ is_joy_pressed=false; }
-	public void onJoyCameraBeginPress(){ is_joy_cam_pressed=true; }
-	public void onJoyCameraEndPress(){ is_joy_cam_pressed=false; }
-	public void onJoystickValue(Vector2 value){
-		//GD.Print("Player value getted : ",value);
-		joystick_value=value;
-		//GD.Print(joystick_value);
-	}
 
 	public override void _Input(InputEvent @event)
 	{
@@ -100,16 +77,16 @@ public class Player : KinematicBody
 			move_vec.x=0;
 			move_vec.y=0;
 			move_vec.z=0;
-			if(Input.IsActionPressed("move_forward") || (is_joy_pressed && joystick_value.y<=-0.8)){
+			if(Input.IsActionPressed("move_forward")){
 				move_vec.z -= 1;
 			}
-			if(Input.IsActionPressed("move_backward") || (is_joy_pressed && joystick_value.y>=0.8)){
+			if(Input.IsActionPressed("move_backward")){
 				move_vec.z += 1;
 			}
-			if(Input.IsActionPressed("move_left") || (is_joy_pressed && joystick_value.x<=-0.8)){
+			if(Input.IsActionPressed("move_left")){
 				move_vec.x -= 1;
 			}
-			if(Input.IsActionPressed("move_right") || (is_joy_pressed && joystick_value.x>=0.8)){
+			if(Input.IsActionPressed("move_right")){
 				move_vec.x += 1;
 			}
 			move_vec=move_vec.Normalized();
@@ -149,6 +126,17 @@ public class Player : KinematicBody
 				playerDeath();
 			}
 		}
+	}
+
+	public void _on_TSB_jump_pressed(){
+		is_bt_jump_press=true;
+	}
+	public void _on_TSB_jump_released(){
+		is_bt_jump_press=false;
+	}
+
+	public void _on_TSB_menu_pressed(){
+		EmitSignal("pause_bt_press");
 	}
 
 }
