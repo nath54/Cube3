@@ -9,6 +9,7 @@ public class Joystick_Button : TouchScreenButton
 
     public float return_accel = 20;
     public float threshold = 10;
+    public float sensitivity_value = 0.8F;
 
     /*
     public override void _Process(float delta){
@@ -17,8 +18,12 @@ public class Joystick_Button : TouchScreenButton
         }
     }*/
 
+    public override void _Ready() {
+        radius*=GlobalScale;
+    }
+
     public Vector2 get_button_pos(){
-        return Position + radius * GlobalScale;
+        return Position + radius;
     }
 
 
@@ -37,7 +42,7 @@ public class Joystick_Button : TouchScreenButton
         if(@event is InputEventScreenTouch iet && iet.IsPressed()){
             float event_dist_from_center = (iet.Position - ((Sprite)GetParent()).GlobalPosition).Length();
             if(event_dist_from_center <= boundary * GlobalScale.x ||  iet.Index==ongoing_drag){
-                GlobalPosition = iet.Position - radius * GlobalScale;
+                GlobalPosition = iet.Position - radius ;
                 if(get_button_pos().Length() > boundary){
                     Position = get_button_pos().Normalized()*boundary - radius;
                 }
@@ -46,7 +51,7 @@ public class Joystick_Button : TouchScreenButton
         }
         if(@event is InputEventScreenTouch iett && !iett.IsPressed() && iett.Index==ongoing_drag){
             ongoing_drag=-1;
-            Position = new Vector2(0,0) - radius*GlobalScale;
+            Position = new Vector2(0,0) - radius;
         }
     }
 
