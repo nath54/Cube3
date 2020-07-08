@@ -11,6 +11,7 @@ public class World : Spatial
     private Area finNivArea;
     private Control loading;
     private global_arcade global_Arcade;
+    private UI_In_game ui_in_game;
 
     public void GeneratePlatformMethod(){
         //Base coordinates
@@ -143,8 +144,9 @@ public class World : Spatial
         pause_menu = (Control)GetNode("Pause_Menu");
         pause_menu.Visible=false;
         pause_menu.Connect("resume", this, nameof(onPauseMenuBtResumePress));
-        //Input.SetMouseMode(Input.MouseMode.Captured);
-        
+        if(!player.is_mobile()){ Input.SetMouseMode(Input.MouseMode.Captured); }
+        //
+        ui_in_game=(UI_In_game)GetNode("UI_In_game");
     }
 
     public void nivFini(){
@@ -157,13 +159,14 @@ public class World : Spatial
 
     public void Resume(){
         pause_menu.Visible=false;
-        Input.SetMouseMode(Input.MouseMode.Captured);
+        if(!player.is_mobile()){ Input.SetMouseMode(Input.MouseMode.Captured); }
         player.paused=false;
     }
 
     public void Pause(){
+        ui_in_game.changeDebugText("paused");
         pause_menu.Visible=true;
-        Input.SetMouseMode(Input.MouseMode.Visible);
+        if(!player.is_mobile()){ Input.SetMouseMode(Input.MouseMode.Visible); }
         player.paused=true;
     }
 

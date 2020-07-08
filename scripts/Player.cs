@@ -13,21 +13,22 @@ public class Player : KinematicBody
 	public float V_LOOK_SENS = 0.2F;
 	public float y_velo = 0;
 	private Spatial cube;
-	private Control pause_menu;
 	private Spatial cam;
 	public Joystick_Button joystick;
 	public TouchScreenButton bt_menu;
 	public TouchScreenButton bt_jump;
 	public Vector3 spawnpoint;
 	public CollisionShape cubeshape;
-	private bool just_jumped=false;
+	public Label debug;
+	public bool just_jumped;
 	public bool paused = false;
+	
 
 	[Signal]
 	public delegate void onPauseBtPress();
 
 	public bool is_mobile(){
-		return (OS.GetName()=="Android" || OS.GetName()=="iOS");
+		return true;//(OS.GetName()=="Android" || OS.GetName()=="iOS");
 	}
 
 	// Called when the node enters the scene tree for the first time.
@@ -39,18 +40,23 @@ public class Player : KinematicBody
 		joystick = (Joystick_Button)GetNode("joystick/Joystick_Button");
 		bt_jump = (TouchScreenButton)GetNode("TSB_jump");
 		bt_menu = (TouchScreenButton)GetNode("TSB_menu");
+		debug = (Label)GetNode("debug");
 
 		if( is_mobile() ){
 		}
 		else{
 			joystick.Visible=false;	
+			joystick.SetProcessUnhandledInput(false);
 			bt_jump.Visible=false;
+			bt_jump.SetProcessUnhandledInput(false);
 			bt_menu.Visible=false;
+			bt_menu.SetProcessUnhandledInput(false);
 		}
 		//
 		spawnpoint=Translation;
 		spawnpoint.y-=0.05F;
 		//
+		just_jumped=false;
 	}
 
 
@@ -104,7 +110,7 @@ public class Player : KinematicBody
 			if(is_mobile()){
 				Vector2 joymov=joystick.get_value();
 				move_vec.x=joymov.x;
-				move_vec.y=joymov.y;
+				move_vec.z=joymov.y;
 			}
 			else{
 				if(Input.IsActionPressed("move_forward")){
@@ -162,6 +168,7 @@ public class Player : KinematicBody
 
 	public void _on_TSB_menu_pressed(){
 		EmitSignal("onPauseBtPress");
+		debug.Text="menu";
 	}
 
 }

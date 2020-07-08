@@ -52,9 +52,16 @@ __meta__ = {
 [node name="time_left" type="ProgressBar" parent="."]
 anchor_right = 1.0
 margin_bottom = 14.0
-max_value = 100.0
 value = 50.0
 percent_visible = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="debug" type="Label" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -20.0
+margin_top = 48.0
+margin_right = 160.0
+margin_bottom = 132.0

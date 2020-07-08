@@ -50,4 +50,13 @@ normal = ExtResource( 5 )
 pressed = ExtResource( 6 )
 shape = SubResource( 3 )
 action = "menu"
+
+[node name="debug" type="Label" parent="."]
+margin_left = 445.836
+margin_top = 21.3574
+margin_right = 605.836
+margin_bottom = 168.357
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="pressed" from="TSB_menu" to="." method="_on_TSB_menu_pressed"]
