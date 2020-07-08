@@ -50,3 +50,4 @@ normal = ExtResource( 5 )
 pressed = ExtResource( 6 )
 shape = SubResource( 3 )
 action = "menu"
+[connection signal="pressed" from="TSB_menu" to="." method="_on_TSB_menu_pressed"]
