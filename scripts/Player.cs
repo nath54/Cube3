@@ -15,6 +15,7 @@ public class Player : KinematicBody
 	private Spatial cube;
 	private Control pause_menu;
 	private Spatial cam;
+	public TouchScreenButton joystick;
 	public Vector3 spawnpoint;
 	public CollisionShape cubeshape;
 	private bool just_jumped=false;
@@ -22,11 +23,13 @@ public class Player : KinematicBody
 	private bool is_joy_cam_pressed = false;
 	public bool paused = false;
 	public bool is_bt_jump_press = false;
-	
 
 	[Signal]
     public delegate void pause_bt_press();
 
+	public bool is_mobile(){
+		return (OS.GetName()=="Android" || OS.GetName()=="iOS");
+	}
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -34,8 +37,9 @@ public class Player : KinematicBody
 		cam = (Spatial)GetNode("CamBase");
 		cube = (Spatial)GetNode("cube");
 		cubeshape = (CollisionShape)GetNode("CollisionShape");
+		joystick = (TouchScreenButton)GetNode("joystick/Joystick_Button");
 
-		if( !(OS.GetName()=="Android" || OS.GetName()=="iOS") ){
+		if( is_mobile() ){
 		}
 		else{
 			
@@ -50,15 +54,32 @@ public class Player : KinematicBody
 
 	public override void _Input(InputEvent @event)
 	{
-		if(@event is InputEventMouseMotion && !paused && (is_joy_cam_pressed || !is_joy_pressed) ){
-			Vector3 rot_deg=cam.RotationDegrees;
-			InputEventMouseMotion ie=(InputEventMouseMotion)@event;
-			rot_deg.x -= ie.Relative.y * V_LOOK_SENS;
-			if(rot_deg.x < -90){ rot_deg.x=-90; }
-			if(rot_deg.x > 90){ rot_deg.x=90; }
-			rot_deg.y -= ie.Relative.x * H_LOOK_SENS;
-			cam.RotationDegrees=rot_deg;
+		if(!paused){
+			if(is_mobile()){
+				if(@event is InputEventScreenDrag ie){
+					if(ie.Index==(float)joystick.Get("ongoing_drag")){
+						return ;	
+					}
+					Vector3 rot_deg=cam.RotationDegrees;
+					rot_deg.x -= ie.Relative.y * V_LOOK_SENS;
+					if(rot_deg.x < -90){ rot_deg.x=-90; }
+					if(rot_deg.x > 90){ rot_deg.x=90; }
+					rot_deg.y -= ie.Relative.x * H_LOOK_SENS;
+					cam.RotationDegrees=rot_deg;
+				}
+			}
+			else{
+				if(@event is InputEventMouseMotion ie ){
+					Vector3 rot_deg=cam.RotationDegrees;
+					rot_deg.x -= ie.Relative.y * V_LOOK_SENS;
+					if(rot_deg.x < -90){ rot_deg.x=-90; }
+					if(rot_deg.x > 90){ rot_deg.x=90; }
+					rot_deg.y -= ie.Relative.x * H_LOOK_SENS;
+					cam.RotationDegrees=rot_deg;
+				}
+			}
 		}
+		
 	}
 	
 	public void playerDeath(){
