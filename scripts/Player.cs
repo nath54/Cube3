@@ -95,18 +95,26 @@ public class Player : KinematicBody
 			move_vec.x=0;
 			move_vec.y=0;
 			move_vec.z=0;
-			if(Input.IsActionPressed("move_forward") || joystick.get_value().y<=-joystick.sensitivity_value){
-				move_vec.z -= 1;
+			if(is_mobile()){
+				Vector2 joymov=joystick.get_value();
+				move_vec.x=joymov.x;
+				move_vec.y=joymov.y;
 			}
-			if(Input.IsActionPressed("move_backward") || joystick.get_value().y>=joystick.sensitivity_value){
-				move_vec.z += 1;
+			else{
+				if(Input.IsActionPressed("move_forward")){
+					move_vec.z -= 1;
+				}
+				if(Input.IsActionPressed("move_backward")){
+					move_vec.z += 1;
+				}
+				if(Input.IsActionPressed("move_left")){
+					move_vec.x -= 1;
+				}
+				if(Input.IsActionPressed("move_right")){
+					move_vec.x += 1;
+				}
 			}
-			if(Input.IsActionPressed("move_left") || joystick.get_value().x<=-joystick.sensitivity_value){
-				move_vec.x -= 1;
-			}
-			if(Input.IsActionPressed("move_right") || joystick.get_value().x>=joystick.sensitivity_value){
-				move_vec.x += 1;
-			}
+			
 			move_vec=move_vec.Normalized();
 
 			move_vec=move_vec.Rotated(new Vector3(0,1,0), cam.RotationDegrees.y*3.141592654F/180.0F);
