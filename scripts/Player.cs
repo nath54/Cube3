@@ -16,6 +16,8 @@ public class Player : KinematicBody
 	private Control pause_menu;
 	private Spatial cam;
 	public Joystick_Button joystick;
+	public TouchScreenButton bt_menu;
+	public TouchScreenButton bt_jump;
 	public Vector3 spawnpoint;
 	public CollisionShape cubeshape;
 	private bool just_jumped=false;
@@ -35,11 +37,15 @@ public class Player : KinematicBody
 		cube = (Spatial)GetNode("cube");
 		cubeshape = (CollisionShape)GetNode("CollisionShape");
 		joystick = (Joystick_Button)GetNode("joystick/Joystick_Button");
+		bt_jump = (TouchScreenButton)GetNode("TSB_jump");
+		bt_menu = (TouchScreenButton)GetNode("TSB_menu");
 
 		if( is_mobile() ){
 		}
 		else{
-			
+			joystick.Visible=false;	
+			bt_jump.Visible=false;
+			bt_menu.Visible=false;
 		}
 		//
 		spawnpoint=Translation;
