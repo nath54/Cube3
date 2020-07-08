@@ -21,6 +21,9 @@ public class Player : KinematicBody
 	private bool just_jumped=false;
 	public bool paused = false;
 
+	[Signal]
+	public delegate void onPauseBtPress();
+
 	public bool is_mobile(){
 		return (OS.GetName()=="Android" || OS.GetName()=="iOS");
 	}
@@ -141,6 +144,10 @@ public class Player : KinematicBody
 				playerDeath();
 			}
 		}
+	}
+
+	public void _on_TSB_menu_pressed(){
+		EmitSignal("onPauseBtPress");
 	}
 
 }

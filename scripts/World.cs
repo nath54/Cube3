@@ -130,6 +130,7 @@ public class World : Spatial
         global_Arcade = (global_arcade)GetNode("/root/GlobalArcade");
         //
         player= (Player)GetNode("Player");
+        player.Connect("onPauseBtPress", this, nameof(Pause));
         //
         finNiv = (Spatial)GetNode("FinNiv");
         finNivArea = (Area)GetNode("FinNiv/Area");
@@ -151,10 +152,9 @@ public class World : Spatial
     }
 
     public void onPauseMenuBtResumePress(){
-        //GD.Print("resume !");
         Resume();
     }
-    
+
     public void Resume(){
         pause_menu.Visible=false;
         Input.SetMouseMode(Input.MouseMode.Captured);
@@ -186,6 +186,7 @@ public class World : Spatial
         if(finNivArea.OverlapsBody(player)){
             nivFini();
         }
+
     }
 }
 
