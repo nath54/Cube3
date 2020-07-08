@@ -49,7 +49,6 @@ position = Vector2( 42.8373, 37.7976 )
 normal = ExtResource( 5 )
 pressed = ExtResource( 6 )
 shape = SubResource( 3 )
-action = "menu"
 
 [node name="debug" type="Label" parent="."]
 margin_left = 445.836

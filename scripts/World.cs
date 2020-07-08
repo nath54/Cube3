@@ -161,13 +161,14 @@ public class World : Spatial
         pause_menu.Visible=false;
         if(!player.is_mobile()){ Input.SetMouseMode(Input.MouseMode.Captured); }
         player.paused=false;
+        ui_in_game.changeDebugText("visible : "+Convert.ToString(pause_menu.Visible));
     }
 
     public void Pause(){
-        ui_in_game.changeDebugText("paused");
         pause_menu.Visible=true;
         if(!player.is_mobile()){ Input.SetMouseMode(Input.MouseMode.Visible); }
         player.paused=true;
+        ui_in_game.changeDebugText("visible : "+Convert.ToString(pause_menu.Visible));
     }
 
     public override void _Input(InputEvent @event){

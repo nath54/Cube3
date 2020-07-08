@@ -168,7 +168,7 @@ public class Player : KinematicBody
 
 	public void _on_TSB_menu_pressed(){
 		EmitSignal("onPauseBtPress");
-		debug.Text="menu";
+		//debug.Text="menu";
 	}
 
 }
