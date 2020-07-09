@@ -10,6 +10,7 @@ public class GridMap : Godot.GridMap
     public int tz = 32;
     public int ty = 32;
     public int nbchem=15;
+    public int nb_plats=20;
     public int depx=1;
     public int depz=1;
     public int depy=1;
@@ -19,7 +20,46 @@ public class GridMap : Godot.GridMap
     public Color floor_color=new Color(100,100,100);
     public Color wall_color=new Color(100,100,100);
     public void generatePlatforms(){
-
+        Random rand = new Random();
+        depx=rand.Next(1,tx-1);
+        depz=rand.Next(1,tz-1);
+        depy=rand.Next(1,ty-1);
+        int security=0;
+        int max_security=50;
+        SetCellItem(depx,depy,depz,0);
+        int ax=depx;
+        int ay=depy;
+        int az=depz;
+        for(int w=0; w<=nb_plats; w++){
+            if(security<max_security){
+                security=0;
+                int dx=0;
+                int dy=0;
+                int dz=0;
+                bool derange=false;
+                do{
+                    derange=false;
+                    dx=rand.Next(-2,3);
+                    dz=rand.Next(-2,3);
+                    dy=rand.Next(-2,2);
+                    for(int yy=0; yy>=-2; yy--){
+                        if(GetCellItem(ax+dx,ay+dy+yy,az+dz)>=0){
+                            derange=true;
+                        }
+                    }
+                    security+=1;
+                }while(derange && security<max_security);
+                if(!derange){
+                    ax+=dx;
+                    ay+=dy;
+                    az+=dz;
+                    SetCellItem(ax,ay,az,0);
+                }
+            }
+        }
+        finx=ax;
+        finy=ay;
+        finz=az;
     }
 
     public void generateMaze2D(){
@@ -41,7 +81,7 @@ public class GridMap : Godot.GridMap
         //on remove les murs
         Random rand = new Random();
         depx=rand.Next(1,tx-1);
-        depz=rand.Next(1,ty-1);
+        depz=rand.Next(1,tz-1);
         depy=2;
         SetCellItem(depx,1,depz, -1);
         int ax=depx;

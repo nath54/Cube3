@@ -3,7 +3,7 @@
 [ext_resource path="res://fonts/Xeliard.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://scripts/MenuPlayArcade.cs" type="Script" id=2]
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=1]
 size = 32
 font_data = ExtResource( 1 )
 
@@ -11,7 +11,7 @@ font_data = ExtResource( 1 )
 size = 60
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="DynamicFont" id=3]
 size = 50
 font_data = ExtResource( 1 )
 
@@ -28,7 +28,7 @@ margin_left = 30.0
 margin_top = 28.0
 margin_right = 144.0
 margin_bottom = 82.0
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 1 )
 text = "Menu"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -47,48 +47,47 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Bt_Maze1" type="Button" parent="."]
+[node name="Bt_Maze" type="Button" parent="."]
 anchor_top = 0.5
 anchor_bottom = 0.5
 margin_left = 48.0
 margin_top = -168.5
 margin_right = 427.0
 margin_bottom = 286.5
-custom_fonts/font = SubResource( 1 )
-text = "play maze1"
+custom_fonts/font = SubResource( 3 )
+text = "Maze"
 clip_text = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Bt_Maze2" type="Button" parent="."]
+[node name="Bt_Plats" type="Button" parent="."]
 anchor_top = 0.5
 anchor_bottom = 0.5
 margin_left = 456.576
 margin_top = -168.5
 margin_right = 835.576
 margin_bottom = 286.5
-custom_fonts/font = SubResource( 1 )
-text = "play maze2"
+custom_fonts/font = SubResource( 3 )
+text = "Platforms"
 clip_text = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Bt_Maze3" type="Button" parent="."]
+[node name="Bt_" type="Button" parent="."]
 anchor_top = 0.5
 anchor_bottom = 0.5
 margin_left = 860.662
 margin_top = -170.745
 margin_right = 1239.66
 margin_bottom = 284.255
-custom_fonts/font = SubResource( 1 )
-text = "play maze3"
+custom_fonts/font = SubResource( 3 )
+text = "Coming Soon"
 clip_text = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 [connection signal="pressed" from="Bt_Menu" to="." method="_on_Bt_Menu_pressed"]
-[connection signal="pressed" from="Bt_Maze1" to="." method="_on_Bt_Maze1_pressed"]
-[connection signal="pressed" from="Bt_Maze2" to="." method="_on_Bt_Maze2_pressed"]
-[connection signal="pressed" from="Bt_Maze3" to="." method="_on_Bt_Maze3_pressed"]
+[connection signal="pressed" from="Bt_Maze" to="." method="_on_Bt_Maze_pressed"]
+[connection signal="pressed" from="Bt_Plats" to="." method="_on_Bt_Plats_pressed"]

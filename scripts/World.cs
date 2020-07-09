@@ -34,17 +34,20 @@ public class World : Spatial
         gridMap.tipe=tipemap;
         gridMap.tx=globale.mtx;
         gridMap.ty=globale.mty;
-        gridMap.tz=globale.mtz;
-        
+        gridMap.tz=globale.mtz;        
         gridMap.nbchem=globale.nbchem;
+        gridMap.nb_plats=globale.nb_plats;
+        gridMap.CellSize = globale.grid_scale;
         gridMap.generate();
         GD.Print(" x : "+gridMap.depx+" , z : "+gridMap.depz);
         player.Translation = new Vector3((gridMap.depx*gridMap.CellSize.x)+gridMap.CellSize.x/2, gridMap.depy+player.Scale.y, (gridMap.depz*gridMap.CellSize.z)+gridMap.CellSize.z/2);
         GD.Print("SPAWN = x : "+player.Translation.x+" , z : "+player.Translation.z);
-        player.taille = 0.3F;
+        player.taille = globale.player_taille;
         player.Scale = new Vector3(player.taille,player.taille,player.taille);
         player.MOVE_SPEED*=player.taille;
-        player.JUMP_FORCE*=player.taille*2;
+        if(player.taille>0.7){ player.JUMP_FORCE*=player.taille*1.2F; }
+        else if(player.taille>0.5){ player.JUMP_FORCE*=player.taille*1.5F; }
+        else{ player.JUMP_FORCE*=player.taille*2; }
         finNiv.Scale=player.Scale*2;
         finNiv.Translation = new Vector3((gridMap.finx*gridMap.CellSize.x)+gridMap.CellSize.x/2, gridMap.finy*gridMap.CellSize.y+finNiv.Scale.y/10, (gridMap.finz*gridMap.CellSize.z)+gridMap.CellSize.z/2);
         //
