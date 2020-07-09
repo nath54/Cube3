@@ -25,6 +25,7 @@ public class GridMap : Godot.GridMap
     public void generateMaze2D(){
         //modification des materiaux
         MeshLibrary ml = MeshLibrary;
+        
         //creation du sol
         for(int x=0; x<=tx; x++){
             for(int z=0; z<=tx; z++){

@@ -24,6 +24,7 @@ public class Player : KinematicBody
 	public bool just_jumped;
 	public bool paused = false;
 	public float taille = 1;
+	public Area areacol;
 
 	[Signal]
 	public delegate void onPauseBtPress();
@@ -59,9 +60,17 @@ public class Player : KinematicBody
 		spawnpoint.y-=0.05F;
 		//
 		just_jumped=false;
+		//
+		areacol = (Area)GetNode("Area");
 	}
 
+	public override void _Process(float delta){
+		Godot.Collections.Array lstareas=areacol.GetOverlappingAreas();
 
+		if(lstareas.Count >= 0){
+			GD.Print(lstareas);
+		}
+	}
 
 	public override void _Input(InputEvent @event)
 	{
