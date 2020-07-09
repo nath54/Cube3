@@ -10,19 +10,19 @@ public class World : Spatial
     private Spatial finNiv;
     private Area finNivArea;
     private Control loading;
-    public Global globale;
     private UI_In_game ui_in_game;
     public float timeLeft; //In seconds
     public float timeTotal; //In seconds
     public Timer timer;
     public GridMap gridMap;
     public string tipemap = "maze";
+    public Global globale;
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {   
         //
-        globale = (Global)GetNode("root/Global");
+        globale = (Global)GetNode("/root/Global");
         //
         player= (Player)GetNode("Player");
         player.Connect("onPauseBtPress", this, nameof(Pause));
@@ -32,9 +32,10 @@ public class World : Spatial
         //
         gridMap = (GridMap)GetNode("GridMap");
         gridMap.tipe=tipemap;
-        gridMap.tx=32;
-        gridMap.ty=32;
-        gridMap.tz=32;
+        gridMap.tx=globale.mtx;
+        gridMap.ty=globale.mty;
+        gridMap.tz=globale.mtz;
+        gridMap.nbchem=globale.nbchem;
         gridMap.generate();
         GD.Print(" x : "+gridMap.depx+" , z : "+gridMap.depz);
         player.Translation = new Vector3((gridMap.depx*gridMap.CellSize.x)+gridMap.CellSize.x/2, gridMap.depy+player.Scale.y, (gridMap.depz*gridMap.CellSize.z)+gridMap.CellSize.z/2);
@@ -44,7 +45,7 @@ public class World : Spatial
         player.MOVE_SPEED*=player.taille;
         player.JUMP_FORCE*=player.taille*2;
         finNiv.Scale=player.Scale*2;
-        finNiv.Translation = new Vector3((gridMap.finx*gridMap.CellSize.x)+gridMap.CellSize.x/2, gridMap.finy*gridMap.CellSize.y+finNiv.Scale.y, (gridMap.finz*gridMap.CellSize.z)+gridMap.CellSize.z/2);
+        finNiv.Translation = new Vector3((gridMap.finx*gridMap.CellSize.x)+gridMap.CellSize.x/2, gridMap.finy*gridMap.CellSize.y+finNiv.Scale.y/10, (gridMap.finz*gridMap.CellSize.z)+gridMap.CellSize.z/2);
         //
         loading= (Control)GetNode("Loading");
         loading.Visible=false;
@@ -55,7 +56,7 @@ public class World : Spatial
         if(!player.is_mobile()){ Input.SetMouseMode(Input.MouseMode.Captured); }
         //
         ui_in_game=(UI_In_game)GetNode("UI_In_game");
-        //ui_in_game.changeLevelText(globale.level);
+        ui_in_game.changeLevelText(globale.level);
         //
         timer=(Timer)GetNode("time_seconds");
         timer.Start();
@@ -64,7 +65,7 @@ public class World : Spatial
     }
 
     public void nivFini(){
-        //globale.level+=1;
+        globale.level+=1;
         GetTree().ChangeScene("res://levels/World.tscn");
     }
 

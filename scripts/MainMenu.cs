@@ -7,7 +7,6 @@ public class MainMenu : Control
     private Button bt_start_adventure;
     private Button bt_settings;
     private Button bt_quit;
-
     private Control loading;
 
     // Called when the node enters the scene tree for the first time.
@@ -30,7 +29,7 @@ public class MainMenu : Control
 
     public void onBtStartArcadePress(){
         loading.Visible=true;
-        GetTree().ChangeScene("res://levels/World.tscn");
+        GetTree().ChangeScene("res://menus/MenuPlayArcade.tscn");
     }
     public void onBtStartAdventurePress(){
 

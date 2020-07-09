@@ -22,14 +22,14 @@ public class GridMap : Godot.GridMap
 
     public void generateMaze2D(){
         //creation du sol
-        for(int x=0; x<tx; x++){
-            for(int z=0; z<tx; z++){
+        for(int x=0; x<=tx; x++){
+            for(int z=0; z<=tx; z++){
                 SetCellItem(x,0,z,0);
             }
         }
         //creation des murs
-        for(int x=0; x<tx; x++){
-            for(int z=0; z<tx; z++){
+        for(int x=0; x<=tx; x++){
+            for(int z=0; z<=tx; z++){
                 SetCellItem(x,1,z,1);
             }
         }

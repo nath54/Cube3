@@ -60,6 +60,7 @@
     <Compile Include="scripts\Joystick_Button.cs" />
     <Compile Include="scripts\MainMenu.cs" />
     <Compile Include="scripts\MenuPerdu.cs" />
+    <Compile Include="scripts\MenuPlayArcade.cs" />
     <Compile Include="scripts\Pause_Menu.cs" />
     <Compile Include="scripts\Player.cs" />
     <Compile Include="scripts\SwipeDetector.cs" />
