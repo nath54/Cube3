@@ -35,4 +35,8 @@ public class UI_In_game : Control
         pbcl.BgColor = new Color(1-1*percent/100.0F,1*percent/100.0F,0);
     }
 
+    public void changeLevelText(int level){
+        aff_level.Text="level : "+level;
+    }
+
 }

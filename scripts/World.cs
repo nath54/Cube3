@@ -10,7 +10,7 @@ public class World : Spatial
     private Spatial finNiv;
     private Area finNivArea;
     private Control loading;
-    private global_arcade global_Arcade;
+    public Global globale;
     private UI_In_game ui_in_game;
     public float timeLeft; //In seconds
     public float timeTotal; //In seconds
@@ -22,7 +22,7 @@ public class World : Spatial
     public override void _Ready()
     {   
         //
-        global_Arcade = (global_arcade)GetNode("/root/GlobalArcade");
+        globale = (Global)GetNode("root/Global");
         //
         player= (Player)GetNode("Player");
         player.Connect("onPauseBtPress", this, nameof(Pause));
@@ -36,11 +36,15 @@ public class World : Spatial
         gridMap.ty=32;
         gridMap.tz=32;
         gridMap.generate();
-        player.Translation = new Vector3((gridMap.depx*gridMap.CellScale)-player.Scale.x/2, gridMap.depy+player.Scale.y, (gridMap.depz*gridMap.CellScale)-player.Scale.z/2);
+        GD.Print(" x : "+gridMap.depx+" , z : "+gridMap.depz);
+        player.Translation = new Vector3((gridMap.depx*gridMap.CellSize.x)+gridMap.CellSize.x/2, gridMap.depy+player.Scale.y, (gridMap.depz*gridMap.CellSize.z)+gridMap.CellSize.z/2);
+        GD.Print("SPAWN = x : "+player.Translation.x+" , z : "+player.Translation.z);
         player.taille = 0.3F;
         player.Scale = new Vector3(player.taille,player.taille,player.taille);
         player.MOVE_SPEED*=player.taille;
         player.JUMP_FORCE*=player.taille*2;
+        finNiv.Scale=player.Scale*2;
+        finNiv.Translation = new Vector3((gridMap.finx*gridMap.CellSize.x)+gridMap.CellSize.x/2, gridMap.finy*gridMap.CellSize.y+finNiv.Scale.y, (gridMap.finz*gridMap.CellSize.z)+gridMap.CellSize.z/2);
         //
         loading= (Control)GetNode("Loading");
         loading.Visible=false;
@@ -51,6 +55,7 @@ public class World : Spatial
         if(!player.is_mobile()){ Input.SetMouseMode(Input.MouseMode.Captured); }
         //
         ui_in_game=(UI_In_game)GetNode("UI_In_game");
+        //ui_in_game.changeLevelText(globale.level);
         //
         timer=(Timer)GetNode("time_seconds");
         timer.Start();
@@ -59,6 +64,7 @@ public class World : Spatial
     }
 
     public void nivFini(){
+        //globale.level+=1;
         GetTree().ChangeScene("res://levels/World.tscn");
     }
 
@@ -89,6 +95,9 @@ public class World : Spatial
                 Pause();
             }
         }
+        if(Input.IsActionJustPressed("debug")){
+            GD.Print("player translation = x : "+player.Translation.x+" z : "+player.Translation.z);
+        }
     }
 
    
@@ -102,15 +111,17 @@ public class World : Spatial
     }
 
     public void _on_time_seconds_timeout(){
-        timeLeft-=timer.WaitTime;
-        ui_in_game.changePercentBar(timeLeft/timeTotal*100);
+        if(!player.paused){
+            timeLeft-=timer.WaitTime;
+            ui_in_game.changePercentBar(timeLeft/timeTotal*100);
+        }
         timer.Start();
         if(timeLeft<=0){
             GetTree().ChangeScene("res://menus/MenuPerdu.tscn");
         }
     }
 
-
+    
 
 
 }
