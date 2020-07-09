@@ -31,7 +31,7 @@ public class World : Spatial
         finNivArea = (Area)GetNode("FinNiv/Area");
         //
         gridMap = (GridMap)GetNode("GridMap");
-        gridMap.tipe=tipemap;
+        gridMap.tipe=globale.tipe;
         gridMap.tx=globale.mtx;
         gridMap.ty=globale.mty;
         gridMap.tz=globale.mtz;        
@@ -40,7 +40,7 @@ public class World : Spatial
         gridMap.CellSize = globale.grid_scale;
         gridMap.generate();
         GD.Print(" x : "+gridMap.depx+" , z : "+gridMap.depz);
-        player.Translation = new Vector3((gridMap.depx*gridMap.CellSize.x)+gridMap.CellSize.x/2, gridMap.depy+player.Scale.y, (gridMap.depz*gridMap.CellSize.z)+gridMap.CellSize.z/2);
+        player.Translation = new Vector3((gridMap.depx*gridMap.CellSize.x)+gridMap.CellSize.x/2, (gridMap.depy*gridMap.CellSize.z)+player.Scale.y, (gridMap.depz*gridMap.CellSize.z)+gridMap.CellSize.z/2);
         GD.Print("SPAWN = x : "+player.Translation.x+" , z : "+player.Translation.z);
         player.taille = globale.player_taille;
         player.Scale = new Vector3(player.taille,player.taille,player.taille);

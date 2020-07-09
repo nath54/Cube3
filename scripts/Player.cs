@@ -65,11 +65,7 @@ public class Player : KinematicBody
 	}
 
 	public override void _Process(float delta){
-		Godot.Collections.Array lstareas=areacol.GetOverlappingAreas();
-
-		if(lstareas.Count >= 0){
-			GD.Print(lstareas);
-		}
+		
 	}
 
 	public override void _Input(InputEvent @event)

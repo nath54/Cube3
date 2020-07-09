@@ -20,6 +20,7 @@ public class GridMap : Godot.GridMap
     public Color floor_color=new Color(100,100,100);
     public Color wall_color=new Color(100,100,100);
     public void generatePlatforms(){
+        GD.Print("platform");
         Random rand = new Random();
         depx=rand.Next(1,tx-1);
         depz=rand.Next(1,tz-1);
