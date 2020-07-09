@@ -122,9 +122,43 @@ public class World : Spatial
         
     }
 
+    public void GenerateGridMapMethod(){
+        //
+        SpatialMaterial floorMat = new SpatialMaterial();
+        floorMat.AlbedoColor = new Godot.Color(0.0F,0.3F,0F);
+        //
+        SpatialMaterial wallMat = new SpatialMaterial();
+        wallMat.AlbedoColor = new Godot.Color(0.8F,0F,0F);
+        //
+        GridMap gridMap = new GridMap();
+        Spatial mshlib =new Spatial(); 
+        //
+        MeshInstance floor = new MeshInstance();
+        floor.Mesh=new CubeMesh();
+        floor.CreateTrimeshCollision();
+        floor.MaterialOverride = floorMat;
+        //
+        MeshInstance wall = new MeshInstance();
+        wall.Mesh=new CubeMesh();
+        Area area=new Area();
+        CollisionShape cs = new CollisionShape();
+        area.AddChild(cs);
+        wall.AddChild(area);
+        wall.MaterialOverride = wallMat;
+        //
+        mshlib.AddChild(floor);
+        mshlib.AddChild(wall);
+        
+        //
+        gridMap.MeshLibrary=mshlib;
+
+        AddChild(gridMap);
+    }
+
     public void mapCreation(){
-        string method="platforms";
+        string method="gridmap";
         if(method == "platforms"){ GeneratePlatformMethod(); }
+        else if(method == "gridmap"){ GenerateGridMapMethod(); }
     }
 
     // Called when the node enters the scene tree for the first time.
@@ -153,7 +187,7 @@ public class World : Spatial
         //
         timer=(Timer)GetNode("time_seconds");
         timer.Start();
-        timeTotal=10;
+        timeTotal=60;
         timeLeft=timeTotal;
     }
 
