@@ -15,6 +15,7 @@ public class MenuPlayArcade : Control
         globale.mtx=32;
         globale.mtz=32;
         globale.nbchem=32;
+        globale.timemax=180;
         GetTree().ChangeScene("res://levels/World.tscn");
     }
 
@@ -22,13 +23,15 @@ public class MenuPlayArcade : Control
         globale.mtx=100;
         globale.mtz=100;
         globale.nbchem=100;
+        globale.timemax=250;
         GetTree().ChangeScene("res://levels/World.tscn");
     }
 
     public void _on_Bt_Maze3_pressed(){
-        globale.mtx=1000;
-        globale.mtz=1000;
-        globale.nbchem=1000;
+        globale.mtx=150;
+        globale.mtz=150;
+        globale.nbchem=150;
+        globale.timemax=400;
         GetTree().ChangeScene("res://levels/World.tscn");
     }
 

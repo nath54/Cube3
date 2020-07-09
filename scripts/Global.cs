@@ -10,6 +10,7 @@ public class Global : Node
     public int mty = 32;
     public int nbchem=32;
 
+    public float timemax=180;
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()

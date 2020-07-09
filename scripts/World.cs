@@ -35,6 +35,7 @@ public class World : Spatial
         gridMap.tx=globale.mtx;
         gridMap.ty=globale.mty;
         gridMap.tz=globale.mtz;
+        
         gridMap.nbchem=globale.nbchem;
         gridMap.generate();
         GD.Print(" x : "+gridMap.depx+" , z : "+gridMap.depz);

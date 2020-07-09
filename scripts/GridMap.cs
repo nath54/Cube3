@@ -16,11 +16,15 @@ public class GridMap : Godot.GridMap
     public int finx=1;
     public int finy=1;
     public int finz=1;
+    public Color floor_color=new Color(100,100,100);
+    public Color wall_color=new Color(100,100,100);
     public void generatePlatforms(){
 
     }
 
     public void generateMaze2D(){
+        //modification des materiaux
+        MeshLibrary ml = MeshLibrary;
         //creation du sol
         for(int x=0; x<=tx; x++){
             for(int z=0; z<=tx; z++){
