@@ -34,12 +34,13 @@ public class GridMap : Godot.GridMap
         Random rand = new Random();
         depx=rand.Next(1,tx-1);
         depz=rand.Next(1,ty-1);
+        depy=2;
         int ax=depx;
         int az=depz;
         for(int w=0; w<nbchem; w++){
             SetCellItem(ax,1,az, -1);
             ax+=rand.Next(-1,2);
-            ay+=rand.Next(-1,2);
+            az+=rand.Next(-1,2);
         }
     }
 
@@ -56,6 +57,7 @@ public class GridMap : Godot.GridMap
     public override void _Ready()
     {
         //
+        
     }
 
 }

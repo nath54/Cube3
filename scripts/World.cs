@@ -36,6 +36,11 @@ public class World : Spatial
         gridMap.ty=32;
         gridMap.tz=32;
         gridMap.generate();
+        player.Translation = new Vector3((gridMap.depx*gridMap.CellScale)-player.Scale.x/2, gridMap.depy+player.Scale.y, (gridMap.depz*gridMap.CellScale)-player.Scale.z/2);
+        player.taille = 0.3F;
+        player.Scale = new Vector3(player.taille,player.taille,player.taille);
+        player.MOVE_SPEED*=player.taille;
+        player.JUMP_FORCE*=player.taille*2;
         //
         loading= (Control)GetNode("Loading");
         loading.Visible=false;

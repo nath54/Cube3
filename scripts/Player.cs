@@ -23,7 +23,7 @@ public class Player : KinematicBody
 	public Label debug;
 	public bool just_jumped;
 	public bool paused = false;
-	
+	public float taille = 1;
 
 	[Signal]
 	public delegate void onPauseBtPress();
