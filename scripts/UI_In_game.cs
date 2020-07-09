@@ -26,4 +26,11 @@ public class UI_In_game : Control
     {
         fps_counter.Text="fps : "+Convert.ToString(Engine.GetFramesPerSecond());
     }
+
+    public void changePercentBar(float percent){
+        time_left.Value=percent;
+        time_left.GetStylebox("Fg", "StyleBoxFlat");
+        //((StyleBoxFlat)time_left.GetStylebox("Fg")).BgColor = new Godot.Color(255,0,0);
+    }
+
 }

@@ -12,6 +12,9 @@ public class World : Spatial
     private Control loading;
     private global_arcade global_Arcade;
     private UI_In_game ui_in_game;
+    public float timeLeft; //In seconds
+    public float timeTotal; //In seconds
+    public Timer timer;
 
     public void GeneratePlatformMethod(){
         //Base coordinates
@@ -147,6 +150,11 @@ public class World : Spatial
         if(!player.is_mobile()){ Input.SetMouseMode(Input.MouseMode.Captured); }
         //
         ui_in_game=(UI_In_game)GetNode("UI_In_game");
+        //
+        timer=(Timer)GetNode("time_seconds");
+        timer.Start();
+        timeTotal=10;
+        timeLeft=timeTotal;
     }
 
     public void nivFini(){
@@ -190,7 +198,19 @@ public class World : Spatial
         if(finNivArea.OverlapsBody(player)){
             nivFini();
         }
-
     }
+
+    public void _on_time_seconds_timeout(){
+        timeLeft-=timer.WaitTime;
+        ui_in_game.changePercentBar(timeLeft/timeTotal*100);
+        timer.Start();
+        if(timeLeft<=0){
+            GetTree().ChangeScene("res://menus/MenuPerdu.tscn");
+        }
+    }
+
+
+
+
 }
 

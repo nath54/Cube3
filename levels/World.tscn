@@ -16,6 +16,10 @@ extents = Vector3( 1.10419, 1, 0.494938 )
 [node name="World" type="Spatial"]
 script = ExtResource( 3 )
 
+[node name="time_seconds" type="Timer" parent="."]
+wait_time = 0.1
+autostart = true
+
 [node name="GroundCubes" type="Spatial" parent="."]
 
 [node name="WallCubes2" type="Spatial" parent="."]
@@ -51,3 +55,4 @@ visible = false
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11.0088, 0 )
+[connection signal="timeout" from="time_seconds" to="." method="_on_time_seconds_timeout"]
