@@ -19,6 +19,7 @@ public class MenuPlayArcade : Control
         globale.tipe="maze";
         globale.player_taille=0.3F;
         globale.grid_scale=new Vector3(2,2,2);
+        globale.grid_cell_scale=2;
         GetTree().ChangeScene("res://levels/World.tscn");
     }
 
@@ -28,8 +29,9 @@ public class MenuPlayArcade : Control
         globale.nb_plats=20+globale.level;
         globale.timemax=180+5*globale.level;
         globale.tipe="platforms";
-        globale.player_taille=1;
-        globale.grid_scale=new Vector3(3,3,1);
+        globale.player_taille=0.5F;
+        globale.grid_scale=new Vector3(1,1,1);
+        globale.grid_cell_scale=1;
         GetTree().ChangeScene("res://levels/World.tscn");
     }
 

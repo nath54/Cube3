@@ -40,13 +40,26 @@ public class GridMap : Godot.GridMap
                 bool derange=false;
                 do{
                     derange=false;
-                    dx=rand.Next(-2,3);
-                    dz=rand.Next(-2,3);
-                    dy=rand.Next(-2,2);
-                    for(int yy=0; yy>=-2; yy--){
-                        if(GetCellItem(ax+dx,ay+dy+yy,az+dz)>=0){
-                            derange=true;
-                        }
+                    int g=rand.Next(0,3);
+                    if(g==0){
+                        dx=Convert.ToInt32(rand.Next(3,7));
+                        if(rand.Next(0,2)==0){ dx*=-1; }
+                    }
+                    else if(g==1){
+                        dz=Convert.ToInt32(rand.Next(3,7));
+                        if(rand.Next(0,2)==0){ dz*=-1; }
+                    }
+                    dy=Convert.ToInt32(rand.Next(1,3));
+                    if(rand.Next(0,2)==0){ dy*=-1; }
+                    for(int xx=-2; xx<2; xx++){
+                        for(int zz=-2; zz<2; zz++){
+                            for(int yy=2; yy>=-2; yy--){
+                                if(GetCellItem(ax+dx+xx,ay+dy+yy,az+dz+zz)>=0){
+                                    derange=true;
+                                    GD.Print("dérange");
+                                }
+                            }
+                        }       
                     }
                     security+=1;
                 }while(derange && security<max_security);
@@ -54,6 +67,12 @@ public class GridMap : Godot.GridMap
                     ax+=dx;
                     ay+=dy;
                     az+=dz;
+                    if(ax<=0){ ax=1; }
+                    if(az<=0){ az=1; }
+                    if(ay<=0){ ay=1; }
+                    if(ax>=tx){ ax=tx-1; }
+                    if(az>=tz){ az=tz-1; }
+                    if(ay>=ty){ ay=ty-1; }
                     SetCellItem(ax,ay,az,0);
                 }
             }
@@ -121,7 +140,7 @@ public class GridMap : Godot.GridMap
     public override void _Ready()
     {
         //
-        
+           
     }
 
 }
