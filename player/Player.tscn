@@ -68,3 +68,4 @@ __meta__ = {
 [node name="CollisionShape" type="CollisionShape" parent="Area"]
 shape = SubResource( 5 )
 [connection signal="pressed" from="TSB_menu" to="." method="_on_TSB_menu_pressed"]
+[connection signal="body_entered" from="Area" to="." method="collided"]

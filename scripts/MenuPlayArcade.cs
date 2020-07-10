@@ -18,7 +18,7 @@ public class MenuPlayArcade : Control
         globale.timemax=180;
         globale.tipe="maze";
         globale.player_taille=0.3F;
-        globale.grid_scale=new Vector3(1,1,1);
+        globale.grid_scale=new Vector3(2,2,2);
         GetTree().ChangeScene("res://levels/World.tscn");
     }
 

@@ -11,4 +11,11 @@ public class Wall : MeshInstance
         
     }
 
+    public void _on_Area_body_entered(Node body){
+        GD.Print(body);
+    }
+
+    public void _on_Area_body_shape_entered(int body_id, Node body, int body_shape, int area_shape){
+		GD.Print("id : ",body_id," node : ",body);
+	}
 }

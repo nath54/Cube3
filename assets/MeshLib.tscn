@@ -39,3 +39,5 @@ script = ExtResource( 1 )
 [node name="CollisionShape" type="CollisionShape" parent="Wall/Area"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0180385, 2.38419e-07, -0.00985432 )
 shape = SubResource( 6 )
+[connection signal="body_entered" from="Wall/Area" to="Wall" method="_on_Area_body_entered"]
+[connection signal="body_shape_entered" from="Wall/Area" to="Wall" method="_on_Area_body_shape_entered"]

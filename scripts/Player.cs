@@ -62,11 +62,23 @@ public class Player : KinematicBody
 		just_jumped=false;
 		//
 		areacol = (Area)GetNode("Area");
+		//
 	}
 
-	public override void _Process(float delta){
-		
+	public void collided(Node body){
+		GD.Print(body);
+		if(body is GridMap grid){
+			//print("collided with: ", body);
+			Vector3 pos =  GlobalTransform.origin - grid.Translation;//this.global_transform.origin - grid.translation;
+			Vector3 gridPos = grid.WorldToMap(pos);//grid.world_to_map( pos );
+			var item = grid.GetCellItem(Convert.ToInt32(gridPos.x),Convert.ToInt32(gridPos.y),Convert.ToInt32(gridPos.z));//grid.get_cell_item(gridPos.x, gridPos.y, gridPos.z);
+			if(item != GridMap.InvalidCellItem){
+				GD.Print("gridPos ", gridPos, "item: ", item );
+				// so some logic here
+			}
+		}
 	}
+		
 
 	public override void _Input(InputEvent @event)
 	{
