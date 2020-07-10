@@ -40,18 +40,50 @@ public class World : Spatial
         gridMap.CellSize = globale.grid_scale;
         gridMap.CellScale=globale.grid_cell_scale;
         gridMap.generate();
-        GD.Print(" x : "+gridMap.depx+" , z : "+gridMap.depz);
-        player.Translation = new Vector3((gridMap.depx*gridMap.CellSize.x)+gridMap.CellSize.x/2, (gridMap.depy*gridMap.CellSize.z)+player.Scale.y+1, (gridMap.depz*gridMap.CellSize.z)+gridMap.CellSize.z/2);
-        player.spawnpoint=player.Translation;
-        GD.Print("SPAWN = x : "+player.Translation.x+" , z : "+player.Translation.z);
-        player.taille = globale.player_taille;
-        player.Scale = new Vector3(player.taille,player.taille,player.taille);
-        player.MOVE_SPEED*=player.taille;
-        if(player.taille>0.7){ player.JUMP_FORCE*=player.taille*1.2F; }
-        else if(player.taille>0.5){ player.JUMP_FORCE*=player.taille*1.5F; }
-        else{ player.JUMP_FORCE*=player.taille*2; }
-        finNiv.Scale=player.Scale*2;
-        finNiv.Translation = new Vector3((gridMap.finx*gridMap.CellSize.x)+gridMap.CellSize.x/2, ((gridMap.finy+1.5F)*gridMap.CellSize.y)+finNiv.Scale.y/10, (gridMap.finz*gridMap.CellSize.z)+gridMap.CellSize.z/2);
+        if(gridMap.tipe=="platforms"){
+            GD.Print(" x : "+gridMap.depx+" , z : "+gridMap.depz);
+            player.Translation = new Vector3((gridMap.depx*gridMap.CellSize.x)+gridMap.CellSize.x/2, (gridMap.depy*gridMap.CellSize.z)+player.Scale.y+1, (gridMap.depz*gridMap.CellSize.z)+gridMap.CellSize.z/2);
+            player.spawnpoint=player.Translation;
+            GD.Print("SPAWN = x : "+player.Translation.x+" , z : "+player.Translation.z);
+            player.taille = globale.player_taille;
+            player.Scale = new Vector3(player.taille,player.taille,player.taille);
+            if(player.taille>0.7){
+                player.JUMP_FORCE*=player.taille*1F;
+                player.MOVE_SPEED*=player.taille*1F;
+            }
+            else if(player.taille>0.5){
+                player.JUMP_FORCE*=player.taille*1.2F;
+                player.MOVE_SPEED*=player.taille*1.2F;
+            }
+            else{
+                player.JUMP_FORCE*=player.taille*1.5F;
+                player.MOVE_SPEED*=player.taille*1.5F;
+            }
+            finNiv.Scale=player.Scale*2;
+            finNiv.Translation = new Vector3((gridMap.finx*gridMap.CellSize.x)+gridMap.CellSize.x/2, ((gridMap.finy+1.5F)*gridMap.CellSize.y)+finNiv.Scale.y/10, (gridMap.finz*gridMap.CellSize.z)+gridMap.CellSize.z/2);
+        }
+        else if(gridMap.tipe=="maze"){
+            GD.Print(" x : "+gridMap.depx+" , z : "+gridMap.depz);
+            player.Translation = new Vector3((gridMap.depx*gridMap.CellSize.x)+gridMap.CellSize.x/2, (gridMap.depy*gridMap.CellSize.z)+player.Scale.y+1, (gridMap.depz*gridMap.CellSize.z)+gridMap.CellSize.z/2);
+            player.spawnpoint=player.Translation;
+            GD.Print("SPAWN = x : "+player.Translation.x+" , z : "+player.Translation.z);
+            player.taille = globale.player_taille;
+            player.Scale = new Vector3(player.taille,player.taille,player.taille);
+            if(player.taille>0.7){
+                player.JUMP_FORCE*=player.taille*1F;
+                player.MOVE_SPEED*=player.taille*1F;
+            }
+            else if(player.taille>0.5){
+                player.JUMP_FORCE*=player.taille*1.2F;
+                player.MOVE_SPEED*=player.taille*1.2F;
+            }
+            else{
+                player.JUMP_FORCE*=player.taille*1.5F;
+                player.MOVE_SPEED*=player.taille*1.5F;
+            }
+            finNiv.Scale=player.Scale*2;
+            finNiv.Translation = new Vector3((gridMap.finx*gridMap.CellSize.x)+gridMap.CellSize.x/2, ((gridMap.finy+1.5F)*gridMap.CellSize.y)+finNiv.Scale.y/10, (gridMap.finz*gridMap.CellSize.z)+gridMap.CellSize.z/2);
+        }
         //
         loading= (Control)GetNode("Loading");
         loading.Visible=false;

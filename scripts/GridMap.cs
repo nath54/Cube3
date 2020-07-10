@@ -19,6 +19,10 @@ public class GridMap : Godot.GridMap
     public int finz=1;
     public Color floor_color=new Color(100,100,100);
     public Color wall_color=new Color(100,100,100);
+    public int wall_item=2;
+    public int floor_item=0;
+    public int fake_floor_item=3;
+    public int light_item=4;
     public void generatePlatforms(){
         GD.Print("platform");
         Random rand = new Random();
@@ -27,19 +31,22 @@ public class GridMap : Godot.GridMap
         depy=rand.Next(1,ty-1);
         int security=0;
         int max_security=50;
-        SetCellItem(depx,depy,depz,0);
+        SetCellItem(depx,depy,depz,floor_item);
         int ax=depx;
         int ay=depy;
         int az=depz;
+        bool derange=false;
         for(int w=0; w<=nb_plats; w++){
-            if(security<max_security){
+            if(security<max_security && !derange){
                 security=0;
                 int dx=0;
                 int dy=0;
-                int dz=0;
-                bool derange=false;
+                int dz=0;                
                 do{
                     derange=false;
+                    dx=0;
+                    dy=0;
+                    dz=0;
                     int g=rand.Next(0,3);
                     if(g==0){
                         dx=Convert.ToInt32(rand.Next(3,7));
@@ -49,14 +56,23 @@ public class GridMap : Godot.GridMap
                         dz=Convert.ToInt32(rand.Next(3,7));
                         if(rand.Next(0,2)==0){ dz*=-1; }
                     }
+                    if(ax+dx<=0){ derange=true; }
+                    if(az+dz<=0){ derange=true; }
+                    if(ay+dy<=0){ derange=true; }
+                    if(ax+dx>=tx){ derange=true; }
+                    if(az+dz>=tz){ derange=true; }
+                    if(ay+dy>=ty){ derange=true; }
                     dy=Convert.ToInt32(rand.Next(1,3));
                     if(rand.Next(0,2)==0){ dy*=-1; }
-                    for(int xx=-2; xx<2; xx++){
-                        for(int zz=-2; zz<2; zz++){
+                    for(int xx=-2; xx<=2; xx++){
+                        for(int zz=-2; zz<=2; zz++){
                             for(int yy=2; yy>=-2; yy--){
-                                if(GetCellItem(ax+dx+xx,ay+dy+yy,az+dz+zz)>=0){
-                                    derange=true;
-                                    GD.Print("dérange");
+                                if(!derange){
+                                    int ggg = GetCellItem(ax+dx+xx,ay+dy+yy,az+dz+zz);
+                                    if(ggg==fake_floor_item || ggg==floor_item || ggg==wall_item){
+                                        derange=true;
+                                        GD.Print("dérange, security : "+security);
+                                    }
                                 }
                             }
                         }       
@@ -67,13 +83,12 @@ public class GridMap : Godot.GridMap
                     ax+=dx;
                     ay+=dy;
                     az+=dz;
-                    if(ax<=0){ ax=1; }
-                    if(az<=0){ az=1; }
-                    if(ay<=0){ ay=1; }
-                    if(ax>=tx){ ax=tx-1; }
-                    if(az>=tz){ az=tz-1; }
-                    if(ay>=ty){ ay=ty-1; }
-                    SetCellItem(ax,ay,az,0);
+                    
+                    SetCellItem(ax,ay,az,floor_item);
+                    if(rand.Next(0,5)==0){ SetCellItem(ax,ay+1,az, light_item); }
+                }
+                else{
+                    break;
                 }
             }
         }
@@ -89,13 +104,13 @@ public class GridMap : Godot.GridMap
         //creation du sol
         for(int x=0; x<=tx; x++){
             for(int z=0; z<=tx; z++){
-                SetCellItem(x,0,z,0);
+                SetCellItem(x,floor_item,z,0);
             }
         }
         //creation des murs
         for(int x=0; x<=tx; x++){
             for(int z=0; z<=tx; z++){
-                SetCellItem(x,1,z,1);
+                SetCellItem(x,wall_item,z,1);
             }
         }
         //on remove les murs
@@ -103,7 +118,7 @@ public class GridMap : Godot.GridMap
         depx=rand.Next(1,tx-1);
         depz=rand.Next(1,tz-1);
         depy=2;
-        SetCellItem(depx,1,depz, -1);
+        SetCellItem(depx,-1,depz, -1);
         int ax=depx;
         int az=depz;
         for(int w=0; w<nbchem; w++){
@@ -120,6 +135,7 @@ public class GridMap : Godot.GridMap
             if(ax>=tx){ ax=tx-1; }
             if(az>=tx){ az=tz-1; }
             SetCellItem(ax,1,az, -1);
+            if(rand.Next(0,5)==0){ SetCellItem(ax,1,az, light_item); }
         }
         finx=ax;
         finy=1;
