@@ -17,31 +17,29 @@ public class MainMenu : Control
         bt_settings = (Button)GetNode("Bt_settings");
         bt_quit = (Button)GetNode("Bt_quit");
 
-        bt_start_arcade.Connect("pressed", this, nameof(onBtStartArcadePress));
-        bt_start_adventure.Connect("pressed", this, nameof(onBtStartAdventurePress));
-        bt_settings.Connect("pressed", this, nameof(onBtSettingsPress));
-        bt_quit.Connect("pressed", this, nameof(onBtQuitPress));
-
         loading = (Control)GetNode("Loading");
         loading.Visible=false;
 
     }
 
-    public void onBtStartArcadePress(){
+    public void _on_Bt_play_arcade_pressed(){
         loading.Visible=true;
         GetTree().ChangeScene("res://menus/MenuPlayArcade.tscn");
     }
-    public void onBtStartAdventurePress(){
+    public void _on_Bt_play_adventure_pressed(){
 
     }
 
-    public void onBtSettingsPress(){
+    public void _on_Bt_settings_pressed(){
         
     }
     
-    public void onBtQuitPress(){
+    public void _on_Bt_quit_pressed(){
         GetTree().Quit();
-        
+    }
+
+    public void _on_Bt_Skins_pressed(){
+        GetTree().ChangeScene("res://menus/MenuSkins.tscn");
     }
 
 }
