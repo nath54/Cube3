@@ -52,3 +52,6 @@ margin_right = 228.0
 margin_bottom = -261.5
 custom_fonts/font = SubResource( 2 )
 text = "Select your skin : "
+__meta__ = {
+"_edit_use_anchors_": false
+}
