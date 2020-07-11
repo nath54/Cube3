@@ -66,11 +66,21 @@ public class Player : KinematicBody
 	}
 
 	public void setSkin(int idskin){
+		PackedScene s;
 		if(idskin==1){
-			Spatial s=new Spatial();
-			
-
+			s = (PackedScene)GD.Load("res://player/skins/skin_1.tscn");
 		}
+		else if(idskin==2){
+			s = (PackedScene)GD.Load("res://player/skins/skin_2.tscn");
+		}
+		else if(idskin==3){
+			s = (PackedScene)GD.Load("res://player/skins/skin_3.tscn");
+		}
+		else{
+			s = (PackedScene)GD.Load("res://player/skins/skin_0.tscn");
+		}
+		Spatial skin = (Spatial)s.Instance();
+		cube.AddChild(skin);
 	}
 
 	public void collided(Node body){
