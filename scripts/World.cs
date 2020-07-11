@@ -17,12 +17,16 @@ public class World : Spatial
     public GridMap gridMap;
     public string tipemap = "maze";
     public Global globale;
+    public WorldEnvironment environment;
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {   
         //
         globale = (Global)GetNode("/root/Global");
+        //
+        environment = (WorldEnvironment)GetNode("WorldEnvironment");
+        GD.Print(environment);
         //
         player= (Player)GetNode("Player");
         player.Connect("onPauseBtPress", this, nameof(Pause));
@@ -100,7 +104,7 @@ public class World : Spatial
         //
         timer=(Timer)GetNode("time_seconds");
         timer.Start();
-        timeTotal=60;
+        timeTotal=globale.timemax;
         timeLeft=timeTotal;
     }
 

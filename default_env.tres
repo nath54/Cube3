@@ -3,14 +3,14 @@
 [sub_resource type="ProceduralSky" id=1]
 
 [resource]
-background_mode = 1
+background_mode = 2
 background_sky = SubResource( 1 )
-background_energy = 1.25
+background_color = Color( 0.521569, 0.184314, 0.184314, 1 )
+ambient_light_color = Color( 1, 1, 1, 1 )
 auto_exposure_scale = 1.0
 glow_enabled = true
-glow_intensity = 1.0
-glow_strength = 0.67
-glow_bloom = 0.1
+glow_intensity = 0.5
 glow_blend_mode = 0
 glow_hdr_luminance_cap = 5.9
 glow_hdr_scale = 0.7
+adjustment_enabled = true
