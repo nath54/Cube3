@@ -30,7 +30,7 @@ __meta__ = {
 
 [node name="HBoxContainer" type="HBoxContainer" parent="ScrollContainer"]
 
-[node name="Button" type="Button" parent="."]
+[node name="Bt_Menu" type="Button" parent="."]
 margin_left = 36.0218
 margin_top = 31.7838
 margin_right = 153.022
@@ -41,7 +41,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="."]
+[node name="Title" type="Label" parent="."]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -55,3 +55,4 @@ text = "Select your skin : "
 __meta__ = {
 "_edit_use_anchors_": false
 }
+[connection signal="pressed" from="Bt_Menu" to="." method="_on_Bt_Menu_pressed"]

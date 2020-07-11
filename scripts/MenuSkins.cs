@@ -31,13 +31,14 @@ public class MenuSkins : Control
             if(globale.skin_id_equipe==w){
                 bt.Text = "Selected";
                 bt.Disabled=true;
+                bt.RectPosition=new Vector2(-35,50);
             }
             else{
                 bt.Text = "Select";
                 bt.Disabled=false;
+                bt.RectPosition=new Vector2(-28,50);
             }
             bt.Connect("clique", this, nameof(selectSkin));
-            bt.RectPosition=new Vector2(-28,50);
             skin_s.AddChild(bt);
             skin_s.Scale=new Vector2(2,2);
             skin_s.Position=new Vector2(100+w*110*skin_s.Scale.x,200);
@@ -46,8 +47,13 @@ public class MenuSkins : Control
     }
 
     public void selectSkin(int idskin){
+        GD.Print("click "+idskin);
         globale.skin_id_equipe=idskin;
         GetTree().ChangeScene("res://menus/MenuSkin.tscn");
+    }
+
+    public void _on_Bt_Menu_pressed(){
+        GetTree().ChangeScene("res://menus/MainMenu.tscn");
     }
 
 }
