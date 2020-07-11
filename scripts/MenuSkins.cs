@@ -47,9 +47,9 @@ public class MenuSkins : Control
     }
 
     public void selectSkin(int idskin){
-        GD.Print("click "+idskin);
+        //GD.Print("click "+idskin);
         globale.skin_id_equipe=idskin;
-        GetTree().ChangeScene("res://menus/MenuSkin.tscn");
+        GetTree().ChangeScene("res://menus/MenuSkins.tscn");
     }
 
     public void _on_Bt_Menu_pressed(){

@@ -10,11 +10,11 @@ public class ButtonSkinSelector : Button
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
-        
+        Connect("pressed", this, nameof(_on_ButtonSkinSelector_pressed));
     }
 
     public void _on_ButtonSkinSelector_pressed(){
-        GD.Print("c "+id);
+        //GD.Print("c "+id);
         EmitSignal("clique", id);
     }
 

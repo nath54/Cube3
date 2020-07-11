@@ -64,7 +64,7 @@ public class World : Spatial
         }
         else if(gridMap.tipe=="maze"){
             GD.Print(" x : "+gridMap.depx+" , z : "+gridMap.depz);
-            player.Translation = new Vector3((gridMap.depx*gridMap.CellSize.x)+gridMap.CellSize.x/2, (gridMap.depy*gridMap.CellSize.z)+player.Scale.y+1, (gridMap.depz*gridMap.CellSize.z)+gridMap.CellSize.z/2);
+            player.Translation = new Vector3((gridMap.depx*gridMap.CellSize.x)-player.Scale.x, (gridMap.depy*gridMap.CellSize.z)+player.Scale.y+1, (gridMap.depz*gridMap.CellSize.z)-player.Scale.z);
             player.spawnpoint=player.Translation;
             GD.Print("SPAWN = x : "+player.Translation.x+" , z : "+player.Translation.z);
             player.taille = globale.player_taille;
@@ -82,7 +82,7 @@ public class World : Spatial
                 player.MOVE_SPEED*=player.taille*1.5F;
             }
             finNiv.Scale=player.Scale*2;
-            finNiv.Translation = new Vector3((gridMap.finx*gridMap.CellSize.x)+gridMap.CellSize.x/2, ((gridMap.finy+1.5F)*gridMap.CellSize.y)+finNiv.Scale.y/10, (gridMap.finz*gridMap.CellSize.z)+gridMap.CellSize.z/2);
+            finNiv.Translation = new Vector3((gridMap.finx*gridMap.CellSize.x)+gridMap.CellSize.x/2, ((gridMap.finy)*gridMap.CellSize.y)+finNiv.Scale.y/10, (gridMap.finz*gridMap.CellSize.z)+gridMap.CellSize.z/2);
         }
         //
         player.setSkin(globale.skin_id_equipe);
@@ -117,19 +117,19 @@ public class World : Spatial
         pause_menu.Visible=false;
         if(!player.is_mobile()){ Input.SetMouseMode(Input.MouseMode.Captured); }
         player.paused=false;
-        ui_in_game.changeDebugText("visible : "+Convert.ToString(pause_menu.Visible));
+        //ui_in_game.changeDebugText("visible : "+Convert.ToString(pause_menu.Visible));
     }
 
     public void Pause(){
         pause_menu.Visible=true;
         if(!player.is_mobile()){ Input.SetMouseMode(Input.MouseMode.Visible); }
         player.paused=true;
-        ui_in_game.changeDebugText("visible : "+Convert.ToString(pause_menu.Visible));
+        //ui_in_game.changeDebugText("visible : "+Convert.ToString(pause_menu.Visible));
     }
 
     public override void _Input(InputEvent @event){
         if(Input.IsActionJustPressed("menu")){
-            if(pause_menu.Visible){
+            if(pause_menu.Visible==true){
                 Resume();
             }
             else{
