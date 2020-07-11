@@ -47,12 +47,4 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0180385, 2.38419e-07, -0.009
 shape = SubResource( 6 )
 
 [node name="Light" type="MeshInstance" parent="."]
-
-[node name="OmniLight" type="OmniLight" parent="Light"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.65374, 0 )
-light_color = Color( 0.980392, 0.980392, 0.980392, 1 )
-light_energy = 10.0
-light_indirect_energy = 2.0
-omni_range = 4096.0
-omni_attenuation = 1.03526
 [connection signal="body_entered" from="Wall/Area" to="Wall" method="_on_Area_body_entered"]

@@ -14,6 +14,7 @@ public class ButtonSkinSelector : Button
     }
 
     public void _on_ButtonSkinSelector_pressed(){
+        GD.Print("c "+id);
         EmitSignal("clique", id);
     }
 

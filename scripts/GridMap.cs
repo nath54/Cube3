@@ -21,8 +21,8 @@ public class GridMap : Godot.GridMap
     public Color wall_color=new Color(100,100,100);
     public int wall_item=2;
     public int floor_item=0;
-    public int fake_floor_item=3;
-    public int light_item=4;
+    public int fake_floor_item=1;
+    public int light_item=-1;
     public void generatePlatforms(){
         GD.Print("platform");
         Random rand = new Random();
@@ -110,7 +110,7 @@ public class GridMap : Godot.GridMap
         //creation des murs
         for(int x=0; x<=tx; x++){
             for(int z=0; z<=tx; z++){
-                SetCellItem(x,wall_item,z,1);
+                SetCellItem(x,1,z,wall_item);
             }
         }
         //on remove les murs
@@ -135,7 +135,6 @@ public class GridMap : Godot.GridMap
             if(ax>=tx){ ax=tx-1; }
             if(az>=tx){ az=tz-1; }
             SetCellItem(ax,1,az, -1);
-            if(rand.Next(0,5)==0){ SetCellItem(ax,1,az, light_item); }
         }
         finx=ax;
         finy=1;
