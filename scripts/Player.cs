@@ -65,6 +65,14 @@ public class Player : KinematicBody
 		//
 	}
 
+	public void setSkin(int idskin){
+		if(idskin==1){
+			Spatial s=new Spatial();
+			
+
+		}
+	}
+
 	public void collided(Node body){
 		GD.Print(body);
 		if(body is GridMap grid){
