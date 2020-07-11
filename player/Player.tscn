@@ -29,7 +29,7 @@ shape = SubResource( 1 )
 [node name="CamBase" type="Spatial" parent="."]
 
 [node name="Camera" type="Camera" parent="CamBase"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8.44074 )
 environment = SubResource( 2 )
 
 [node name="cube" type="MeshInstance" parent="."]

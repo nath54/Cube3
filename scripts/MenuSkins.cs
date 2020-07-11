@@ -1,4 +1,4 @@
-using System.Reflection.Emit;
+
 using Godot;
 using System;
 
@@ -15,6 +15,7 @@ public class MenuSkins : Control
         //
         container = (HBoxContainer)GetNode("ScrollContainer/HBoxContainer");
         //
+        createSkins();
     }
 
     public void createSkins(){
