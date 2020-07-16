@@ -65,6 +65,10 @@
     <Compile Include="scripts\MenuSkins.cs" />
     <Compile Include="scripts\Pause_Menu.cs" />
     <Compile Include="scripts\Player.cs" />
+    <Compile Include="scripts\Settings_audio.cs" />
+    <Compile Include="scripts\Settings_game.cs" />
+    <Compile Include="scripts\Settings_graphics.cs" />
+    <Compile Include="scripts\Settings_other.cs" />
     <Compile Include="scripts\SwipeDetector.cs" />
     <Compile Include="scripts\UI_In_game.cs" />
     <Compile Include="scripts\Wall.cs" />
