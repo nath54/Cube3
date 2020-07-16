@@ -31,7 +31,7 @@ public class MainMenu : Control
     }
 
     public void _on_Bt_settings_pressed(){
-        
+        GetTree().ChangeScene("res://menus/Settings_game.tscn");
     }
     
     public void _on_Bt_quit_pressed(){

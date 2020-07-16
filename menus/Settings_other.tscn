@@ -44,7 +44,7 @@ margin_bottom = 100.0
 custom_fonts/font = SubResource( 1 )
 text = "Graphics"
 
-[node name="Bt_Audio" type="Button" parent="Menu_Buttons/HScrollBar"]
+[node name="Bt_audio" type="Button" parent="Menu_Buttons/HScrollBar"]
 anchor_right = 0.218
 margin_left = 640.0
 margin_right = 680.96
@@ -55,7 +55,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Bt_Other" type="Button" parent="Menu_Buttons/HScrollBar"]
+[node name="Bt_other" type="Button" parent="Menu_Buttons/HScrollBar"]
 anchor_right = 0.218
 margin_left = 960.0
 margin_right = 1000.96
@@ -77,5 +77,5 @@ __meta__ = {
 }
 [connection signal="pressed" from="Menu_Buttons/HScrollBar/Bt_game" to="." method="_on_Bt_game_pressed"]
 [connection signal="pressed" from="Menu_Buttons/HScrollBar/Bt_graphics" to="." method="_on_Bt_graphics_pressed"]
-[connection signal="pressed" from="Menu_Buttons/HScrollBar/Bt_Audio" to="." method="_on_Bt_Audio_pressed"]
-[connection signal="pressed" from="Menu_Buttons/HScrollBar/Bt_Other" to="." method="_on_Bt_Other_pressed"]
+[connection signal="pressed" from="Menu_Buttons/HScrollBar/Bt_audio" to="." method="_on_Bt_audio_pressed"]
+[connection signal="pressed" from="Menu_Buttons/HScrollBar/Bt_other" to="." method="_on_Bt_other_pressed"]
