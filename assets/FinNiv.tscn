@@ -1,0 +1,7 @@
+[gd_scene format=2]
+
+[node name="FinNiv" type="Spatial"]
+
+[node name="StaticBody" type="StaticBody" parent="."]
+
+[node name="CollisionShape" type="CollisionShape" parent="StaticBody"]
