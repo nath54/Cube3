@@ -138,10 +138,10 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TextEdit" type="TextEdit" parent="Settings/VBoxContainer/St_dwidth"]
-margin_left = 500.0
+[node name="te_width" type="TextEdit" parent="Settings/VBoxContainer/St_dwidth"]
+margin_left = 503.564
 margin_top = 10.0
-margin_right = 600.0
+margin_right = 603.564
 margin_bottom = 50.0
 rect_scale = Vector2( 1.8, 1.8 )
 custom_fonts/font = SubResource( 3 )
@@ -169,7 +169,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TextEdit" type="TextEdit" parent="Settings/VBoxContainer/St_dheight"]
+[node name="te_height" type="TextEdit" parent="Settings/VBoxContainer/St_dheight"]
 margin_left = 516.018
 margin_top = 12.6697
 margin_right = 616.018
@@ -184,3 +184,5 @@ __meta__ = {
 [connection signal="pressed" from="Menu_Buttons/HScrollBar/Bt_graphics" to="." method="_on_Bt_graphics_pressed"]
 [connection signal="pressed" from="Menu_Buttons/HScrollBar/Bt_audio" to="." method="_on_Bt_audio_pressed"]
 [connection signal="pressed" from="Menu_Buttons/HScrollBar/Bt_other" to="." method="_on_Bt_other_pressed"]
+[connection signal="text_changed" from="Settings/VBoxContainer/St_dwidth/te_width" to="." method="_on_te_width_text_changed"]
+[connection signal="text_changed" from="Settings/VBoxContainer/St_dheight/te_height" to="." method="_on_te_height_text_changed"]

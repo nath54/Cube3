@@ -19,8 +19,8 @@ public class Settings_graphics : Control
         bt_s_audio = (Button)GetNode("Menu_Buttons/HScrollBar/Bt_audio");
         bt_s_other = (Button)GetNode("Menu_Buttons/HScrollBar/Bt_other");
         cb_showfps = (CheckBox)GetNode("Settings/VBoxContainer/St_showfps/Cb_showfps");
-        te_width = (TextEdit)GetNode("Settings/VBoxContainer/St_dwidth/TextEdit");
-        te_width = (TextEdit)GetNode("Settings/VBoxContainer/St_dwidth/TextEdit");
+        te_width = (TextEdit)GetNode("Settings/VBoxContainer/St_dwidth/te_width");
+        te_height = (TextEdit)GetNode("Settings/VBoxContainer/St_dheight/te_height");
     }
 
     public void _on_Bt_game_pressed(){ GetTree().ChangeScene("res://menus/Settings_game.tscn"); }
@@ -28,8 +28,27 @@ public class Settings_graphics : Control
     public void _on_Bt_audio_pressed(){ GetTree().ChangeScene("res://menus/Settings_audio.tscn"); }
     public void _on_Bt_other_pressed(){ GetTree().ChangeScene("res://menus/Settings_other.tscn"); }
 
-    public void _on_TextEdit_text_changed(){
-
+    public void _on_te_height_text_changed(){
+        string val=te_height.Text;
+        if(val.Length>=1){
+            double value;
+            if (double.TryParse(val, out value)){
+                double nvalue=value*(16.0/9.0);
+                string nval=""+nvalue;
+                te_width.Text=nval;
+            }
+        }
     }
-    
+
+    public void _on_te_width_text_changed(){
+        string val=te_width.Text;
+        if(val.Length>=1){
+            double value;
+            if (double.TryParse(val, out value)){
+                double nvalue=value/(16.0/9.0);
+                string nval=""+nvalue;
+                te_height.Text=nval;
+            }
+        }
+    }
 }
