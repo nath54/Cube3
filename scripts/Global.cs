@@ -19,9 +19,16 @@ public class Global : Node
     public int skin_id_equipe=0;
     public int max_skin=3;
 
+    [Signal]
+    public delegate void playerDeath();
+
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
         
+    }
+
+    public void player_death(){
+        EmitSignal("playerDeath");
     }
 }

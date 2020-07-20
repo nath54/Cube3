@@ -24,6 +24,7 @@ public class World : Spatial
     {   
         //
         globale = (Global)GetNode("/root/Global");
+        globale.Connect("playerDeath",this,nameof(player_mort));
         //
         environment = (WorldEnvironment)GetNode("WorldEnvironment");
         GD.Print(environment);
@@ -115,6 +116,10 @@ public class World : Spatial
 
     public void onPauseMenuBtResumePress(){
         Resume();
+    }
+
+    public void player_mort(){
+        player.playerDeath();
     }
 
     public void Resume(){
