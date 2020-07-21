@@ -111,10 +111,7 @@ public class GridMap : Godot.GridMap
         //creation des murs
         for(int x=0; x<=tx; x++){
             for(int z=0; z<=tx; z++){
-                SetCellItem(x,1,z,wall_item);
-                mur mure=new mur();
-                mure.Translation=new Vector3(x,1,z);
-                worlde.AddChild(mure);
+                SetCellItem(x,1,z,wall_item);                
             }
         }
         //on remove les murs
@@ -143,6 +140,17 @@ public class GridMap : Godot.GridMap
         finx=ax;
         finy=1;
         finz=az;
+        for(int x=0; x<=tx; x++){
+            for(int z=0; z<=tx; z++){
+                int item = GetCellItem(x,1,z);                
+                if(item == wall_item){
+                    mur mure=new mur();
+                    mure.Translation=new Vector3(x*CellSize.x,1*CellSize.y,z*CellSize.z);
+                    GD.Print(mure.Translation);
+                    worlde.AddChild(mure);
+                }
+            }
+        }
         
     }
 
