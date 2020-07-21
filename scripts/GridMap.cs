@@ -18,9 +18,9 @@ public class GridMap : Godot.GridMap
     public int finz=1;
     public Color floor_color=new Color(100,100,100);
     public Color wall_color=new Color(100,100,100);
-    public int wall_item=2;
+    public int wall_item=1;
     public int floor_item=0;
-    public int fake_floor_item=1;
+    public int fake_floor_item=2;
     public int light_item=-1;
     public World worlde;
 
