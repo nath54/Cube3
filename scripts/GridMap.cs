@@ -22,6 +22,8 @@ public class GridMap : Godot.GridMap
     public int floor_item=0;
     public int fake_floor_item=1;
     public int light_item=-1;
+    public World worlde;
+
     public void generatePlatforms(){
         GD.Print("platform");
         Random rand = new Random();
@@ -112,7 +114,7 @@ public class GridMap : Godot.GridMap
                 SetCellItem(x,1,z,wall_item);
                 mur mure=new mur();
                 mure.Translation=new Vector3(x,1,z);
-                AddChild(mure);
+                worlde.AddChild(mure);
             }
         }
         //on remove les murs

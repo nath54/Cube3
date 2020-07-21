@@ -36,6 +36,7 @@ public class World : Spatial
         finNivArea = (Area)GetNode("FinNiv/Area");
         //
         gridMap = (GridMap)GetNode("GridMap");
+        gridMap.worlde = this;
         gridMap.tipe=globale.tipe;
         gridMap.tx=globale.mtx;
         gridMap.ty=globale.mty;

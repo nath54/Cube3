@@ -1,7 +1,4 @@
-[gd_scene load_steps=10 format=2]
-
-[ext_resource path="res://assets/mur.tscn" type="PackedScene" id=1]
-[ext_resource path="res://scripts/Walle.cs" type="Script" id=2]
+[gd_scene load_steps=4 format=2]
 
 [sub_resource type="CubeMesh" id=1]
 
@@ -10,16 +7,6 @@ albedo_color = Color( 0.34902, 0.698039, 0.176471, 1 )
 
 [sub_resource type="ConcavePolygonShape" id=3]
 data = PoolVector3Array( -1, 1, 1, 1, 1, 1, -1, -1, 1, 1, 1, 1, 1, -1, 1, -1, -1, 1, 1, 1, -1, -1, 1, -1, 1, -1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, 1, 1, 1, 1, 1, -1, 1, -1, 1, 1, 1, -1, 1, -1, -1, 1, -1, 1, -1, 1, -1, -1, 1, 1, -1, -1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1, 1, 1, 1, -1, 1, 1, 1, 1, -1, -1, 1, 1, -1, 1, -1, 1, 1, -1, -1, -1, 1, 1, -1, 1, -1, -1, -1, 1, -1, 1, 1, -1, -1, -1, -1, -1 )
-
-[sub_resource type="CubeMesh" id=4]
-
-[sub_resource type="SpatialMaterial" id=5]
-albedo_color = Color( 0.87451, 0, 1, 1 )
-
-[sub_resource type="ConcavePolygonShape" id=6]
-data = PoolVector3Array( -1, 1, 1, 1, 1, 1, -1, -1, 1, 1, 1, 1, 1, -1, 1, -1, -1, 1, 1, 1, -1, -1, 1, -1, 1, -1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, 1, 1, 1, 1, 1, -1, 1, -1, 1, 1, 1, -1, 1, -1, -1, 1, -1, 1, -1, 1, -1, -1, 1, 1, -1, -1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1, 1, 1, 1, -1, 1, 1, 1, 1, -1, -1, 1, 1, -1, 1, -1, 1, 1, -1, -1, -1, 1, 1, -1, 1, -1, -1, -1, 1, -1, 1, 1, -1, -1, -1, -1, -1 )
-
-[sub_resource type="BoxShape" id=7]
 
 [node name="MeshLib" type="Spatial"]
 
@@ -37,24 +24,3 @@ shape = SubResource( 3 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.88196, 0, -1.56481 )
 mesh = SubResource( 1 )
 material/0 = SubResource( 2 )
-
-[node name="mur" parent="." instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.23555, -4.76837e-07, 0.0284452 )
-
-[node name="Wall" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.82458 )
-mesh = SubResource( 4 )
-material/0 = SubResource( 5 )
-script = ExtResource( 2 )
-
-[node name="StaticBody" type="StaticBody" parent="Wall"]
-transform = Transform( 0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0, 0 )
-
-[node name="CollisionShape" type="CollisionShape" parent="Wall/StaticBody"]
-shape = SubResource( 6 )
-
-[node name="Area" type="Area" parent="Wall"]
-
-[node name="CollisionShape" type="CollisionShape" parent="Wall/Area"]
-shape = SubResource( 7 )
-[connection signal="body_entered" from="Wall/Area" to="Wall" method="_on_Area_body_entered"]

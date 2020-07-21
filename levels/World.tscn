@@ -8,8 +8,7 @@
 [ext_resource path="res://assets/FinNiv.tscn" type="PackedScene" id=6]
 [ext_resource path="res://default_env.tres" type="Environment" id=7]
 [ext_resource path="res://scripts/GridMap.cs" type="Script" id=8]
-
-[sub_resource type="MeshLibrary" id=1]
+[ext_resource path="res://assets/meshlib_base.tres" type="MeshLibrary" id=9]
 
 [node name="World" type="Spatial"]
 script = ExtResource( 3 )
@@ -34,7 +33,7 @@ visible = false
 [node name="Pause_Menu" parent="." instance=ExtResource( 2 )]
 
 [node name="GridMap" type="GridMap" parent="."]
-mesh_library = SubResource( 1 )
+mesh_library = ExtResource( 9 )
 data = {
 "cells": PoolIntArray(  )
 }
