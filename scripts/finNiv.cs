@@ -12,7 +12,7 @@ public class finNiv : Spatial
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
-        
+        /*
         an1=(AnimationPlayer)GetNode("Bras_Sphere1/AnimationPlayer");
         an2=(AnimationPlayer)GetNode("Bras_Sphere2/AnimationPlayer");
         an3=(AnimationPlayer)GetNode("Bras_Sphere3/AnimationPlayer");
@@ -22,7 +22,7 @@ public class finNiv : Spatial
         an1.Play();
         an2.Play();
         an3.Play();
-        
+        */
         
     }
 
