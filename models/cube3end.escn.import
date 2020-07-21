@@ -2,12 +2,12 @@
 
 importer="scene"
 type="PackedScene"
-path="res://.import/cube3_portal.dae-1db68a9b8a512a1488fe22c933038fd1.scn"
+path="res://.import/cube3end.escn-2b03efda1ad5fb358caf5cc3134b97b0.scn"
 
 [deps]
 
-source_file="res://assets/cube3_portal.dae"
-dest_files=[ "res://.import/cube3_portal.dae-1db68a9b8a512a1488fe22c933038fd1.scn" ]
+source_file="res://models/cube3end.escn"
+dest_files=[ "res://.import/cube3end.escn-2b03efda1ad5fb358caf5cc3134b97b0.scn" ]
 
 [params]
 
