@@ -31,7 +31,7 @@ public class World : Spatial
         player= (Player)GetNode("Player");
         player.Connect("onPauseBtPress", this, nameof(Pause));
         //
-        finNiv = (finNiv)GetNode("FinNiv");
+        finNiv = (finNiv)GetNode("finNiv");
         finNiv.Connect("bodyTouched", this, nameof(onFinNiv));
         //
         gridMap = (GridMap)GetNode("GridMap");
@@ -65,7 +65,7 @@ public class World : Spatial
                 player.MOVE_SPEED*=player.taille*1.5F;
             }
             finNiv.Scale=player.Scale*2;
-            finNiv.Translation = new Vector3((gridMap.finx*gridMap.CellSize.x)+gridMap.CellSize.x/2, ((gridMap.finy+1.5F)*gridMap.CellSize.y)+finNiv.Scale.y/10, (gridMap.finz*gridMap.CellSize.z)+gridMap.CellSize.z/2);
+            finNiv.Translation = new Vector3((gridMap.finx*gridMap.CellSize.x)+gridMap.CellSize.x/2, ((gridMap.finy+1.5F)*gridMap.CellSize.y)+finNiv.Scale.y, (gridMap.finz*gridMap.CellSize.z)+gridMap.CellSize.z/2);
         }
         else if(gridMap.tipe=="maze"){
             GD.Print(" x : "+gridMap.depx+" , z : "+gridMap.depz);

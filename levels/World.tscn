@@ -10,7 +10,6 @@
 [ext_resource path="res://scripts/GridMap.cs" type="Script" id=8]
 [ext_resource path="res://assets/meshlib_base.tres" type="MeshLibrary" id=9]
 
-
 [node name="World" type="Spatial"]
 script = ExtResource( 3 )
 
@@ -50,5 +49,5 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11.0088, 0 )
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource( 7 )
 
-[node name="FinNiv" parent="." instance=ExtResource( 6 )]
+[node name="finNiv" parent="." instance=ExtResource( 6 )]
 [connection signal="timeout" from="time_seconds" to="." method="_on_time_seconds_timeout"]
