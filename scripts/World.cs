@@ -25,9 +25,6 @@ public class World : Spatial
         globale = (Global)GetNode("/root/Global");
         globale.Connect("playerDeath",this,nameof(player_mort));
         //
-        environment = (WorldEnvironment)GetNode("WorldEnvironment");
-        GD.Print(environment);
-        //
         player= (Player)GetNode("Player");
         player.Connect("onPauseBtPress", this, nameof(Pause));
         //
