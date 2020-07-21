@@ -3,8 +3,7 @@ using System;
 
 public class GridMap : Godot.GridMap
 {
-    OpenSimplexNoise noise = new OpenSimplexNoise();
-
+    public mur mur;
     public string tipe="platforms";
     public int tx = 32;
     public int tz = 32;
@@ -111,6 +110,9 @@ public class GridMap : Godot.GridMap
         for(int x=0; x<=tx; x++){
             for(int z=0; z<=tx; z++){
                 SetCellItem(x,1,z,wall_item);
+                mur mure=new mur();
+                mure.Translation=new Vector3(x,1,z);
+                AddChild(mure);
             }
         }
         //on remove les murs
