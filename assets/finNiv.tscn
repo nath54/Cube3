@@ -9,21 +9,19 @@
 script = ExtResource( 2 )
 
 [node name="Bras_Sphere1" parent="." index="1"]
-transform = Transform( 0, 0.667995, -0.942574, -1, 0, 0, 0, 1.88515, 0.333998, 0, 0, 0 )
+transform = Transform( -1.07288e-06, 0.508194, -0.967179, -1, -2.14577e-06, 8.64267e-07, -8.64267e-07, 1.93436, 0.254097, 0, 0, 0 )
 
 [node name="AnimationPlayer" parent="Bras_Sphere1" index="0"]
 playback_process_mode = 0
-playback_speed = 3.0
-method_call_mode = 1
 
 [node name="Bras_Sphere2" parent="." index="2"]
-transform = Transform( 0.582862, -1.65776e-07, 5.92904e-08, 0, 0.6782, 0.474066, -1.01911e-07, -0.948128, 0.339101, 0, 0, 0 )
+transform = Transform( 0.582862, -2.45171e-08, -1.01171e-07, -1.55306e-15, -1.15726, 0.0701111, -1.01911e-07, -0.140222, -0.57863, 0, 0, 0 )
 
 [node name="AnimationPlayer" parent="Bras_Sphere2" index="0"]
 method_call_mode = 1
 
 [node name="Bras_Sphere3" parent="." index="3"]
-transform = Transform( -0.587272, 0.359192, 0.300631, -0.350191, -0.601262, -0.504489, -0.000329189, -1.17454, 0.350191, 0, 0, 0 )
+transform = Transform( 0.584346, 0.369022, -0.303344, -0.355052, 0.606689, -0.499442, -0.000197112, 1.16869, 0.355053, 0, 0, 0 )
 
 [node name="AnimationPlayer" parent="Bras_Sphere3" index="0"]
 method_call_mode = 1
