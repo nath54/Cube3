@@ -10,6 +10,12 @@ public class mur : Spatial
     {
         globale = (Global)GetNode("/root/Global");
     }
+    public void _on_Area_body_entered(Node body){
+        if(body is Player){
+            death();
+        }
+        GD.Print("body entered : ",body);
+    }
 
     public void death(){
         globale.player_death();
