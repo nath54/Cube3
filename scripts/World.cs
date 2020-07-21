@@ -7,8 +7,7 @@ public class World : Spatial
     
     private Control pause_menu;
     private Player player;
-    private Spatial finNiv;
-    private Area finNivArea;
+    public finNiv finNiv;
     private Control loading;
     private UI_In_game ui_in_game;
     public float timeLeft; //In seconds
@@ -32,8 +31,8 @@ public class World : Spatial
         player= (Player)GetNode("Player");
         player.Connect("onPauseBtPress", this, nameof(Pause));
         //
-        finNiv = (Spatial)GetNode("FinNiv");
-        finNivArea = (Area)GetNode("FinNiv/Area");
+        finNiv = (finNiv)GetNode("FinNiv");
+        finNiv.Connect("bodyTouched", this, nameof(onFinNiv));
         //
         gridMap = (GridMap)GetNode("GridMap");
         gridMap.worlde = this;
@@ -151,12 +150,8 @@ public class World : Spatial
         }
     }
 
-   
-
-    // Called every frame. 'delta' is the elapsed time since the previous frame.
-    public override void _Process(float delta)
-    {
-        if(finNivArea.OverlapsBody(player)){
+    public void onFinNiv(Node body){
+        if(body is Player){
             nivFini();
         }
     }

@@ -5,10 +5,11 @@
 [ext_resource path="res://scripts/World.cs" type="Script" id=3]
 [ext_resource path="res://menus/Loading.tscn" type="PackedScene" id=4]
 [ext_resource path="res://menus/UI_In_game.tscn" type="PackedScene" id=5]
-[ext_resource path="res://assets/FinNiv.tscn" type="PackedScene" id=6]
+[ext_resource path="res://assets/finNiv.tscn" type="PackedScene" id=6]
 [ext_resource path="res://default_env.tres" type="Environment" id=7]
 [ext_resource path="res://scripts/GridMap.cs" type="Script" id=8]
 [ext_resource path="res://assets/meshlib_base.tres" type="MeshLibrary" id=9]
+
 
 [node name="World" type="Spatial"]
 script = ExtResource( 3 )
