@@ -31,4 +31,20 @@ public class Global : Node
     public void player_death(){
         EmitSignal("playerDeath");
     }
+
+    //fonction pour débugger
+    void affNode(Node node, Node parent,int iterations){
+        string txt="  -";
+        string tt="";
+        for(int i=0; i<=iterations; i++){ txt="  "+txt; }
+        if(node is Spatial sn){ tt=" ( x:"+sn.Translation.x+", y:"+sn.Translation.y+", z:"+sn.Translation.z+")"; }
+        GD.Print(txt,node," : ", node.Name,tt);
+        Godot.Collections.Array children = node.GetChildren();
+        foreach(Node n in children){
+            affNode(n,node,iterations+1);
+        }
+
+    }
+
+
 }

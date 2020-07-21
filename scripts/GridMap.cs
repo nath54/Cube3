@@ -98,6 +98,8 @@ public class GridMap : Godot.GridMap
         finz=az;
     }
 
+    
+
     public void generateMaze2D(){
         //modification des materiaux
         MeshLibrary ml = MeshLibrary;
@@ -144,14 +146,14 @@ public class GridMap : Godot.GridMap
             for(int z=0; z<=tx; z++){
                 int item = GetCellItem(x,1,z);                
                 if(item == wall_item){
-                    mur mure=new mur();
-                    mure.Translation=new Vector3(x*CellSize.x,1*CellSize.y,z*CellSize.z);
-                    GD.Print(mure.Translation);
-                    worlde.AddChild(mure);
+                    var mur = ResourceLoader.Load("res://assets/mur.tscn");
+                    var mure = new mur();
+                    mure.Name = "mur-"+x+"-"+z;
+                    mure.Translation=new Vector3(x*CellSize.x*CellScale,1*CellSize.y*CellScale,z*CellSize.z*CellScale);
+                    AddChild(mure);
                 }
             }
-        }
-        
+        }        
     }
 
     public void generate(){
