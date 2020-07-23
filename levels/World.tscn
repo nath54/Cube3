@@ -17,10 +17,6 @@ script = ExtResource( 3 )
 wait_time = 0.1
 autostart = true
 
-[node name="GroundCubes" type="Spatial" parent="."]
-
-[node name="WallCubes2" type="Spatial" parent="."]
-
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
 transform = Transform( 0.960283, 0.0298146, 0.277431, -0.15442, -0.771349, 0.617394, 0.232403, -0.635714, -0.736109, 10.6595, 12.5249, -7.82983 )
 light_energy = 0.1
