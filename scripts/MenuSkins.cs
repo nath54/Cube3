@@ -1,3 +1,5 @@
+using System.Linq;
+using System.Collections.Generic;
 
 using Godot;
 using System;
@@ -7,6 +9,7 @@ public class MenuSkins : Control
     public Global globale;
     public HBoxContainer container;
     
+    public string[] skin_names = {"base","smile","smileye","ssj","diablo"};
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
@@ -16,15 +19,19 @@ public class MenuSkins : Control
         container = (HBoxContainer)GetNode("ScrollContainer/HBoxContainer");
         //
         createSkins();
+        //
+        
     }
 
     public void createSkins(){
         for(int w=0; w<=globale.max_skin; w++){
             Sprite skin_s = new Sprite();
             skin_s.Texture = ResourceLoader.Load("res://imgs/menu_skin_entity.png") as Texture;
+            Sprite preview_skin = new Sprite();
+            preview_skin.Texture = ResourceLoader.Load("res://img_skins/"+skin_names[w]+".png") as Texture;
             Godot.Label label = new Godot.Label();
             label.RectPosition=new Vector2(-18,-65);
-            label.Text = "Skin n°"+w;
+            label.Text = skin_names[w];
             skin_s.AddChild(label);
             ButtonSkinSelector bt = new ButtonSkinSelector();
             bt.id=w;
