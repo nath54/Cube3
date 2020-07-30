@@ -1,1 +1,3 @@
 JsonRpc Information: 3 : Listening started.
+JsonRpc Information: 13 : Connection closing (LocallyDisposed: Stream has been disposed). 
+JsonRpc Information: 7 : {"id":null,"method":"exit"}

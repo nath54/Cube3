@@ -29,7 +29,8 @@ public class MenuSkins : Control
             skin_s.Texture = ResourceLoader.Load("res://imgs/menu_skin_entity.png") as Texture;
             Sprite preview_skin = new Sprite();
             preview_skin.Texture = ResourceLoader.Load("res://img_skins/"+skin_names[w]+".png") as Texture;
-            preview_skin.Position=new Vector2(9,33);
+            preview_skin.Position=new Vector2(-0.2F,-1.6F);
+            preview_skin.Scale=new Vector2(0.155F,0.154F);
             skin_s.AddChild(preview_skin);
             Godot.Label label = new Godot.Label();
             label.RectPosition=new Vector2(-18,-65);
