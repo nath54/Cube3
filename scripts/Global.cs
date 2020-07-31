@@ -17,7 +17,7 @@ public class Global : Node
     public Vector3 grid_scale = new Vector3(1,1,1);
     public float grid_cell_scale = 1;
     public int skin_id_equipe=0;
-    public int max_skin=7;
+    public int max_skin=4;
 
     [Signal]
     public delegate void playerDeath();

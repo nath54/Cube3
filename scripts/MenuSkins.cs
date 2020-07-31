@@ -27,6 +27,7 @@ public class MenuSkins : Control
     }
 
     public void createSkins(){
+        /*
         float scaleskinx=2F;
         for(int w=0; w<=globale.max_skin; w++){
             Sprite skin_s = new Sprite();
@@ -60,6 +61,22 @@ public class MenuSkins : Control
             container.AddChild(skin_s);
         }
         scrollContainer.RectSize=new Vector2(100+globale.max_skin*110*scaleskinx,580);
+        */
+
+        for(int w=0; w<globale.max_skin; w++){
+            string idd=""+(w+1);
+            while(idd.Length<2){
+                idd="0"+idd;
+            }
+            GD.Print(idd);
+            ButtonSkinSelector button = (ButtonSkinSelector)GetNode("ScrollContainer/HBoxContainer/Container/Skin_"+idd+"/Button");
+            button.id=w;
+            button.Connect("clique", this, nameof(selectSkin));
+            if(globale.skin_id_equipe==w){
+                button.Disabled=true;
+            }
+        }
+
     }
 
     public void selectSkin(int idskin){
