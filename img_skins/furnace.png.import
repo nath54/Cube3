@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/diablo.png-086a1723387374b14c5f306c3d4c703d.stex"
+path="res://.import/furnace.png-b6a07a383425f8ebf64ef7d7e48308ae.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://img_skins/diablo.png"
-dest_files=[ "res://.import/diablo.png-086a1723387374b14c5f306c3d4c703d.stex" ]
+source_file="res://img_skins/furnace.png"
+dest_files=[ "res://.import/furnace.png-b6a07a383425f8ebf64ef7d7e48308ae.stex" ]
 
 [params]
 

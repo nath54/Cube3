@@ -1,3 +1,4 @@
+using System.ComponentModel;
 using System.Linq;
 using System.Collections.Generic;
 
@@ -7,16 +8,18 @@ using System;
 public class MenuSkins : Control
 {
     public Global globale;
-    public HBoxContainer container;
+    public Control container;
+    public ScrollContainer scrollContainer;
     
-    public string[] skin_names = {"base","smile","smileye","ssj","diablo"};
+    public string[] skin_names = {"base","smile","smileye","ssj","carreaux","furnace","halo","transp_blue"};
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
         globale = (Global)GetNode("/root/Global");
         //
-        container = (HBoxContainer)GetNode("ScrollContainer/HBoxContainer");
+        container = (Control)GetNode("ScrollContainer/HBoxContainer/Container");
+        scrollContainer = (ScrollContainer)GetNode("ScrollContainer");
         //
         createSkins();
         //
@@ -24,6 +27,7 @@ public class MenuSkins : Control
     }
 
     public void createSkins(){
+        float scaleskinx=2F;
         for(int w=0; w<=globale.max_skin; w++){
             Sprite skin_s = new Sprite();
             skin_s.Texture = ResourceLoader.Load("res://imgs/menu_skin_entity.png") as Texture;
@@ -50,10 +54,12 @@ public class MenuSkins : Control
             }
             bt.Connect("clique", this, nameof(selectSkin));
             skin_s.AddChild(bt);
-            skin_s.Scale=new Vector2(2,2);
+            skin_s.Name="skin_"+w;
+            skin_s.Scale=new Vector2(scaleskinx,2);
             skin_s.Position=new Vector2(100+w*110*skin_s.Scale.x,200);
             container.AddChild(skin_s);
         }
+        scrollContainer.RectSize=new Vector2(100+globale.max_skin*110*scaleskinx,580);
     }
 
     public void selectSkin(int idskin){

@@ -26,6 +26,8 @@ public class Player : KinematicBody
 	public float taille = 1;
 	public Area areacol;
 
+	public Global globale;
+
 	[Signal]
 	public delegate void onPauseBtPress();
 
@@ -36,6 +38,8 @@ public class Player : KinematicBody
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		globale = (Global)GetNode("/root/Global");
+		//
 		cam = (Spatial)GetNode("CamBase");
 		cube = (Spatial)GetNode("cube");
 		cubeshape = (CollisionShape)GetNode("CollisionShape");
@@ -67,14 +71,8 @@ public class Player : KinematicBody
 
 	public void setSkin(int idskin){
 		PackedScene s;
-		if(idskin==1){
-			s = (PackedScene)GD.Load("res://player/skins/skin_1.tscn");
-		}
-		else if(idskin==2){
-			s = (PackedScene)GD.Load("res://player/skins/skin_2.tscn");
-		}
-		else if(idskin==3){
-			s = (PackedScene)GD.Load("res://player/skins/skin_3.tscn");
+		if(idskin<globale.max_skin){
+			s = (PackedScene)GD.Load("res://player/skins/skin_"+idskin+".tscn");
 		}
 		else{
 			s = (PackedScene)GD.Load("res://player/skins/skin_0.tscn");

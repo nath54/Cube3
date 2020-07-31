@@ -20,15 +20,24 @@ __meta__ = {
 }
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
-anchor_top = 0.242
+anchor_top = 0.187
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = -0.240005
+focus_mode = 1
+follow_focus = true
+scroll_vertical_enabled = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="HBoxContainer" type="HBoxContainer" parent="ScrollContainer"]
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Container" type="Control" parent="ScrollContainer/HBoxContainer"]
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="Bt_Menu" type="Button" parent="."]
 margin_left = 36.0218
