@@ -19,7 +19,7 @@ public class Global : Node
     public int skin_id_equipe=0;
     public int max_skin=8;
     public int ms_cam=0;
-
+    public int highscore_plats=1;
 
     [Signal]
     public delegate void playerDeath();
@@ -119,8 +119,8 @@ public class Global : Node
         {
             var nodeData = new Godot.Collections.Dictionary<string, object>((Godot.Collections.Dictionary)JSON.Parse(saveGame.GetLine()).Result);
             if((string)nodeData["name"]=="Global"){
-                skin_id_equipe=(int)nodeData["skin_id_equipe"];
-                ms_cam=(int)nodeData["ms_cam"];
+                skin_id_equipe=Convert.ToInt32(nodeData["skin_id_equipe"]);
+                ms_cam=Convert.ToInt32(nodeData["ms_cam"]);
             }
         }
 

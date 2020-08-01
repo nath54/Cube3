@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://fonts/Xeliard.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://scripts/MenuPlayArcade.cs" type="Script" id=2]
@@ -13,6 +13,10 @@ font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=3]
 size = 50
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 30
 font_data = ExtResource( 1 )
 
 [node name="MenuPlayArcade" type="Control"]
@@ -71,6 +75,19 @@ margin_bottom = 286.5
 custom_fonts/font = SubResource( 3 )
 text = "Platforms"
 clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label_highsocre" type="Label" parent="Bt_Plats"]
+margin_left = 20.0
+margin_top = 382.0
+margin_right = 235.0
+margin_bottom = 441.0
+custom_fonts/font = SubResource( 4 )
+text = "highscore : 1"
+align = 1
+valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }

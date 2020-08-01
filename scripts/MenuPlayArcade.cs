@@ -9,6 +9,9 @@ public class MenuPlayArcade : Control
     public override void _Ready()
     {
         globale = (Global)GetNode("/root/Global");
+        //
+        Label highscoreplats = (Label)GetNode("Bt_Plats/Label_highsocre");
+        highscoreplats.Text="highscore : "+globale.highscore_plats;
     }
 
     public void _on_Bt_Maze_pressed(){
@@ -20,6 +23,7 @@ public class MenuPlayArcade : Control
         globale.player_taille=0.3F;
         globale.grid_scale=new Vector3(2,2,2);
         globale.grid_cell_scale=1;
+        globale.level=1;
         GetTree().ChangeScene("res://levels/World.tscn");
     }
 
@@ -32,6 +36,7 @@ public class MenuPlayArcade : Control
         globale.player_taille=0.5F;
         globale.grid_scale=new Vector3(1.2F,1.2F,1.2F);
         globale.grid_cell_scale=1;
+        globale.level=1;
         GetTree().ChangeScene("res://levels/World.tscn");
     }
 
