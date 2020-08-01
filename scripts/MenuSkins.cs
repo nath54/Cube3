@@ -8,8 +8,7 @@ using System;
 public class MenuSkins : Control
 {
     public Global globale;
-    public Control container;
-    public ScrollContainer scrollContainer;
+    public HScrollBar scrollBar;
     
     public string[] skin_names = {"base","smile","smileye","ssj","carreaux","furnace","halo","transp_blue"};
 
@@ -18,65 +17,59 @@ public class MenuSkins : Control
     {
         globale = (Global)GetNode("/root/Global");
         //
-        container = (Control)GetNode("ScrollContainer/HBoxContainer/Container");
-        scrollContainer = (ScrollContainer)GetNode("ScrollContainer");
+        scrollBar = (HScrollBar)GetNode("Container/HScrollBar");
+        scrollBar.MaxValue=globale.max_skin;
+        scrollBar.Value=globale.ms_cam;
         //
-        createSkins();
+        update_skins();
         //
         
     }
 
-    public void createSkins(){
-        /*
-        float scaleskinx=2F;
-        for(int w=0; w<=globale.max_skin; w++){
-            Sprite skin_s = new Sprite();
-            skin_s.Texture = ResourceLoader.Load("res://imgs/menu_skin_entity.png") as Texture;
-            Sprite preview_skin = new Sprite();
-            preview_skin.Texture = ResourceLoader.Load("res://img_skins/"+skin_names[w]+".png") as Texture;
-            preview_skin.Position=new Vector2(-0.2F,-1.6F);
-            preview_skin.Scale=new Vector2(0.155F,0.154F);
-            skin_s.AddChild(preview_skin);
-            Godot.Label label = new Godot.Label();
-            label.RectPosition=new Vector2(-18,-65);
-            label.Text = skin_names[w];
-            skin_s.AddChild(label);
-            ButtonSkinSelector bt = new ButtonSkinSelector();
-            bt.id=w;
-            if(globale.skin_id_equipe==w){
-                bt.Text = "Selected";
-                bt.Disabled=true;
-                bt.RectPosition=new Vector2(-35,50);
-            }
-            else{
-                bt.Text = "Select";
-                bt.Disabled=false;
-                bt.RectPosition=new Vector2(-28,50);
-            }
-            bt.Connect("clique", this, nameof(selectSkin));
-            skin_s.AddChild(bt);
-            skin_s.Name="skin_"+w;
-            skin_s.Scale=new Vector2(scaleskinx,2);
-            skin_s.Position=new Vector2(100+w*110*skin_s.Scale.x,200);
-            container.AddChild(skin_s);
-        }
-        scrollContainer.RectSize=new Vector2(100+globale.max_skin*110*scaleskinx,580);
-        */
-
-        for(int w=0; w<globale.max_skin; w++){
-            string idd=""+(w+1);
+    public void update_skins(){
+        for(int w=0; w<3; w++){
+            int ids=w+globale.ms_cam;
+            string idd=""+(ids+1);
             while(idd.Length<2){
                 idd="0"+idd;
             }
-            GD.Print(idd);
-            ButtonSkinSelector button = (ButtonSkinSelector)GetNode("ScrollContainer/HBoxContainer/Container/Skin_"+idd+"/Button");
-            button.id=w;
-            button.Connect("clique", this, nameof(selectSkin));
-            if(globale.skin_id_equipe==w){
-                button.Disabled=true;
+            Label name = (Label)GetNode("Container/Skin_0"+(w+1)+"/Name");
+            Sprite preview = (Sprite)GetNode("Container/Skin_0"+(w+1)+"/Preview");
+            ButtonSkinSelector bouton = (ButtonSkinSelector)GetNode("Container/Skin_0"+(w+1)+"/Button");
+            name.Text=skin_names[ids];
+            bouton.id=ids;
+            preview.Texture=ResourceLoader.Load("res://img_skins/"+skin_names[ids]+".png") as Texture;
+            if(ids==globale.skin_id_equipe){
+                bouton.Disabled=true;
+                bouton.Text="select";
             }
-        }
+            else{
+                bouton.Disabled=false;
+                bouton.Text="select";
+            }
+            bouton.Connect("clique", this, nameof(selectSkin));
 
+        }
+    }
+
+    public void _on_TBT_skin_next_pressed(){
+        if(globale.ms_cam<globale.max_skin-3){
+            globale.ms_cam+=1;
+            scrollBar.Value=globale.ms_cam;
+            update_skins();
+        }
+    }
+    public void _on_TBT_skin_previous_pressed(){
+        if(globale.ms_cam>0){
+            globale.ms_cam-=1;
+            scrollBar.Value=globale.ms_cam;
+            update_skins();
+        }
+    }
+
+    public void _on_HScrollBar_value_changed(float value){
+        globale.ms_cam=Convert.ToInt32(value);
+        update_skins();
     }
 
     public void selectSkin(int idskin){
