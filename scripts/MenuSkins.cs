@@ -23,6 +23,11 @@ public class MenuSkins : Control
         //
         update_skins();
         //
+        for(int w=1; w<=3; w++){
+            ButtonSkinSelector bouton = (ButtonSkinSelector)GetNode("Container/Skin_0"+w+"/Button");
+            bouton.Connect("clique", this, nameof(selectSkin));
+        }
+
         
     }
 
@@ -47,7 +52,8 @@ public class MenuSkins : Control
                 bouton.Disabled=false;
                 bouton.Text="select";
             }
-            bouton.Connect("clique", this, nameof(selectSkin));
+            
+            
 
         }
     }
