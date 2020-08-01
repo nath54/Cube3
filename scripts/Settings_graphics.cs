@@ -145,8 +145,40 @@ public class Settings_graphics : Control
         else{
             ProjectSettings.SetSetting("rendering/quality/reflections/high_quality_ggx",cb_ggx.Pressed);
         }  
-
-
+        //Reflexion Atlas Size
+        HScrollBar sb_ras = (HScrollBar)GetNode("Settings/VBoxContainer/St_reflex_atlas_size/HScrollBar");
+        int value_ras = atlas_sizes[(int)sb_ras.Value];
+        ProjectSettings.SetSetting("rendering/quality/reflections/atlas_size", value_ras);
+        //Texture array reflexion
+        CheckBox cb_tar = (CheckBox)GetNode("Settings/VBoxContainer/St_high_quality_ggx/Cb");
+        if( is_mobile() ){
+            ProjectSettings.SetSetting("rendering/quality/reflections/texture_array_reflections.mobile",cb_tar.Pressed);
+        }
+        else{
+            ProjectSettings.SetSetting("rendering/quality/reflections/texture_array_reflections",cb_tar.Pressed);
+        }
+        //Force vertex shading
+        CheckBox cb_fvs = (CheckBox)GetNode("Settings/VBoxContainer/St_force_vertex_shading/Cb");
+        if( is_mobile() ){
+            ProjectSettings.SetSetting("rendering/quality/shading/force_vertex_shading.mobile",cb_fvs.Pressed);
+        }
+        else{
+            ProjectSettings.SetSetting("rendering/quality/shading/force_vertex_shading",cb_fvs.Pressed);
+        }
+        //Shadow Atlas size
+        HScrollBar sb_sas = (HScrollBar)GetNode("Settings/VBoxContainer/St_reflex_atlas_size/HScrollBar");
+        int value_sas = atlas_sizes[(int)sb_sas.Value];
+        if(is_mobile()){
+            ProjectSettings.SetSetting("rendering/quality/shadow_atlas/size.mobile", value_sas);
+        }
+        else{
+            ProjectSettings.SetSetting("rendering/quality/shadow_atlas/size", value_sas);
+        }
+        //Subsurface Scattering
+        CheckBox cb_ssc = (CheckBox)GetNode("Settings/VBoxContainer/St_subsurface_scattering/Cb");
+        int value_ssc = 1;
+        if(cb_ssc.Pressed){  }
+        ProjectSettings.SetSetting("rendering/quality/subsurface_scattering/quality",value_ssc);
 
         //Save Settings
         ProjectSettings.Save();
