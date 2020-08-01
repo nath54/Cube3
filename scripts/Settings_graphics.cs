@@ -295,10 +295,7 @@ public class Settings_graphics : Control
         ProjectSettings.Save();
         globale.SaveGame();
         //
-        if(width!=AncientSettings.width || height!=AncientSettings.height){
-            popup.Popup_();
-
-        }
+        popup.Popup_();
     }
 
     public void on_anis_change(float value){
@@ -331,12 +328,12 @@ public class Settings_graphics : Control
 
     public void keep_settings(){
         popup.Hide();
-        GetTree().ChangeScene("res://menus/Settings_graphics.tscn");
+        GetTree().Quit();        
     }
 
     public void on_quit(){
         popup.Hide();
-        GetTree().Quit();
+        GetTree().ChangeScene("res://menus/Settings_graphics.tscn");
     }
 
     public void _on_VScrollBar_value_changed(float value){
