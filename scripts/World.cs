@@ -24,8 +24,9 @@ public class World : Spatial
         //
         globale = (Global)GetNode("/root/Global");
         globale.Connect("playerDeath",this,nameof(player_mort));
-        if( globale.tipe=="maze" && globale.level>globale.highscore_plats){
+        if( globale.tipe=="platforms" && globale.level>globale.highscore_plats){
             globale.highscore_plats=globale.level;
+            globale.SaveGame();
         }
         //
         player= (Player)GetNode("Player");
