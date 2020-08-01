@@ -1191,6 +1191,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -108.0
 margin_top = 101.0
+max_value = 120.0
 page = 10.0
 __meta__ = {
 "_edit_use_anchors_": false
@@ -1214,7 +1215,7 @@ __meta__ = {
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_right = -201.0
-margin_bottom = 943.0
+margin_bottom = 1107.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -1546,9 +1547,9 @@ __meta__ = {
 
 [node name="Cb" type="CheckBox" parent="Settings/VBoxContainer/St_force_vertex_shading"]
 margin_left = 636.606
-margin_top = 11.1498
+margin_top = 12.2093
 margin_right = 660.606
-margin_bottom = 35.1498
+margin_bottom = 36.2093
 rect_scale = Vector2( 3, 3 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -1599,16 +1600,47 @@ margin_top = 24.0
 margin_right = -157.0
 margin_bottom = 80.0
 custom_fonts/font = SubResource( 2 )
-text = "Subsurface scattering : 0"
+text = "Subsurface scattering : medium"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="HScrollBar" type="HScrollBar" parent="Settings/VBoxContainer/St_subsurface_scattering"]
 margin_left = 42.0
-margin_top = 81.0
+margin_top = 85.0
 margin_right = 825.0
-margin_bottom = 141.0
+margin_bottom = 145.0
+max_value = 4.0
+page = 1.0
+value = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="St_ambient_occlusion" type="Control" parent="Settings/VBoxContainer"]
+margin_top = 1412.0
+margin_right = 900.0
+margin_bottom = 1572.0
+rect_min_size = Vector2( 700, 160 )
+
+[node name="Txt" type="Label" parent="Settings/VBoxContainer/St_ambient_occlusion"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 48.0
+margin_top = 24.0
+margin_right = -157.0
+margin_bottom = 80.0
+custom_fonts/font = SubResource( 2 )
+text = "Ambient Occlusion : off"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HScrollBar" type="HScrollBar" parent="Settings/VBoxContainer/St_ambient_occlusion"]
+margin_left = 42.0
+margin_top = 85.0
+margin_right = 825.0
+margin_bottom = 145.0
 max_value = 4.0
 page = 1.0
 value = 1.0

@@ -26,6 +26,7 @@ public class Settings_graphics : Control
     public int[] msaas = {2, 4 ,8 ,16};
     public int[] atlas_sizes = {0, 128, 512, 1024, 2048, 4096, 8192};
     public int[] shadow_resolutions = {0, 128, 512, 1024, 2048, 4096, 8192};
+    public string[] stand_quality = {"low","medium","high"};
 
     public bool is_mobile(){
 		return (OS.GetName()=="Android" || OS.GetName()=="iOS");
@@ -175,10 +176,18 @@ public class Settings_graphics : Control
             ProjectSettings.SetSetting("rendering/quality/shadow_atlas/size", value_sas);
         }
         //Subsurface Scattering
-        CheckBox cb_ssc = (CheckBox)GetNode("Settings/VBoxContainer/St_subsurface_scattering/Cb");
-        int value_ssc = 1;
-        if(cb_ssc.Pressed){  }
-        ProjectSettings.SetSetting("rendering/quality/subsurface_scattering/quality",value_ssc);
+        HScrollBar hsb_ssc = (HScrollBar)GetNode("Settings/VBoxContainer/St_subsurface_scattering/HScrollBar");
+        ProjectSettings.SetSetting("rendering/quality/subsurface_scattering/quality",(int)hsb_ssc.Value);
+        //Ambient Occlusion
+        HScrollBar hsb_sao = (HScrollBar)GetNode("Settings/VBoxContainer/St_ambient_occlusion/HScrollBar");
+        double value_sao = hsb_sao.Value;
+        if(value_sao==0){
+            globale.sao=false;
+        }
+        else{
+            globale.sao=true;
+            globale.sao_quality=(int)value_sao-1;
+        }        
 
         //Save Settings
         ProjectSettings.Save();
@@ -188,6 +197,11 @@ public class Settings_graphics : Control
             popup.Popup_();
 
         }
+    }
+
+    public void on_anis_change(int value){
+        Label txt = (Label)GetNode("Settings/VBoxContainer/St_anisotropic/Txt");
+        txt.Text = "Anisotropic Filter Level : "+anisotropics[value]+"x";
     }
 
     public void on_cancel(){

@@ -20,8 +20,9 @@ public class Global : Node
     public int max_skin=8;
     public int ms_cam=0;
     public int highscore_plats=1;
-
     public bool aff_fps=true;
+    public bool sao=false;
+    public int sao_quality=0;
 
     [Signal]
     public delegate void playerDeath();
@@ -60,7 +61,10 @@ public class Global : Node
             { "skin_id_equipe",""+skin_id_equipe },
             { "ms_cam", ""+ms_cam },
             { "highscore_plats", ""+highscore_plats },
-            { "aff_fps", aff_fps}
+            { "aff_fps", aff_fps},
+            { "sao", sao},
+            { "sao_quality", sao_quality},
+
         };
     }
 
@@ -107,6 +111,12 @@ public class Global : Node
                 }
                 if( nodeData.Keys.Contains("aff_fps")){
                     aff_fps=Convert.ToBoolean(nodeData["aff_fps"]);
+                }
+                if( nodeData.Keys.Contains("sao")){
+                    sao=Convert.ToBoolean(nodeData["sao"]);
+                }
+                if( nodeData.Keys.Contains("sao_quality")){
+                    sao_quality=Convert.ToInt32(nodeData["sao_quality"]);
                 }
             }
         }
