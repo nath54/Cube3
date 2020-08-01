@@ -8,15 +8,20 @@ public class UI_In_game : Control
     private Label debug;
     private ProgressBar time_left;
     private StyleBoxFlat pbcl;
+    public Global globale;
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
+        globale = (Global)GetNode("/root/Global");
+        //
         fps_counter = (Label)GetNode("fps_counter");
         aff_level = (Label)GetNode("aff_level");
         time_left = (ProgressBar)GetNode("time_left");
         debug = (Label)GetNode("debug");
         pbcl = (StyleBoxFlat)time_left.Get("custom_styles/fg");
+        //
+        fps_counter.Visible=globale.aff_fps;
     }
 
     public void changeDebugText(string text){

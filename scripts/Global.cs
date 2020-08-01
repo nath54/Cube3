@@ -21,6 +21,8 @@ public class Global : Node
     public int ms_cam=0;
     public int highscore_plats=1;
 
+    public bool aff_fps=true;
+
     [Signal]
     public delegate void playerDeath();
 
@@ -58,6 +60,7 @@ public class Global : Node
             { "skin_id_equipe",""+skin_id_equipe },
             { "ms_cam", ""+ms_cam },
             { "highscore_plats", ""+highscore_plats },
+            { "aff_fps", aff_fps}
         };
     }
 
@@ -69,33 +72,6 @@ public class Global : Node
         //on sauvegarde le global
         var nodeData=Save();
         saveGame.StoreLine(JSON.Print(nodeData));
-
-
-        /*
-        var saveNodes = GetTree().GetNodesInGroup("Persist");
-        foreach (Node saveNode in saveNodes){
-            // Check the node is an instanced scene so it can be instanced again during load.
-            if (saveNode.Filename.Empty())
-            {
-                GD.Print(String.Format("persistent node '{0}' is not an instanced scene, skipped", saveNode.Name));
-                continue;
-            }
-
-            // Check the node has a save function.
-            if (!saveNode.HasMethod("Save"))
-            {
-                GD.Print(String.Format("persistent node '{0}' is missing a Save() function, skipped", saveNode.Name));
-                continue;
-            }
-
-            // Call the node's save function.
-            var nodeData = saveNode.Call("Save");
-
-            // Store the save dictionary as a new line in the save file.
-            saveGame.StoreLine(JSON.Print(nodeData));
-        }
-        */
-
         saveGame.Close();
     }
 
@@ -129,32 +105,11 @@ public class Global : Node
                 if( nodeData.Keys.Contains("highscore_plats")){
                     highscore_plats=Convert.ToInt32(nodeData["highscore_plats"]);
                 }
+                if( nodeData.Keys.Contains("aff_fps")){
+                    aff_fps=Convert.ToBoolean(nodeData["aff_fps"]);
+                }
             }
         }
-
-        /*
-        while (saveGame.GetPosition() < save_game.GetLen())
-        {
-            // Get the saved dictionary from the next line in the save file
-            var nodeData = new Godot.Collections.Dictionary<string, object>((Godot.Collections.Dictionary)JSON.Parse(saveGame.GetLine()).Result);
-        
-            // Firstly, we need to create the object and add it to the tree and set its position.
-            var newObjectScene = (PackedScene)ResourceLoader.Load(nodeData["Filename"].ToString());
-            var newObject = (Node)newObjectScene.Instance();
-            GetNode(nodeData["Parent"].ToString()).AddChild(newObject);
-            newObject.Set("Position", new Vector2((float)nodeData["PosX"], (float)nodeData["PosY"]));
-
-            // Now we set the remaining variables.
-            foreach (KeyValuePair<object, object> entry in nodeData)
-            {
-                string key = entry.Key.ToString();
-                if (key == "Filename" || key == "Parent" || key == "PosX" || key == "PosY")
-                    continue;
-                newObject.Set(key, entry.Value);
-            }
-        }
-        */
-
         saveGame.Close();
     }
 
