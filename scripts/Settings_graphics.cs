@@ -26,7 +26,8 @@ public class Settings_graphics : Control
     public int[] msaas = {2, 4 ,8 ,16};
     public int[] atlas_sizes = {0, 128, 512, 1024, 2048, 4096, 8192};
     public int[] shadow_resolutions = {0, 128, 512, 1024, 2048, 4096, 8192};
-    public string[] stand_quality = {"low","medium","high"};
+    public string[] sscs = {"low","medium","high"};
+    public string[] saos = {"off","low","medium","high"};
 
     public bool is_mobile(){
 		return (OS.GetName()=="Android" || OS.GetName()=="iOS");
@@ -52,6 +53,7 @@ public class Settings_graphics : Control
         vscrollbare = (VScrollBar)GetNode("VScrollBar");
         vboxcontainere = (VBoxContainer)GetNode("Settings/VBoxContainer");
         //
+        
     }
 
     public void _on_Bt_game_pressed(){ GetTree().ChangeScene("res://menus/Settings_game.tscn"); }
@@ -199,9 +201,28 @@ public class Settings_graphics : Control
         }
     }
 
-    public void on_anis_change(int value){
+    public void on_anis_change(float value){
         Label txt = (Label)GetNode("Settings/VBoxContainer/St_anisotropic/Txt");
-        txt.Text = "Anisotropic Filter Level : "+anisotropics[value]+"x";
+        txt.Text = "Anisotropic Filter Level : "+anisotropics[(int)value]+"x";
+    }
+
+    public void on_ras_change(float value){
+        Label txt = (Label)GetNode("Settings/VBoxContainer/St_reflex_atlas_size/Txt");
+        txt.Text = "Reflexion atlas size : "+atlas_sizes[(int)value];
+    }
+
+    public void on_sas_change(float value){
+        Label txt = (Label)GetNode("Settings/VBoxContainer/St_shadow_atlas_size/Txt");
+        txt.Text = "Shadow atlas size : "+atlas_sizes[(int)value];
+    }
+
+    public void on_ssc_change(float value){
+        Label txt = (Label)GetNode("Settings/VBoxContainer/St_subsurface_scattering/Txt");
+        txt.Text = "Subsurface Scattering : "+sscs[(int)value];
+    }
+    public void on_sao_change(float value){
+        Label txt = (Label)GetNode("Settings/VBoxContainer/St_ambient_occlusion/Txt");
+        txt.Text = "Ambient Occlusion : "+saos[(int)value];
     }
 
     public void on_cancel(){
