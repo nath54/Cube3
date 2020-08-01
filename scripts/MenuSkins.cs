@@ -52,9 +52,6 @@ public class MenuSkins : Control
                 bouton.Disabled=false;
                 bouton.Text="select";
             }
-            
-            
-
         }
     }
 
@@ -62,6 +59,7 @@ public class MenuSkins : Control
         if(globale.ms_cam<globale.max_skin-3){
             globale.ms_cam+=1;
             scrollBar.Value=globale.ms_cam;
+            globale.SaveGame();
             update_skins();
         }
     }
@@ -69,18 +67,21 @@ public class MenuSkins : Control
         if(globale.ms_cam>0){
             globale.ms_cam-=1;
             scrollBar.Value=globale.ms_cam;
+            globale.SaveGame();
             update_skins();
         }
     }
 
     public void _on_HScrollBar_value_changed(float value){
         globale.ms_cam=Convert.ToInt32(value);
+        globale.SaveGame();
         update_skins();
     }
 
     public void selectSkin(int idskin){
         //GD.Print("click "+idskin);
         globale.skin_id_equipe=idskin;
+        globale.SaveGame();
         GetTree().ChangeScene("res://menus/MenuSkins.tscn");
     }
 

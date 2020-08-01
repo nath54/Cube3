@@ -55,8 +55,8 @@ public class Global : Node
             { "name", "Global" },
             { "Filename", Filename },
             { "Parent", GetParent().GetPath() },
-            { "skin_id_equipe",skin_id_equipe },
-            { "ms_cam", ms_cam },
+            { "skin_id_equipe",""+skin_id_equipe },
+            { "ms_cam", ""+ms_cam },
         };
     }
 
