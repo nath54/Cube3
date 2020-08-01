@@ -1,3 +1,4 @@
+using System.Linq;
 using System.Collections.Generic;
 using Godot;
 using System;
@@ -60,14 +61,99 @@ public class Settings_graphics : Control
         cb_vsync.Pressed=(Boolean)ProjectSettings.GetSetting("display/window/vsync/use_vsync");
         //3d effects
         CheckBox cb_3de = (CheckBox)GetNode("Settings/VBoxContainer/St_3d_effects/Cb");
+        int fba;
         if(is_mobile()){
-            cb_3de.Pressed=(Boolean)ProjectSettings.GetSetting("rendering/quality/intended_usage/framebuffer_allocation.mobile");
+            fba = (int)ProjectSettings.GetSetting("rendering/quality/intended_usage/framebuffer_allocation.mobile");
         }
         else{
-            cb_3de.Pressed=(Boolean)ProjectSettings.GetSetting("rendering/quality/intended_usage/framebuffer_allocation");
+            fba =(int)ProjectSettings.GetSetting("rendering/quality/intended_usage/framebuffer_allocation");
         }
-        //
-        
+        cb_3de.Pressed = fba==2;
+        //hdr
+        CheckBox cb_hdr = (CheckBox)GetNode("Settings/VBoxContainer/St_hdr/Cb");
+        if(is_mobile()){
+            cb_hdr.Pressed=(Boolean)ProjectSettings.GetSetting("rendering/quality/depth/hdr.mobile");
+        }
+        else{
+            cb_hdr.Pressed=(Boolean)ProjectSettings.GetSetting("rendering/quality/depth/hdr");
+        }
+        //anisotropic
+        HScrollBar hsb_anis = (HScrollBar)GetNode("Settings/VBoxContainer/St_anisotropic/HScrollBar");
+        hsb_anis.MaxValue = anisotropics.Length;
+        int aniv = (int)ProjectSettings.GetSetting("rendering/quality/filters/anisotropic_filter_level");
+        if(anisotropics.Contains(aniv)){
+            hsb_anis.Value=Array.IndexOf(anisotropics,aniv);
+        }
+        else{
+            hsb_anis.Value=0;
+            ProjectSettings.SetSetting("rendering/quality/filters/anisotropic_filter_level", anisotropics[0]);
+        }
+        on_anis_change((float)hsb_anis.Value);
+        //High quality ggx
+        CheckBox cb_ggx = (CheckBox)GetNode("Settings/VBoxContainer/St_high_quality_ggx/Cb");
+        if( is_mobile() ){
+            cb_ggx.Pressed=(Boolean)ProjectSettings.GetSetting("rendering/quality/reflections/high_quality_ggx.mobile");
+        }
+        else{
+            cb_ggx.Pressed=(Boolean)ProjectSettings.GetSetting("rendering/quality/reflections/high_quality_ggx");
+        }  
+        //Reflex Atlas Size
+        HScrollBar hsb_ras = (HScrollBar)GetNode("Settings/VBoxContainer/St_reflex_atlas_size/HScrollBar");
+        hsb_ras.MaxValue = atlas_sizes.Length;
+        int rasv = (int)ProjectSettings.GetSetting("rendering/quality/reflections/atlas_size");
+        if(atlas_sizes.Contains(rasv)){
+            hsb_ras.Value=Array.IndexOf(atlas_sizes,rasv);
+        }
+        else{
+            hsb_ras.Value=0;
+            ProjectSettings.SetSetting("rendering/quality/reflections/atlas_size", atlas_sizes[0]);
+        }
+        on_ras_change((float)hsb_ras.Value);
+        //texture array reflexion
+        CheckBox cb_tar = (CheckBox)GetNode("Settings/VBoxContainer/St_high_quality_ggx/Cb");
+        if( is_mobile() ){
+            cb_tar.Pressed=(Boolean)ProjectSettings.GetSetting("rendering/quality/reflections/texture_array_reflections.mobile");
+        }
+        else{
+            cb_tar.Pressed=(Boolean)ProjectSettings.GetSetting("rendering/quality/reflections/texture_array_reflections");
+        }
+        //Force vertex Shading
+        CheckBox cb_fvs = (CheckBox)GetNode("Settings/VBoxContainer/St_force_vertex_shading/Cb");
+        if( is_mobile() ){
+            cb_fvs.Pressed=(Boolean)ProjectSettings.GetSetting("rendering/quality/shading/force_vertex_shading.mobile");
+        }
+        else{
+            cb_fvs.Pressed=(Boolean)ProjectSettings.GetSetting("rendering/quality/shading/force_vertex_shading");
+        }
+        //Shadow Atlas size
+        HScrollBar hsb_sas = (HScrollBar)GetNode("Settings/VBoxContainer/St_shadow_atlas_size/HScrollBar");
+        hsb_sas.MaxValue = atlas_sizes.Length;
+        string path_sas = "rendering/quality/shadow_atlas/size";
+        if(is_mobile()){ path_sas="rendering/quality/shadow_atlas/size.mobile"; }
+        int sasv = (int)ProjectSettings.GetSetting(path_sas);
+        if(atlas_sizes.Contains(sasv)){
+            hsb_sas.Value=Array.IndexOf(atlas_sizes,sasv);
+        }
+        else{
+            hsb_sas.Value=0;
+            ProjectSettings.SetSetting(path_sas, atlas_sizes[0]);
+        }
+        on_sas_change((float)hsb_sas.Value);
+        //Subsurface scattering
+        HScrollBar hsb_ssc = (HScrollBar)GetNode("Settings/VBoxContainer/St_subsurface_scattering/HScrollBar");
+        hsb_ssc.MaxValue=3;
+        hsb_ssc.Value=(int)ProjectSettings.GetSetting("rendering/quality/subsurface_scattering/quality");
+        on_ssc_change((float)hsb_ssc.Value);
+        //Ambient occlusion
+        HScrollBar hsb_sao = (HScrollBar)GetNode("Settings/VBoxContainer/St_ambient_occlusion/HScrollBar");
+        hsb_sao.MaxValue=saos.Length;
+        if(globale.sao==true){
+            hsb_sao.Value=0;
+        }
+        else{
+            hsb_sao.Value=globale.sao_quality+1;
+        }
+        on_sao_change((float)hsb_sao.Value);
     }
 
     public void _on_Bt_game_pressed(){ GetTree().ChangeScene("res://menus/Settings_game.tscn"); }
