@@ -45,13 +45,27 @@ public class Settings_graphics : Control
         cb_showfps = (CheckBox)GetNode("Settings/VBoxContainer/St_showfps/Cb_showfps");
         te_width = (TextEdit)GetNode("Settings/VBoxContainer/St_dwidth/te_width");
         te_height = (TextEdit)GetNode("Settings/VBoxContainer/St_dheight/te_height");
-        te_width.Text=""+ProjectSettings.GetSetting("display/window/size/width");
-        cb_showfps.Pressed=globale.aff_fps;
-        te_height.Text=""+ProjectSettings.GetSetting("display/window/size/height");
         //
         popup = (PopupDialog)GetNode("PopupDialog");
         vscrollbare = (VScrollBar)GetNode("VScrollBar");
         vboxcontainere = (VBoxContainer)GetNode("Settings/VBoxContainer");
+        //Initialisation des Layout settings
+        //fps
+        cb_showfps.Pressed=globale.aff_fps;
+        //resolution
+        te_width.Text=""+ProjectSettings.GetSetting("display/window/size/width");
+        te_height.Text=""+ProjectSettings.GetSetting("display/window/size/height");
+        //vsync
+        CheckBox cb_vsync = (CheckBox)GetNode("Settings/VBoxContainer/St_vsync/Cb");
+        cb_vsync.Pressed=(Boolean)ProjectSettings.GetSetting("display/window/vsync/use_vsync");
+        //3d effects
+        CheckBox cb_3de = (CheckBox)GetNode("Settings/VBoxContainer/St_3d_effects/Cb");
+        if(is_mobile()){
+            cb_3de.Pressed=(Boolean)ProjectSettings.GetSetting("rendering/quality/intended_usage/framebuffer_allocation.mobile");
+        }
+        else{
+            cb_3de.Pressed=(Boolean)ProjectSettings.GetSetting("rendering/quality/intended_usage/framebuffer_allocation");
+        }
         //
         
     }
@@ -129,7 +143,7 @@ public class Settings_graphics : Control
             ProjectSettings.SetSetting("rendering/quality/intended_usage/framebuffer_allocation",value);
         }        
         //hdr
-        CheckBox cb_hdr = (CheckBox)GetNode("Settings/VBoxContainer/St_vsync/Cb");
+        CheckBox cb_hdr = (CheckBox)GetNode("Settings/VBoxContainer/St_hdr/Cb");
         if( is_mobile() ){
             ProjectSettings.SetSetting("rendering/quality/depth/hdr.mobile",cb_hdr.Pressed);
         }
