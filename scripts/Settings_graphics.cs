@@ -17,11 +17,19 @@ public class Settings_graphics : Control
         public static int height=(int)ProjectSettings.GetSetting("display/window/size/height");        
     }
     
-    public Timer want_to_keep_settings;
     public VScrollBar vscrollbare;
     public VBoxContainer vboxcontainere;
     public Global globale;
     public PopupDialog popup;
+
+    public int[] anisotropics = {2, 4 ,8 ,16};
+    public int[] msaas = {2, 4 ,8 ,16};
+    public int[] atlas_sizes = {0, 128, 512, 1024, 2048, 4096, 8192};
+    public int[] shadow_resolutions = {0, 128, 512, 1024, 2048, 4096, 8192};
+
+    public bool is_mobile(){
+		return (OS.GetName()=="Android" || OS.GetName()=="iOS");
+	}
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
@@ -43,10 +51,6 @@ public class Settings_graphics : Control
         vscrollbare = (VScrollBar)GetNode("VScrollBar");
         vboxcontainere = (VBoxContainer)GetNode("Settings/VBoxContainer");
         //
-        want_to_keep_settings=new Timer();
-        want_to_keep_settings.WaitTime=20;
-        want_to_keep_settings.Connect("timeout", this, nameof(on_reset));
-        AddChild(want_to_keep_settings);
     }
 
     public void _on_Bt_game_pressed(){ GetTree().ChangeScene("res://menus/Settings_game.tscn"); }
@@ -103,22 +107,52 @@ public class Settings_graphics : Control
         //
         int width=Convert.ToInt32(te_width.Text);
         int height=Convert.ToInt32(te_height.Text);
-        //
+        //FPS
         globale.aff_fps=cb_showfps.Pressed;
+        //Resolution
         ProjectSettings.SetSetting("display/window/size/width", (int)width);
         ProjectSettings.SetSetting("display/window/size/height", (int)height);
-        //ProjectSettings.SetSetting("",null);
-        //ProjectSettings.SetSetting("",null);
-        //ProjectSettings.SetSetting("",null);
-        //ProjectSettings.SetSetting("",null);
-        //ProjectSettings.SetSetting("",null);
-        //ProjectSettings.SetSetting("",null);
-        //ProjectSettings.SetSetting("",null);
+        //Vsync
+        CheckBox cb_vsync = (CheckBox)GetNode("Settings/VBoxContainer/St_vsync/Cb");
+        ProjectSettings.SetSetting("display/window/vsync/use_vsync",cb_vsync.Pressed);
+        //3d effects
+        CheckBox cb_effects = (CheckBox)GetNode("Settings/VBoxContainer/St_3d_effects/Cb");
+        int value = 3;
+        if(cb_effects.Pressed){ value = 2;}
+        if( is_mobile() ){
+            ProjectSettings.SetSetting("rendering/quality/intended_usage/framebuffer_allocation.mobile",value);
+        }
+        else{
+            ProjectSettings.SetSetting("rendering/quality/intended_usage/framebuffer_allocation",value);
+        }        
+        //hdr
+        CheckBox cb_hdr = (CheckBox)GetNode("Settings/VBoxContainer/St_vsync/Cb");
+        if( is_mobile() ){
+            ProjectSettings.SetSetting("rendering/quality/depth/hdr.mobile",cb_hdr.Pressed);
+        }
+        else{
+            ProjectSettings.SetSetting("rendering/quality/depth/hdr",cb_hdr.Pressed);
+        }   
+        //Anisotropic
+        HScrollBar sb_ani = (HScrollBar)GetNode("Settings/VBoxContainer/St_anisotropic/HScrollBar");
+        int value_ani = anisotropics[(int)sb_ani.Value];
+        ProjectSettings.SetSetting("rendering/quality/filters/anisotropic_filter_level", value_ani);
+        //high quality ggx
+        CheckBox cb_ggx = (CheckBox)GetNode("Settings/VBoxContainer/St_high_quality_ggx/Cb");
+        if( is_mobile() ){
+            ProjectSettings.SetSetting("rendering/quality/reflections/high_quality_ggx.mobile",cb_ggx.Pressed);
+        }
+        else{
+            ProjectSettings.SetSetting("rendering/quality/reflections/high_quality_ggx",cb_ggx.Pressed);
+        }  
+
+
+
+        //Save Settings
         ProjectSettings.Save();
         globale.SaveGame();
         //
         if(width!=AncientSettings.width || height!=AncientSettings.height){
-            want_to_keep_settings.Start();
             popup.Popup_();
 
         }
@@ -130,17 +164,12 @@ public class Settings_graphics : Control
 
     public void keep_settings(){
         popup.Hide();
-        want_to_keep_settings.Stop();
         GetTree().ChangeScene("res://menus/Settings_graphics.tscn");
     }
 
-    public void on_reset(){
+    public void on_quit(){
         popup.Hide();
-        want_to_keep_settings.Stop();
-        ProjectSettings.SetSetting("display/window/size/width", (int)AncientSettings.width);
-        ProjectSettings.SetSetting("display/window/size/height", (int)AncientSettings.height);
-        ProjectSettings.Save();
-        GetTree().ChangeScene("res://menus/Settings_graphics.tscn");
+        GetTree().Quit();
     }
 
     public void _on_VScrollBar_value_changed(float value){
