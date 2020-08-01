@@ -57,6 +57,7 @@ public class Global : Node
             { "Parent", GetParent().GetPath() },
             { "skin_id_equipe",""+skin_id_equipe },
             { "ms_cam", ""+ms_cam },
+            { "highscore_plats", ""+highscore_plats },
         };
     }
 
@@ -119,8 +120,15 @@ public class Global : Node
         {
             var nodeData = new Godot.Collections.Dictionary<string, object>((Godot.Collections.Dictionary)JSON.Parse(saveGame.GetLine()).Result);
             if((string)nodeData["name"]=="Global"){
-                skin_id_equipe=Convert.ToInt32(nodeData["skin_id_equipe"]);
-                ms_cam=Convert.ToInt32(nodeData["ms_cam"]);
+                if( nodeData.Keys.Contains("skin_id_equipe")){
+                    skin_id_equipe=Convert.ToInt32(nodeData["skin_id_equipe"]);
+                }
+                if( nodeData.Keys.Contains("ms_cam")){
+                    ms_cam=Convert.ToInt32(nodeData["ms_cam"]);
+                }
+                if( nodeData.Keys.Contains("highscore_plats")){
+                    highscore_plats=Convert.ToInt32(nodeData["highscore_plats"]);
+                }
             }
         }
 

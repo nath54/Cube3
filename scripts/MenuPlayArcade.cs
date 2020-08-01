@@ -15,6 +15,7 @@ public class MenuPlayArcade : Control
     }
 
     public void _on_Bt_Maze_pressed(){
+        /*
         globale.mtx=32;
         globale.mtz=32;
         globale.nbchem=32;
@@ -25,6 +26,7 @@ public class MenuPlayArcade : Control
         globale.grid_cell_scale=1;
         globale.level=1;
         GetTree().ChangeScene("res://levels/World.tscn");
+        */
     }
 
     public void _on_Bt_Plats_pressed(){
