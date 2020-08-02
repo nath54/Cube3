@@ -30,9 +30,6 @@ public class Settings_graphics : Control
     public string[] sscs = {"low","medium","high"};
     public string[] saos = {"off","low","medium","high"};
 
-    public bool is_mobile(){
-		return (OS.GetName()=="Android" || OS.GetName()=="iOS");
-	}
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
@@ -62,7 +59,7 @@ public class Settings_graphics : Control
         //3d effects
         CheckBox cb_3de = (CheckBox)GetNode("Settings/VBoxContainer/St_3d_effects/Cb");
         int fba;
-        if(is_mobile()){
+        if(globale.is_mobile()){
             fba = (int)ProjectSettings.GetSetting("rendering/quality/intended_usage/framebuffer_allocation.mobile");
         }
         else{
@@ -71,7 +68,7 @@ public class Settings_graphics : Control
         cb_3de.Pressed = fba==2;
         //hdr
         CheckBox cb_hdr = (CheckBox)GetNode("Settings/VBoxContainer/St_hdr/Cb");
-        if(is_mobile()){
+        if(globale.is_mobile()){
             cb_hdr.Pressed=(Boolean)ProjectSettings.GetSetting("rendering/quality/depth/hdr.mobile");
         }
         else{
@@ -91,7 +88,7 @@ public class Settings_graphics : Control
         on_anis_change((float)hsb_anis.Value);
         //High quality ggx
         CheckBox cb_ggx = (CheckBox)GetNode("Settings/VBoxContainer/St_high_quality_ggx/Cb");
-        if( is_mobile() ){
+        if( globale.is_mobile() ){
             cb_ggx.Pressed=(Boolean)ProjectSettings.GetSetting("rendering/quality/reflections/high_quality_ggx.mobile");
         }
         else{
@@ -111,7 +108,7 @@ public class Settings_graphics : Control
         on_ras_change((float)hsb_ras.Value);
         //texture array reflexion
         CheckBox cb_tar = (CheckBox)GetNode("Settings/VBoxContainer/St_high_quality_ggx/Cb");
-        if( is_mobile() ){
+        if( globale.is_mobile() ){
             cb_tar.Pressed=(Boolean)ProjectSettings.GetSetting("rendering/quality/reflections/texture_array_reflections.mobile");
         }
         else{
@@ -119,7 +116,7 @@ public class Settings_graphics : Control
         }
         //Force vertex Shading
         CheckBox cb_fvs = (CheckBox)GetNode("Settings/VBoxContainer/St_force_vertex_shading/Cb");
-        if( is_mobile() ){
+        if( globale.is_mobile() ){
             cb_fvs.Pressed=(Boolean)ProjectSettings.GetSetting("rendering/quality/shading/force_vertex_shading.mobile");
         }
         else{
@@ -129,7 +126,7 @@ public class Settings_graphics : Control
         HScrollBar hsb_sas = (HScrollBar)GetNode("Settings/VBoxContainer/St_shadow_atlas_size/HScrollBar");
         hsb_sas.MaxValue = atlas_sizes.Length;
         string path_sas = "rendering/quality/shadow_atlas/size";
-        if(is_mobile()){ path_sas="rendering/quality/shadow_atlas/size.mobile"; }
+        if(globale.is_mobile()){ path_sas="rendering/quality/shadow_atlas/size.mobile"; }
         int sasv = (int)ProjectSettings.GetSetting(path_sas);
         if(atlas_sizes.Contains(sasv)){
             hsb_sas.Value=Array.IndexOf(atlas_sizes,sasv);
@@ -222,7 +219,7 @@ public class Settings_graphics : Control
         CheckBox cb_effects = (CheckBox)GetNode("Settings/VBoxContainer/St_3d_effects/Cb");
         int value = 3;
         if(cb_effects.Pressed){ value = 2;}
-        if( is_mobile() ){
+        if( globale.is_mobile() ){
             ProjectSettings.SetSetting("rendering/quality/intended_usage/framebuffer_allocation.mobile",value);
         }
         else{
@@ -230,7 +227,7 @@ public class Settings_graphics : Control
         }        
         //hdr
         CheckBox cb_hdr = (CheckBox)GetNode("Settings/VBoxContainer/St_hdr/Cb");
-        if( is_mobile() ){
+        if( globale.is_mobile() ){
             ProjectSettings.SetSetting("rendering/quality/depth/hdr.mobile",cb_hdr.Pressed);
         }
         else{
@@ -242,7 +239,7 @@ public class Settings_graphics : Control
         ProjectSettings.SetSetting("rendering/quality/filters/anisotropic_filter_level", value_ani);
         //high quality ggx
         CheckBox cb_ggx = (CheckBox)GetNode("Settings/VBoxContainer/St_high_quality_ggx/Cb");
-        if( is_mobile() ){
+        if( globale.is_mobile() ){
             ProjectSettings.SetSetting("rendering/quality/reflections/high_quality_ggx.mobile",cb_ggx.Pressed);
         }
         else{
@@ -254,7 +251,7 @@ public class Settings_graphics : Control
         ProjectSettings.SetSetting("rendering/quality/reflections/atlas_size", value_ras);
         //Texture array reflexion
         CheckBox cb_tar = (CheckBox)GetNode("Settings/VBoxContainer/St_high_quality_ggx/Cb");
-        if( is_mobile() ){
+        if( globale.is_mobile() ){
             ProjectSettings.SetSetting("rendering/quality/reflections/texture_array_reflections.mobile",cb_tar.Pressed);
         }
         else{
@@ -262,7 +259,7 @@ public class Settings_graphics : Control
         }
         //Force vertex shading
         CheckBox cb_fvs = (CheckBox)GetNode("Settings/VBoxContainer/St_force_vertex_shading/Cb");
-        if( is_mobile() ){
+        if( globale.is_mobile() ){
             ProjectSettings.SetSetting("rendering/quality/shading/force_vertex_shading.mobile",cb_fvs.Pressed);
         }
         else{
@@ -271,7 +268,7 @@ public class Settings_graphics : Control
         //Shadow Atlas size
         HScrollBar sb_sas = (HScrollBar)GetNode("Settings/VBoxContainer/St_reflex_atlas_size/HScrollBar");
         int value_sas = atlas_sizes[(int)sb_sas.Value];
-        if(is_mobile()){
+        if(globale.is_mobile()){
             ProjectSettings.SetSetting("rendering/quality/shadow_atlas/size.mobile", value_sas);
         }
         else{

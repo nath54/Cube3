@@ -72,6 +72,7 @@ public class MenuLevels : Control
     public void on_level_pressed(int idl){
         int required=globale.levels_requirements[idl];
         if(required==-1 || globale.levels_finis[required]){
+            globale.tipe="levels";
             GetTree().ChangeScene(globale.levels_path[idl]);
         }
         else{

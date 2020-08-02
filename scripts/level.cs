@@ -34,6 +34,8 @@ public class level : Node
         if(!(aa.Contains(globale.tipe))){
             ui_in_game.fps_counter.Visible=false;
         }
+        //
+        globale.finnive.Connect("bodyTouched", this, nameof(onFinNiv));
     }
 
 
@@ -86,6 +88,7 @@ public class level : Node
         }
         timer.Start();
         if(timeLeft<=0){
+            if(!globale.player.is_mobile()){ Input.SetMouseMode(Input.MouseMode.Visible); }
             GetTree().ChangeScene("res://menus/MenuPerdu.tscn");
         }
     }
@@ -94,10 +97,12 @@ public class level : Node
         string[] worlds = {"maze","platforms"};
         if(worlds.Contains(globale.tipe)){
             globale.level+=1;
+            if(!globale.player.is_mobile()){ Input.SetMouseMode(Input.MouseMode.Visible); }
             GetTree().ChangeScene("res://levels/World.tscn");
         }
         else if(globale.tipe=="levels"){
-            GetTree().ChangeScene("res://menus/MainMenu.tscn");
+            if(!globale.player.is_mobile()){ Input.SetMouseMode(Input.MouseMode.Visible); }
+            GetTree().ChangeScene("res://menus/MenuLevels.tscn");
         }
     }
 }

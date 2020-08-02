@@ -10,10 +10,14 @@ public class finNiv : Spatial
     public delegate void bodyTouched(Node body);
     [Signal]
     public delegate void animation_finished(string animation);
+    public Global globale;
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {   
+        //
+        globale = (Global)GetNode("/root/Global");
+        globale.finnive=this;
         /*
         an1.CurrentAnimation="Bras_Sphere1Action";
         an2.CurrentAnimation="Bras_Sphere2Action";

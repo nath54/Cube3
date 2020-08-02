@@ -3,15 +3,13 @@ using System;
 
 public class MenuPerdu : Control
 {
-
-    public bool is_mobile(){
-		return (OS.GetName()=="Android" || OS.GetName()=="iOS");
-	}
+    public Global globale;
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
-        if(!is_mobile()){ Input.SetMouseMode(Input.MouseMode.Visible); }   
+        globale = (Global)GetNode("/root/Global");
+        if(!globale.is_mobile()){ Input.SetMouseMode(Input.MouseMode.Visible); }
     }
 
     public void _on_Bt_Menu_pressed(){

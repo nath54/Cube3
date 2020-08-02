@@ -23,6 +23,7 @@ public class Global : Node
     public bool aff_fps=true;
     public bool sao=false;
     public int sao_quality=0;
+    public int actu_id_niv;
 
     // skins
 
@@ -124,6 +125,7 @@ public class Global : Node
 
     public Player player;
     public level levele;
+    public finNiv finnive;
 
     [Signal]
     public delegate void playerDeath();
@@ -137,6 +139,9 @@ public class Global : Node
     public void player_death(){
         EmitSignal("playerDeath");
     }
+    public bool is_mobile(){
+		return (OS.GetName()=="Android" || OS.GetName()=="iOS");
+	}
 
     //fonction pour débugger
     public void affNode(Node node, int iterations){
