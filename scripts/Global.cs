@@ -177,14 +177,51 @@ public class Global : Node
         };
     }
 
+    public Godot.Collections.Dictionary<string, object> SaveSkins()
+    {
+
+        Godot.Collections.Dictionary<string, object> dic = new Godot.Collections.Dictionary<string, object>()
+        {
+            { "name", "skin_unlocked" },
+
+
+        };
+
+        for(int ids=0;ids<skins_unlocked.Length; ids++){
+            dic[""+ids]=skins_unlocked[ids];
+        }
+
+        return dic;
+    }
+    
+    public Godot.Collections.Dictionary<string, object> SaveLevels()
+    {
+
+        Godot.Collections.Dictionary<string, object> dic = new Godot.Collections.Dictionary<string, object>()
+        {
+            { "name", "levels_finis" },
+
+
+        };
+
+        for(int idl=0;idl<levels_finis.Length; idl++){
+            dic[""+idl]=levels_finis[idl];
+        }
+
+        return dic;
+    }
+
     public void SaveGame(){
         var saveGame = new File();
         saveGame.Open("user://savegame.save", (Godot.File.ModeFlags)File.ModeFlags.Write);
         
-
         //on sauvegarde le global
         var nodeData=Save();
+        var nodeDataSkins=SaveSkins();
+        var nodeDataLevels=SaveLevels();
         saveGame.StoreLine(JSON.Print(nodeData));
+        saveGame.StoreLine(JSON.Print(nodeDataSkins));
+        saveGame.StoreLine(JSON.Print(nodeDataLevels));
         saveGame.Close();
     }
 
@@ -226,6 +263,22 @@ public class Global : Node
                 }
                 if( nodeData.Keys.Contains("sao_quality")){
                     sao_quality=Convert.ToInt32(nodeData["sao_quality"]);
+                }
+            }
+            else if((string)nodeData["name"]=="skin_unlocked"){
+                foreach(string key in nodeData.Keys){
+                    int ids;
+                    if(int.TryParse(key, out ids) && ids<skins_unlocked.Length){
+                        skins_unlocked[ids]=(Boolean)nodeData[key];
+                    }
+                }
+            }
+            else if((string)nodeData["name"]=="levels_finis"){
+                foreach(string key in nodeData.Keys){
+                    int idl;
+                    if(int.TryParse(key, out idl) && idl<levels_finis.Length){
+                        levels_finis[idl]=(Boolean)nodeData[key];
+                    }
                 }
             }
         }
