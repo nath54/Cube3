@@ -33,7 +33,7 @@ public class MenuPlayArcade : Control
         globale.mtx=40+5*globale.level;
         globale.mtz=40+5*globale.level;
         globale.nb_plats=20+globale.level;
-        globale.timemax=180+5*globale.level;
+        globale.timemax=18+5*globale.level;
         globale.tipe="platforms";
         globale.player_taille=0.5F;
         globale.grid_scale=new Vector3(1.2F,1.2F,1.2F);

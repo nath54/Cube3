@@ -11,6 +11,7 @@ public class level : Node
     public float timeLeft; //In seconds
     public float timeTotal; //In seconds
     public Global globale;
+    public string[] wtps = {"maze","platforms"};
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
@@ -26,12 +27,17 @@ public class level : Node
         ui_in_game.changeLevelText(globale.level);
         //
         timer=(Timer)GetNode("time_seconds");
+        timer.Connect("timeout", this, nameof(_on_time_seconds_timeout));
         timer.Start();
-        timeTotal=globale.timemax;
+        if(wtps.Contains(globale.tipe)){
+            timeTotal=globale.timemax;
+        }else{
+            timeTotal=globale.levels_time[globale.actu_id_niv];
+        }
         timeLeft=timeTotal;
         //
-        string[] aa = {"maze","platforms"};
-        if(!(aa.Contains(globale.tipe))){
+        
+        if(!(wtps.Contains(globale.tipe))){
             ui_in_game.fps_counter.Visible=false;
         }
         //

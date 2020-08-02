@@ -29,7 +29,8 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.511359, 3.49044, 1.86911 )
 margin_left = 60.0
 margin_top = 106.0
 margin_right = 468.0
-margin_bottom = 298.0
-text = "Vous pouvez vous dééééeplacer avec les touches de déeplacement haut bas gauche droite"
+margin_bottom = 315.0
+text = "You can move with move controls.
+You must go in the portal to finish the level"
 
 [node name="level" parent="." instance=ExtResource( 5 )]

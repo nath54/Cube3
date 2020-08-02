@@ -118,6 +118,9 @@ public class Global : Node
     public bool[] levels_finis={
         false,
     };
+    public float[] levels_time={
+        80,
+    };
 
     //
 
