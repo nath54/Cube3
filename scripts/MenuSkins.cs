@@ -44,9 +44,9 @@ public class MenuSkins : Control
                 Label name = (Label)GetNode("Container/Skin_0"+(w+1)+"/Name");
                 Sprite preview = (Sprite)GetNode("Container/Skin_0"+(w+1)+"/Preview");
                 
-                name.Text=skin_names[ids];
+                name.Text=globale.skins_names[ids];
                 
-                preview.Texture=ResourceLoader.Load(globale.skins_path[ids]) as Texture;
+                preview.Texture=ResourceLoader.Load(globale.skins_preview[ids]) as Texture;
                 if(ids==globale.skin_id_equipe){
                     bouton.Disabled=true;
                     bouton.Text="select";
@@ -60,7 +60,7 @@ public class MenuSkins : Control
                 Label name = (Label)GetNode("Container/Skin_0"+(w+1)+"/Name");
                 Sprite preview = (Sprite)GetNode("Container/Skin_0"+(w+1)+"/Preview");
                 preview.Texture=ResourceLoader.Load(globale.skins_preview[ids]) as Texture;
-                name.Text=skin_names[ids];
+                name.Text=globale.skins_names[ids];
                 bouton.Text="locked";
                 bouton.Disabled=true;
             }

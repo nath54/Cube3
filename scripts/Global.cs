@@ -45,7 +45,7 @@ public class Global : Node
         "res://img_skins/furnace.png",
         "res://img_skins/halo.png",
         "res://img_skins/transp_blue.png",
-    }
+    };
     public string[] skins_path={
         "res://player/skins/skin_0.tscn",
         "res://player/skins/skin_1.tscn",
