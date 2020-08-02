@@ -40,7 +40,7 @@ public class Player : KinematicBody
 		globale = (Global)GetNode("/root/Global");
 		//
 		globale.player=this;
-		
+
 		//
 		cam = (Spatial)GetNode("CamBase");
 		cube = (Spatial)GetNode("cube");
@@ -69,6 +69,7 @@ public class Player : KinematicBody
 		//
 		areacol = (Area)GetNode("Area");
 		//
+		setSkin(globale.skin_id_equipe);
 	}
 
 	public void setSkin(int idskin){
