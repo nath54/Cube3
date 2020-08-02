@@ -102,6 +102,7 @@ public class level : Node
         }
         else if(globale.tipe=="levels"){
             if(!globale.player.is_mobile()){ Input.SetMouseMode(Input.MouseMode.Visible); }
+            globale.levels_finis[globale.actu_id_niv]=true;
             GetTree().ChangeScene("res://menus/MenuLevels.tscn");
         }
     }
