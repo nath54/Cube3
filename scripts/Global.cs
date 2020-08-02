@@ -36,6 +36,16 @@ public class Global : Node
         "halo",
         "transblue"
     };
+    public string[] skins_preview={
+        "res://img_skins/base.png",
+        "res://img_skins/smile.png",
+        "res://img_skins/smileye.png",
+        "res://img_skins/ssj.png",
+        "res://img_skins/carreaux.png",
+        "res://img_skins/furnace.png",
+        "res://img_skins/halo.png",
+        "res://img_skins/transp_blue.png",
+    }
     public string[] skins_path={
         "res://player/skins/skin_0.tscn",
         "res://player/skins/skin_1.tscn",

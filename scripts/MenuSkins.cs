@@ -38,13 +38,15 @@ public class MenuSkins : Control
             while(idd.Length<2){
                 idd="0"+idd;
             }
+            ButtonSkinSelector bouton = (ButtonSkinSelector)GetNode("Container/Skin_0"+(w+1)+"/Button");
+            bouton.id=ids;
             if(globale.skins_unlocked[ids]){
                 Label name = (Label)GetNode("Container/Skin_0"+(w+1)+"/Name");
                 Sprite preview = (Sprite)GetNode("Container/Skin_0"+(w+1)+"/Preview");
-                ButtonSkinSelector bouton = (ButtonSkinSelector)GetNode("Container/Skin_0"+(w+1)+"/Button");
+                
                 name.Text=skin_names[ids];
-                bouton.id=ids;
-                preview.Texture=ResourceLoader.Load("res://img_skins/"+globale.skins_names[ids]+".png") as Texture;
+                
+                preview.Texture=ResourceLoader.Load(globale.skins_path[ids]) as Texture;
                 if(ids==globale.skin_id_equipe){
                     bouton.Disabled=true;
                     bouton.Text="select";
@@ -57,10 +59,18 @@ public class MenuSkins : Control
             else if(!globale.skins_secret[ids]){
                 Label name = (Label)GetNode("Container/Skin_0"+(w+1)+"/Name");
                 Sprite preview = (Sprite)GetNode("Container/Skin_0"+(w+1)+"/Preview");
-                ButtonSkinSelector bouton = (ButtonSkinSelector)GetNode("Container/Skin_0"+(w+1)+"/Button");
+                preview.Texture=ResourceLoader.Load(globale.skins_preview[ids]) as Texture;
+                name.Text=skin_names[ids];
+                bouton.Text="locked";
+                bouton.Disabled=true;
             }
             else{
-
+                Label name = (Label)GetNode("Container/Skin_0"+(w+1)+"/Name");
+                Sprite preview = (Sprite)GetNode("Container/Skin_0"+(w+1)+"/Preview");
+                name.Text="secret";
+                preview.Texture=ResourceLoader.Load("res://img_skins/secret.png") as Texture;
+                bouton.Text="locked";
+                bouton.Disabled=true;
             }
             
             
