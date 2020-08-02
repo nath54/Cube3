@@ -33,11 +33,14 @@ public class MenuLevels : Control
             idl++;
         }
         sel_levels = sel_lvls.ToArray();
+        GD.Print("levels : ",sel_levels);
         //
         container_size = 500*sel_levels.Length;
         hsb.MaxValue=sel_levels.Length;
         hsb.Value=container.RectPosition.x/size_element;
         hsb.Page=1;
+        //
+        createElements();
     }
 
     public Control create_Element(int idl){
