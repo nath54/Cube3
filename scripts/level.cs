@@ -15,6 +15,8 @@ public class level : Node
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
+        globale=(Global)GetNode("/root/Global");
+        //
         pause_menu = (Control)GetNode("Pause_Menu");
         pause_menu.Visible=false;
         pause_menu.Connect("resume", this, nameof(onPauseMenuBtResumePress));
@@ -27,6 +29,11 @@ public class level : Node
         timer.Start();
         timeTotal=globale.timemax;
         timeLeft=timeTotal;
+        //
+        string[] aa = {"maze","platforms"};
+        if(!(aa.Contains(globale.tipe))){
+            ui_in_game.fps_counter.Visible=false;
+        }
     }
 
 

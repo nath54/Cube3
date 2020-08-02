@@ -91,8 +91,6 @@ public class World : Spatial
             finNiv.Translation = new Vector3((gridMap.finx*gridMap.CellSize.x)+gridMap.CellSize.x/2, ((gridMap.finy)*gridMap.CellSize.y)+finNiv.Scale.y/10, (gridMap.finz*gridMap.CellSize.z)+gridMap.CellSize.z/2);
         }
         //
-        player.setSkin(globale.skin_id_equipe);
-        //
         loading= (Control)GetNode("Loading");
         loading.Visible=false;
         //

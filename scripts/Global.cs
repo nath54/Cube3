@@ -123,6 +123,8 @@ public class Global : Node
     public string actu_cat="";
 
     public Player player;
+    public level levele;
+
     [Signal]
     public delegate void playerDeath();
 
@@ -137,7 +139,7 @@ public class Global : Node
     }
 
     //fonction pour débugger
-    void affNode(Node node, Node parent,int iterations){
+    public void affNode(Node node, int iterations){
         string txt="  -";
         string tt="";
         for(int i=0; i<=iterations; i++){ txt="  "+txt; }
@@ -145,7 +147,7 @@ public class Global : Node
         GD.Print(txt,node," : ", node.Name,tt);
         Godot.Collections.Array children = node.GetChildren();
         foreach(Node n in children){
-            affNode(n,node,iterations+1);
+            affNode(n,iterations+1);
         }
 
     }

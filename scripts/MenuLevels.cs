@@ -46,11 +46,14 @@ public class MenuLevels : Control
     public Control create_Element(int idl){
         //on crée l'element 
         Control element=new Control();
+        element.Name="element-"+globale.levels_names[idl];
         //on crée le bouton pour acceder au level
         IdButton button = new IdButton();
         button.Text=globale.levels_names[idl];
         button.id=idl;
+        button.Name="button";
         button.Connect("cliqued", this, nameof(on_level_pressed));
+        element.AddChild(button);
         //on le retourne
         return element;
     }

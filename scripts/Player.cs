@@ -70,6 +70,7 @@ public class Player : KinematicBody
 		areacol = (Area)GetNode("Area");
 		//
 		setSkin(globale.skin_id_equipe);
+		//
 	}
 
 	public void setSkin(int idskin){

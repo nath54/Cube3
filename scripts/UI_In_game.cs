@@ -3,7 +3,7 @@ using System;
 
 public class UI_In_game : Control
 {
-    private Label fps_counter;
+    public Label fps_counter;
     private Label aff_level;
     private Label debug;
     private ProgressBar time_left;

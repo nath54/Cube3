@@ -30,7 +30,7 @@ public class MenuLCats : Control
             }
         }
         sel_levels = sel_lvls;
-        GD.Print("categories : ",sel_lvls);
+        GD.Print("categories : ",sel_lvls.Count);
         //
 
         container_size = 500*sel_levels.Count;
@@ -44,11 +44,14 @@ public class MenuLCats : Control
     public Control create_Element(int idl){
         //on crée l'element 
         Control element=new Control();
+        element.Name="element-"+sel_levels[idl];
         //on crée le bouton pour acceder au level
         IdButton button = new IdButton();
-        button.Text=globale.levels_names[idl];
+        button.Name="button";
+        button.Text=sel_levels[idl];
         button.id=idl;
         button.Connect("cliqued", this, nameof(on_level_pressed));
+        element.AddChild(button);
         //on le retourne
         return element;
     }
@@ -58,6 +61,7 @@ public class MenuLCats : Control
             Control element = create_Element(idcat);
             container.AddChild(element);
         }
+        globale.affNode(container, 0);
     }
 
     public void on_hsb_changed(float value){
@@ -65,13 +69,8 @@ public class MenuLCats : Control
     }
 
     public void on_level_pressed(int idl){
-        int required=globale.levels_requirements[idl];
-        if(required==-1 || globale.levels_finis[required]){
-            GetTree().ChangeScene(globale.levels_path[idl]);
-        }
-        else{
-            //TODO : un popup qui dit : "You must finish this level : "+globale.levels_name[required]+" before this level !"
-        }
+        globale.actu_cat=sel_levels[idl];
+        GetTree().ChangeScene("res://menus/MenuLevels.tscn");
     }
     public void _on_Bt_back_pressed(){
         GetTree().ChangeScene("res://menus/MainMenu.tscn");
