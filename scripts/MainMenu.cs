@@ -20,6 +20,13 @@ public class MainMenu : Control
         loading = (Control)GetNode("Loading");
         loading.Visible=false;
 
+        AlertDialog popup = new AlertDialog();
+        AddChild(popup);
+        /*
+        popup.setText("test");
+        popup.popupe();        
+        */
+
     }
 
     public void _on_Bt_play_arcade_pressed(){

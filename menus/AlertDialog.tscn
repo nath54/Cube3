@@ -49,3 +49,4 @@ margin_right = 492.221
 margin_bottom = 496.493
 custom_fonts/font = SubResource( 2 )
 text = "ok"
+[connection signal="pressed" from="PopupDialog/Button" to="." method="_on_Button_pressed"]
