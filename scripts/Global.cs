@@ -110,6 +110,8 @@ public class Global : Node
 
     //
 
+    public string actu_cat="";
+
     public Player player;
     [Signal]
     public delegate void playerDeath();

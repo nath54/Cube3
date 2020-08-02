@@ -27,7 +27,7 @@ public class MainMenu : Control
         GetTree().ChangeScene("res://menus/MenuPlayArcade.tscn");
     }
     public void _on_Bt_play_adventure_pressed(){
-
+        GetTree().ChangeScene("res://menus/MenuLCats.tscn");
     }
 
     public void _on_Bt_settings_pressed(){

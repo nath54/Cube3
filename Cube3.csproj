@@ -59,11 +59,13 @@
     <Compile Include="scripts\ButtonSkinSelector.cs" />
     <Compile Include="scripts\finNiv.cs" />
     <Compile Include="scripts\Global.cs" />
-    <Compile Include="scripts\global_arcade.cs" />
     <Compile Include="scripts\GridMap.cs" />
+    <Compile Include="scripts\IdButton.cs" />
     <Compile Include="scripts\Joystick_Button.cs" />
     <Compile Include="scripts\level.cs" />
     <Compile Include="scripts\MainMenu.cs" />
+    <Compile Include="scripts\MenuLCats.cs" />
+    <Compile Include="scripts\MenuLevels.cs" />
     <Compile Include="scripts\MenuPerdu.cs" />
     <Compile Include="scripts\MenuPlayArcade.cs" />
     <Compile Include="scripts\MenuSkins.cs" />
