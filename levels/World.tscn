@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://menus/Pause_Menu.tscn" type="PackedScene" id=2]
@@ -6,7 +6,6 @@
 [ext_resource path="res://menus/Loading.tscn" type="PackedScene" id=4]
 [ext_resource path="res://menus/UI_In_game.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/finNiv.tscn" type="PackedScene" id=6]
-[ext_resource path="res://default_env.tres" type="Environment" id=7]
 [ext_resource path="res://scripts/GridMap.cs" type="Script" id=8]
 [ext_resource path="res://assets/meshlib_base.tres" type="MeshLibrary" id=9]
 
@@ -41,9 +40,6 @@ __meta__ = {
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11.0088, 0 )
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = ExtResource( 7 )
 
 [node name="finNiv" parent="." instance=ExtResource( 6 )]
 [connection signal="timeout" from="time_seconds" to="." method="_on_time_seconds_timeout"]

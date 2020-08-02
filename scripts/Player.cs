@@ -25,7 +25,6 @@ public class Player : KinematicBody
 	public bool paused = false;
 	public float taille = 1;
 	public Area areacol;
-
 	public Global globale;
 
 	[Signal]
@@ -39,6 +38,9 @@ public class Player : KinematicBody
 	public override void _Ready()
 	{
 		globale = (Global)GetNode("/root/Global");
+		//
+		globale.player=this;
+		
 		//
 		cam = (Spatial)GetNode("CamBase");
 		cube = (Spatial)GetNode("cube");

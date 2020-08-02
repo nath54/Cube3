@@ -38,20 +38,32 @@ public class MenuSkins : Control
             while(idd.Length<2){
                 idd="0"+idd;
             }
-            Label name = (Label)GetNode("Container/Skin_0"+(w+1)+"/Name");
-            Sprite preview = (Sprite)GetNode("Container/Skin_0"+(w+1)+"/Preview");
-            ButtonSkinSelector bouton = (ButtonSkinSelector)GetNode("Container/Skin_0"+(w+1)+"/Button");
-            name.Text=skin_names[ids];
-            bouton.id=ids;
-            preview.Texture=ResourceLoader.Load("res://img_skins/"+skin_names[ids]+".png") as Texture;
-            if(ids==globale.skin_id_equipe){
-                bouton.Disabled=true;
-                bouton.Text="select";
+            if(globale.skins_unlocked[ids]){
+                Label name = (Label)GetNode("Container/Skin_0"+(w+1)+"/Name");
+                Sprite preview = (Sprite)GetNode("Container/Skin_0"+(w+1)+"/Preview");
+                ButtonSkinSelector bouton = (ButtonSkinSelector)GetNode("Container/Skin_0"+(w+1)+"/Button");
+                name.Text=skin_names[ids];
+                bouton.id=ids;
+                preview.Texture=ResourceLoader.Load("res://img_skins/"+globale.skins_names[ids]+".png") as Texture;
+                if(ids==globale.skin_id_equipe){
+                    bouton.Disabled=true;
+                    bouton.Text="select";
+                }
+                else{
+                    bouton.Disabled=false;
+                    bouton.Text="select";
+                }
+            }
+            else if(!globale.skins_secret[ids]){
+                Label name = (Label)GetNode("Container/Skin_0"+(w+1)+"/Name");
+                Sprite preview = (Sprite)GetNode("Container/Skin_0"+(w+1)+"/Preview");
+                ButtonSkinSelector bouton = (ButtonSkinSelector)GetNode("Container/Skin_0"+(w+1)+"/Button");
             }
             else{
-                bouton.Disabled=false;
-                bouton.Text="select";
+
             }
+            
+            
         }
     }
 

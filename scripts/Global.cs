@@ -24,6 +24,93 @@ public class Global : Node
     public bool sao=false;
     public int sao_quality=0;
 
+    // skins
+
+    public string[] skins_names={
+        "base",
+        "smile",
+        "smileye",
+        "ssj",
+        "carreaux",
+        "furnace",
+        "halo",
+        "transblue"
+    };
+    public string[] skins_path={
+        "res://player/skins/skin_0.tscn",
+        "res://player/skins/skin_1.tscn",
+        "res://player/skins/skin_2.tscn",
+        "res://player/skins/skin_3.tscn",
+        "res://player/skins/skin_4.tscn",
+        "res://player/skins/skin_5.tscn",
+        "res://player/skins/skin_6.tscn",
+        "res://player/skins/skin_7.tscn",
+    };
+    public bool[] skins_unlocked={
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+    };
+    public bool[] skins_secret={
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+    };
+
+    public int[] skins_rarity={ //0=common 1=rare 2=epic 3=legendary 4=divine 5=mythical
+        0,
+        0,
+        0,
+        3,
+        1,
+        1,
+        2,
+        2,
+    };
+
+    public string[] skins_recup={
+        "none",
+        "arcade",
+        "arcade",
+        "arcade",
+        "arcade",
+        "arcade",
+        "arcade",
+        "arcade",
+        "arcade",
+    };
+
+    //levels
+
+    public string[] levels_names={
+
+    };
+    public string[] levels_category={
+
+    };
+    public string[] levels_path={
+
+    };
+    public int[] levels_requirements={ //id of required level, -1 = not required
+
+    };
+    public bool[] levels_finis={
+
+    };
+
+    //
+
+    public Player player;
     [Signal]
     public delegate void playerDeath();
 
