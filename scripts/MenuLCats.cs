@@ -60,7 +60,7 @@ public class MenuLCats : Control
     public void createElements(){
         for(int idcat=0; idcat<sel_levels.Count; idcat++){
             Control element = create_Element(idcat);
-            element.RectPosition=new Vector2(100+nb_bt_placed*250,0);
+            element.RectPosition=new Vector2(100+nb_bt_placed*400,0);
             nb_bt_placed++;
             container.AddChild(element);
         }

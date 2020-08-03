@@ -50,7 +50,7 @@ public class MenuLevels : Control
         element.Name="element-"+globale.levels_names[idl];
         //on crée le bouton pour acceder au level
         if(globale.levels_finis[idl]){
-            PackedScene packedScene = (PackedScene)ResourceLoader.Load("res://menus/buttons/Bt_Cube_Base.tscn");
+            PackedScene packedScene = (PackedScene)ResourceLoader.Load("res://menus/buttons/Bt_Cube_Finished.tscn");
             Bt_Cube button = (Bt_Cube)packedScene.Instance();
             button.texte=globale.levels_names[idl];
             button.id=idl;
@@ -59,7 +59,7 @@ public class MenuLevels : Control
         }
         else{
             if(globale.levels_requirements[idl]==-1 || globale.levels_finis[globale.levels_requirements[idl]]){
-                PackedScene packedScene = (PackedScene)ResourceLoader.Load("res://menus/buttons/Bt_Cube_Finished.tscn");
+                PackedScene packedScene = (PackedScene)ResourceLoader.Load("res://menus/buttons/Bt_Cube_Base.tscn");
                 Bt_Cube button = (Bt_Cube)packedScene.Instance();
                 button.texte=globale.levels_names[idl];
                 button.id=idl;
@@ -83,7 +83,7 @@ public class MenuLevels : Control
     public void createElements(){
         foreach(int idlevel in sel_levels){
             Control element = create_Element(idlevel);
-            element.RectPosition=new Vector2(100+nb_bt_placed*250,0);
+            element.RectPosition=new Vector2(100+nb_bt_placed*400,0);
             nb_bt_placed++;
             container.AddChild(element);
         }

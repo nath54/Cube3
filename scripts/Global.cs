@@ -108,21 +108,33 @@ public class Global : Node
     //levels
 
     public string[] levels_names={
-        "tuto1"
+        "tuto-1",
+        "tuto-2",
+        "tuto-3",
     };
     public string[] levels_category={
-        "tutos"
+        "tutos",
+        "tutos",
+        "tutos",
     };
     public string[] levels_path={
         "res://levels/aventures/tuto/tuto1.tscn",
+        "res://levels/aventures/tuto/tuto2.tscn",
+        "res://levels/aventures/tuto/tuto3.tscn",
     };
     public int[] levels_requirements={ //id of required level, -1 = not required
         -1,
+        0,
+        1,
     };
     public bool[] levels_finis={
         false,
+        false,
+        false,
     };
     public float[] levels_time={
+        80,
+        80,
         80,
     };
 
