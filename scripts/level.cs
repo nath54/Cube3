@@ -17,11 +17,17 @@ public class level : Node
     public override void _Ready()
     {
         globale=(Global)GetNode("/root/Global");
+        globale.levele=this;
+        globale.Connect("playerDeath",this,nameof(player_mort));
+        if( globale.tipe=="platforms" && globale.level>globale.highscore_plats){
+            globale.highscore_plats=globale.level;
+            globale.SaveGame();
+        }
         //
         pause_menu = (Control)GetNode("Pause_Menu");
         pause_menu.Visible=false;
         pause_menu.Connect("resume", this, nameof(onPauseMenuBtResumePress));
-        if(!globale.player.is_mobile()){ Input.SetMouseMode(Input.MouseMode.Captured); }
+        if(!globale.is_mobile()){ Input.SetMouseMode(Input.MouseMode.Captured); }
         //
         ui_in_game=(UI_In_game)GetNode("UI_In_game");
         ui_in_game.changeLevelText(globale.level);
@@ -42,6 +48,7 @@ public class level : Node
         }
         //
         globale.finnive.Connect("bodyTouched", this, nameof(onFinNiv));
+        globale.player.Connect("onPauseBtPress", this, nameof(Pause));
     }
 
 
@@ -87,6 +94,11 @@ public class level : Node
         }
     }
 
+    public void partiePerdue(){
+        if(!globale.player.is_mobile()){ Input.SetMouseMode(Input.MouseMode.Visible); }
+        GetTree().ChangeScene("res://menus/MenuPerdu.tscn");
+    }
+
     public void _on_time_seconds_timeout(){
         if(!globale.player.paused){
             timeLeft-=timer.WaitTime;
@@ -94,8 +106,7 @@ public class level : Node
         }
         timer.Start();
         if(timeLeft<=0){
-            if(!globale.player.is_mobile()){ Input.SetMouseMode(Input.MouseMode.Visible); }
-            GetTree().ChangeScene("res://menus/MenuPerdu.tscn");
+            partiePerdue();
         }
     }
 

@@ -131,7 +131,12 @@ public class Player : KinematicBody
 	}
 	
 	public void playerDeath(){
-		Translation=spawnpoint;
+		if(globale.respawn){
+			Translation=spawnpoint;
+		}
+		else{
+			globale.levele.partiePerdue();
+		}
 	}
 
 	public override void _PhysicsProcess(float delta)

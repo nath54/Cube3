@@ -24,6 +24,8 @@ public class Global : Node
     public bool sao=false;
     public int sao_quality=0;
     public int actu_id_niv;
+    public int difficulty=0; //0=easy 1=normal 2=hard 3=hell
+    public bool respawn=true;
 
     // skins
 
@@ -173,6 +175,7 @@ public class Global : Node
             { "aff_fps", aff_fps},
             { "sao", sao},
             { "sao_quality", sao_quality},
+            { "difficulty",difficulty},
 
         };
     }
@@ -263,6 +266,9 @@ public class Global : Node
                 }
                 if( nodeData.Keys.Contains("sao_quality")){
                     sao_quality=Convert.ToInt32(nodeData["sao_quality"]);
+                }
+                if( nodeData.Keys.Contains("difficulty")){
+                    difficulty=Convert.ToInt32(nodeData["difficulty"]);
                 }
             }
             else if((string)nodeData["name"]=="skin_unlocked"){

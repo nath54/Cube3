@@ -8,6 +8,7 @@
 script = ExtResource( 3 )
 
 [node name="time_seconds" type="Timer" parent="."]
+wait_time = 0.1
 autostart = true
 
 [node name="UI_In_game" parent="." instance=ExtResource( 1 )]

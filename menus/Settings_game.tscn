@@ -1,10 +1,14 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://fonts/Xeliard.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://scripts/Settings_game.cs" type="Script" id=2]
 
 [sub_resource type="DynamicFont" id=1]
 size = 50
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=10]
+size = 35
 font_data = ExtResource( 1 )
 
 [sub_resource type="StyleBoxFlat" id=2]
@@ -1207,7 +1211,40 @@ __meta__ = {
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_right = -201.0
-margin_bottom = 1107.0
+margin_bottom = 3.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="St_difficulty" type="Control" parent="Settings/VBoxContainer"]
+margin_right = 900.0
+
+[node name="Label" type="Label" parent="Settings/VBoxContainer/St_difficulty"]
+margin_right = 372.0
+margin_bottom = 40.0
+custom_fonts/font = SubResource( 10 )
+text = "Difficulty : easy"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HScrollBar" type="HScrollBar" parent="Settings/VBoxContainer/St_difficulty"]
+margin_left = 9.0
+margin_top = 45.0
+margin_right = 434.0
+margin_bottom = 86.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="L_explain" type="Label" parent="Settings/VBoxContainer/St_difficulty"]
+margin_left = 48.0
+margin_top = 101.0
+margin_right = 420.0
+margin_bottom = 176.0
+custom_fonts/font = SubResource( 10 )
+text = "-Time * 1.5
+-Respawns"
 __meta__ = {
 "_edit_use_anchors_": false
 }

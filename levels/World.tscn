@@ -1,10 +1,8 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://player/Player.tscn" type="PackedScene" id=1]
-[ext_resource path="res://menus/Pause_Menu.tscn" type="PackedScene" id=2]
+[ext_resource path="res://levels/level.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scripts/World.cs" type="Script" id=3]
-[ext_resource path="res://menus/Loading.tscn" type="PackedScene" id=4]
-[ext_resource path="res://menus/UI_In_game.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/finNiv.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scripts/GridMap.cs" type="Script" id=8]
 [ext_resource path="res://assets/meshlib_base.tres" type="MeshLibrary" id=9]
@@ -12,20 +10,9 @@
 [node name="World" type="Spatial"]
 script = ExtResource( 3 )
 
-[node name="time_seconds" type="Timer" parent="."]
-wait_time = 0.1
-autostart = true
-
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
 transform = Transform( 0.960283, 0.0298146, 0.277431, -0.15442, -0.771349, 0.617394, 0.232403, -0.635714, -0.736109, 10.6595, 12.5249, -7.82983 )
 light_energy = 0.1
-
-[node name="UI_In_game" parent="." instance=ExtResource( 5 )]
-
-[node name="Loading" parent="." instance=ExtResource( 4 )]
-visible = false
-
-[node name="Pause_Menu" parent="." instance=ExtResource( 2 )]
 
 [node name="GridMap" type="GridMap" parent="."]
 mesh_library = ExtResource( 9 )
@@ -42,4 +29,5 @@ __meta__ = {
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11.0088, 0 )
 
 [node name="finNiv" parent="." instance=ExtResource( 6 )]
-[connection signal="timeout" from="time_seconds" to="." method="_on_time_seconds_timeout"]
+
+[node name="level" parent="." instance=ExtResource( 2 )]

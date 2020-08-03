@@ -7,15 +7,24 @@ public class Settings_game : Control
     private Button bt_s_graphics;
     private Button bt_s_audio;
     private Button bt_s_other;
-
     public struct AncientSettings{    
-    }
-    
+    }    
     public VScrollBar vscrollbare;
     public VBoxContainer vboxcontainere;
     public Global globale;
     public PopupDialog popup;
 
+    public string[] difs = {"easy","normal","hard","hell"};
+    public string[] difs_explains={
+        @"
+    -Time * 1.5",
+        @"",
+        @"
+    -Time/1.5",
+        @"
+    -No Respawn
+    -Time/2",
+    };
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
@@ -31,7 +40,8 @@ public class Settings_game : Control
         vscrollbare = (VScrollBar)GetNode("VScrollBar");
         vboxcontainere = (VBoxContainer)GetNode("Settings/VBoxContainer");
         //Initialisation des Layout settings
-        
+        HScrollBar hsb_dif = (HScrollBar)GetNode("Settings/VBoxContainer/St_difficulty/HScrollBar");
+
     }
 
     public void _on_Bt_game_pressed(){ GetTree().ChangeScene("res://menus/Settings_game.tscn"); }
