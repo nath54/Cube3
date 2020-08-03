@@ -12,9 +12,9 @@ public class GenerateArcade : Node
 
     public bool test_derange(Vector3 pos,int[,,] mape, int mtx, int mty, int mtz){
         int[] derange={1};
-        for(int xx=-2; xx<2; xx++){
+        for(int xx=-5; xx<5; xx++){
             for(int yy=-10; yy<10; yy++){
-                for(int zz=-2; zz<2; zz++){
+                for(int zz=-5; zz<5; zz++){
                     if(pos.x+xx>=0 && pos.z+zz>=0 && pos.y+yy>=0 && pos.x+xx<mtx && pos.z+zz<mtz && pos.y+yy<mty){
                         if(derange.Contains(mape[(int)pos.x+xx,(int)pos.y+yy,(int)pos.z+zz])){
                             return true;
@@ -52,8 +52,8 @@ public class GenerateArcade : Node
         }
         else if(globale.difficulty==3){
             minxz=2;
-            maxxz=10;
-            maxy=8;
+            maxxz=7;
+            maxy=6;            
         }
         
         //DX
@@ -64,7 +64,7 @@ public class GenerateArcade : Node
         else if(rand.Next(0,2)==1){ dz=rand.Next(-maxxz,-minxz); }
         //DY
         if(rand.Next(0,2)==1){ dy=rand.Next(miny,maxy); }
-        else if(rand.Next(0,2)==1){ dy=rand.Next(-20,-1); }        
+        else if(rand.Next(0,2)==1){ dy=rand.Next(-8,-1); }        
         return (dx,dy,dz);
     }
 

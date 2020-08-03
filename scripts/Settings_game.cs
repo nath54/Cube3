@@ -17,13 +17,18 @@ public class Settings_game : Control
     public string[] difs = {"easy","normal","hard","hell"};
     public string[] difs_explains={
         @"
-    -Time * 1.5",
+    -Time * 1.5
+    -Larger Platforms(Arcade)",
         @"",
         @"
-    -Time/2",
+    -Time/1.75
+    -Smaller platforms(Arcade)",
         @"
     -No Respawn
-    -Time/3",
+    -Time/2.5
+    -Really smaller platforms(Arcade)
+    -But no fake-platforms
+    (because we die directly)",
     };
 
     // Called when the node enters the scene tree for the first time.

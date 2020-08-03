@@ -96,11 +96,11 @@ public class World : Spatial
 
 
         //time
-        globale.levele.timeTotal=finale_nb_plats*5;
+        globale.levele.timeTotal=finale_nb_plats*6;
         //
         if(globale.difficulty==0){ globale.levele.timeTotal*=1.5F; }
-        else if(globale.difficulty==2){ globale.levele.timeTotal/=2; }
-        else if(globale.difficulty==3){ globale.levele.timeTotal/=3; }
+        else if(globale.difficulty==2){ globale.levele.timeTotal/=1.75F; }
+        else if(globale.difficulty==3){ globale.levele.timeTotal/=2.5F; }
         //
         //GD.Print("world time ",globale.levele.timeTotal);
         globale.levele.timeLeft=globale.levele.timeTotal;
