@@ -76,6 +76,16 @@ public class World : Spatial
             finNiv.Scale=player.Scale*2;
             finNiv.Translation = new Vector3((gridMap.finx*gridMap.CellSize.x)+gridMap.CellSize.x/2, ((gridMap.finy)*gridMap.CellSize.y)+finNiv.Scale.y/10, (gridMap.finz*gridMap.CellSize.z)+gridMap.CellSize.z/2);
         }
+        //time
+        globale.levele.timeTotal=gridMap.final_nb_plats*5;
+        //
+        if(globale.difficulty==0){ globale.levele.timeTotal*=1.5F; }
+        else if(globale.difficulty==2){ globale.levele.timeTotal/=2; }
+        else if(globale.difficulty==3){ globale.levele.timeTotal/=3; }
+        //
+        //GD.Print("world time ",globale.levele.timeTotal);
+        globale.levele.timeLeft=globale.levele.timeTotal;
+        //
     }
 
 

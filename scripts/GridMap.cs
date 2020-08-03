@@ -23,6 +23,7 @@ public class GridMap : Godot.GridMap
     public int fake_floor_item=2;
     public int light_item=-1;
     public World worlde;
+    public int final_nb_plats=0;
 
     public void generatePlatforms(){
         GD.Print("platform");
@@ -84,7 +85,7 @@ public class GridMap : Godot.GridMap
                     ax+=dx;
                     ay+=dy;
                     az+=dz;
-                    
+                    final_nb_plats=w;
                     SetCellItem(ax,ay,az,floor_item);
                     if(rand.Next(0,5)==0){ SetCellItem(ax,ay+1,az, light_item); }
                 }

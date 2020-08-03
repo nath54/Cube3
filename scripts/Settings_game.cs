@@ -20,10 +20,10 @@ public class Settings_game : Control
     -Time * 1.5",
         @"",
         @"
-    -Time/1.5",
+    -Time/2",
         @"
     -No Respawn
-    -Time/2",
+    -Time/3",
     };
 
     // Called when the node enters the scene tree for the first time.
@@ -40,8 +40,13 @@ public class Settings_game : Control
         vscrollbare = (VScrollBar)GetNode("VScrollBar");
         vboxcontainere = (VBoxContainer)GetNode("Settings/VBoxContainer");
         //Initialisation des Layout settings
+        //difficulty
         HScrollBar hsb_dif = (HScrollBar)GetNode("Settings/VBoxContainer/St_difficulty/HScrollBar");
-
+        hsb_dif.MaxValue=difs.Length;
+        hsb_dif.Page=1;
+        hsb_dif.Value=globale.difficulty;
+        on_hsb_dif_changed((float)hsb_dif.Value);
+        //
     }
 
     public void _on_Bt_game_pressed(){ GetTree().ChangeScene("res://menus/Settings_game.tscn"); }
@@ -50,12 +55,22 @@ public class Settings_game : Control
     public void _on_Bt_other_pressed(){ GetTree().ChangeScene("res://menus/Settings_other.tscn"); }
 
     public void on_apply(){
-        
+        //DIFFICULTY
+        HScrollBar hsb_dif = (HScrollBar)GetNode("Settings/VBoxContainer/St_difficulty/HScrollBar");
+        globale.difficulty=(int)hsb_dif.Value;
         //Save Settings
         ProjectSettings.Save();
         globale.SaveGame();
         //
         //popup.Popup_();
+    }
+
+    public void on_hsb_dif_changed(float value){
+        Label titre=(Label)GetNode("Settings/VBoxContainer/St_difficulty/Label");
+        Label explain=(Label)GetNode("Settings/VBoxContainer/St_difficulty/L_explain");
+        //
+        titre.Text="difficulty : "+difs[(int)value];
+        explain.Text=difs_explains[(int)value];
     }
 
 

@@ -23,6 +23,12 @@ public class level : Node
             globale.highscore_plats=globale.level;
             globale.SaveGame();
         }
+        if(globale.difficulty<3){
+            globale.respawn=true;
+        }
+        else{
+            globale.respawn=false;
+        }
         //
         pause_menu = (Control)GetNode("Pause_Menu");
         pause_menu.Visible=false;
@@ -37,9 +43,15 @@ public class level : Node
         timer.Start();
         if(wtps.Contains(globale.tipe)){
             timeTotal=globale.timemax;
+            //Ne sert un peu a rien, vu que dans world.cs, on remet le temps, mais bon je l'ai quand meme laissé au cas ou.
         }else{
             timeTotal=globale.levels_time[globale.actu_id_niv];
         }
+        //difficulty
+        if(globale.difficulty==0){ timeTotal*=1.5F; }
+        else if(globale.difficulty==2){ timeTotal/=1.5F; }
+        else if(globale.difficulty==3){ timeTotal/=2F; }
+        //
         timeLeft=timeTotal;
         //
         
@@ -101,6 +113,7 @@ public class level : Node
 
     public void _on_time_seconds_timeout(){
         if(!globale.player.paused){
+            //GD.Print("level time max ",timeTotal);
             timeLeft-=timer.WaitTime;
             ui_in_game.changePercentBar(timeLeft/timeTotal*100);
         }
