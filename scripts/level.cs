@@ -61,6 +61,18 @@ public class level : Node
         //
         globale.finnive.Connect("bodyTouched", this, nameof(onFinNiv));
         globale.player.Connect("onPauseBtPress", this, nameof(Pause));
+        //
+        if(globale.sao){
+            Camera cam=globale.player.camerae;
+            Godot.Environment env = cam.Environment;
+            env.SsaoEnabled=true;
+            Godot.Environment.SSAOQuality ssaoqual=env.SsaoQuality;
+            GD.Print(ssaoqual.GetType());
+            
+            if(globale.sao_quality==0){
+                
+            }
+        }
     }
 
 

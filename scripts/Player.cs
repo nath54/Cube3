@@ -26,6 +26,7 @@ public class Player : KinematicBody
 	public float taille = 1;
 	public Area areacol;
 	public Global globale;
+	public Camera camerae;
 
 	[Signal]
 	public delegate void onPauseBtPress();
@@ -43,6 +44,7 @@ public class Player : KinematicBody
 
 		//
 		cam = (Spatial)GetNode("CamBase");
+		camerae = (Camera)GetNode("CamBase/Camera");
 		cube = (Spatial)GetNode("cube");
 		cubeshape = (CollisionShape)GetNode("CollisionShape");
 		joystick = (Joystick_Button)GetNode("joystick/Joystick_Button");
