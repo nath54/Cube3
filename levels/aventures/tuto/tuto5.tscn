@@ -1,0 +1,53 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://assets/finNiv.tscn" type="PackedScene" id=1]
+[ext_resource path="res://player/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://levels/level.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/label_ingame.tscn" type="PackedScene" id=4]
+[ext_resource path="res://levels/aventures/tuto/tuto.cs" type="Script" id=5]
+[ext_resource path="res://assets/floor.tscn" type="PackedScene" id=6]
+[ext_resource path="res://assets/fake_floor.tscn" type="PackedScene" id=7]
+
+[node name="tuto1" type="Spatial"]
+script = ExtResource( 5 )
+
+[node name="levele" type="Spatial" parent="."]
+
+[node name="floor" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 4, 0, 0, 0, 1, 0, 0, 0, 4, 0, 0, 13.5478 )
+
+[node name="floor2" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 4, 0, 0, 0, 1, 0, 0, 0, 4, 0, 0, -14.826 )
+
+[node name="floor3" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 2, 0, 0, 0, 1, 0, 0, 0, 2, 3.29972, 0, 5.56148 )
+
+[node name="floor4" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 2, 0, 0, 0, 1, 0, 0, 0, 2, -2.34432, 0, -1.81206 )
+
+[node name="fake_floor" parent="levele" instance=ExtResource( 7 )]
+transform = Transform( 2, 0, 0, 0, 1, 0, 0, 0, 2, -2.22513, 0, 5.42244 )
+
+[node name="fake_floor2" parent="levele" instance=ExtResource( 7 )]
+transform = Transform( 2, 0, 0, 0, 1, 0, 0, 0, 2, 3.17113, 0, -1.79652 )
+
+[node name="fake_floor3" parent="levele" instance=ExtResource( 7 )]
+transform = Transform( 2, 0, 0, 0, 1, 0, 0, 0, 2, 3.17113, 0, -7.27802 )
+
+[node name="fake_floor4" parent="levele" instance=ExtResource( 7 )]
+transform = Transform( 2, 0, 0, 0, 1, 0, 0, 0, 2, -2.3155, 0, -7.27802 )
+
+[node name="finNiv" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.810755, 3.78281, -12.5419 )
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.506993, 3.08235, 12.3552 )
+
+[node name="Label" parent="." instance=ExtResource( 4 )]
+margin_left = 60.0
+margin_top = 106.0
+margin_right = 468.0
+margin_bottom = 315.0
+text = "Sonetimes, there will be fake platforms"
+
+[node name="level" parent="." instance=ExtResource( 3 )]

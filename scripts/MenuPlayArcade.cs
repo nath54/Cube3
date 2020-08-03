@@ -32,7 +32,7 @@ public class MenuPlayArcade : Control
     public void _on_Bt_Plats_pressed(){
         globale.mtx=40+5*globale.level;
         globale.mtz=40+5*globale.level;
-        globale.nb_plats=20+globale.level;
+        globale.nb_plats=10+globale.level*2;
         globale.timemax=18+5*globale.level;
         globale.tipe="platforms";
         globale.player_taille=0.5F;

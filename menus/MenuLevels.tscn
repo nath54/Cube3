@@ -65,3 +65,4 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 [connection signal="pressed" from="Bt_back" to="." method="_on_Bt_back_pressed"]
+[connection signal="value_changed" from="HScrollBar" to="." method="_on_HScrollBar_value_changed"]

@@ -8,7 +8,7 @@ public class GridMap : Godot.GridMap
     public int tx = 32;
     public int tz = 32;
     public int ty = 32;
-    public int nbchem=15;
+    public int nbchem=5;
     public int nb_plats=20;
     public int depx=1;
     public int depz=1;
