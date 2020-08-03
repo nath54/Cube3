@@ -7,7 +7,7 @@
 size = 50
 font_data = ExtResource( 1 )
 
-[sub_resource type="StyleBoxFlat" id=4]
+[sub_resource type="StyleBoxFlat" id=2]
 bg_color = Color( 0.117647, 0.894118, 0, 1 )
 border_width_left = 1
 border_width_top = 1
@@ -19,7 +19,7 @@ corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
-[sub_resource type="StyleBoxFlat" id=5]
+[sub_resource type="StyleBoxFlat" id=3]
 bg_color = Color( 0.4, 0.803922, 0.133333, 1 )
 border_width_left = 1
 border_width_top = 1
@@ -31,7 +31,7 @@ corner_radius_top_right = 5
 corner_radius_bottom_right = 3
 corner_radius_bottom_left = 5
 
-[sub_resource type="StyleBoxFlat" id=6]
+[sub_resource type="StyleBoxFlat" id=4]
 bg_color = Color( 0.262745, 1, 0, 1 )
 corner_radius_top_left = 8
 corner_radius_top_right = 5
@@ -40,7 +40,7 @@ corner_radius_bottom_left = 8
 shadow_color = Color( 0.14902, 0.517647, 0, 1 )
 shadow_size = 5
 
-[sub_resource type="Theme" id=7]
+[sub_resource type="Theme" id=5]
 BoxContainer/constants/separation = 4
 Button/colors/font_color = Color( 1, 1, 1, 1 )
 Button/colors/font_color_disabled = Color( 0.705882, 0.705882, 0.705882, 1 )
@@ -50,9 +50,9 @@ Button/colors/icon_color_hover = Color( 0, 0, 0, 1 )
 Button/colors/icon_color_pressed = Color( 0, 0, 0, 1 )
 Button/styles/disabled = null
 Button/styles/focus = null
-Button/styles/hover = SubResource( 4 )
-Button/styles/normal = SubResource( 5 )
-Button/styles/pressed = SubResource( 6 )
+Button/styles/hover = SubResource( 2 )
+Button/styles/normal = SubResource( 3 )
+Button/styles/pressed = SubResource( 4 )
 CheckBox/colors/font_color = Color( 0, 0, 0, 1 )
 CheckBox/colors/font_color_disabled = Color( 0, 0, 0, 1 )
 CheckBox/colors/font_color_hover = Color( 0, 0, 0, 1 )
@@ -1104,19 +1104,19 @@ WindowDialog/icons/close = null
 WindowDialog/icons/close_highlight = null
 WindowDialog/styles/panel = null
 
+[sub_resource type="DynamicFont" id=6]
+size = 35
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=7]
+size = 35
+font_data = ExtResource( 1 )
+
 [sub_resource type="DynamicFont" id=8]
-size = 35
-font_data = ExtResource( 1 )
-
-[sub_resource type="DynamicFont" id=9]
-size = 35
-font_data = ExtResource( 1 )
-
-[sub_resource type="DynamicFont" id=10]
 size = 40
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=11]
+[sub_resource type="DynamicFont" id=9]
 size = 40
 font_data = ExtResource( 1 )
 
@@ -1148,6 +1148,9 @@ margin_right = 320.0
 margin_bottom = 100.0
 custom_fonts/font = SubResource( 1 )
 text = "Game"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Bt_graphics" type="Button" parent="Menu_Buttons/HScrollBar"]
 anchor_right = 0.218
@@ -1155,7 +1158,6 @@ margin_left = 320.0
 margin_right = 360.96
 margin_bottom = 100.0
 custom_fonts/font = SubResource( 1 )
-disabled = true
 text = "Graphics"
 
 [node name="Bt_audio" type="Button" parent="Menu_Buttons/HScrollBar"]
@@ -1164,6 +1166,7 @@ margin_left = 640.0
 margin_right = 680.96
 margin_bottom = 100.0
 custom_fonts/font = SubResource( 1 )
+disabled = true
 text = "Audio"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -1221,8 +1224,8 @@ margin_left = -0.401428
 margin_top = 0.0010376
 margin_right = 180.599
 margin_bottom = 70.001
-theme = SubResource( 7 )
-custom_fonts/font = SubResource( 8 )
+theme = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
 text = "Apply"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -1233,7 +1236,7 @@ margin_left = 207.925
 margin_top = 619.749
 margin_right = 373.925
 margin_bottom = 684.749
-custom_fonts/font = SubResource( 9 )
+custom_fonts/font = SubResource( 7 )
 text = "back"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -1254,7 +1257,7 @@ margin_left = 22.0
 margin_top = 27.0
 margin_right = 831.0
 margin_bottom = 294.0
-custom_fonts/font = SubResource( 10 )
+custom_fonts/font = SubResource( 8 )
 text = "You have changed some settings that need a restart, do yo want to restart now ?"
 align = 1
 valign = 1
@@ -1268,7 +1271,7 @@ margin_left = 484.855
 margin_top = 308.746
 margin_right = 664.855
 margin_bottom = 382.746
-custom_fonts/font = SubResource( 11 )
+custom_fonts/font = SubResource( 9 )
 text = "Yes"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -1279,7 +1282,7 @@ margin_left = 173.0
 margin_top = 311.0
 margin_right = 361.0
 margin_bottom = 379.0
-custom_fonts/font = SubResource( 11 )
+custom_fonts/font = SubResource( 9 )
 text = "No"
 [connection signal="pressed" from="Menu_Buttons/HScrollBar/Bt_game" to="." method="_on_Bt_game_pressed"]
 [connection signal="pressed" from="Menu_Buttons/HScrollBar/Bt_graphics" to="." method="_on_Bt_graphics_pressed"]

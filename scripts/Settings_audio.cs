@@ -45,7 +45,7 @@ public class Settings_audio : Control
         ProjectSettings.Save();
         globale.SaveGame();
         //
-        popup.Popup_();
+        //popup.Popup_();
     }
 
 

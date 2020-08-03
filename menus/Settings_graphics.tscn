@@ -1727,7 +1727,7 @@ text = "No"
 [connection signal="value_changed" from="Settings/VBoxContainer/St_anisotropic/HScrollBar" to="." method="on_anis_change"]
 [connection signal="value_changed" from="Settings/VBoxContainer/St_reflex_atlas_size/HScrollBar" to="." method="on_ras_change"]
 [connection signal="value_changed" from="Settings/VBoxContainer/St_shadow_atlas_size/HScrollBar" to="." method="on_sas_change"]
-[connection signal="changed" from="Settings/VBoxContainer/St_subsurface_scattering/HScrollBar" to="." method="on_ssc_change"]
+[connection signal="value_changed" from="Settings/VBoxContainer/St_subsurface_scattering/HScrollBar" to="." method="on_ssc_change"]
 [connection signal="value_changed" from="Settings/VBoxContainer/St_ambient_occlusion/HScrollBar" to="." method="on_sao_change"]
 [connection signal="pressed" from="Bt_apply" to="." method="on_apply"]
 [connection signal="pressed" from="Bt_back" to="." method="on_cancel"]
