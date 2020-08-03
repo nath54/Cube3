@@ -78,6 +78,7 @@
     <Compile Include="scripts\Settings_other.cs" />
     <Compile Include="scripts\SwipeDetector.cs" />
     <Compile Include="scripts\UI_In_game.cs" />
+    <Compile Include="scripts\videoPlayer.cs" />
     <Compile Include="scripts\Wall.cs" />
     <Compile Include="scripts\Walle.cs" />
     <Compile Include="scripts\World.cs" />

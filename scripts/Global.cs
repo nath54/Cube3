@@ -26,6 +26,8 @@ public class Global : Node
     public int actu_id_niv;
     public int difficulty=0; //0=easy 1=normal 2=hard 3=hell
     public bool respawn=true;
+    public string vidpath="";
+    public string vidscenepath="";
 
     // skins
 
