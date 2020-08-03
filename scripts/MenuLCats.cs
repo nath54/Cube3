@@ -10,7 +10,7 @@ public class MenuLCats : Control
     public Label titre;
     public float container_size=0;
     public List<string> sel_levels;
-    public float size_element=500;
+    public float size_element=400;
     public int nb_bt_placed;
 
     // Called when the node enters the scene tree for the first time.
@@ -60,15 +60,15 @@ public class MenuLCats : Control
     public void createElements(){
         for(int idcat=0; idcat<sel_levels.Count; idcat++){
             Control element = create_Element(idcat);
-            element.RectPosition=new Vector2(100+nb_bt_placed*400,0);
+            element.RectPosition=new Vector2(100+nb_bt_placed*size_element,0);
             nb_bt_placed++;
             container.AddChild(element);
         }
         globale.affNode(container, 0);
     }
 
-    public void on_hsb_changed(float value){
-        container.RectPosition=new Vector2(value*size_element, 0);
+    public void _on_HScrollBar_value_changed(float value){
+        container.RectPosition=new Vector2(-value*size_element, 0);
     }
 
     public void on_level_pressed(int idl){
