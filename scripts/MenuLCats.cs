@@ -46,12 +46,12 @@ public class MenuLCats : Control
         Control element=new Control();
         element.Name="element-"+sel_levels[idl];
         //on crée le bouton pour acceder au level
-        IdButton button = new IdButton();
-        button.Name="button";
-        button.Text=sel_levels[idl];
+        PackedScene packedScene = (PackedScene)ResourceLoader.Load("res://menus/buttons/Bt_Cube_Base.tscn");
+        Bt_Cube button = (Bt_Cube)packedScene.Instance();
+        button.texte=sel_levels[idl];
         button.id=idl;
         button.Connect("cliqued", this, nameof(on_level_pressed));
-        element.AddChild(button);
+        element.AddChild(button);        
         //on le retourne
         return element;
     }

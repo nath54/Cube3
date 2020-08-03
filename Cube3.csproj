@@ -56,6 +56,7 @@
     <Compile Include="levels\aventures\tuto\tuto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="scripts\AlertDialog.cs" />
+    <Compile Include="scripts\Bt_Cube.cs" />
     <Compile Include="scripts\ButtonSkinSelector.cs" />
     <Compile Include="scripts\finNiv.cs" />
     <Compile Include="scripts\Global.cs" />
