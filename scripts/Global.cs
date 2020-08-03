@@ -5,9 +5,9 @@ public class Global : Node
 {
     
     public int level=1;
-    public int mtx = 32;
-    public int mtz = 32;
-    public int mty = 32;
+    public int mtx = 100;
+    public int mtz = 100;
+    public int mty = 100;
     public int nbchem=32;
 
     public float timemax=180;

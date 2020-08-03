@@ -26,6 +26,7 @@ config/quit_on_go_back=false
 [autoload]
 
 Global="*res://scripts/Global.cs"
+GenerateArcade="*res://libs/GenerateArcade.tscn"
 
 [display]
 

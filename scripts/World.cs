@@ -10,6 +10,7 @@ public class World : Spatial
     public GridMap gridMap;
     public string tipemap = "maze";
     public Global globale;
+    public GenerateArcade generateArcade;
     public WorldEnvironment environment;
 
     // Called when the node enters the scene tree for the first time.
@@ -17,10 +18,13 @@ public class World : Spatial
     {   
         //
         globale = (Global)GetNode("/root/Global");
+        PackedScene pack = ResourceLoader.Load("res://libs/GenerateArcade.tscn") as PackedScene;
+        generateArcade = (GenerateArcade)pack.Instance();
+        AddChild(generateArcade);
         //
         player= (Player)GetNode("Player");
         finNiv = (finNiv)GetNode("finNiv");
-        //
+        /*
         gridMap = (GridMap)GetNode("GridMap");
         gridMap.worlde = this;
         gridMap.tipe=globale.tipe;
@@ -76,8 +80,23 @@ public class World : Spatial
             finNiv.Scale=player.Scale*2;
             finNiv.Translation = new Vector3((gridMap.finx*gridMap.CellSize.x)+gridMap.CellSize.x/2, ((gridMap.finy)*gridMap.CellSize.y)+finNiv.Scale.y/10, (gridMap.finz*gridMap.CellSize.z)+gridMap.CellSize.z/2);
         }
+        */
+        int finale_nb_plats=20;
+
+        if(globale.tipe=="platforms"){
+            Spatial mape;
+            Vector3 player_pos;
+            Vector3 finniv_pos;    
+            (mape,player_pos,finniv_pos,finale_nb_plats) = generateArcade.generate_platforms_1();
+            player.Translation = player_pos;
+            player.spawnpoint=player.Translation;
+            finNiv.Translation = finniv_pos;
+            AddChild(mape);
+        }
+
+
         //time
-        globale.levele.timeTotal=gridMap.final_nb_plats*5;
+        globale.levele.timeTotal=finale_nb_plats*5;
         //
         if(globale.difficulty==0){ globale.levele.timeTotal*=1.5F; }
         else if(globale.difficulty==2){ globale.levele.timeTotal/=2; }

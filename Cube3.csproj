@@ -60,6 +60,7 @@
     <Compile Include="scripts\ButtonSkinSelector.cs" />
     <Compile Include="scripts\finNiv.cs" />
     <Compile Include="scripts\Global.cs" />
+    <Compile Include="scripts\GenerateArcade.cs" />
     <Compile Include="scripts\GridMap.cs" />
     <Compile Include="scripts\IdButton.cs" />
     <Compile Include="scripts\Joystick_Button.cs" />
