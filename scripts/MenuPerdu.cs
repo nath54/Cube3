@@ -29,11 +29,11 @@ public class MenuPerdu : Control
         
         int lvl = globale.level;
         int rar=0;
-        if(lvl>10){ rar=1; }
-        if(lvl>25){ rar=2; }
-        if(lvl>50){ rar=3; }
-        if(lvl>80){ rar=4; }
-        if(lvl>100){ rar=5; }
+        if(lvl>=10){ rar=1; }
+        if(lvl>=25){ rar=2; }
+        if(lvl>=50){ rar=3; }
+        if(lvl>=80){ rar=4; }
+        if(lvl>=100){ rar=5; }
         //
         int idskin=-1;
         //
