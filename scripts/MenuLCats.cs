@@ -11,6 +11,7 @@ public class MenuLCats : Control
     public float container_size=0;
     public List<string> sel_levels;
     public float size_element=500;
+    public int nb_bt_placed;
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
@@ -59,6 +60,8 @@ public class MenuLCats : Control
     public void createElements(){
         for(int idcat=0; idcat<sel_levels.Count; idcat++){
             Control element = create_Element(idcat);
+            element.RectPosition=new Vector2(100+nb_bt_placed*250,0);
+            nb_bt_placed++;
             container.AddChild(element);
         }
         globale.affNode(container, 0);
