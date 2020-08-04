@@ -27,6 +27,15 @@ public class MenuPerdu : Control
         if(wtps.Contains(globale.tipe)){
             Random rand = new Random();
             recomp=rand.Next(globale.level-20,globale.level+20);
+            if(globale.difficulty==0){
+                recomp=Convert.ToInt32(recomp/1.5);
+            }
+            else if(globale.difficulty==2){
+                recomp=Convert.ToInt32(recomp*1.5);
+            }
+            else if(globale.difficulty==3){
+                recomp=Convert.ToInt32(recomp*3);
+            }
             if(recomp<1){ recomp=1; }
         }
         Label l_recomp = (Label)GetNode("L_recomp");
