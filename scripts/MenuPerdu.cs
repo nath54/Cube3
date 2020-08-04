@@ -22,7 +22,17 @@ public class MenuPerdu : Control
         if(wtps.Contains(globale.tipe)){
             unlock_skins();
         }
-    
+        //
+        int recomp=0;
+        if(wtps.Contains(globale.tipe)){
+            Random rand = new Random();
+            recomp=rand.Next(globale.level-20,globale.level+20);
+            if(recomp<1){ recomp=1; }
+        }
+        Label l_recomp = (Label)GetNode("L_recomp");
+        l_recomp.Text="You earn : "+recomp;
+        globale.ncubes+=recomp;
+        globale.SaveGame();
     }
 
     public void unlock_skins(){

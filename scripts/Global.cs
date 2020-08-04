@@ -44,7 +44,8 @@ public class Global : Node
         "carreaux",
         "furnace",
         "halo",
-        "transblue"
+        "transblue",
+        "ncubes",
     };
     public string[] skins_preview={
         "res://img_skins/base.png",
@@ -55,6 +56,7 @@ public class Global : Node
         "res://img_skins/furnace.png",
         "res://img_skins/halo.png",
         "res://img_skins/transp_blue.png",
+        "res://img_skins/ncubes.png",
     };
     public string[] skins_path={
         "res://player/skins/skin_0.tscn",
@@ -65,6 +67,7 @@ public class Global : Node
         "res://player/skins/skin_5.tscn",
         "res://player/skins/skin_6.tscn",
         "res://player/skins/skin_7.tscn",
+        "res://player/skins/skin_8.tscn",
     };
     public bool[] skins_unlocked={
         true,
@@ -75,8 +78,10 @@ public class Global : Node
         false,
         false,
         false,
+        false,
     };
     public bool[] skins_secret={
+        false,
         false,
         false,
         false,
@@ -96,6 +101,7 @@ public class Global : Node
         1,
         2,
         2,
+        3,
     };
 
     public string[] skins_recup={
@@ -108,6 +114,7 @@ public class Global : Node
         "arcade",
         "arcade",
         "arcade",
+        "pay",
     };
 
     // cost if recup="pay", level if recup="level", else 0
@@ -120,10 +127,10 @@ public class Global : Node
         0,
         0,
         0,
+        9999,
     };
 
     //levels
-
     public string[] levels_names={
         "tuto-1",
         "tuto-2",
@@ -166,7 +173,13 @@ public class Global : Node
         80,
         80,
     };
-
+    public int[] levels_recomp_ncubes={
+        10,
+        20,
+        30,
+        40,
+        50,
+    };
     //
 
     public string actu_cat="";

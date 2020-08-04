@@ -152,6 +152,9 @@ public class level : Node
         }
         else if(globale.tipe=="levels"){
             if(!globale.player.is_mobile()){ Input.SetMouseMode(Input.MouseMode.Visible); }
+            if(!globale.levels_finis[globale.actu_id_niv]){
+                globale.ncubes+=globale.levels_recomp_ncubes[globale.actu_id_niv];
+            }
             globale.levels_finis[globale.actu_id_niv]=true;
             globale.SaveGame();
             GetTree().ChangeScene("res://menus/MenuLevels.tscn");

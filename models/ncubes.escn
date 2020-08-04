@@ -1,0 +1,92 @@
+[gd_scene load_steps=1 format=2]
+
+[ext_resource id=1 path="ncubes.png" type="Texture"]
+
+[sub_resource id=1 type="Shader"]
+
+resource_name = "Shader Nodetree"
+code = "shader_type spatial;
+render_mode blend_mix, depth_draw_always, cull_back, diffuse_burley, specular_schlick_ggx;
+
+uniform sampler2D texture_0;
+
+
+void node_emission(vec4 emission_color, float strength,
+        out vec3 emission_out, out float alpha_out) {
+    emission_out = emission_color.rgb * strength;
+    alpha_out = emission_color.a;
+}
+
+
+void node_tex_image(vec3 co, sampler2D ima, out vec4 color, out float alpha) {
+    color = texture(ima, co.xy);
+    alpha = color.a;
+}
+
+void vertex () {
+}
+
+void fragment () {
+	
+	// node: 'Image Texture'
+	// type: 'ShaderNodeTexImage'
+	// input sockets handling
+	vec3 node0_in0_vector = vec3(0.0, 0.0, 0.0);
+	// output sockets definitions
+	vec4 node0_out0_color;
+	float node0_out1_alpha;
+	
+	node0_in0_vector = vec3(UV, 0.0);
+	node_tex_image(node0_in0_vector, texture_0, node0_out0_color, node0_out1_alpha);
+	
+	
+	// node: 'Emission'
+	// type: 'ShaderNodeEmission'
+	// input sockets handling
+	vec4 node1_in0_color = node0_out0_color;
+	float node1_in1_strength = float(1.0);
+	// output sockets definitions
+	float node1_emission_out1_alpha;
+	vec3 node1_emission_out0_emission;
+	
+	node_emission(node1_in0_color, node1_in1_strength, node1_emission_out0_emission,
+		node1_emission_out1_alpha);
+	
+	
+	EMISSION = node1_emission_out0_emission;
+}
+"
+
+[sub_resource id=2 type="ShaderMaterial"]
+
+resource_name = ""
+shader = SubResource(1)
+shader_param/texture_0 = ExtResource(1)
+
+[sub_resource id=3 type="ArrayMesh"]
+
+resource_name = "Cube"
+surfaces/0 = {
+	"material":SubResource(2),
+	"primitive":4,
+	"arrays":[
+		Vector3Array(-1.0, 1.0, 1.0, -1.0, -1.0, -1.0, -1.0, -1.0, 1.0, -1.0, 1.0, -1.0, 1.0, -1.0, -1.0, -1.0, -1.0, -1.0, 1.0, 1.0, -1.0, 1.0, -1.0, 1.0, 1.0, -1.0, -1.0, 1.0, 1.0, 1.0, -1.0, -1.0, 1.0, 1.0, -1.0, 1.0, 1.0, -1.0, -1.0, -1.0, -1.0, 1.0, -1.0, -1.0, -1.0, -1.0, 1.0, -1.0, 1.0, 1.0, 1.0, 1.0, 1.0, -1.0, -1.0, 1.0, -1.0, 1.0, 1.0, -1.0, 1.0, 1.0, 1.0, -1.0, 1.0, 1.0, 1.0, -1.0, 1.0, -1.0, 1.0, 1.0),
+		Vector3Array(-1.0, 0.0, 0.0, -1.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, -1.0, 0.0, 0.0, -1.0, 1.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 0.0, -1.0, 0.0, 0.0, -1.0, 0.0, 0.0, -1.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.0, -1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, -1.0, 0.0, 0.0, 1.0, 0.0),
+		FloatArray(0.0, -1.19233e-07, 1.0, 1.0, 0.0, -1.19233e-07, 1.0, 1.0, 0.0, -1.19233e-07, 1.0, 1.0, -1.0, -1.19233e-07, 0.0, 1.0, -1.0, -1.19233e-07, 0.0, 1.0, -1.0, -1.19233e-07, 0.0, 1.0, 0.0, 1.93739e-07, 1.0, 1.0, 0.0, 1.93739e-07, 1.0, 1.0, 0.0, 2.38466e-07, 1.0, 1.0, -1.0, 1.93739e-07, 0.0, 1.0, -1.0, 1.93739e-07, 0.0, 1.0, -1.0, 2.38466e-07, 0.0, 1.0, 1.0, 0.0, 5.96057e-08, 1.0, 1.0, 0.0, 5.96057e-08, 1.0, 1.0, 0.0, 1.19211e-07, 1.0, -1.0, 0.0, 2.3843e-07, 1.0, -1.0, 0.0, 2.3843e-07, 1.0, -1.0, 0.0, 3.57627e-07, 1.0, 0.0, -1.19233e-07, 1.0, 1.0, -1.0, -1.19233e-07, 0.0, 1.0, 0.0, 1.49012e-07, 1.0, 1.0, -1.0, 1.49012e-07, 0.0, 1.0, 1.0, 0.0, 0.0, 1.0, -1.0, 0.0, 1.19233e-07, 1.0),
+		null, ; no Vertex Colors,
+		Vector2Array(0.9999, 0.000100076, 0.000100069, 0.9999, 0.9999, 0.9999, 0.9999, 0.000100076, 0.000100069, 0.9999, 0.9999, 0.9999, 0.000100069, 0.9999, 0.9999, 9.9957e-05, 9.998e-05, 0.000100195, 0.000100069, 0.9999, 0.9999, 9.9957e-05, 9.998e-05, 0.000100195, 0.9999, 0.9999, 0.00010004, 9.9957e-05, 9.998e-05, 0.9999, 0.9999, 0.9999, 0.000100099, 9.9957e-05, 9.998e-05, 0.9999, 9.998e-05, 0.000100195, 9.998e-05, 0.000100195, 0.9999, 0.9999, 0.9999, 0.9999, 0.9999, 9.9957e-05, 0.9999, 0.000100076),
+		null, ; No UV2,
+		null, ; No Bones,
+		null, ; No Weights,
+		IntArray(0, 2, 1, 3, 5, 4, 6, 8, 7, 9, 11, 10, 12, 14, 13, 15, 17, 16, 0, 1, 18, 3, 4, 19, 6, 7, 20, 9, 10, 21, 12, 13, 22, 15, 16, 23)
+	],
+	"morph_arrays":[]
+}
+
+[node type="Spatial" name="Scene"]
+
+[node name="Cube" type="MeshInstance" parent="."]
+
+mesh = SubResource(3)
+visible = true
+transform = Transform(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0)

@@ -72,6 +72,7 @@
     <Compile Include="scripts\MenuPerdu.cs" />
     <Compile Include="scripts\MenuPlayArcade.cs" />
     <Compile Include="scripts\MenuSkins.cs" />
+    <Compile Include="scripts\Message.cs" />
     <Compile Include="scripts\mur.cs" />
     <Compile Include="scripts\Pause_Menu.cs" />
     <Compile Include="scripts\Player.cs" />
