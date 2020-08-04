@@ -8,10 +8,14 @@ public class MainMenu : Control
     private Button bt_settings;
     private Button bt_quit;
     private Control loading;
+    public Global globale;
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
+        //
+        globale = (Global)GetNode("/root/Global");
+        //
         bt_start_arcade = (Button)GetNode("Bt_play_arcade");
         bt_start_adventure = (Button)GetNode("Bt_play_adventure");
         bt_settings = (Button)GetNode("Bt_settings");
@@ -24,7 +28,8 @@ public class MainMenu : Control
 
     public void _on_Bt_play_arcade_pressed(){
         loading.Visible=true;
-        GetTree().ChangeScene("res://menus/MenuPlayArcade.tscn");
+        globale.level=1;
+        GetTree().ChangeScene("res://menus/PreArcadeLevel.tscn");
     }
     public void _on_Bt_play_adventure_pressed(){
         GetTree().ChangeScene("res://menus/MenuLCats.tscn");

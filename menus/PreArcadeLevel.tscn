@@ -1,0 +1,109 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://fonts/Xeliard.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://scripts/PreArcadeLevel.cs" type="Script" id=2]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 60
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 40
+font_data = ExtResource( 1 )
+
+[sub_resource type="Animation" id=4]
+resource_name = "clignotement"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.25 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[node name="PreArcadeLevel" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="Panel" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Titre" type="Label" parent="."]
+anchor_right = 1.0
+margin_top = 58.0
+margin_bottom = 109.0
+custom_fonts/font = SubResource( 2 )
+text = "Level 1 : Platforms"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="L_difficulty" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -625.0
+margin_top = -190.0
+margin_right = 633.0
+margin_bottom = -129.0
+custom_fonts/font = SubResource( 3 )
+text = "Difficulty : easy"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="L_time" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -625.0
+margin_top = -104.0
+margin_right = 633.0
+margin_bottom = -43.0
+custom_fonts/font = SubResource( 3 )
+text = "Time : 60 sec"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="L_click" type="Label" parent="."]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -136.0
+margin_bottom = -96.0
+custom_fonts/font = SubResource( 3 )
+text = "Click to play ..."
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="L_click"]
+anims/clignotement = SubResource( 4 )

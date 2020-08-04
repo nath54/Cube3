@@ -25,6 +25,7 @@ public class Global : Node
     public int sao_quality=0;
     public int actu_id_niv;
     public int difficulty=0; //0=easy 1=normal 2=hard 3=hell
+    public string[] difs = {"easy","normal","hard","hell"};
     public bool respawn=true;
     public string vidpath="";
     public string vidscenepath="res://menus/MainMenu.tscn";

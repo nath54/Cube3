@@ -74,6 +74,7 @@
     <Compile Include="scripts\mur.cs" />
     <Compile Include="scripts\Pause_Menu.cs" />
     <Compile Include="scripts\Player.cs" />
+    <Compile Include="scripts\PreArcadeLevel.cs" />
     <Compile Include="scripts\Settings_audio.cs" />
     <Compile Include="scripts\Settings_Controls.cs" />
     <Compile Include="scripts\Settings_game.cs" />

@@ -56,6 +56,10 @@ public class Settings_Controls : Control
         input_changing=5;
     }
 
+    public void changing_key(){
+        
+    }
+
     public override void _Process(float delta){
         if(changing){
             if(true){

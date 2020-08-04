@@ -35,36 +35,46 @@ public class GenerateArcade : Node
         int maxxz=10;
         int miny=2;
         int maxy=8;
+        double jump_distance=0;
+        double max_jump_distance=10;
         if(globale.difficulty==0){
             minxz=2;
             maxxz=5;
             maxy=5;
+            max_jump_distance=10;
         }
         else if(globale.difficulty==1){
             minxz=2;
             maxxz=7;
-            maxy=6;
+            maxy=5;
+            max_jump_distance=9;
         }
         else if(globale.difficulty==2){
             minxz=2;
             maxxz=8;
-            maxy=7;
+            maxy=5;
+            max_jump_distance=8;
         }
         else if(globale.difficulty==3){
             minxz=2;
-            maxxz=7;
-            maxy=6;            
+            maxxz=6;
+            maxy=4;
+            max_jump_distance=5;
         }
+        do{
+            //DX
+            if(rand.Next(0,2)==1){ dx=rand.Next(minxz,maxxz); }
+            else if(rand.Next(0,2)==1){ dx=rand.Next(-maxxz,-minxz); }
+            //DZ
+            if(rand.Next(0,2)==1){ dz=rand.Next(minxz,maxxz); }
+            else if(rand.Next(0,2)==1){ dz=rand.Next(-maxxz,-minxz); }
+            //DY
+            if(rand.Next(0,2)==1){ dy=rand.Next(miny,maxy); }
+            else if(rand.Next(0,2)==1){ dy=rand.Next(-8,-1); }        
+            //JUMP DISTANCE
+            jump_distance=Math.Sqrt( Math.Pow(dx,2) + Math.Pow(dy,3) + Math.Pow(dz,2) );
+        } while(jump_distance<max_jump_distance);
         
-        //DX
-        if(rand.Next(0,2)==1){ dx=rand.Next(minxz,maxxz); }
-        else if(rand.Next(0,2)==1){ dx=rand.Next(-maxxz,-minxz); }
-        //DZ
-        if(rand.Next(0,2)==1){ dz=rand.Next(minxz,maxxz); }
-        else if(rand.Next(0,2)==1){ dz=rand.Next(-maxxz,-minxz); }
-        //DY
-        if(rand.Next(0,2)==1){ dy=rand.Next(miny,maxy); }
-        else if(rand.Next(0,2)==1){ dy=rand.Next(-8,-1); }        
         return (dx,dy,dz);
     }
 

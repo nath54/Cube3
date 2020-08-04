@@ -14,33 +14,8 @@ public class MenuPlayArcade : Control
         highscoreplats.Text="highscore : "+globale.highscore_plats;
     }
 
-    public void _on_Bt_Maze_pressed(){
-        /*
-        globale.mtx=32;
-        globale.mtz=32;
-        globale.nbchem=32;
-        globale.timemax=180;
-        globale.tipe="maze";
-        globale.player_taille=0.3F;
-        globale.grid_scale=new Vector3(2,2,2);
-        globale.grid_cell_scale=1;
-        globale.level=1;
-        GetTree().ChangeScene("res://levels/World.tscn");
-        */
-    }
-
     public void _on_Bt_Plats_pressed(){
-        globale.mtx=80+5*globale.level;
-        globale.mtz=80+5*globale.level;
-        globale.mty=80+5*globale.level;
-        globale.nb_plats=10+globale.level*2;
-        globale.timemax=18+5*globale.level;
-        globale.tipe="platforms";
-        globale.player_taille=0.5F;
-        globale.grid_scale=new Vector3(1.2F,1.2F,1.2F);
-        globale.grid_cell_scale=1;
-        globale.level=1;
-        GetTree().ChangeScene("res://levels/World.tscn");
+        
     }
 
     public void _on_Bt__pressed(){
