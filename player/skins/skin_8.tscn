@@ -18,7 +18,7 @@ albedo_color = Color( 0, 0.298039, 1, 1 )
 [sub_resource type="SpatialMaterial" id=4]
 emission_enabled = true
 emission = Color( 1, 0, 0, 1 )
-emission_energy = 1.0
+emission_energy = 4.0
 emission_operator = 0
 emission_on_uv2 = false
 

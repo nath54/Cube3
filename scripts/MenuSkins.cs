@@ -45,7 +45,7 @@ public class MenuSkins : Control
                     PackedScene pack = (PackedScene)ResourceLoader.Load("res://menus/buttons/Bt_Rect_Selected.tscn");
                     Bt_Rect bouton = (Bt_Rect)pack.Instance();
                     bouton.Name="Button";
-                    bouton.texte="select";
+                    bouton.texte="selected";
                     bouton.id=ids;
                     bouton.Connect("clique", this, nameof(selectSkin));
                     controle.AddChild(bouton);
