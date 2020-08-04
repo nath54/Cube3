@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://fonts/Xeliard.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://scripts/Settings_Controls.cs" type="Script" id=2]
@@ -15,18 +15,22 @@ font_data = ExtResource( 1 )
 size = 50
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=7]
-size = 40
-font_data = ExtResource( 1 )
-
 [sub_resource type="DynamicFont" id=4]
 size = 40
 font_data = ExtResource( 1 )
 
-[sub_resource type="StyleBoxFlat" id=5]
+[sub_resource type="DynamicFont" id=8]
+size = 35
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 40
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxFlat" id=6]
 bg_color = Color( 0, 0, 0, 0.627451 )
 
-[sub_resource type="DynamicFont" id=6]
+[sub_resource type="DynamicFont" id=7]
 size = 60
 outline_size = 4
 outline_color = Color( 0, 0, 0, 1 )
@@ -47,6 +51,9 @@ margin_right = 174.545
 margin_bottom = 95.9087
 custom_fonts/font = SubResource( 1 )
 text = "back"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Label" type="Label" parent="."]
 margin_left = 354.384
@@ -73,8 +80,9 @@ __meta__ = {
 [node name="HBoxContainer" type="HBoxContainer" parent="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = -5.0
 margin_top = 29.0
-margin_right = 17.0
+margin_right = 12.0
 margin_bottom = -105.0
 __meta__ = {
 "_edit_use_anchors_": false
@@ -82,7 +90,7 @@ __meta__ = {
 
 [node name="VB_Actions" type="VBoxContainer" parent="Control/HBoxContainer"]
 margin_right = 426.0
-margin_bottom = 710.0
+margin_bottom = 451.0
 rect_min_size = Vector2( 426, 0 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -101,55 +109,55 @@ __meta__ = {
 }
 
 [node name="Action1" type="Label" parent="Control/HBoxContainer/VB_Actions"]
-margin_top = 73.0
+margin_top = 74.0
 margin_right = 426.0
-margin_bottom = 133.0
-rect_min_size = Vector2( 0, 60 )
-custom_fonts/font = SubResource( 7 )
+margin_bottom = 144.0
+rect_min_size = Vector2( 0, 70 )
+custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 0.745098, 0.968627, 1, 1 )
 text = "Move Forward"
 align = 1
 valign = 1
 
 [node name="Action2" type="Label" parent="Control/HBoxContainer/VB_Actions"]
-margin_top = 137.0
+margin_top = 148.0
 margin_right = 426.0
-margin_bottom = 197.0
-rect_min_size = Vector2( 0, 60 )
-custom_fonts/font = SubResource( 7 )
+margin_bottom = 218.0
+rect_min_size = Vector2( 0, 70 )
+custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 0.745098, 0.968627, 1, 1 )
 text = "Move Backward"
 align = 1
 valign = 1
 
 [node name="Action3" type="Label" parent="Control/HBoxContainer/VB_Actions"]
-margin_top = 201.0
+margin_top = 222.0
 margin_right = 426.0
-margin_bottom = 261.0
-rect_min_size = Vector2( 0, 60 )
-custom_fonts/font = SubResource( 7 )
+margin_bottom = 292.0
+rect_min_size = Vector2( 0, 70 )
+custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 0.745098, 0.968627, 1, 1 )
 text = "Move Left"
 align = 1
 valign = 1
 
 [node name="Action4" type="Label" parent="Control/HBoxContainer/VB_Actions"]
-margin_top = 265.0
+margin_top = 296.0
 margin_right = 426.0
-margin_bottom = 325.0
-rect_min_size = Vector2( 0, 60 )
-custom_fonts/font = SubResource( 7 )
+margin_bottom = 366.0
+rect_min_size = Vector2( 0, 70 )
+custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 0.745098, 0.968627, 1, 1 )
 text = "Move Right"
 align = 1
 valign = 1
 
 [node name="Action5" type="Label" parent="Control/HBoxContainer/VB_Actions"]
-margin_top = 329.0
+margin_top = 370.0
 margin_right = 426.0
-margin_bottom = 389.0
-rect_min_size = Vector2( 0, 60 )
-custom_fonts/font = SubResource( 7 )
+margin_bottom = 440.0
+rect_min_size = Vector2( 0, 70 )
+custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 0.745098, 0.968627, 1, 1 )
 text = "Jump"
 align = 1
@@ -158,7 +166,7 @@ valign = 1
 [node name="VB_Keys" type="VBoxContainer" parent="Control/HBoxContainer"]
 margin_left = 430.0
 margin_right = 856.0
-margin_bottom = 710.0
+margin_bottom = 451.0
 rect_min_size = Vector2( 426, 0 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -166,7 +174,8 @@ __meta__ = {
 
 [node name="Titre" type="Label" parent="Control/HBoxContainer/VB_Keys"]
 margin_right = 426.0
-margin_bottom = 51.0
+margin_bottom = 70.0
+rect_min_size = Vector2( 0, 70 )
 custom_fonts/font = SubResource( 3 )
 text = "Keys : "
 align = 1
@@ -176,55 +185,55 @@ __meta__ = {
 }
 
 [node name="Key1" type="Label" parent="Control/HBoxContainer/VB_Keys"]
-margin_top = 54.0
+margin_top = 74.0
 margin_right = 426.0
-margin_bottom = 114.0
-rect_min_size = Vector2( 0, 60 )
-custom_fonts/font = SubResource( 7 )
+margin_bottom = 144.0
+rect_min_size = Vector2( 0, 70 )
+custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 0.184314, 0.368627, 0.560784, 1 )
 text = "Z"
 align = 1
 valign = 1
 
 [node name="Key2" type="Label" parent="Control/HBoxContainer/VB_Keys"]
-margin_top = 118.0
+margin_top = 148.0
 margin_right = 426.0
-margin_bottom = 178.0
-rect_min_size = Vector2( 0, 60 )
-custom_fonts/font = SubResource( 7 )
+margin_bottom = 218.0
+rect_min_size = Vector2( 0, 70 )
+custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 0.184314, 0.368627, 0.560784, 1 )
 text = "S"
 align = 1
 valign = 1
 
 [node name="Key3" type="Label" parent="Control/HBoxContainer/VB_Keys"]
-margin_top = 182.0
+margin_top = 222.0
 margin_right = 426.0
-margin_bottom = 242.0
-rect_min_size = Vector2( 0, 60 )
-custom_fonts/font = SubResource( 7 )
+margin_bottom = 292.0
+rect_min_size = Vector2( 0, 70 )
+custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 0.184314, 0.368627, 0.560784, 1 )
 text = "Q"
 align = 1
 valign = 1
 
 [node name="Key4" type="Label" parent="Control/HBoxContainer/VB_Keys"]
-margin_top = 246.0
+margin_top = 296.0
 margin_right = 426.0
-margin_bottom = 306.0
-rect_min_size = Vector2( 0, 60 )
-custom_fonts/font = SubResource( 7 )
+margin_bottom = 366.0
+rect_min_size = Vector2( 0, 70 )
+custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 0.184314, 0.368627, 0.560784, 1 )
 text = "D"
 align = 1
 valign = 1
 
 [node name="Key5" type="Label" parent="Control/HBoxContainer/VB_Keys"]
-margin_top = 310.0
+margin_top = 370.0
 margin_right = 426.0
-margin_bottom = 370.0
-rect_min_size = Vector2( 0, 60 )
-custom_fonts/font = SubResource( 7 )
+margin_bottom = 440.0
+rect_min_size = Vector2( 0, 70 )
+custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 0.184314, 0.368627, 0.560784, 1 )
 text = "Space"
 align = 1
@@ -233,7 +242,7 @@ valign = 1
 [node name="VB_btchanges" type="VBoxContainer" parent="Control/HBoxContainer"]
 margin_left = 860.0
 margin_right = 1286.0
-margin_bottom = 710.0
+margin_bottom = 451.0
 rect_min_size = Vector2( 426, 0 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -251,23 +260,131 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Bt1" type="Control" parent="Control/HBoxContainer/VB_btchanges"]
+margin_top = 74.0
+margin_right = 426.0
+margin_bottom = 144.0
+rect_min_size = Vector2( 0, 70 )
+
+[node name="Button" type="Button" parent="Control/HBoxContainer/VB_btchanges/Bt1"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -87.0
+margin_top = -33.5
+margin_right = 87.0
+margin_bottom = 33.5
+custom_fonts/font = SubResource( 8 )
+text = "change"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Bt2" type="Control" parent="Control/HBoxContainer/VB_btchanges"]
+margin_top = 148.0
+margin_right = 426.0
+margin_bottom = 218.0
+rect_min_size = Vector2( 0, 70 )
+
+[node name="Button" type="Button" parent="Control/HBoxContainer/VB_btchanges/Bt2"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -87.0
+margin_top = -33.5
+margin_right = 87.0
+margin_bottom = 33.5
+custom_fonts/font = SubResource( 8 )
+text = "change"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Bt3" type="Control" parent="Control/HBoxContainer/VB_btchanges"]
+margin_top = 222.0
+margin_right = 426.0
+margin_bottom = 292.0
+rect_min_size = Vector2( 0, 70 )
+
+[node name="Button" type="Button" parent="Control/HBoxContainer/VB_btchanges/Bt3"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -87.0
+margin_top = -33.5
+margin_right = 87.0
+margin_bottom = 33.5
+custom_fonts/font = SubResource( 8 )
+text = "change"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Bt4" type="Control" parent="Control/HBoxContainer/VB_btchanges"]
+margin_top = 296.0
+margin_right = 426.0
+margin_bottom = 366.0
+rect_min_size = Vector2( 0, 70 )
+
+[node name="Button" type="Button" parent="Control/HBoxContainer/VB_btchanges/Bt4"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -87.0
+margin_top = -33.5
+margin_right = 87.0
+margin_bottom = 33.5
+custom_fonts/font = SubResource( 8 )
+text = "change"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Bt5" type="Control" parent="Control/HBoxContainer/VB_btchanges"]
+margin_top = 370.0
+margin_right = 426.0
+margin_bottom = 440.0
+rect_min_size = Vector2( 0, 70 )
+
+[node name="Button" type="Button" parent="Control/HBoxContainer/VB_btchanges/Bt5"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -87.0
+margin_top = -33.5
+margin_right = 87.0
+margin_bottom = 33.5
+custom_fonts/font = SubResource( 8 )
+text = "change"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Button" type="Button" parent="Control"]
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 margin_left = -82.5
-margin_top = -90.0
+margin_top = -87.0
 margin_right = 82.5
-margin_bottom = -28.0
-custom_fonts/font = SubResource( 4 )
+margin_bottom = -25.0
+custom_fonts/font = SubResource( 5 )
 text = "Save"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="pressAKey" type="Panel" parent="."]
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_styles/panel = SubResource( 5 )
+custom_styles/panel = SubResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -275,10 +392,16 @@ __meta__ = {
 [node name="Label" type="Label" parent="pressAKey"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 7 )
 text = "Please press a key ..."
 align = 1
 valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+[connection signal="pressed" from="Bt_back" to="." method="_on_Bt_back_pressed"]
+[connection signal="pressed" from="Control/HBoxContainer/VB_btchanges/Bt1/Button" to="." method="on_bt_change_1"]
+[connection signal="pressed" from="Control/HBoxContainer/VB_btchanges/Bt2/Button" to="." method="on_bt_change_2"]
+[connection signal="pressed" from="Control/HBoxContainer/VB_btchanges/Bt3/Button" to="." method="on_bt_change_3"]
+[connection signal="pressed" from="Control/HBoxContainer/VB_btchanges/Bt4/Button" to="." method="on_bt_change_4"]
+[connection signal="pressed" from="Control/HBoxContainer/VB_btchanges/Bt5/Button" to="." method="on_bt_change_5"]

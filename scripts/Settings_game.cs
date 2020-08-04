@@ -91,6 +91,10 @@ public class Settings_game : Control
         GetTree().Quit();        
     }
 
+    public void _on_bt_controls_press(){
+        GetTree().ChangeScene("res://menus/Settings Controls.tscn");
+    }
+
     public void on_quit(){
         popup.Hide();
         GetTree().ChangeScene("res://menus/Settings_game.tscn");

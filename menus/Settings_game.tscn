@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://fonts/Xeliard.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://scripts/Settings_game.cs" type="Script" id=2]
@@ -8,10 +8,14 @@ size = 50
 font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=2]
+size = 40
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=3]
 size = 35
 font_data = ExtResource( 1 )
 
-[sub_resource type="StyleBoxFlat" id=3]
+[sub_resource type="StyleBoxFlat" id=4]
 bg_color = Color( 0.117647, 0.894118, 0, 1 )
 border_width_left = 1
 border_width_top = 1
@@ -23,7 +27,7 @@ corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
-[sub_resource type="StyleBoxFlat" id=4]
+[sub_resource type="StyleBoxFlat" id=5]
 bg_color = Color( 0.4, 0.803922, 0.133333, 1 )
 border_width_left = 1
 border_width_top = 1
@@ -35,7 +39,7 @@ corner_radius_top_right = 5
 corner_radius_bottom_right = 3
 corner_radius_bottom_left = 5
 
-[sub_resource type="StyleBoxFlat" id=5]
+[sub_resource type="StyleBoxFlat" id=6]
 bg_color = Color( 0.262745, 1, 0, 1 )
 corner_radius_top_left = 8
 corner_radius_top_right = 5
@@ -44,7 +48,7 @@ corner_radius_bottom_left = 8
 shadow_color = Color( 0.14902, 0.517647, 0, 1 )
 shadow_size = 5
 
-[sub_resource type="Theme" id=6]
+[sub_resource type="Theme" id=7]
 BoxContainer/constants/separation = 4
 Button/colors/font_color = Color( 1, 1, 1, 1 )
 Button/colors/font_color_disabled = Color( 0.705882, 0.705882, 0.705882, 1 )
@@ -54,9 +58,9 @@ Button/colors/icon_color_hover = Color( 0, 0, 0, 1 )
 Button/colors/icon_color_pressed = Color( 0, 0, 0, 1 )
 Button/styles/disabled = null
 Button/styles/focus = null
-Button/styles/hover = SubResource( 3 )
-Button/styles/normal = SubResource( 4 )
-Button/styles/pressed = SubResource( 5 )
+Button/styles/hover = SubResource( 4 )
+Button/styles/normal = SubResource( 5 )
+Button/styles/pressed = SubResource( 6 )
 CheckBox/colors/font_color = Color( 0, 0, 0, 1 )
 CheckBox/colors/font_color_disabled = Color( 0, 0, 0, 1 )
 CheckBox/colors/font_color_hover = Color( 0, 0, 0, 1 )
@@ -1108,19 +1112,19 @@ WindowDialog/icons/close = null
 WindowDialog/icons/close_highlight = null
 WindowDialog/styles/panel = null
 
-[sub_resource type="DynamicFont" id=7]
-size = 35
-font_data = ExtResource( 1 )
-
 [sub_resource type="DynamicFont" id=8]
 size = 35
 font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=9]
-size = 40
+size = 35
 font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=10]
+size = 40
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=11]
 size = 40
 font_data = ExtResource( 1 )
 
@@ -1216,13 +1220,34 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="St_difficulty" type="Control" parent="Settings/VBoxContainer"]
+[node name="Control" type="Control" parent="Settings/VBoxContainer"]
 margin_right = 900.0
+margin_bottom = 120.0
+rect_min_size = Vector2( 0, 120 )
+
+[node name="Button" type="Button" parent="Settings/VBoxContainer/Control"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 41.0
+margin_top = -33.0
+margin_right = 403.0
+margin_bottom = 13.0
+custom_fonts/font = SubResource( 2 )
+text = "Change Controls"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="St_difficulty" type="Control" parent="Settings/VBoxContainer"]
+margin_top = 124.0
+margin_right = 900.0
+margin_bottom = 524.0
+rect_min_size = Vector2( 0, 400 )
 
 [node name="Label" type="Label" parent="Settings/VBoxContainer/St_difficulty"]
 margin_right = 372.0
 margin_bottom = 40.0
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 3 )
 text = "Difficulty : easy"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -1242,7 +1267,7 @@ margin_left = 48.0
 margin_top = 101.0
 margin_right = 420.0
 margin_bottom = 176.0
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 3 )
 text = "-Time * 1.5
 -Respawns"
 __meta__ = {
@@ -1258,8 +1283,8 @@ margin_left = -0.401428
 margin_top = 0.0010376
 margin_right = 180.599
 margin_bottom = 70.001
-theme = SubResource( 6 )
-custom_fonts/font = SubResource( 7 )
+theme = SubResource( 7 )
+custom_fonts/font = SubResource( 8 )
 text = "Apply"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -1270,7 +1295,7 @@ margin_left = 207.925
 margin_top = 619.749
 margin_right = 373.925
 margin_bottom = 684.749
-custom_fonts/font = SubResource( 8 )
+custom_fonts/font = SubResource( 9 )
 text = "back"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -1291,7 +1316,7 @@ margin_left = 22.0
 margin_top = 27.0
 margin_right = 831.0
 margin_bottom = 294.0
-custom_fonts/font = SubResource( 9 )
+custom_fonts/font = SubResource( 10 )
 text = "You have changed some settings that need a restart, do yo want to restart now ?"
 align = 1
 valign = 1
@@ -1305,7 +1330,7 @@ margin_left = 484.855
 margin_top = 308.746
 margin_right = 664.855
 margin_bottom = 382.746
-custom_fonts/font = SubResource( 10 )
+custom_fonts/font = SubResource( 11 )
 text = "Yes"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -1316,13 +1341,14 @@ margin_left = 173.0
 margin_top = 311.0
 margin_right = 361.0
 margin_bottom = 379.0
-custom_fonts/font = SubResource( 10 )
+custom_fonts/font = SubResource( 11 )
 text = "No"
 [connection signal="pressed" from="Menu_Buttons/HScrollBar/Bt_game" to="." method="_on_Bt_game_pressed"]
 [connection signal="pressed" from="Menu_Buttons/HScrollBar/Bt_graphics" to="." method="_on_Bt_graphics_pressed"]
 [connection signal="pressed" from="Menu_Buttons/HScrollBar/Bt_audio" to="." method="_on_Bt_audio_pressed"]
 [connection signal="pressed" from="Menu_Buttons/HScrollBar/Bt_other" to="." method="_on_Bt_other_pressed"]
 [connection signal="value_changed" from="VScrollBar" to="." method="_on_VScrollBar_value_changed"]
+[connection signal="pressed" from="Settings/VBoxContainer/Control/Button" to="." method="_on_bt_controls_press"]
 [connection signal="value_changed" from="Settings/VBoxContainer/St_difficulty/HScrollBar" to="." method="on_hsb_dif_changed"]
 [connection signal="pressed" from="Bt_apply" to="." method="on_apply"]
 [connection signal="pressed" from="Bt_back" to="." method="on_cancel"]
