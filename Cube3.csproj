@@ -75,6 +75,7 @@
     <Compile Include="scripts\Pause_Menu.cs" />
     <Compile Include="scripts\Player.cs" />
     <Compile Include="scripts\Settings_audio.cs" />
+    <Compile Include="scripts\Settings_Controls.cs" />
     <Compile Include="scripts\Settings_game.cs" />
     <Compile Include="scripts\Settings_graphics.cs" />
     <Compile Include="scripts\Settings_other.cs" />
