@@ -19,16 +19,24 @@ public class level : Node
         globale=(Global)GetNode("/root/Global");
         globale.levele=this;
         globale.Connect("playerDeath",this,nameof(player_mort));
-        if( globale.tipe=="platforms" && globale.level>globale.highscore_plats){
-            globale.highscore_plats=globale.level;
+        if(globale.difficulty==0 && globale.level>globale.highscore_easy){
+            globale.highscore_easy=globale.level;
             globale.SaveGame();
         }
-        if(globale.difficulty<3){
-            globale.respawn=true;
+        else if(globale.difficulty==1 && globale.level>globale.highscore_normal){
+            globale.highscore_normal=globale.level;
+            globale.SaveGame();
         }
-        else{
-            globale.respawn=false;
+        else if(globale.difficulty==2 && globale.level>globale.highscore_hard){
+            globale.highscore_hard=globale.level;
+            globale.SaveGame();
         }
+        else if(globale.difficulty==3 && globale.level>globale.highscore_hell){
+            globale.highscore_hell=globale.level;
+            globale.SaveGame();
+        }
+        if(globale.difficulty<3){ globale.respawn=true; }
+        else{ globale.respawn=false; }
         //
         pause_menu = (Control)GetNode("Pause_Menu");
         pause_menu.Visible=false;

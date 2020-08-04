@@ -9,7 +9,7 @@ public class Global : Node
     public int mtz = 100;
     public int mty = 100;
     public int nbchem=32;
-
+    public int ncubes=0;
     public float timemax=180;
     public int nb_plats=20;
     public string tipe="platforms";
@@ -20,6 +20,10 @@ public class Global : Node
     public int max_skin=8;
     public int ms_cam=0;
     public int highscore_plats=1;
+    public int highscore_easy=1;
+    public int highscore_normal=1;
+    public int highscore_hard=1;
+    public int highscore_hell=1;
     public bool aff_fps=true;
     public bool sao=false;
     public int sao_quality=0;
@@ -29,7 +33,7 @@ public class Global : Node
     public bool respawn=true;
     public string vidpath="";
     public string vidscenepath="res://menus/MainMenu.tscn";
-
+    public string[] rarities = {"common","rare","epic","legendary","divine","mythical"};
     // skins
 
     public string[] skins_names={
@@ -104,6 +108,18 @@ public class Global : Node
         "arcade",
         "arcade",
         "arcade",
+    };
+
+    // cost if recup="pay", level if recup="level", else 0
+    public int[] skins_value={
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
     };
 
     //levels
@@ -198,11 +214,15 @@ public class Global : Node
             { "Parent", GetParent().GetPath() },
             { "skin_id_equipe",""+skin_id_equipe },
             { "ms_cam", ""+ms_cam },
-            { "highscore_plats", ""+highscore_plats },
+            { "highscore_easy", ""+highscore_easy },
+            { "highscore_normal", ""+highscore_normal },
+            { "highscore_hard", ""+highscore_hard },
+            { "highscore_hell", ""+highscore_hell },
             { "aff_fps", aff_fps},
             { "sao", sao},
             { "sao_quality", sao_quality},
             { "difficulty",difficulty},
+            { "ncubes",ncubes },
 
         };
     }
@@ -282,8 +302,17 @@ public class Global : Node
                 if( nodeData.Keys.Contains("ms_cam")){
                     ms_cam=Convert.ToInt32(nodeData["ms_cam"]);
                 }
-                if( nodeData.Keys.Contains("highscore_plats")){
-                    highscore_plats=Convert.ToInt32(nodeData["highscore_plats"]);
+                if( nodeData.Keys.Contains("highscore_easy")){
+                    highscore_easy=Convert.ToInt32(nodeData["highscore_easy"]);
+                }
+                if( nodeData.Keys.Contains("highscore_normal")){
+                    highscore_normal=Convert.ToInt32(nodeData["highscore_normal"]);
+                }
+                if( nodeData.Keys.Contains("highscore_hard")){
+                    highscore_hard=Convert.ToInt32(nodeData["highscore_hard"]);
+                }
+                if( nodeData.Keys.Contains("highscore_hell")){
+                    highscore_hell=Convert.ToInt32(nodeData["highscore_hell"]);
                 }
                 if( nodeData.Keys.Contains("aff_fps")){
                     aff_fps=Convert.ToBoolean(nodeData["aff_fps"]);
@@ -296,6 +325,9 @@ public class Global : Node
                 }
                 if( nodeData.Keys.Contains("difficulty")){
                     difficulty=Convert.ToInt32(nodeData["difficulty"]);
+                }
+                if( nodeData.Keys.Contains("ncubes")){
+                    ncubes=Convert.ToInt32(nodeData["ncubes"]);
                 }
             }
             else if((string)nodeData["name"]=="skin_unlocked"){
