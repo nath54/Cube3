@@ -67,7 +67,7 @@ public class Global : Node
         "res://player/skins/skin_5.tscn",
         "res://player/skins/skin_6.tscn",
         "res://player/skins/skin_7.tscn",
-        "res://player/skins/skin_8.tscn",
+        "res://player/skins/ncubes.tscn",
     };
     public bool[] skins_unlocked={
         true,
