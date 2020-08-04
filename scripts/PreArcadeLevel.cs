@@ -22,10 +22,13 @@ public class PreArcadeLevel : Control
         Label l_dif = (Label)GetNode("L_difficulty");
         Label l_time = (Label)GetNode("L_time");
         Label l_titre = (Label)GetNode("Titre");
+        Label l_click = (Label)GetNode("L_click");
         //
         l_dif.Text = "Difficulty : "+globale.difs[globale.difficulty];
         l_titre.Text = "level "+globale.level+" : "+globale.tipe;
         l_time.Text = "time maximum : "+globale.timemax+" sec";
+        //
+        l_click.Text="click or press "+((InputEvent)InputMap.GetActionList("jump")[0]).AsText()+" to play ...";
     }
 
     public void prepare_platform(){
@@ -51,8 +54,13 @@ public class PreArcadeLevel : Control
     }
 
     public override void _Input(InputEvent @event){
-        if(@event is InputEventKey || @event is InputEventScreenTouch){
+        if(@event is InputEventScreenTouch){
             GetTree().ChangeScene("res://levels/World.tscn");
+        }
+        else if(@event is InputEventKey ie){
+            if(ie.IsActionPressed("jump")){
+                GetTree().ChangeScene("res://levels/World.tscn");
+            }
         }
     }
 

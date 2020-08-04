@@ -148,7 +148,7 @@ public class level : Node
         if(worlds.Contains(globale.tipe)){
             globale.level+=1;
             if(!globale.player.is_mobile()){ Input.SetMouseMode(Input.MouseMode.Visible); }
-            GetTree().ChangeScene("res://levels/World.tscn");
+            GetTree().ChangeScene("res://menus/PreArcadeLevel.tscn");
         }
         else if(globale.tipe=="levels"){
             if(!globale.player.is_mobile()){ Input.SetMouseMode(Input.MouseMode.Visible); }
