@@ -7,6 +7,7 @@ public class Message : Panel
     public string message = "message";
     public string txt_bt = "ok";
 
+    public Global globale;
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
@@ -19,7 +20,7 @@ public class Message : Panel
         button.Text=txt_bt;
     }
 
-    public void quite(){
+    public void _on_Button_pressed(){
         Node parent = GetParent();
         parent.RemoveChild(this);
     }

@@ -17,7 +17,7 @@ public class Global : Node
     public Vector3 grid_scale = new Vector3(1,1,1);
     public float grid_cell_scale = 1;
     public int skin_id_equipe=0;
-    public int max_skin=8;
+    public int max_skin=9;
     public int ms_cam=0;
     public int highscore_plats=1;
     public int highscore_easy=1;
@@ -106,7 +106,6 @@ public class Global : Node
 
     public string[] skins_recup={
         "none",
-        "arcade",
         "arcade",
         "arcade",
         "arcade",
@@ -361,6 +360,16 @@ public class Global : Node
             }
         }
         saveGame.Close();
+    }
+
+    public void aff_message(string titre="titre",string message="message",string txt_but="ok"){
+        PackedScene packed = ResourceLoader.Load("res://menus/Message.tscn") as PackedScene;
+        Message mes = (Message)packed.Instance();
+        mes.titre=titre;
+        mes.message=message;
+        mes.txt_bt=txt_but;
+        
+        GetTree().Root.AddChild(mes);
     }
 
 }

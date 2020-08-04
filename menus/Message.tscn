@@ -1,14 +1,30 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://fonts/Xeliard.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://scripts/Message.cs" type="Script" id=2]
 
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0.352941, 0.376471, 0.384314, 1 )
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color( 0, 0, 0, 1 )
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
 [sub_resource type="DynamicFont" id=1]
 size = 50
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=2]
 size = 30
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=3]
@@ -24,6 +40,7 @@ margin_left = -471.5
 margin_top = -254.0
 margin_right = 471.5
 margin_bottom = 254.0
+custom_styles/panel = SubResource( 4 )
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -31,24 +48,31 @@ __meta__ = {
 
 [node name="Titre" type="Label" parent="."]
 anchor_right = 1.0
-margin_bottom = 63.0
+margin_top = 27.0
+margin_bottom = 90.0
 custom_fonts/font = SubResource( 1 )
 text = "Titre"
 align = 1
 valign = 1
 autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Message" type="Label" parent="."]
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-margin_top = -185.0
+margin_top = -161.0
 margin_bottom = 162.0
 custom_fonts/font = SubResource( 2 )
 text = "Message"
 align = 1
 valign = 1
 autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Button" type="Button" parent="."]
 anchor_left = 0.5
@@ -64,3 +88,4 @@ text = "ok"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]

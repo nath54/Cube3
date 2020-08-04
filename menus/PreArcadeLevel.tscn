@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://fonts/Xeliard.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://scripts/PreArcadeLevel.cs" type="Script" id=2]
+[ext_resource path="res://menus/Aff_ncubes.tscn" type="PackedScene" id=3]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0, 0, 0, 1 )
@@ -45,6 +46,8 @@ custom_styles/panel = SubResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Aff_ncubes" parent="." instance=ExtResource( 3 )]
 
 [node name="Titre" type="Label" parent="."]
 anchor_right = 1.0

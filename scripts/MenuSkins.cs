@@ -142,44 +142,41 @@ public class MenuSkins : Control
                 globale.skins_unlocked[idskin]=true;
             }
             else{
-                Message mes = new Message();
-                mes.titre="Warning !";
-                mes.message="You don't have enuch money to buy this skin !";
-                AddChild(mes);
+                globale.aff_message("Warning !","You don't have enuch money to buy this skin !");
             }
         }
         else{
             //TODO : afficher un message qui dit comment le débloquer
-            Message mes = new Message();
-            mes.titre="Skin Locked !";
-            mes.message="";
+            
+            string titre="Skin Locked !";
+            string message="";
             if(globale.skins_recup[idskin]=="level_finish"){
-                mes.message="You need finish the level "+globale.levels_names[globale.skins_value[idskin]]+" of "+globale.levels_category[globale.skins_value[idskin]]+" to unlock this skin.";
+                message="You need finish the level "+globale.levels_names[globale.skins_value[idskin]]+" of "+globale.levels_category[globale.skins_value[idskin]]+" to unlock this skin.";
             }
             else if(globale.skins_recup[idskin]=="level_finf"){
-                mes.message="You need to find this  skin in the level "+globale.levels_names[globale.skins_value[idskin]]+" of "+globale.levels_category[globale.skins_value[idskin]]+" to unlock this skin.";
+                message="You need to find this  skin in the level "+globale.levels_names[globale.skins_value[idskin]]+" of "+globale.levels_category[globale.skins_value[idskin]]+" to unlock this skin.";
             }
             else if(globale.skins_recup[idskin]=="arcade"){
                 string[] lvl_rar={"1","10","25","50","80","100","1000"};
-                mes.message="You need to raich the level "+lvl_rar[globale.skins_rarity[idskin]]+" to unlock this skin.";
+                message="You need to raich the level "+lvl_rar[globale.skins_rarity[idskin]]+" to unlock in Arcade mode this skin.";
             }
             else if(globale.skins_recup[idskin]=="arcade-easy"){
                 string[] lvl_rar={"1","10","25","50","80","100","1000"};
-                mes.message="You need to raich the level "+lvl_rar[globale.skins_rarity[idskin]]+" in easy mode to unlock this skin.";
+                message="You need to raich the level "+lvl_rar[globale.skins_rarity[idskin]]+" in easy difficulty in Arcade mode to unlock this skin.";
             }
             else if(globale.skins_recup[idskin]=="arcade-normal"){
                 string[] lvl_rar={"1","10","25","50","80","100","1000"};
-                mes.message="You need to raich the level "+lvl_rar[globale.skins_rarity[idskin]]+" in normal mode to unlock this skin.";
+                message="You need to raich the level "+lvl_rar[globale.skins_rarity[idskin]]+" in normal difficulty in Arcade mode to unlock this skin.";
             }
             else if(globale.skins_recup[idskin]=="arcade-hard"){
                 string[] lvl_rar={"1","10","25","50","80","100","1000"};
-                mes.message="You need to raich the level "+lvl_rar[globale.skins_rarity[idskin]]+" in hard mode to unlock this skin.";
+                message="You need to raich the level "+lvl_rar[globale.skins_rarity[idskin]]+" in hard difficulty in Arcade mode to unlock this skin.";
             }
             else if(globale.skins_recup[idskin]=="arcade-hell"){
                 string[] lvl_rar={"1","10","25","50","80","100","1000"};
-                mes.message="You need to raich the level "+lvl_rar[globale.skins_rarity[idskin]]+" in hell mode to unlock this skin.";
-            }
-            AddChild(mes);
+                message="You need to raich the level "+lvl_rar[globale.skins_rarity[idskin]]+" in hell difficulty in Arcade mode to unlock this skin.";
+            }            
+            globale.aff_message(titre,message);
         }
     }
 
