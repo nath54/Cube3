@@ -26,7 +26,8 @@ public class MenuPerdu : Control
         int recomp=0;
         if(wtps.Contains(globale.tipe)){
             Random rand = new Random();
-            recomp=rand.Next(globale.level-20,globale.level+20);
+            int jj=globale.level*4;
+            recomp=rand.Next(jj-10,jj+20);
             if(globale.difficulty==0){
                 recomp=Convert.ToInt32(recomp/1.5);
             }
@@ -48,36 +49,40 @@ public class MenuPerdu : Control
         
         int lvl = globale.level;
         int rar=0;
-        if(lvl>=10){ rar=1; }
-        if(lvl>=25){ rar=2; }
-        if(lvl>=50){ rar=3; }
-        if(lvl>=80){ rar=4; }
-        if(lvl>=100){ rar=5; }
-        //
-        int idskin=-1;
-        //
-        while(idskin==-1 && rar>=0){
-            List<int> skins_dispo=new List<int>();
-            for(int ids=0; ids<globale.skins_names.Length; ids++){
-                if(globale.skins_rarity[ids]==rar && !globale.skins_unlocked[ids] && globale.skins_recup[ids]=="arcade"){
-                    skins_dispo.Add(ids);
+        bool unlock=false;
+        for(int w=0; w<globale.rar_deb_skin.Length; w++){
+            if(lvl>=globale.rar_deb_skin[w]){
+                rar=w;
+                unlock=true;
+            }
+        }
+        if(unlock){
+            //
+            int idskin=-1;
+            //
+            while(idskin==-1 && rar>=0){
+                List<int> skins_dispo=new List<int>();
+                for(int ids=0; ids<globale.skins_names.Length; ids++){
+                    if(globale.skins_rarity[ids]==rar && !globale.skins_unlocked[ids] && globale.skins_recup[ids]=="arcade"){
+                        skins_dispo.Add(ids);
+                    }
+                }
+                if(skins_dispo.Count>0){
+                    Random random=new Random();
+                    int i=random.Next(0, skins_dispo.Count);
+                    idskin=skins_dispo[i];
+                }
+                else{
+                    rar--;
                 }
             }
-            if(skins_dispo.Count>0){
-                Random random=new Random();
-                int i=random.Next(0, skins_dispo.Count);
-                idskin=skins_dispo[i];
+            //
+            if(idskin!=-1){
+                skins_unlock.Visible=true;
+                skin_preview.Texture=ResourceLoader.Load(globale.skins_preview[idskin]) as Texture;
+                globale.skins_unlocked[idskin]=true;
             }
-            else{
-                rar--;
-            }
-        }
-        //
-        if(idskin!=-1){
-            skins_unlock.Visible=true;
-            skin_preview.Texture=ResourceLoader.Load(globale.skins_preview[idskin]) as Texture;
-            globale.skins_unlocked[idskin]=true;
-        }
+        }        
     }
 
     public void _on_Bt_Menu_pressed(){

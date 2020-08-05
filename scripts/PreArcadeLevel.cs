@@ -29,6 +29,28 @@ public class PreArcadeLevel : Control
         l_time.Text = "time maximum : "+globale.timemax+" sec";
         //
         l_click.Text="click or press "+((InputEvent)InputMap.GetActionList("jump")[0]).AsText()+" to play ...";
+        //
+        bool gagne_skin=false;
+        int rar=0;
+        for(int w=0; w<globale.max_skin; w++){
+            if(globale.skins_recup[w]=="arcade" || globale.skins_recup[w]=="arcade-"+globale.difs[globale.difficulty] ){
+                if(!globale.skins_unlocked[w] && globale.level>=globale.rar_deb_skin[globale.skins_rarity[w]]){
+                    gagne_skin=true;
+                    if(globale.skins_rarity[w]>rar){
+                        rar=globale.skins_rarity[w];
+                    }
+                }
+            }
+        }
+        if(gagne_skin){
+            Panel ifd = (Panel)GetNode("Info_die");
+            Label lifd = (Label)GetNode("Info_die/L_srar");
+            Godot.Color cl = new Godot.Color(globale.cl_rars[rar]);  //;
+            lifd.Text=globale.rarities[rar];
+            lifd.AddColorOverride("font_color",cl);
+            ifd.Visible=true;
+        }
+
     }
 
     public void prepare_platform(){

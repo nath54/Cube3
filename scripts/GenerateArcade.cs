@@ -41,7 +41,7 @@ public class GenerateArcade : Node
             minxz=2;
             maxxz=5;
             maxy=5;
-            max_jump_distance=10;
+            max_jump_distance=6;
         }
         else if(globale.difficulty==1){
             minxz=2;

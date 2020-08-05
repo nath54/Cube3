@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Godot;
 using System;
 
@@ -34,7 +35,13 @@ public class Global : Node
     public string vidpath="";
     public string vidscenepath="res://menus/MainMenu.tscn";
     public string[] rarities = {"common","rare","epic","legendary","divine","mythical"};
+    public int[] rar_deb_skin = {2,10,25,50,80,100};
+    public string[] cl_rars={"92cfff","fda10b","460771","00fd0c","00fd0c","ff0201"};
     // skins
+
+    public Dictionary<string, object> saved = new Dictionary<string, object>(){
+        {"saved", false},
+    };
 
     public string[] skins_names={
         "base",
@@ -193,6 +200,7 @@ public class Global : Node
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
+        //
         LoadGame();
     }
 
