@@ -5,6 +5,7 @@ public class Bt_Rect : TextureButton
 {
     public int id;
     public string texte;
+    public Color cl = new Color(1,1,1,1);
 
     [Signal]
     public delegate void clique(int id);
@@ -14,6 +15,7 @@ public class Bt_Rect : TextureButton
     {
         Label text = (Label)GetNode("Label");
         text.Text=texte;
+        text.AddColorOverride("font_color",cl);
         Connect("pressed", this, nameof(cliquer));
     }
 

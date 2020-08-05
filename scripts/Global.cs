@@ -407,8 +407,25 @@ public class Global : Node
         Message mes = (Message)packed.Instance();
         mes.titre=titre;
         mes.message=message;
+        mes.txt_bt=txt_but;        
+        GetTree().Root.AddChild(mes);
+    }
+
+    public void aff_message_ncubes(string titre="You gain : ",int nbcubes=0,string txt_but="ok"){
+        PackedScene packed = ResourceLoader.Load("res://menus/Message_ncubes.tscn") as PackedScene;
+        Message mes = (Message)packed.Instance();
+        mes.titre=titre;
+        mes.message=""+nbcubes;
         mes.txt_bt=txt_but;
-        
+        GetTree().Root.AddChild(mes);
+    }
+    
+    public void aff_message_skins(string titre="You unlock this skin !",int idskin=0,string txt_but="ok"){
+        PackedScene packed = ResourceLoader.Load("res://menus/Message_ncubes.tscn") as PackedScene;
+        Message_skin mes = (Message_skin)packed.Instance();
+        mes.titre=titre;
+        mes.idskin=idskin;
+        mes.txt_bt=txt_but;
         GetTree().Root.AddChild(mes);
     }
 

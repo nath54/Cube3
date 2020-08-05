@@ -72,6 +72,9 @@ public class MenuSkins : Control
                 bouton.Name="Button";
                 bouton.texte=""+globale.skins_value[ids];
                 bouton.id=ids;
+                if(globale.ncubes<globale.skins_value[ids]){
+                    bouton.cl=new Color(1,0,0,1);
+                }
                 bouton.Connect("clique", this, nameof(selectSkin));
                 controle.AddChild(bouton);
                 bouton.RectPosition= new Vector2(-40, 49);

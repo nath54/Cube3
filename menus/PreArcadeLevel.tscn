@@ -128,6 +128,7 @@ __meta__ = {
 anims/clignotement = SubResource( 4 )
 
 [node name="Info_die" type="Panel" parent="."]
+visible = false
 margin_left = 391.0
 margin_top = 375.0
 margin_right = 1083.0

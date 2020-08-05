@@ -55,6 +55,10 @@ public class Settings_game : Control
         hsb_dif.Value=globale.difficulty;
         on_hsb_dif_changed((float)hsb_dif.Value);
         //
+        Control ctrls = (Control)GetNode("Settings/VBoxContainer/Control");
+        if(globale.is_mobile()){
+            ctrls.Visible=false;
+        }
     }
 
     public void _on_Bt_game_pressed(){ GetTree().ChangeScene("res://menus/Settings_game.tscn"); }
