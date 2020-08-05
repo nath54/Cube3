@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Linq;
 using Godot;
 using System;
@@ -64,7 +65,7 @@ public class level : Node
         //
         
         if(!(wtps.Contains(globale.tipe))){
-            ui_in_game.fps_counter.Visible=false;
+            ui_in_game.aff_level.Visible=false;
         }
         //
         globale.finnive.Connect("bodyTouched", this, nameof(onFinNiv));
@@ -159,6 +160,11 @@ public class level : Node
             if(!globale.player.is_mobile()){ Input.SetMouseMode(Input.MouseMode.Visible); }
             if(!globale.levels_finis[globale.actu_id_niv]){
                 globale.ncubes+=globale.levels_recomp_ncubes[globale.actu_id_niv];
+                List<string> m = new List<string>();
+                m.Add("You get : ");
+                m.Add(""+globale.levels_recomp_ncubes[globale.actu_id_niv]);
+                m.Add("ok");
+                globale.messages_ncubes_queue.Add(m);
             }
             globale.levels_finis[globale.actu_id_niv]=true;
             globale.SaveGame();

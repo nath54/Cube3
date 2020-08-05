@@ -29,8 +29,7 @@ public class Settings_game : Control
     -No Respawn
     -Time/2.5
     -Really smaller platforms (Arcade)
-    -But no fake-platforms
-    (because we die directly)
+    -But no fake platforms (Arcade)
     -Rewards * 3 (Arcade)",
     };
 

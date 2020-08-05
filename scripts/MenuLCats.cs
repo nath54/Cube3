@@ -47,7 +47,27 @@ public class MenuLCats : Control
         Control element=new Control();
         element.Name="element-"+sel_levels[idl];
         //on crée le bouton pour acceder au level
+        bool fini=true;
+        bool locked=true;
+        for(int w=0; w<globale.levels_names.Length; w++){
+            if(globale.levels_category[w]==sel_levels[idl]){
+                if(!globale.levels_finis[w]){
+                    fini=false;
+                }
+                int r = globale.levels_requirements[w];
+                if(r==-1 || globale.levels_finis[r]){
+                    locked=false;
+                }
+            }
+        }
         PackedScene packedScene = (PackedScene)ResourceLoader.Load("res://menus/buttons/Bt_Cube_Base.tscn");
+        if(fini){
+            packedScene = (PackedScene)ResourceLoader.Load("res://menus/buttons/Bt_Cube_Finished.tscn");
+        }
+        else if(locked){
+            packedScene = (PackedScene)ResourceLoader.Load("res://menus/buttons/Bt_Cube_Locked.tscn");
+        }
+        
         Bt_Cube button = (Bt_Cube)packedScene.Instance();
         button.texte=sel_levels[idl];
         button.id=idl;

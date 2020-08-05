@@ -3,7 +3,7 @@
 [ext_resource path="res://assets/floor.tscn" type="PackedScene" id=1]
 [ext_resource path="res://player/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/finNiv.tscn" type="PackedScene" id=3]
-[ext_resource path="res://levels/aventures/tuto/tuto.cs" type="Script" id=4]
+[ext_resource path="res://levels/script_av/tuto1.cs" type="Script" id=4]
 [ext_resource path="res://levels/level.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/label_ingame.tscn" type="PackedScene" id=6]
 

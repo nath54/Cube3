@@ -4,7 +4,7 @@ using System;
 public class UI_In_game : Control
 {
     public Label fps_counter;
-    private Label aff_level;
+    public Label aff_level;
     private Label debug;
     private ProgressBar time_left;
     private StyleBoxFlat pbcl;

@@ -3,10 +3,10 @@ using System;
 
 public class MainMenu : Control
 {
-    private Button bt_start_arcade;
-    private Button bt_start_adventure;
-    private Button bt_settings;
-    private Button bt_quit;
+    private TextureButton bt_start_arcade;
+    private TextureButton bt_start_adventure;
+    private TextureButton bt_settings;
+    private TextureButton bt_quit;
     private Control loading;
     public Global globale;
 
@@ -16,10 +16,10 @@ public class MainMenu : Control
         //
         globale = (Global)GetNode("/root/Global");
         //
-        bt_start_arcade = (Button)GetNode("Bt_play_arcade");
-        bt_start_adventure = (Button)GetNode("Bt_play_adventure");
-        bt_settings = (Button)GetNode("Bt_settings");
-        bt_quit = (Button)GetNode("Bt_quit");
+        bt_start_arcade = (TextureButton)GetNode("Bt_play_arcade");
+        bt_start_adventure = (TextureButton)GetNode("Bt_play_adventure");
+        bt_settings = (TextureButton)GetNode("Bt_settings");
+        bt_quit = (TextureButton)GetNode("Bt_quit");
 
         loading = (Control)GetNode("Loading");
         loading.Visible=false;

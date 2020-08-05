@@ -53,6 +53,10 @@ public class Global : Node
         {"tipe","platforms"},
     };
 
+    public List<List<string>> messages_queue = new List<List<string>>();
+    public List<List<string>> messages_ncubes_queue = new List<List<string>>();
+    public List<List<string>> messages_skins_queue = new List<List<string>>();
+
     public string[] skins_names={
         "base",
         "smile",
@@ -203,6 +207,7 @@ public class Global : Node
     public Player player;
     public level levele;
     public finNiv finnive;
+    public Timer timer_message;
 
     [Signal]
     public delegate void playerDeath();
@@ -212,6 +217,31 @@ public class Global : Node
     {
         //
         LoadGame();
+        //
+        timer_message=new Timer();
+        timer_message.WaitTime=0.2F;
+        AddChild(timer_message);
+        timer_message.Connect("timeout", this, nameof(on_timer_message));
+        timer_message.Start();
+    }
+
+    public void on_timer_message(){
+        while(messages_queue.Count>0){
+            List<string> m = messages_queue[0];
+            aff_message(m[0],m[1],m[2]);
+            messages_queue.RemoveAt(0);
+        }
+        while(messages_ncubes_queue.Count>0){
+            List<string> m = messages_ncubes_queue[0];
+            aff_message_ncubes(m[0],Convert.ToInt32(m[1]),m[2]);
+            messages_ncubes_queue.RemoveAt(0);
+        }
+        while(messages_skins_queue.Count>0){
+            List<string> m = messages_skins_queue[0];
+            aff_message_skins(m[0],Convert.ToInt32(m[1]),m[2]);
+            messages_skins_queue.RemoveAt(0);
+        }
+        timer_message.Start();
     }
 
     public void player_death(){
