@@ -14,3 +14,4 @@ glow_strength = 0.96
 glow_blend_mode = 1
 glow_hdr_luminance_cap = 5.9
 glow_hdr_scale = 0.7
+adjustment_enabled = true

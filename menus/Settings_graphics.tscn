@@ -1,7 +1,10 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://fonts/Xeliard.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://scripts/Settings_graphics.cs" type="Script" id=2]
+[ext_resource path="res://imgs/to_default_pressed.png" type="Texture" id=3]
+[ext_resource path="res://imgs/to_default.png" type="Texture" id=4]
+[ext_resource path="res://imgs/to_default_hover.png" type="Texture" id=5]
 
 [sub_resource type="DynamicFont" id=1]
 size = 50
@@ -1191,7 +1194,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -108.0
 margin_top = 101.0
-max_value = 120.0
+max_value = 222.0
 page = 10.0
 __meta__ = {
 "_edit_use_anchors_": false
@@ -1215,7 +1218,7 @@ __meta__ = {
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_right = -201.0
-margin_bottom = 1107.0
+margin_bottom = 1763.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -1648,6 +1651,182 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="St_glow_strength" type="Control" parent="Settings/VBoxContainer"]
+margin_top = 1576.0
+margin_right = 900.0
+margin_bottom = 1736.0
+rect_min_size = Vector2( 700, 160 )
+
+[node name="Txt" type="Label" parent="Settings/VBoxContainer/St_glow_strength"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 48.0
+margin_top = 24.0
+margin_right = -157.0
+margin_bottom = 80.0
+custom_fonts/font = SubResource( 2 )
+text = "Glow Strength : 1.0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HScrollBar" type="HScrollBar" parent="Settings/VBoxContainer/St_glow_strength"]
+margin_left = 42.0
+margin_top = 85.0
+margin_right = 825.0
+margin_bottom = 145.0
+max_value = 2.0
+page = 0.05
+value = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureButton" type="TextureButton" parent="Settings/VBoxContainer/St_glow_strength"]
+margin_left = 858.52
+margin_top = 77.9207
+margin_right = 923.52
+margin_bottom = 142.921
+texture_normal = ExtResource( 4 )
+texture_pressed = ExtResource( 3 )
+texture_hover = ExtResource( 5 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="St_glow_intensity" type="Control" parent="Settings/VBoxContainer"]
+margin_top = 1740.0
+margin_right = 900.0
+margin_bottom = 1900.0
+rect_min_size = Vector2( 700, 160 )
+
+[node name="Txt" type="Label" parent="Settings/VBoxContainer/St_glow_intensity"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 48.0
+margin_top = 24.0
+margin_right = -157.0
+margin_bottom = 80.0
+custom_fonts/font = SubResource( 2 )
+text = "Glow Instensity : 1.0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HScrollBar" type="HScrollBar" parent="Settings/VBoxContainer/St_glow_intensity"]
+margin_left = 42.0
+margin_top = 85.0
+margin_right = 825.0
+margin_bottom = 145.0
+max_value = 8.0
+page = 0.05
+value = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureButton" type="TextureButton" parent="Settings/VBoxContainer/St_glow_intensity"]
+margin_left = 858.52
+margin_top = 81.9207
+margin_right = 923.52
+margin_bottom = 146.921
+texture_normal = ExtResource( 4 )
+texture_pressed = ExtResource( 3 )
+texture_hover = ExtResource( 5 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="St_Brightness" type="Control" parent="Settings/VBoxContainer"]
+margin_top = 1904.0
+margin_right = 900.0
+margin_bottom = 2064.0
+rect_min_size = Vector2( 700, 160 )
+
+[node name="Txt" type="Label" parent="Settings/VBoxContainer/St_Brightness"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 48.0
+margin_top = 24.0
+margin_right = -157.0
+margin_bottom = 80.0
+custom_fonts/font = SubResource( 2 )
+text = "Brightness : 1.0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HScrollBar" type="HScrollBar" parent="Settings/VBoxContainer/St_Brightness"]
+margin_left = 42.0
+margin_top = 85.0
+margin_right = 825.0
+margin_bottom = 145.0
+max_value = 8.0
+page = 0.1
+value = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureButton" type="TextureButton" parent="Settings/VBoxContainer/St_Brightness"]
+margin_left = 858.52
+margin_top = 77.9207
+margin_right = 923.52
+margin_bottom = 142.921
+texture_normal = ExtResource( 4 )
+texture_pressed = ExtResource( 3 )
+texture_hover = ExtResource( 5 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="St_Saturation" type="Control" parent="Settings/VBoxContainer"]
+margin_top = 2068.0
+margin_right = 900.0
+margin_bottom = 2228.0
+rect_min_size = Vector2( 700, 160 )
+
+[node name="Txt" type="Label" parent="Settings/VBoxContainer/St_Saturation"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 48.0
+margin_top = 24.0
+margin_right = -157.0
+margin_bottom = 80.0
+custom_fonts/font = SubResource( 2 )
+text = "Saturation : 1.0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HScrollBar" type="HScrollBar" parent="Settings/VBoxContainer/St_Saturation"]
+margin_left = 42.0
+margin_top = 85.0
+margin_right = 825.0
+margin_bottom = 145.0
+max_value = 8.0
+page = 0.1
+value = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureButton" type="TextureButton" parent="Settings/VBoxContainer/St_Saturation"]
+margin_left = 858.52
+margin_top = 81.9207
+margin_right = 923.52
+margin_bottom = 146.921
+texture_normal = ExtResource( 4 )
+texture_pressed = ExtResource( 3 )
+texture_hover = ExtResource( 5 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Bt_apply" type="Button" parent="."]
 anchor_left = 0.611
 anchor_top = 0.863
@@ -1729,6 +1908,14 @@ text = "No"
 [connection signal="value_changed" from="Settings/VBoxContainer/St_shadow_atlas_size/HScrollBar" to="." method="on_sas_change"]
 [connection signal="value_changed" from="Settings/VBoxContainer/St_subsurface_scattering/HScrollBar" to="." method="on_ssc_change"]
 [connection signal="value_changed" from="Settings/VBoxContainer/St_ambient_occlusion/HScrollBar" to="." method="on_sao_change"]
+[connection signal="value_changed" from="Settings/VBoxContainer/St_glow_strength/HScrollBar" to="." method="on_glow_s_change"]
+[connection signal="pressed" from="Settings/VBoxContainer/St_glow_strength/TextureButton" to="." method="on_default_glow_s"]
+[connection signal="value_changed" from="Settings/VBoxContainer/St_glow_intensity/HScrollBar" to="." method="on_glow_i_change"]
+[connection signal="pressed" from="Settings/VBoxContainer/St_glow_intensity/TextureButton" to="." method="on_default_glow_i"]
+[connection signal="value_changed" from="Settings/VBoxContainer/St_Brightness/HScrollBar" to="." method="on_brightness_change"]
+[connection signal="pressed" from="Settings/VBoxContainer/St_Brightness/TextureButton" to="." method="on_default_lum"]
+[connection signal="value_changed" from="Settings/VBoxContainer/St_Saturation/HScrollBar" to="." method="on_saturation_change"]
+[connection signal="pressed" from="Settings/VBoxContainer/St_Saturation/TextureButton" to="." method="on_default_sat"]
 [connection signal="pressed" from="Bt_apply" to="." method="on_apply"]
 [connection signal="pressed" from="Bt_back" to="." method="on_cancel"]
 [connection signal="pressed" from="PopupDialog/Bt_restart" to="." method="keep_settings"]

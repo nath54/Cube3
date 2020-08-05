@@ -70,9 +70,14 @@ public class level : Node
         globale.finnive.Connect("bodyTouched", this, nameof(onFinNiv));
         globale.player.Connect("onPauseBtPress", this, nameof(Pause));
         //
-        if(globale.sao){
-            Camera cam=globale.player.camerae;
-            Godot.Environment env = cam.Environment;
+        Camera cam=globale.player.camerae;
+        Godot.Environment env = cam.Environment;
+        cam.Far=globale.cam_max_view_distance;
+        env.GlowIntensity=globale.glow_intensity;
+        env.GlowStrength=globale.glow_strength;
+        env.AdjustmentSaturation=globale.saturation;
+        env.AdjustmentBrightness=globale.luminosity;
+        if(globale.sao){            
             env.SsaoEnabled=true;
             Godot.Environment.SSAOQuality ssaoqual=env.SsaoQuality;
             GD.Print(ssaoqual.GetType());

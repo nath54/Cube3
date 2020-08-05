@@ -1,3 +1,4 @@
+using System.Linq;
 using Godot;
 using System;
 
@@ -14,9 +15,18 @@ public class PreArcadeLevel : Control
         animationPlayer=(AnimationPlayer)GetNode("L_click/AnimationPlayer");
         animationPlayer.CurrentAnimation="clignotement";
         //
-        string[] tps={"platforms"};
-        Random rand = new Random();
-        globale.tipe=tps[rand.Next(0,tps.Length)];
+        if((bool)globale.quick_saved_game["saved"]==true && globale.quick_saved_game.Keys.Contains("tipe") && globale.quick_saved_game.Keys.Contains("level") && globale.quick_saved_game.Keys.Contains("difficulty")){
+            globale.tipe=Convert.ToString(globale.quick_saved_game["tipe"]);
+            globale.level=Convert.ToInt32(globale.quick_saved_game["level"]);
+            globale.difficulty=Convert.ToInt32(globale.quick_saved_game["difficulty"]);
+            //on supprime la sauvegarde
+            globale.quick_saved_game["saved"]=false;
+        }
+        else{
+            string[] tps={"platforms"};
+            Random rand = new Random();
+            globale.tipe=tps[rand.Next(0,tps.Length)];
+        }
         if(globale.tipe=="platforms"){ prepare_platform(); }
         //
         Label l_dif = (Label)GetNode("L_difficulty");
@@ -77,13 +87,21 @@ public class PreArcadeLevel : Control
 
     public override void _Input(InputEvent @event){
         if(@event is InputEventScreenTouch){
-            GetTree().ChangeScene("res://levels/World.tscn");
+            TextureButton tbt = (TextureButton)GetNode("Bt_saveandexit");
+            if(!tbt.IsHovered()){
+                GetTree().ChangeScene("res://levels/World.tscn");
+            }
         }
         else if(@event is InputEventKey ie){
             if(ie.IsActionPressed("jump")){
                 GetTree().ChangeScene("res://levels/World.tscn");
             }
         }
+    }
+
+    public void _on_Bt_saveandexit_pressed(){
+        globale.quick_save();
+        GetTree().ChangeScene("res://menus/MainMenu.tscn");
     }
 
 }

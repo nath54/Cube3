@@ -151,6 +151,22 @@ public class Settings_graphics : Control
             hsb_sao.Value=globale.sao_quality+1;
         }
         on_sao_change((float)hsb_sao.Value);
+        //Glow Strength
+        HScrollBar hsb_gs = (HScrollBar)GetNode("Settings/VBoxContainer/St_glow_strength/HScrollBar");
+        hsb_gs.Value=globale.glow_strength;
+        on_glow_s_change((float)hsb_gs.Value);
+        //Glow Intensity
+        HScrollBar hsb_gi = (HScrollBar)GetNode("Settings/VBoxContainer/St_glow_intensity/HScrollBar");
+        hsb_gi.Value=globale.glow_intensity;
+        on_glow_i_change((float)hsb_gi.Value);
+        //Saturation
+        HScrollBar hsb_sat = (HScrollBar)GetNode("Settings/VBoxContainer/St_Saturation/HScrollBar");
+        hsb_sat.Value=globale.saturation;
+        on_saturation_change((float)hsb_sat.Value);
+        //Brightness
+        HScrollBar hsb_lum = (HScrollBar)GetNode("Settings/VBoxContainer/St_Brightness/HScrollBar");
+        hsb_lum.Value=globale.luminosity;
+        on_brightness_change((float)hsb_lum.Value);
     }
 
     public void _on_Bt_game_pressed(){ GetTree().ChangeScene("res://menus/Settings_game.tscn"); }
@@ -286,8 +302,19 @@ public class Settings_graphics : Control
         else{
             globale.sao=true;
             globale.sao_quality=(int)value_sao-1;
-        }        
-
+        }
+        //Glow Strength
+        HScrollBar hsb_gs = (HScrollBar)GetNode("Settings/VBoxContainer/St_glow_strength/HScrollBar");
+        globale.glow_strength=(float)hsb_gs.Value;
+        //Glow Intensity
+        HScrollBar hsb_gi = (HScrollBar)GetNode("Settings/VBoxContainer/St_glow_intensity/HScrollBar");
+        globale.glow_intensity=(float)hsb_gi.Value;
+        //Saturation
+        HScrollBar hsb_sat = (HScrollBar)GetNode("Settings/VBoxContainer/St_Saturation/HScrollBar");
+        globale.saturation=(float)hsb_sat.Value;
+        //Brightness
+        HScrollBar hsb_lum = (HScrollBar)GetNode("Settings/VBoxContainer/St_Brightness/HScrollBar");
+        globale.luminosity=(float)hsb_lum.Value;
         //Save Settings
         ProjectSettings.Save();
         globale.SaveGame();
@@ -317,6 +344,50 @@ public class Settings_graphics : Control
     public void on_sao_change(float value){
         Label txt = (Label)GetNode("Settings/VBoxContainer/St_ambient_occlusion/Txt");
         txt.Text = "Ambient Occlusion : "+saos[(int)value];
+    }
+
+    public void on_glow_s_change(float value){
+        Label txt = (Label)GetNode("Settings/VBoxContainer/St_glow_strength/Txt");
+        txt.Text="Glow Strength : "+value;
+    }
+
+    public void on_glow_i_change(float value){
+        Label txt = (Label)GetNode("Settings/VBoxContainer/St_glow_intensity/Txt");
+        txt.Text="Glow Intensity : "+value;
+    }
+
+    public void on_saturation_change(float value){
+        Label txt = (Label)GetNode("Settings/VBoxContainer/St_Saturation/Txt");
+        txt.Text="Saturation : "+value;
+    }
+
+    public void on_brightness_change(float value){
+        Label txt = (Label)GetNode("Settings/VBoxContainer/St_Brightness/Txt");
+        txt.Text="Brightness : "+value;
+    }
+
+    public void on_default_glow_s(){
+        HScrollBar hsb_g_s = (HScrollBar)GetNode("Settings/VBoxContainer/St_glow_strength/HScrollBar");
+        hsb_g_s.Value=0.96;
+        on_glow_s_change(0.96F);
+    }
+
+    public void on_default_glow_i(){
+        HScrollBar hsb_g_i = (HScrollBar)GetNode("Settings/VBoxContainer/St_glow_intensity/HScrollBar");
+        hsb_g_i.Value=1;
+        on_glow_i_change(1);
+    }
+
+    public void on_default_lum(){
+        HScrollBar hsb_lum = (HScrollBar)GetNode("Settings/VBoxContainer/St_Brightness/HScrollBar");
+        hsb_lum.Value=1;
+        on_brightness_change(1);
+    }
+
+    public void on_default_sat(){
+        HScrollBar hsb_sat = (HScrollBar)GetNode("Settings/VBoxContainer/St_Saturation/HScrollBar");
+        hsb_sat.Value=1;
+        on_saturation_change(1);
     }
 
     public void on_cancel(){

@@ -1,3 +1,4 @@
+using System.Linq;
 using System.Collections.Generic;
 using Godot;
 using System;
@@ -37,10 +38,19 @@ public class Global : Node
     public string[] rarities = {"common","rare","epic","legendary","divine","mythical"};
     public int[] rar_deb_skin = {2,10,25,50,80,100};
     public string[] cl_rars={"92cfff","fda10b","460771","00fd0c","00fd0c","ff0201"};
+    public int cam_max_view_distance = 100;
+    public float glow_intensity=1;
+    public float glow_strength=0.96F;
+    public float saturation=1;
+    public float luminosity=1;
     // skins
 
-    public Dictionary<string, object> saved = new Dictionary<string, object>(){
+    public Dictionary<string, object> quick_saved_game = new Dictionary<string, object>(){
+        {"name","quick_saved_game"},
         {"saved", false},
+        {"difficulty",0},
+        {"level",0},
+        {"tipe","platforms"},
     };
 
     public string[] skins_names={
@@ -243,7 +253,11 @@ public class Global : Node
             { "sao_quality", sao_quality},
             { "difficulty",difficulty},
             { "ncubes",ncubes },
-
+            { "cam_max_view_distance",cam_max_view_distance},
+            { "glow_intensity",glow_intensity},
+            { "glow_strength",glow_strength},
+            { "saturation",saturation},
+            { "luminosity",luminosity},
         };
     }
 
@@ -253,8 +267,6 @@ public class Global : Node
         Godot.Collections.Dictionary<string, object> dic = new Godot.Collections.Dictionary<string, object>()
         {
             { "name", "skin_unlocked" },
-
-
         };
 
         for(int ids=0;ids<skins_unlocked.Length; ids++){
@@ -270,8 +282,6 @@ public class Global : Node
         Godot.Collections.Dictionary<string, object> dic = new Godot.Collections.Dictionary<string, object>()
         {
             { "name", "levels_finis" },
-
-
         };
 
         for(int idl=0;idl<levels_finis.Length; idl++){
@@ -292,6 +302,7 @@ public class Global : Node
         saveGame.StoreLine(JSON.Print(nodeData));
         saveGame.StoreLine(JSON.Print(nodeDataSkins));
         saveGame.StoreLine(JSON.Print(nodeDataLevels));
+        saveGame.StoreLine(JSON.Print(quick_saved_game));
         saveGame.Close();
     }
 
@@ -349,6 +360,21 @@ public class Global : Node
                 if( nodeData.Keys.Contains("ncubes")){
                     ncubes=Convert.ToInt32(nodeData["ncubes"]);
                 }
+                if( nodeData.Keys.Contains("cam_max_view_distance")){
+                    cam_max_view_distance=Convert.ToInt32(nodeData["cam_max_view_distance"]);
+                }
+                if( nodeData.Keys.Contains("glow_intensity")){
+                    glow_intensity=(float)Convert.ToDouble(nodeData["glow_intensity"]);
+                }
+                if( nodeData.Keys.Contains("glow_strength")){
+                    glow_strength=(float)Convert.ToDouble(nodeData["glow_strength"]);
+                }
+                if( nodeData.Keys.Contains("saturation")){
+                    saturation=(float)Convert.ToDouble(nodeData["saturation"]);
+                }
+                if( nodeData.Keys.Contains("luminosity")){
+                    luminosity=(float)Convert.ToDouble(nodeData["luminosity"]);
+                }
             }
             else if((string)nodeData["name"]=="skin_unlocked"){
                 foreach(string key in nodeData.Keys){
@@ -366,6 +392,12 @@ public class Global : Node
                     }
                 }
             }
+            else if((string)nodeData["name"]=="quick_saved_game"){
+                foreach(string key in nodeData.Keys){
+                    quick_saved_game[key]=nodeData[key];
+                }
+            }
+            
         }
         saveGame.Close();
     }
@@ -379,5 +411,14 @@ public class Global : Node
         
         GetTree().Root.AddChild(mes);
     }
+
+    public void quick_save(){
+        quick_saved_game["saved"]=true;
+        quick_saved_game["level"]=level;
+        quick_saved_game["tipe"]=tipe;
+        quick_saved_game["difficulty"]=difficulty;
+        SaveGame();
+    }
+
 
 }
