@@ -8,16 +8,16 @@
 [ext_resource path="res://imgs/bt_rects/Bt_base_normal.png" type="Texture" id=6]
 [ext_resource path="res://imgs/bt_rects/Bt_base_hover.png" type="Texture" id=7]
 
-[sub_resource type="StyleBoxFlat" id=3]
+[sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.105882, 0.301961, 0.419608, 1 )
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="DynamicFont" id=2]
 size = 50
 outline_size = 4
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=3]
 size = 120
 outline_size = 5
 outline_color = Color( 0, 0, 0, 1 )
@@ -36,7 +36,7 @@ __meta__ = {
 [node name="Panel" type="Panel" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_styles/panel = SubResource( 3 )
+custom_styles/panel = SubResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -66,7 +66,7 @@ margin_left = 7.2818
 margin_top = 17.5
 margin_right = 388.282
 margin_bottom = 122.5
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 2 )
 text = "Arcade"
 align = 1
 valign = 1
@@ -94,7 +94,7 @@ margin_left = 6.7818
 margin_top = 18.0
 margin_right = 387.782
 margin_bottom = 123.0
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 2 )
 text = "Adventures"
 align = 1
 valign = 1
@@ -125,7 +125,7 @@ margin_left = 9.7818
 margin_top = 21.0
 margin_right = 390.782
 margin_bottom = 119.0
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 2 )
 text = "Settings"
 align = 1
 valign = 1
@@ -156,7 +156,7 @@ margin_left = 8.7818
 margin_top = 22.0
 margin_right = 389.782
 margin_bottom = 120.0
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 2 )
 text = "Quit"
 align = 1
 valign = 1
@@ -187,7 +187,7 @@ margin_left = 13.0
 margin_top = 23.0
 margin_right = 397.0
 margin_bottom = 120.0
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 2 )
 text = "Skins"
 align = 1
 valign = 1
@@ -202,7 +202,7 @@ margin_left = 31.0
 margin_top = 192.0
 margin_right = 321.0
 margin_bottom = 272.0
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 3 )
 text = "Cube 3"
 align = 1
 valign = 1

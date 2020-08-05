@@ -1,13 +1,12 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://fonts/Xeliard.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://scripts/MenuPerdu.cs" type="Script" id=2]
 [ext_resource path="res://img_skins/secret.png" type="Texture" id=3]
 [ext_resource path="res://imgs/ncubes.png" type="Texture" id=4]
 
-[sub_resource type="DynamicFont" id=1]
-size = 50
-font_data = ExtResource( 1 )
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.105882, 0.301961, 0.419608, 1 )
 
 [sub_resource type="DynamicFont" id=2]
 size = 50
@@ -18,6 +17,10 @@ size = 50
 font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=4]
+size = 50
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=5]
 size = 35
 font_data = ExtResource( 1 )
 
@@ -31,6 +34,11 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Panel" type="Panel" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_styles/panel = SubResource( 1 )
+
 [node name="Label" type="Label" parent="."]
 anchor_left = 0.5
 anchor_right = 0.5
@@ -38,7 +46,7 @@ margin_left = -234.0
 margin_top = 71.0
 margin_right = 234.0
 margin_bottom = 122.0
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 text = "You lost the game"
 
 [node name="L_recomp" type="Label" parent="."]
@@ -48,7 +56,7 @@ margin_left = -498.0
 margin_top = 191.0
 margin_right = 50.0
 margin_bottom = 242.0
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 text = "You earn : 0"
 align = 2
 
@@ -62,7 +70,7 @@ margin_top = -43.6458
 margin_right = 297.558
 margin_bottom = 38.3542
 rect_pivot_offset = Vector2( 505.5, 106 )
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 3 )
 text = "Menu"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -77,7 +85,7 @@ margin_left = -290.562
 margin_top = -48.842
 margin_right = -81.5624
 margin_bottom = 43.158
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 4 )
 text = "Quit"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -103,7 +111,7 @@ margin_left = 114.532
 margin_top = 7.07108
 margin_right = 612.532
 margin_bottom = 43.0711
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 5 )
 text = "You unlock this skin :"
 __meta__ = {
 "_edit_use_anchors_": false

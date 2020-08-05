@@ -1,14 +1,24 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://fonts/Xeliard.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://scripts/Settings_game.cs" type="Script" id=2]
 
+[sub_resource type="DynamicFont" id=12]
+size = 40
+outline_size = 4
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 1 )
+
 [sub_resource type="DynamicFont" id=1]
 size = 50
+outline_size = 4
+outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=2]
 size = 40
+outline_size = 3
+outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=3]
@@ -1114,10 +1124,14 @@ WindowDialog/styles/panel = null
 
 [sub_resource type="DynamicFont" id=8]
 size = 35
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=9]
 size = 35
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=10]
@@ -1132,6 +1146,13 @@ font_data = ExtResource( 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -1154,7 +1175,8 @@ __meta__ = {
 [node name="Bt_game" type="Button" parent="Menu_Buttons/HScrollBar"]
 margin_right = 320.0
 margin_bottom = 100.0
-custom_fonts/font = SubResource( 1 )
+rect_pivot_offset = Vector2( 383.667, 167.536 )
+custom_fonts/font = SubResource( 12 )
 disabled = true
 text = "Game"
 
@@ -1228,10 +1250,10 @@ rect_min_size = Vector2( 0, 120 )
 [node name="Button" type="Button" parent="Settings/VBoxContainer/Control"]
 anchor_top = 0.5
 anchor_bottom = 0.5
-margin_left = 41.0
-margin_top = -33.0
-margin_right = 403.0
-margin_bottom = 13.0
+margin_left = 1.07718
+margin_top = -52.4614
+margin_right = 436.077
+margin_bottom = 27.5386
 custom_fonts/font = SubResource( 2 )
 text = "Change Controls"
 __meta__ = {

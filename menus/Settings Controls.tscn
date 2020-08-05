@@ -5,32 +5,44 @@
 
 [sub_resource type="DynamicFont" id=1]
 size = 35
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=2]
-size = 50
+size = 60
+outline_size = 4
+outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=3]
 size = 50
+outline_size = 4
+outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=4]
 size = 40
-font_data = ExtResource( 1 )
-
-[sub_resource type="DynamicFont" id=8]
-size = 35
+outline_size = 4
+outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=5]
 size = 40
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 1 )
 
-[sub_resource type="StyleBoxFlat" id=6]
+[sub_resource type="DynamicFont" id=6]
+size = 35
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxFlat" id=7]
 bg_color = Color( 0, 0, 0, 0.627451 )
 
-[sub_resource type="DynamicFont" id=7]
+[sub_resource type="DynamicFont" id=8]
 size = 60
 outline_size = 4
 outline_color = Color( 0, 0, 0, 1 )
@@ -40,6 +52,13 @@ font_data = ExtResource( 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -190,7 +209,7 @@ margin_right = 426.0
 margin_bottom = 144.0
 rect_min_size = Vector2( 0, 70 )
 custom_fonts/font = SubResource( 4 )
-custom_colors/font_color = Color( 0.184314, 0.368627, 0.560784, 1 )
+custom_colors/font_color = Color( 0.219608, 0.560784, 0.184314, 1 )
 text = "Z"
 align = 1
 valign = 1
@@ -201,7 +220,7 @@ margin_right = 426.0
 margin_bottom = 218.0
 rect_min_size = Vector2( 0, 70 )
 custom_fonts/font = SubResource( 4 )
-custom_colors/font_color = Color( 0.184314, 0.368627, 0.560784, 1 )
+custom_colors/font_color = Color( 0.219608, 0.560784, 0.184314, 1 )
 text = "S"
 align = 1
 valign = 1
@@ -212,7 +231,7 @@ margin_right = 426.0
 margin_bottom = 292.0
 rect_min_size = Vector2( 0, 70 )
 custom_fonts/font = SubResource( 4 )
-custom_colors/font_color = Color( 0.184314, 0.368627, 0.560784, 1 )
+custom_colors/font_color = Color( 0.219608, 0.560784, 0.184314, 1 )
 text = "Q"
 align = 1
 valign = 1
@@ -223,7 +242,7 @@ margin_right = 426.0
 margin_bottom = 366.0
 rect_min_size = Vector2( 0, 70 )
 custom_fonts/font = SubResource( 4 )
-custom_colors/font_color = Color( 0.184314, 0.368627, 0.560784, 1 )
+custom_colors/font_color = Color( 0.219608, 0.560784, 0.184314, 1 )
 text = "D"
 align = 1
 valign = 1
@@ -234,7 +253,7 @@ margin_right = 426.0
 margin_bottom = 440.0
 rect_min_size = Vector2( 0, 70 )
 custom_fonts/font = SubResource( 4 )
-custom_colors/font_color = Color( 0.184314, 0.368627, 0.560784, 1 )
+custom_colors/font_color = Color( 0.219608, 0.560784, 0.184314, 1 )
 text = "Space"
 align = 1
 valign = 1
@@ -275,7 +294,7 @@ margin_left = -87.0
 margin_top = -33.5
 margin_right = 87.0
 margin_bottom = 33.5
-custom_fonts/font = SubResource( 8 )
+custom_fonts/font = SubResource( 5 )
 text = "change"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -293,10 +312,10 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -87.0
-margin_top = -33.5
+margin_top = -31.381
 margin_right = 87.0
-margin_bottom = 33.5
-custom_fonts/font = SubResource( 8 )
+margin_bottom = 35.619
+custom_fonts/font = SubResource( 5 )
 text = "change"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -317,7 +336,7 @@ margin_left = -87.0
 margin_top = -33.5
 margin_right = 87.0
 margin_bottom = 33.5
-custom_fonts/font = SubResource( 8 )
+custom_fonts/font = SubResource( 5 )
 text = "change"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -338,7 +357,7 @@ margin_left = -87.0
 margin_top = -33.5
 margin_right = 87.0
 margin_bottom = 33.5
-custom_fonts/font = SubResource( 8 )
+custom_fonts/font = SubResource( 5 )
 text = "change"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -359,7 +378,7 @@ margin_left = -87.0
 margin_top = -33.5
 margin_right = 87.0
 margin_bottom = 33.5
-custom_fonts/font = SubResource( 8 )
+custom_fonts/font = SubResource( 5 )
 text = "change"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -374,7 +393,7 @@ margin_left = -82.5
 margin_top = -87.0
 margin_right = 82.5
 margin_bottom = -25.0
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
 text = "Save"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -384,7 +403,7 @@ __meta__ = {
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_styles/panel = SubResource( 6 )
+custom_styles/panel = SubResource( 7 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -392,7 +411,7 @@ __meta__ = {
 [node name="Label" type="Label" parent="pressAKey"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_fonts/font = SubResource( 7 )
+custom_fonts/font = SubResource( 8 )
 text = "Please press a key ..."
 align = 1
 valign = 1

@@ -8,6 +8,8 @@
 
 [sub_resource type="DynamicFont" id=1]
 size = 50
+outline_size = 3
+outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=2]
@@ -1117,10 +1119,14 @@ WindowDialog/styles/panel = null
 
 [sub_resource type="DynamicFont" id=8]
 size = 35
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=9]
 size = 35
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=10]
@@ -1129,6 +1135,8 @@ font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=11]
 size = 40
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 1 )
 
 [node name="Settings_graphics" type="Control"]
@@ -1138,6 +1146,10 @@ script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Panel" type="Panel" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
 
 [node name="Menu_Buttons" type="Control" parent="."]
 margin_right = 1280.0
@@ -1159,6 +1171,9 @@ margin_right = 320.0
 margin_bottom = 100.0
 custom_fonts/font = SubResource( 1 )
 text = "Game"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Bt_graphics" type="Button" parent="Menu_Buttons/HScrollBar"]
 anchor_right = 0.218
@@ -1187,6 +1202,9 @@ margin_right = 1000.96
 margin_bottom = 100.0
 custom_fonts/font = SubResource( 1 )
 text = "Other"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="VScrollBar" type="VScrollBar" parent="."]
 anchor_left = 1.0
@@ -1242,11 +1260,12 @@ __meta__ = {
 }
 
 [node name="Cb_showfps" type="CheckBox" parent="Settings/VBoxContainer/St_showfps"]
-margin_left = 346.606
-margin_top = 12.6697
-margin_right = 370.606
-margin_bottom = 36.6697
-rect_scale = Vector2( 3, 3 )
+margin_left = 338.261
+margin_top = 27.444
+margin_right = 389.261
+margin_bottom = 75.444
+align = 1
+expand_icon = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -1333,11 +1352,12 @@ __meta__ = {
 }
 
 [node name="Cb" type="CheckBox" parent="Settings/VBoxContainer/St_vsync"]
-margin_left = 346.606
-margin_top = 12.6697
-margin_right = 370.606
-margin_bottom = 36.6697
-rect_scale = Vector2( 3, 3 )
+margin_left = 369.233
+margin_top = 19.7408
+margin_right = 419.233
+margin_bottom = 69.7408
+align = 1
+expand_icon = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -1362,11 +1382,12 @@ __meta__ = {
 }
 
 [node name="Cb" type="CheckBox" parent="Settings/VBoxContainer/St_3d_effects"]
-margin_left = 346.606
-margin_top = 12.6697
-margin_right = 370.606
-margin_bottom = 36.6697
-rect_scale = Vector2( 3, 3 )
+margin_left = 359.334
+margin_top = 25.3976
+margin_right = 409.334
+margin_bottom = 75.3976
+align = 1
+expand_icon = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -1391,11 +1412,12 @@ __meta__ = {
 }
 
 [node name="Cb" type="CheckBox" parent="Settings/VBoxContainer/St_hdr"]
-margin_left = 210.606
-margin_top = 10.1498
-margin_right = 234.606
-margin_bottom = 34.1498
-rect_scale = Vector2( 3, 3 )
+margin_left = 219.091
+margin_top = 21.4635
+margin_right = 269.091
+margin_bottom = 71.4635
+align = 1
+expand_icon = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -1454,11 +1476,10 @@ __meta__ = {
 }
 
 [node name="Cb" type="CheckBox" parent="Settings/VBoxContainer/St_high_quality_ggx"]
-margin_left = 492.606
-margin_top = 10.1498
-margin_right = 516.606
-margin_bottom = 34.1498
-rect_scale = Vector2( 3, 3 )
+margin_left = 505.82
+margin_top = 21.4763
+margin_right = 555.82
+margin_bottom = 71.4763
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -1517,11 +1538,12 @@ __meta__ = {
 }
 
 [node name="Cb" type="CheckBox" parent="Settings/VBoxContainer/St_text_array_reflexions"]
-margin_left = 723.606
-margin_top = 10.1498
-margin_right = 747.606
-margin_bottom = 34.1498
-rect_scale = Vector2( 3, 3 )
+margin_left = 739.624
+margin_top = 18.1588
+margin_right = 789.624
+margin_bottom = 68.1588
+align = 1
+expand_icon = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -1549,11 +1571,12 @@ __meta__ = {
 }
 
 [node name="Cb" type="CheckBox" parent="Settings/VBoxContainer/St_force_vertex_shading"]
-margin_left = 636.606
-margin_top = 12.2093
-margin_right = 660.606
-margin_bottom = 36.2093
-rect_scale = Vector2( 3, 3 )
+margin_left = 644.615
+margin_top = 14.879
+margin_right = 694.615
+margin_bottom = 64.879
+align = 1
+expand_icon = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -1855,6 +1878,7 @@ __meta__ = {
 }
 
 [node name="PopupDialog" type="PopupDialog" parent="."]
+visible = true
 margin_left = 174.727
 margin_top = 155.273
 margin_right = 1053.73

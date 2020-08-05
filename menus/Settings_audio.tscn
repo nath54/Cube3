@@ -5,6 +5,8 @@
 
 [sub_resource type="DynamicFont" id=1]
 size = 50
+outline_size = 4
+outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 1 )
 
 [sub_resource type="StyleBoxFlat" id=2]
@@ -1106,10 +1108,14 @@ WindowDialog/styles/panel = null
 
 [sub_resource type="DynamicFont" id=6]
 size = 35
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=7]
 size = 35
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=8]
@@ -1127,6 +1133,10 @@ script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Panel" type="Panel" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
 
 [node name="Menu_Buttons" type="Control" parent="."]
 margin_right = 1280.0
@@ -1209,7 +1219,8 @@ __meta__ = {
 [node name="VBoxContainer" type="VBoxContainer" parent="Settings"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_right = -201.0
+margin_left = 8.00903
+margin_right = -192.991
 margin_bottom = 1107.0
 __meta__ = {
 "_edit_use_anchors_": false
