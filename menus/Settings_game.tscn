@@ -3,29 +3,17 @@
 [ext_resource path="res://fonts/Xeliard.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://scripts/Settings_game.cs" type="Script" id=2]
 
-[sub_resource type="DynamicFont" id=12]
-size = 40
-outline_size = 4
-outline_color = Color( 0, 0, 0, 1 )
-font_data = ExtResource( 1 )
-
 [sub_resource type="DynamicFont" id=1]
-size = 50
-outline_size = 4
-outline_color = Color( 0, 0, 0, 1 )
-font_data = ExtResource( 1 )
-
-[sub_resource type="DynamicFont" id=2]
 size = 40
 outline_size = 3
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=2]
 size = 35
 font_data = ExtResource( 1 )
 
-[sub_resource type="StyleBoxFlat" id=4]
+[sub_resource type="StyleBoxFlat" id=3]
 bg_color = Color( 0.117647, 0.894118, 0, 1 )
 border_width_left = 1
 border_width_top = 1
@@ -37,7 +25,7 @@ corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
-[sub_resource type="StyleBoxFlat" id=5]
+[sub_resource type="StyleBoxFlat" id=4]
 bg_color = Color( 0.4, 0.803922, 0.133333, 1 )
 border_width_left = 1
 border_width_top = 1
@@ -49,7 +37,7 @@ corner_radius_top_right = 5
 corner_radius_bottom_right = 3
 corner_radius_bottom_left = 5
 
-[sub_resource type="StyleBoxFlat" id=6]
+[sub_resource type="StyleBoxFlat" id=5]
 bg_color = Color( 0.262745, 1, 0, 1 )
 corner_radius_top_left = 8
 corner_radius_top_right = 5
@@ -58,7 +46,7 @@ corner_radius_bottom_left = 8
 shadow_color = Color( 0.14902, 0.517647, 0, 1 )
 shadow_size = 5
 
-[sub_resource type="Theme" id=7]
+[sub_resource type="Theme" id=6]
 BoxContainer/constants/separation = 4
 Button/colors/font_color = Color( 1, 1, 1, 1 )
 Button/colors/font_color_disabled = Color( 0.705882, 0.705882, 0.705882, 1 )
@@ -68,9 +56,9 @@ Button/colors/icon_color_hover = Color( 0, 0, 0, 1 )
 Button/colors/icon_color_pressed = Color( 0, 0, 0, 1 )
 Button/styles/disabled = null
 Button/styles/focus = null
-Button/styles/hover = SubResource( 4 )
-Button/styles/normal = SubResource( 5 )
-Button/styles/pressed = SubResource( 6 )
+Button/styles/hover = SubResource( 3 )
+Button/styles/normal = SubResource( 4 )
+Button/styles/pressed = SubResource( 5 )
 CheckBox/colors/font_color = Color( 0, 0, 0, 1 )
 CheckBox/colors/font_color_disabled = Color( 0, 0, 0, 1 )
 CheckBox/colors/font_color_hover = Color( 0, 0, 0, 1 )
@@ -1122,6 +1110,12 @@ WindowDialog/icons/close = null
 WindowDialog/icons/close_highlight = null
 WindowDialog/styles/panel = null
 
+[sub_resource type="DynamicFont" id=7]
+size = 35
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 1 )
+
 [sub_resource type="DynamicFont" id=8]
 size = 35
 outline_size = 2
@@ -1129,16 +1123,22 @@ outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=9]
-size = 35
-outline_size = 2
+size = 40
+outline_size = 4
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=10]
-size = 40
+size = 50
+outline_size = 4
+outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=11]
+size = 40
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=12]
 size = 40
 font_data = ExtResource( 1 )
 
@@ -1156,56 +1156,6 @@ anchor_bottom = 1.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="Menu_Buttons" type="Control" parent="."]
-margin_right = 1280.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 1280, 10 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="HScrollBar" type="Control" parent="Menu_Buttons"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Bt_game" type="Button" parent="Menu_Buttons/HScrollBar"]
-margin_right = 320.0
-margin_bottom = 100.0
-rect_pivot_offset = Vector2( 383.667, 167.536 )
-custom_fonts/font = SubResource( 12 )
-disabled = true
-text = "Game"
-
-[node name="Bt_graphics" type="Button" parent="Menu_Buttons/HScrollBar"]
-anchor_right = 0.218
-margin_left = 320.0
-margin_right = 360.96
-margin_bottom = 100.0
-custom_fonts/font = SubResource( 1 )
-text = "Graphics"
-
-[node name="Bt_audio" type="Button" parent="Menu_Buttons/HScrollBar"]
-anchor_right = 0.218
-margin_left = 640.0
-margin_right = 680.96
-margin_bottom = 100.0
-custom_fonts/font = SubResource( 1 )
-text = "Audio"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Bt_other" type="Button" parent="Menu_Buttons/HScrollBar"]
-anchor_right = 0.218
-margin_left = 960.0
-margin_right = 1000.96
-margin_bottom = 100.0
-custom_fonts/font = SubResource( 1 )
-text = "Other"
 
 [node name="VScrollBar" type="VScrollBar" parent="."]
 anchor_left = 1.0
@@ -1254,7 +1204,7 @@ margin_left = 1.07718
 margin_top = -52.4614
 margin_right = 436.077
 margin_bottom = 27.5386
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 1 )
 text = "Change Controls"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -1269,7 +1219,7 @@ rect_min_size = Vector2( 0, 400 )
 [node name="Label" type="Label" parent="Settings/VBoxContainer/St_difficulty"]
 margin_right = 372.0
 margin_bottom = 40.0
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 2 )
 text = "Difficulty : easy"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -1289,7 +1239,7 @@ margin_left = 48.0
 margin_top = 101.0
 margin_right = 420.0
 margin_bottom = 176.0
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 2 )
 text = "-Time * 1.5
 -Respawns"
 __meta__ = {
@@ -1305,8 +1255,8 @@ margin_left = -0.401428
 margin_top = 0.0010376
 margin_right = 180.599
 margin_bottom = 70.001
-theme = SubResource( 7 )
-custom_fonts/font = SubResource( 8 )
+theme = SubResource( 6 )
+custom_fonts/font = SubResource( 7 )
 text = "Apply"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -1317,11 +1267,61 @@ margin_left = 207.925
 margin_top = 619.749
 margin_right = 373.925
 margin_bottom = 684.749
-custom_fonts/font = SubResource( 9 )
+custom_fonts/font = SubResource( 8 )
 text = "back"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Menu_Buttons" type="Control" parent="."]
+margin_right = 1280.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 1280, 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HScrollBar" type="Control" parent="Menu_Buttons"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Bt_game" type="Button" parent="Menu_Buttons/HScrollBar"]
+margin_right = 320.0
+margin_bottom = 100.0
+rect_pivot_offset = Vector2( 383.667, 167.536 )
+custom_fonts/font = SubResource( 9 )
+disabled = true
+text = "Game"
+
+[node name="Bt_graphics" type="Button" parent="Menu_Buttons/HScrollBar"]
+anchor_right = 0.218
+margin_left = 320.0
+margin_right = 360.96
+margin_bottom = 100.0
+custom_fonts/font = SubResource( 10 )
+text = "Graphics"
+
+[node name="Bt_audio" type="Button" parent="Menu_Buttons/HScrollBar"]
+anchor_right = 0.218
+margin_left = 640.0
+margin_right = 680.96
+margin_bottom = 100.0
+custom_fonts/font = SubResource( 10 )
+text = "Audio"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Bt_other" type="Button" parent="Menu_Buttons/HScrollBar"]
+anchor_right = 0.218
+margin_left = 960.0
+margin_right = 1000.96
+margin_bottom = 100.0
+custom_fonts/font = SubResource( 10 )
+text = "Other"
 
 [node name="PopupDialog" type="PopupDialog" parent="."]
 margin_left = 174.727
@@ -1338,7 +1338,7 @@ margin_left = 22.0
 margin_top = 27.0
 margin_right = 831.0
 margin_bottom = 294.0
-custom_fonts/font = SubResource( 10 )
+custom_fonts/font = SubResource( 11 )
 text = "You have changed some settings that need a restart, do yo want to restart now ?"
 align = 1
 valign = 1
@@ -1352,7 +1352,7 @@ margin_left = 484.855
 margin_top = 308.746
 margin_right = 664.855
 margin_bottom = 382.746
-custom_fonts/font = SubResource( 11 )
+custom_fonts/font = SubResource( 12 )
 text = "Yes"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -1363,16 +1363,16 @@ margin_left = 173.0
 margin_top = 311.0
 margin_right = 361.0
 margin_bottom = 379.0
-custom_fonts/font = SubResource( 11 )
+custom_fonts/font = SubResource( 12 )
 text = "No"
-[connection signal="pressed" from="Menu_Buttons/HScrollBar/Bt_game" to="." method="_on_Bt_game_pressed"]
-[connection signal="pressed" from="Menu_Buttons/HScrollBar/Bt_graphics" to="." method="_on_Bt_graphics_pressed"]
-[connection signal="pressed" from="Menu_Buttons/HScrollBar/Bt_audio" to="." method="_on_Bt_audio_pressed"]
-[connection signal="pressed" from="Menu_Buttons/HScrollBar/Bt_other" to="." method="_on_Bt_other_pressed"]
 [connection signal="value_changed" from="VScrollBar" to="." method="_on_VScrollBar_value_changed"]
 [connection signal="pressed" from="Settings/VBoxContainer/Control/Button" to="." method="_on_bt_controls_press"]
 [connection signal="value_changed" from="Settings/VBoxContainer/St_difficulty/HScrollBar" to="." method="on_hsb_dif_changed"]
 [connection signal="pressed" from="Bt_apply" to="." method="on_apply"]
 [connection signal="pressed" from="Bt_back" to="." method="on_cancel"]
+[connection signal="pressed" from="Menu_Buttons/HScrollBar/Bt_game" to="." method="_on_Bt_game_pressed"]
+[connection signal="pressed" from="Menu_Buttons/HScrollBar/Bt_graphics" to="." method="_on_Bt_graphics_pressed"]
+[connection signal="pressed" from="Menu_Buttons/HScrollBar/Bt_audio" to="." method="_on_Bt_audio_pressed"]
+[connection signal="pressed" from="Menu_Buttons/HScrollBar/Bt_other" to="." method="_on_Bt_other_pressed"]
 [connection signal="pressed" from="PopupDialog/Bt_restart" to="." method="keep_settings"]
 [connection signal="pressed" from="PopupDialog/Bt_no_restart" to="." method="on_reset"]

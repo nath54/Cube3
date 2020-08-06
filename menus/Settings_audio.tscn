@@ -3,13 +3,7 @@
 [ext_resource path="res://fonts/Xeliard.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://scripts/Settings_audio.cs" type="Script" id=2]
 
-[sub_resource type="DynamicFont" id=1]
-size = 50
-outline_size = 4
-outline_color = Color( 0, 0, 0, 1 )
-font_data = ExtResource( 1 )
-
-[sub_resource type="StyleBoxFlat" id=2]
+[sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.117647, 0.894118, 0, 1 )
 border_width_left = 1
 border_width_top = 1
@@ -21,7 +15,7 @@ corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
-[sub_resource type="StyleBoxFlat" id=3]
+[sub_resource type="StyleBoxFlat" id=2]
 bg_color = Color( 0.4, 0.803922, 0.133333, 1 )
 border_width_left = 1
 border_width_top = 1
@@ -33,7 +27,7 @@ corner_radius_top_right = 5
 corner_radius_bottom_right = 3
 corner_radius_bottom_left = 5
 
-[sub_resource type="StyleBoxFlat" id=4]
+[sub_resource type="StyleBoxFlat" id=3]
 bg_color = Color( 0.262745, 1, 0, 1 )
 corner_radius_top_left = 8
 corner_radius_top_right = 5
@@ -42,7 +36,7 @@ corner_radius_bottom_left = 8
 shadow_color = Color( 0.14902, 0.517647, 0, 1 )
 shadow_size = 5
 
-[sub_resource type="Theme" id=5]
+[sub_resource type="Theme" id=4]
 BoxContainer/constants/separation = 4
 Button/colors/font_color = Color( 1, 1, 1, 1 )
 Button/colors/font_color_disabled = Color( 0.705882, 0.705882, 0.705882, 1 )
@@ -52,9 +46,9 @@ Button/colors/icon_color_hover = Color( 0, 0, 0, 1 )
 Button/colors/icon_color_pressed = Color( 0, 0, 0, 1 )
 Button/styles/disabled = null
 Button/styles/focus = null
-Button/styles/hover = SubResource( 2 )
-Button/styles/normal = SubResource( 3 )
-Button/styles/pressed = SubResource( 4 )
+Button/styles/hover = SubResource( 1 )
+Button/styles/normal = SubResource( 2 )
+Button/styles/pressed = SubResource( 3 )
 CheckBox/colors/font_color = Color( 0, 0, 0, 1 )
 CheckBox/colors/font_color_disabled = Color( 0, 0, 0, 1 )
 CheckBox/colors/font_color_hover = Color( 0, 0, 0, 1 )
@@ -1106,6 +1100,12 @@ WindowDialog/icons/close = null
 WindowDialog/icons/close_highlight = null
 WindowDialog/styles/panel = null
 
+[sub_resource type="DynamicFont" id=5]
+size = 35
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 1 )
+
 [sub_resource type="DynamicFont" id=6]
 size = 35
 outline_size = 2
@@ -1113,8 +1113,8 @@ outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=7]
-size = 35
-outline_size = 2
+size = 50
+outline_size = 4
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 1 )
 
@@ -1137,58 +1137,6 @@ __meta__ = {
 [node name="Panel" type="Panel" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-
-[node name="Menu_Buttons" type="Control" parent="."]
-margin_right = 1280.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 1280, 10 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="HScrollBar" type="Control" parent="Menu_Buttons"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Bt_game" type="Button" parent="Menu_Buttons/HScrollBar"]
-margin_right = 320.0
-margin_bottom = 100.0
-custom_fonts/font = SubResource( 1 )
-text = "Game"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Bt_graphics" type="Button" parent="Menu_Buttons/HScrollBar"]
-anchor_right = 0.218
-margin_left = 320.0
-margin_right = 360.96
-margin_bottom = 100.0
-custom_fonts/font = SubResource( 1 )
-text = "Graphics"
-
-[node name="Bt_audio" type="Button" parent="Menu_Buttons/HScrollBar"]
-anchor_right = 0.218
-margin_left = 640.0
-margin_right = 680.96
-margin_bottom = 100.0
-custom_fonts/font = SubResource( 1 )
-disabled = true
-text = "Audio"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Bt_other" type="Button" parent="Menu_Buttons/HScrollBar"]
-anchor_right = 0.218
-margin_left = 960.0
-margin_right = 1000.96
-margin_bottom = 100.0
-custom_fonts/font = SubResource( 1 )
-text = "Other"
 
 [node name="VScrollBar" type="VScrollBar" parent="."]
 anchor_left = 1.0
@@ -1235,8 +1183,8 @@ margin_left = -0.401428
 margin_top = 0.0010376
 margin_right = 180.599
 margin_bottom = 70.001
-theme = SubResource( 5 )
-custom_fonts/font = SubResource( 6 )
+theme = SubResource( 4 )
+custom_fonts/font = SubResource( 5 )
 text = "Apply"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -1247,11 +1195,63 @@ margin_left = 207.925
 margin_top = 619.749
 margin_right = 373.925
 margin_bottom = 684.749
-custom_fonts/font = SubResource( 7 )
+custom_fonts/font = SubResource( 6 )
 text = "back"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Menu_Buttons" type="Control" parent="."]
+margin_right = 1280.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 1280, 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HScrollBar" type="Control" parent="Menu_Buttons"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Bt_game" type="Button" parent="Menu_Buttons/HScrollBar"]
+margin_right = 320.0
+margin_bottom = 100.0
+custom_fonts/font = SubResource( 7 )
+text = "Game"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Bt_graphics" type="Button" parent="Menu_Buttons/HScrollBar"]
+anchor_right = 0.218
+margin_left = 320.0
+margin_right = 360.96
+margin_bottom = 100.0
+custom_fonts/font = SubResource( 7 )
+text = "Graphics"
+
+[node name="Bt_audio" type="Button" parent="Menu_Buttons/HScrollBar"]
+anchor_right = 0.218
+margin_left = 640.0
+margin_right = 680.96
+margin_bottom = 100.0
+custom_fonts/font = SubResource( 7 )
+disabled = true
+text = "Audio"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Bt_other" type="Button" parent="Menu_Buttons/HScrollBar"]
+anchor_right = 0.218
+margin_left = 960.0
+margin_right = 1000.96
+margin_bottom = 100.0
+custom_fonts/font = SubResource( 7 )
+text = "Other"
 
 [node name="PopupDialog" type="PopupDialog" parent="."]
 margin_left = 174.727
@@ -1295,12 +1295,12 @@ margin_right = 361.0
 margin_bottom = 379.0
 custom_fonts/font = SubResource( 9 )
 text = "No"
+[connection signal="value_changed" from="VScrollBar" to="." method="_on_VScrollBar_value_changed"]
+[connection signal="pressed" from="Bt_apply" to="." method="on_apply"]
+[connection signal="pressed" from="Bt_back" to="." method="on_cancel"]
 [connection signal="pressed" from="Menu_Buttons/HScrollBar/Bt_game" to="." method="_on_Bt_game_pressed"]
 [connection signal="pressed" from="Menu_Buttons/HScrollBar/Bt_graphics" to="." method="_on_Bt_graphics_pressed"]
 [connection signal="pressed" from="Menu_Buttons/HScrollBar/Bt_audio" to="." method="_on_Bt_audio_pressed"]
 [connection signal="pressed" from="Menu_Buttons/HScrollBar/Bt_other" to="." method="_on_Bt_other_pressed"]
-[connection signal="value_changed" from="VScrollBar" to="." method="_on_VScrollBar_value_changed"]
-[connection signal="pressed" from="Bt_apply" to="." method="on_apply"]
-[connection signal="pressed" from="Bt_back" to="." method="on_cancel"]
 [connection signal="pressed" from="PopupDialog/Bt_restart" to="." method="keep_settings"]
 [connection signal="pressed" from="PopupDialog/Bt_no_restart" to="." method="on_reset"]

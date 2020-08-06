@@ -209,6 +209,7 @@ public class Global : Node
     public level levele;
     public finNiv finnive;
     public Timer timer_message;
+    public string controller_mode="keyboard";
 
     [Signal]
     public delegate void playerDeath();
@@ -289,6 +290,7 @@ public class Global : Node
             { "saturation",saturation},
             { "luminosity",luminosity},
             { "cam_far",cam_far},
+            { "controller_mode",controller_mode}
         };
     }
 
@@ -405,6 +407,9 @@ public class Global : Node
                 }
                 if( nodeData.Keys.Contains("cam_far")){
                     cam_far=(float)Convert.ToDouble(nodeData["cam_far"]);
+                }
+                if( nodeData.Keys.Contains("controller_mode")){
+                    controller_mode=Convert.ToString(nodeData["controller_mode"]);
                 }
             }
             else if((string)nodeData["name"]=="skin_unlocked"){

@@ -93,7 +93,7 @@ public class PreArcadeLevel : Control
             }
         }
         else if(@event is InputEventKey ie){
-            if(ie.IsActionPressed("jump")){
+            if(Input.IsActionJustPressed("jump")){
                 GetTree().ChangeScene("res://levels/World.tscn");
             }
         }

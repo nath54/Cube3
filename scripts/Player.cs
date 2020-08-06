@@ -28,6 +28,8 @@ public class Player : KinematicBody
 	public Global globale;
 	public Camera camerae;
 	public Spatial flecheBase;
+	public float joysticke_x=0;
+	public float joysticke_y=0;
 
 	[Signal]
 	public delegate void onPauseBtPress();
@@ -134,6 +136,7 @@ public class Player : KinematicBody
 					cam.RotationDegrees=rot_deg;
 				}
 			}
+			
 		}
 		
 	}
@@ -152,6 +155,7 @@ public class Player : KinematicBody
 			flecheBase.LookAt(globale.finnive.GlobalTransform.origin, Vector3.Up);
 		}
 	}
+
 
 	public override void _PhysicsProcess(float delta)
 	{
@@ -183,10 +187,31 @@ public class Player : KinematicBody
 				if(Input.IsActionPressed("move_right")){
 					move_vec.x += 1;
 				}
+				if(Input.IsActionPressed("rot_cam_right")){
+					Vector3 rot_deg=cam.RotationDegrees;
+					rot_deg.y -= 10 * H_LOOK_SENS;
+					cam.RotationDegrees=rot_deg;
+				}
+				if(Input.IsActionPressed("rot_cam_left")){
+					Vector3 rot_deg=cam.RotationDegrees;
+					rot_deg.y += 10 * H_LOOK_SENS;
+					cam.RotationDegrees=rot_deg;
+				}
+				if(Input.IsActionPressed("rot_cam_up")){
+					Vector3 rot_deg=cam.RotationDegrees;
+					rot_deg.x -= 10 * V_LOOK_SENS;
+					if(rot_deg.x < -90){ rot_deg.x=-90; }
+					cam.RotationDegrees=rot_deg;
+				}
+				if(Input.IsActionPressed("rot_cam_down")){
+					Vector3 rot_deg=cam.RotationDegrees;
+					rot_deg.x += 10 * V_LOOK_SENS;
+					if(rot_deg.x > 90){ rot_deg.x=90; }
+					cam.RotationDegrees=rot_deg;
+				}
 			}
 			
 			move_vec=move_vec.Normalized();
-
 			move_vec=move_vec.Rotated(new Vector3(0,1,0), cam.RotationDegrees.y*3.141592654F/180.0F);
 			move_vec *= MOVE_SPEED;
 
