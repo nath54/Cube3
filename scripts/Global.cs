@@ -38,11 +38,12 @@ public class Global : Node
     public string[] rarities = {"common","rare","epic","legendary","divine","mythical"};
     public int[] rar_deb_skin = {2,10,25,50,80,100};
     public string[] cl_rars={"92cfff","fda10b","460771","00fd0c","00fd0c","ff0201"};
-    public int cam_max_view_distance = 100;
+    //public int cam_max_view_distance = 100;
     public float glow_intensity=1;
     public float glow_strength=0.96F;
     public float saturation=1;
     public float luminosity=1;
+    public float cam_far=100;
     // skins
 
     public Dictionary<string, object> quick_saved_game = new Dictionary<string, object>(){
@@ -283,11 +284,11 @@ public class Global : Node
             { "sao_quality", sao_quality},
             { "difficulty",difficulty},
             { "ncubes",ncubes },
-            { "cam_max_view_distance",cam_max_view_distance},
             { "glow_intensity",glow_intensity},
             { "glow_strength",glow_strength},
             { "saturation",saturation},
             { "luminosity",luminosity},
+            { "cam_far",cam_far},
         };
     }
 
@@ -390,9 +391,6 @@ public class Global : Node
                 if( nodeData.Keys.Contains("ncubes")){
                     ncubes=Convert.ToInt32(nodeData["ncubes"]);
                 }
-                if( nodeData.Keys.Contains("cam_max_view_distance")){
-                    cam_max_view_distance=Convert.ToInt32(nodeData["cam_max_view_distance"]);
-                }
                 if( nodeData.Keys.Contains("glow_intensity")){
                     glow_intensity=(float)Convert.ToDouble(nodeData["glow_intensity"]);
                 }
@@ -404,6 +402,9 @@ public class Global : Node
                 }
                 if( nodeData.Keys.Contains("luminosity")){
                     luminosity=(float)Convert.ToDouble(nodeData["luminosity"]);
+                }
+                if( nodeData.Keys.Contains("cam_far")){
+                    cam_far=(float)Convert.ToDouble(nodeData["cam_far"]);
                 }
             }
             else if((string)nodeData["name"]=="skin_unlocked"){

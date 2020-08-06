@@ -12,8 +12,8 @@ public class Player : KinematicBody
 	public float H_LOOK_SENS = 0.2F;
 	public float V_LOOK_SENS = 0.2F;
 	public float y_velo = 0;
-	private Spatial cube;
-	private Spatial cam;
+	public Spatial cube;
+	public Spatial cam;
 	public Joystick_Button joystick;
 	public Sprite global_joystick;
 	public TouchScreenButton bt_menu;
@@ -27,6 +27,7 @@ public class Player : KinematicBody
 	public Area areacol;
 	public Global globale;
 	public Camera camerae;
+	public Spatial flecheBase;
 
 	[Signal]
 	public delegate void onPauseBtPress();
@@ -51,7 +52,12 @@ public class Player : KinematicBody
 		global_joystick = (Sprite)GetNode("joystick");
 		bt_jump = (TouchScreenButton)GetNode("TSB_jump");
 		bt_menu = (TouchScreenButton)GetNode("TSB_menu");
+		flecheBase = (Spatial)GetNode("FlechBase");
 		debug = (Label)GetNode("debug");
+
+		if(globale.difficulty>1){
+			flecheBase.Visible=false;
+		}
 
 		if( is_mobile() ){
 		}
@@ -141,6 +147,12 @@ public class Player : KinematicBody
 		}
 	}
 
+	public void updateflechedir(){
+		if(globale.difficulty<1){
+			flecheBase.LookAt(globale.finnive.GlobalTransform.origin, Vector3.Up);
+		}
+	}
+
 	public override void _PhysicsProcess(float delta)
 	{
 		if(!paused){
@@ -209,6 +221,8 @@ public class Player : KinematicBody
 			if( Translation.y <= hauteur_min){
 				playerDeath();
 			}
+			//
+			updateflechedir();
 		}
 	}
 

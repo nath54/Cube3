@@ -22,6 +22,8 @@ public class UI_In_game : Control
         pbcl = (StyleBoxFlat)time_left.Get("custom_styles/fg");
         //
         fps_counter.Visible=globale.aff_fps;
+        //
+
     }
 
     public void changeDebugText(string text){
@@ -32,6 +34,7 @@ public class UI_In_game : Control
     public override void _Process(float delta)
     {
         fps_counter.Text="fps : "+Convert.ToString(Engine.GetFramesPerSecond());
+        
     }
 
     public void changePercentBar(float percent){

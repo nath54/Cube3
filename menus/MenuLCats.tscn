@@ -9,6 +9,8 @@ bg_color = Color( 0.105882, 0.301961, 0.419608, 1 )
 
 [sub_resource type="DynamicFont" id=2]
 size = 35
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=3]
@@ -34,10 +36,10 @@ __meta__ = {
 [node name="Aff_ncubes" parent="." instance=ExtResource( 3 )]
 
 [node name="Bt_back" type="Button" parent="."]
-margin_left = 25.8167
-margin_top = 23.5717
-margin_right = 121.817
-margin_bottom = 65.5717
+margin_left = 19.6504
+margin_top = 22.4126
+margin_right = 171.65
+margin_bottom = 78.4126
 custom_fonts/font = SubResource( 2 )
 text = "back"
 __meta__ = {

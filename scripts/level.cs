@@ -6,7 +6,6 @@ using System;
 public class level : Node
 {
     private Control pause_menu;
-
     private UI_In_game ui_in_game;
     public Timer timer;
     public float timeLeft; //In seconds
@@ -73,7 +72,7 @@ public class level : Node
         //
         Camera cam=globale.player.camerae;
         Godot.Environment env = cam.Environment;
-        cam.Far=globale.cam_max_view_distance;
+        cam.Far=globale.cam_far;
         env.GlowIntensity=globale.glow_intensity;
         env.GlowStrength=globale.glow_strength;
         env.AdjustmentSaturation=globale.saturation;

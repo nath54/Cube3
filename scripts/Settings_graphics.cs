@@ -29,6 +29,8 @@ public class Settings_graphics : Control
     public int[] shadow_resolutions = {0, 128, 512, 1024, 2048, 4096, 8192};
     public string[] sscs = {"low","medium","high"};
     public string[] saos = {"off","low","medium","high"};
+    public bool need_restart=false;
+    public bool at_start=true;
 
 
     // Called when the node enters the scene tree for the first time.
@@ -167,6 +169,12 @@ public class Settings_graphics : Control
         HScrollBar hsb_lum = (HScrollBar)GetNode("Settings/VBoxContainer/St_Brightness/HScrollBar");
         hsb_lum.Value=globale.luminosity;
         on_brightness_change((float)hsb_lum.Value);
+        //Far
+        HScrollBar hsb_far = (HScrollBar)GetNode("Settings/VBoxContainer/St_fov/HScrollBar");
+        hsb_far.Value=globale.cam_far;
+        on_far_change((float)hsb_far.Value);
+        //
+        at_start=false;
     }
 
     public void _on_Bt_game_pressed(){ GetTree().ChangeScene("res://menus/Settings_game.tscn"); }
@@ -223,6 +231,9 @@ public class Settings_graphics : Control
         //
         int width=Convert.ToInt32(te_width.Text);
         int height=Convert.ToInt32(te_height.Text);
+        if(width!=AncientSettings.width || height!=AncientSettings.height){
+            need_restart=true;
+        }
         //FPS
         globale.aff_fps=cb_showfps.Pressed;
         //Resolution
@@ -230,24 +241,39 @@ public class Settings_graphics : Control
         ProjectSettings.SetSetting("display/window/size/height", (int)height);
         //Vsync
         CheckBox cb_vsync = (CheckBox)GetNode("Settings/VBoxContainer/St_vsync/Cb");
-        ProjectSettings.SetSetting("display/window/vsync/use_vsync",cb_vsync.Pressed);
+        if(cb_vsync.Pressed!=(bool)ProjectSettings.GetSetting("display/window/vsync/use_vsync")){
+            need_restart=true;
+            ProjectSettings.SetSetting("display/window/vsync/use_vsync",cb_vsync.Pressed);
+        }
         //3d effects
         CheckBox cb_effects = (CheckBox)GetNode("Settings/VBoxContainer/St_3d_effects/Cb");
         int value = 3;
         if(cb_effects.Pressed){ value = 2;}
         if( globale.is_mobile() ){
-            ProjectSettings.SetSetting("rendering/quality/intended_usage/framebuffer_allocation.mobile",value);
+            if(value!=(int)ProjectSettings.GetSetting("rendering/quality/intended_usage/framebuffer_allocation.mobile")){
+                need_restart=true;
+                ProjectSettings.SetSetting("rendering/quality/intended_usage/framebuffer_allocation.mobile",value);
+            }
         }
         else{
-            ProjectSettings.SetSetting("rendering/quality/intended_usage/framebuffer_allocation",value);
+            if(value!=(int)ProjectSettings.GetSetting("rendering/quality/intended_usage/framebuffer_allocation")){
+                need_restart=true;
+                ProjectSettings.SetSetting("rendering/quality/intended_usage/framebuffer_allocation",value);
+            }
         }        
         //hdr
         CheckBox cb_hdr = (CheckBox)GetNode("Settings/VBoxContainer/St_hdr/Cb");
         if( globale.is_mobile() ){
-            ProjectSettings.SetSetting("rendering/quality/depth/hdr.mobile",cb_hdr.Pressed);
+            if(cb_hdr.Pressed!=(bool)ProjectSettings.GetSetting("rendering/quality/depth/hdr.mobile")){
+                ProjectSettings.SetSetting("rendering/quality/depth/hdr.mobile",cb_hdr.Pressed);
+                need_restart=true;
+            }
         }
         else{
-            ProjectSettings.SetSetting("rendering/quality/depth/hdr",cb_hdr.Pressed);
+            if(cb_hdr.Pressed!=(bool)ProjectSettings.GetSetting("rendering/quality/depth/hdr")){
+                ProjectSettings.SetSetting("rendering/quality/depth/hdr",cb_hdr.Pressed);
+                need_restart=true;
+            }
         }   
         //Anisotropic
         HScrollBar sb_ani = (HScrollBar)GetNode("Settings/VBoxContainer/St_anisotropic/HScrollBar");
@@ -256,10 +282,16 @@ public class Settings_graphics : Control
         //high quality ggx
         CheckBox cb_ggx = (CheckBox)GetNode("Settings/VBoxContainer/St_high_quality_ggx/Cb");
         if( globale.is_mobile() ){
-            ProjectSettings.SetSetting("rendering/quality/reflections/high_quality_ggx.mobile",cb_ggx.Pressed);
+            if(cb_ggx.Pressed!=(bool)ProjectSettings.GetSetting("rendering/quality/reflections/high_quality_ggx.mobile")){
+                need_restart=true;
+                ProjectSettings.SetSetting("rendering/quality/reflections/high_quality_ggx.mobile",cb_ggx.Pressed);
+            }
         }
         else{
-            ProjectSettings.SetSetting("rendering/quality/reflections/high_quality_ggx",cb_ggx.Pressed);
+            if(cb_ggx.Pressed!=(bool)ProjectSettings.GetSetting("rendering/quality/reflections/high_quality_ggx")){
+                need_restart=true;
+                ProjectSettings.SetSetting("rendering/quality/reflections/high_quality_ggx",cb_ggx.Pressed);
+            }
         }  
         //Reflexion Atlas Size
         HScrollBar sb_ras = (HScrollBar)GetNode("Settings/VBoxContainer/St_reflex_atlas_size/HScrollBar");
@@ -268,18 +300,30 @@ public class Settings_graphics : Control
         //Texture array reflexion
         CheckBox cb_tar = (CheckBox)GetNode("Settings/VBoxContainer/St_high_quality_ggx/Cb");
         if( globale.is_mobile() ){
-            ProjectSettings.SetSetting("rendering/quality/reflections/texture_array_reflections.mobile",cb_tar.Pressed);
+            if(cb_tar.Pressed!=(bool)ProjectSettings.GetSetting("rendering/quality/reflections/texture_array_reflections.mobile")){
+                need_restart=true;
+                ProjectSettings.SetSetting("rendering/quality/reflections/texture_array_reflections.mobile",cb_tar.Pressed);
+            }
         }
         else{
-            ProjectSettings.SetSetting("rendering/quality/reflections/texture_array_reflections",cb_tar.Pressed);
+            if(cb_tar.Pressed!=(bool)ProjectSettings.GetSetting("rendering/quality/reflections/texture_array_reflections")){
+                need_restart=true;
+                ProjectSettings.SetSetting("rendering/quality/reflections/texture_array_reflections",cb_tar.Pressed);
+            }
         }
         //Force vertex shading
         CheckBox cb_fvs = (CheckBox)GetNode("Settings/VBoxContainer/St_force_vertex_shading/Cb");
         if( globale.is_mobile() ){
-            ProjectSettings.SetSetting("rendering/quality/shading/force_vertex_shading.mobile",cb_fvs.Pressed);
+            if(cb_fvs.Pressed!=(bool)ProjectSettings.GetSetting("rendering/quality/shading/force_vertex_shading.mobile")){
+                need_restart=true;
+                ProjectSettings.SetSetting("rendering/quality/shading/force_vertex_shading.mobile",cb_fvs.Pressed);
+            }
         }
         else{
-            ProjectSettings.SetSetting("rendering/quality/shading/force_vertex_shading",cb_fvs.Pressed);
+            if(cb_fvs.Pressed!=(bool)ProjectSettings.GetSetting("rendering/quality/shading/force_vertex_shading")){
+                need_restart=true;
+                ProjectSettings.SetSetting("rendering/quality/shading/force_vertex_shading",cb_fvs.Pressed);
+            }
         }
         //Shadow Atlas size
         HScrollBar sb_sas = (HScrollBar)GetNode("Settings/VBoxContainer/St_reflex_atlas_size/HScrollBar");
@@ -315,31 +359,48 @@ public class Settings_graphics : Control
         //Brightness
         HScrollBar hsb_lum = (HScrollBar)GetNode("Settings/VBoxContainer/St_Brightness/HScrollBar");
         globale.luminosity=(float)hsb_lum.Value;
+        //Far
+        HScrollBar hsb_far = (HScrollBar)GetNode("Settings/VBoxContainer/St_fov/HScrollBar");
+        globale.cam_far = (float)hsb_far.Value;
         //Save Settings
         ProjectSettings.Save();
         globale.SaveGame();
         //
-        popup.Popup_();
+        if(need_restart){
+            popup.Popup_();
+        }
     }
 
     public void on_anis_change(float value){
         Label txt = (Label)GetNode("Settings/VBoxContainer/St_anisotropic/Txt");
         txt.Text = "Anisotropic Filter Level : "+anisotropics[(int)value]+"x";
+        if(!at_start){
+            need_restart=true;
+        }
     }
 
     public void on_ras_change(float value){
         Label txt = (Label)GetNode("Settings/VBoxContainer/St_reflex_atlas_size/Txt");
         txt.Text = "Reflexion atlas size : "+atlas_sizes[(int)value];
+        if(!at_start){
+            need_restart=true;
+        }
     }
 
     public void on_sas_change(float value){
         Label txt = (Label)GetNode("Settings/VBoxContainer/St_shadow_atlas_size/Txt");
         txt.Text = "Shadow atlas size : "+atlas_sizes[(int)value];
+        if(!at_start){
+            need_restart=true;
+        }
     }
 
     public void on_ssc_change(float value){
         Label txt = (Label)GetNode("Settings/VBoxContainer/St_subsurface_scattering/Txt");
         txt.Text = "Subsurface Scattering : "+sscs[(int)value];
+        if(!at_start){
+            need_restart=true;
+        }
     }
     public void on_sao_change(float value){
         Label txt = (Label)GetNode("Settings/VBoxContainer/St_ambient_occlusion/Txt");
@@ -366,6 +427,11 @@ public class Settings_graphics : Control
         txt.Text="Brightness : "+value;
     }
 
+    public void on_far_change(float value){
+        Label txt = (Label)GetNode("Settings/VBoxContainer/St_fov/Txt");
+        txt.Text="Max camera view distance : "+value;
+    }
+
     public void on_default_glow_s(){
         HScrollBar hsb_g_s = (HScrollBar)GetNode("Settings/VBoxContainer/St_glow_strength/HScrollBar");
         hsb_g_s.Value=0.96;
@@ -388,6 +454,12 @@ public class Settings_graphics : Control
         HScrollBar hsb_sat = (HScrollBar)GetNode("Settings/VBoxContainer/St_Saturation/HScrollBar");
         hsb_sat.Value=1;
         on_saturation_change(1);
+    }
+    
+    public void on_default_far(){
+        HScrollBar hsb_far = (HScrollBar)GetNode("Settings/VBoxContainer/St_fov/HScrollBar");
+        hsb_far.Value=100;
+        on_far_change(100);
     }
 
     public void on_cancel(){

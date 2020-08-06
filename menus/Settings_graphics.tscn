@@ -1850,6 +1850,51 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="St_fov" type="Control" parent="Settings/VBoxContainer"]
+margin_top = 2232.0
+margin_right = 900.0
+margin_bottom = 2392.0
+rect_min_size = Vector2( 700, 160 )
+
+[node name="Txt" type="Label" parent="Settings/VBoxContainer/St_fov"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 48.0
+margin_top = 24.0
+margin_right = -157.0
+margin_bottom = 80.0
+custom_fonts/font = SubResource( 2 )
+text = "Camera view max distance : 100"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HScrollBar" type="HScrollBar" parent="Settings/VBoxContainer/St_fov"]
+margin_left = 42.0
+margin_top = 85.0
+margin_right = 825.0
+margin_bottom = 145.0
+min_value = 0.1
+max_value = 1000.0
+page = 0.1
+value = 100.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureButton" type="TextureButton" parent="Settings/VBoxContainer/St_fov"]
+margin_left = 858.52
+margin_top = 81.9207
+margin_right = 923.52
+margin_bottom = 146.921
+texture_normal = ExtResource( 4 )
+texture_pressed = ExtResource( 3 )
+texture_hover = ExtResource( 5 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Bt_apply" type="Button" parent="."]
 anchor_left = 0.611
 anchor_top = 0.863
@@ -1878,7 +1923,6 @@ __meta__ = {
 }
 
 [node name="PopupDialog" type="PopupDialog" parent="."]
-visible = true
 margin_left = 174.727
 margin_top = 155.273
 margin_right = 1053.73
@@ -1940,6 +1984,8 @@ text = "No"
 [connection signal="pressed" from="Settings/VBoxContainer/St_Brightness/TextureButton" to="." method="on_default_lum"]
 [connection signal="value_changed" from="Settings/VBoxContainer/St_Saturation/HScrollBar" to="." method="on_saturation_change"]
 [connection signal="pressed" from="Settings/VBoxContainer/St_Saturation/TextureButton" to="." method="on_default_sat"]
+[connection signal="value_changed" from="Settings/VBoxContainer/St_fov/HScrollBar" to="." method="on_far_change"]
+[connection signal="pressed" from="Settings/VBoxContainer/St_fov/TextureButton" to="." method="on_default_far"]
 [connection signal="pressed" from="Bt_apply" to="." method="on_apply"]
 [connection signal="pressed" from="Bt_back" to="." method="on_cancel"]
 [connection signal="pressed" from="PopupDialog/Bt_restart" to="." method="keep_settings"]
