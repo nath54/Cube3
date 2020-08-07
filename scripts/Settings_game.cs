@@ -19,8 +19,10 @@ public class Settings_game : Control
         @"
     -Time * 1.5
     -Larger Platforms (Arcade)
-    -Rewards / 1.5 (Arcade)",
-        @"",
+    -Rewards / 1.5 (Arcade)
+    -Arrow towards the end of the level",
+        @"
+    -Arrow towards the end of the level",
         @"
     -Time/1.75
     -Smaller platforms (Arcade)

@@ -88,7 +88,9 @@ public class Player : KinematicBody
 	}
 
 	public void respawn(){
-		Translation=spawnpoint;
+		if(globale.respawn){
+			Translation=spawnpoint;
+		}
 	}
 
 	public void setSkin(int idskin){
@@ -106,11 +108,9 @@ public class Player : KinematicBody
 	public override void _Input(InputEvent @event)
 	{
 		if(!paused){
-
 			if(Input.IsActionJustPressed("respawn")){
 				respawn();
 			}
-
 			if(is_mobile()){
 				if(@event is InputEventScreenDrag ie){
 					if(ie.Index==joystick.ongoing_drag){
@@ -213,12 +213,10 @@ public class Player : KinematicBody
 					if(rot_deg.x > 90){ rot_deg.x=90; }
 					cam.RotationDegrees=rot_deg;
 				}
-			}
-			
+			}			
 			move_vec=move_vec.Normalized();
 			move_vec=move_vec.Rotated(new Vector3(0,1,0), cam.RotationDegrees.y*3.141592654F/180.0F);
 			move_vec *= MOVE_SPEED;
-
 			if(move_vec.Length() >= 0.1F){
 				Vector3 rot_deg=cube.RotationDegrees;
 				rot_deg.y=cam.RotationDegrees.y;
@@ -227,11 +225,9 @@ public class Player : KinematicBody
 				rote_deg.y=cam.RotationDegrees.y;
 				cubeshape.RotationDegrees=rote_deg;
 			}
-
 			just_jumped=false;
 			bool grounded=IsOnFloor();
-			y_velo -= GRAVITY;
-			
+			y_velo -= GRAVITY;			
 			if(grounded && (Input.IsActionPressed("jump")) ){
 				just_jumped=true;
 				y_velo=JUMP_FORCE;
@@ -243,15 +239,12 @@ public class Player : KinematicBody
 				y_velo=-MAX_FALL_SPEED;
 			}
 			move_vec.y=y_velo;
-
 			MoveAndSlide(move_vec, v3);
-
 			//Test Death
 			if( Translation.y <= hauteur_min){
 				playerDeath();
 			}
-			//
-			
+			//			
 		}
 	}
 
