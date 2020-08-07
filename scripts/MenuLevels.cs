@@ -98,7 +98,8 @@ public class MenuLevels : Control
         if(required==-1 || globale.levels_finis[required]){
             globale.tipe="levels";
             globale.actu_id_niv=idl;
-            GetTree().ChangeScene(globale.levels_path[idl]);
+            globale.chargement(globale.levels_path[idl]);
+            //GetTree().ChangeScene(globale.levels_path[idl]);
         }
         else{
             //TODO : un popup qui dit : "You must finish this level : "+globale.levels_name[required]+" before this level !"

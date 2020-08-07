@@ -210,6 +210,8 @@ public class Global : Node
     public finNiv finnive;
     public Timer timer_message;
     public string controller_mode="keyboard";
+    public LoadingScreen loadingScreen;
+    public bool is_loading=false;
 
     [Signal]
     public delegate void playerDeath();
@@ -228,18 +230,22 @@ public class Global : Node
         timer_message.Start();
     }
 
-    public void chargement_fini(LoadingScreen l){
-        l.QueueFree();
-        RemoveChild(l);
+    public void chargement_fini(){
+        RemoveChild(loadingScreen);
+        loadingScreen.QueueFree();
+        loadingScreen=null;
+        is_loading=false;
     }
 
     public void chargement(string path){
-        PackedScene packed = ResourceLoader.Load("res://menus/LoadingScreen.tscn") as PackedScene;
-        LoadingScreen loading = (LoadingScreen)packed.Instance();
-        AddChild(loading);
-        loading.Connect("chargement_fini", this, nameof(chargement_fini));
-        loading.goto_scene(path);
-        
+        if(!is_loading){
+            is_loading=true;
+            PackedScene packed = ResourceLoader.Load("res://menus/LoadingScreen.tscn") as PackedScene;
+            loadingScreen = (LoadingScreen)packed.Instance();
+            loadingScreen.Connect("chargement_fini", this, nameof(chargement_fini));
+            AddChild(loadingScreen);
+            loadingScreen.goto_scene(path);
+        }
     }
 
     public void on_timer_message(){

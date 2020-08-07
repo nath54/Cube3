@@ -31,7 +31,6 @@ public class LoadingScreen : Control
         SetProcess(false);
         Visible=false;
         //
-        loader=null;
     }
     
     public void _on_LoadingScreen_gui_input(InputEvent @event){
@@ -54,11 +53,6 @@ public class LoadingScreen : Control
         //
         animationPlayer.Play("show");
         //
-        if(is_charging){
-            GD.Print("Is already loading");
-            return ;
-        }       
-
         Node root = GetTree().Root;
         //current_scene = root.GetChild(root.GetChildCount() -1);
         foreach(Node child in root.GetChildren()){
@@ -66,7 +60,6 @@ public class LoadingScreen : Control
                 child.QueueFree();
             }
         }
-
         loader = ResourceLoader.LoadInteractive(path);
         is_charging=true;
         if(loader == null){ // Check for errors.
@@ -109,6 +102,7 @@ public class LoadingScreen : Control
             var err = loader.Poll();
             if(err.ToString() == "FileEof"){ // Finished loading.
                 PackedScene resource = loader.GetResource() as PackedScene;
+                loader.Dispose();
                 loader = null;
                 Visible=false;
                 set_new_scene(resource);
@@ -141,11 +135,13 @@ public class LoadingScreen : Control
     
     public void set_new_scene(PackedScene scene_resource){
         try{
+            
             //GD.Print("loading scene resource : ",scene_resource);
             GetTree().ChangeSceneTo(scene_resource);
             //current_scene = scene_resource.Instance();
             //GetTree().Root.AddChild(current_scene);
-            QueueFree();
+            
+            EmitSignal("chargement_fini");
         }
         catch{
             GD.Print("EEEEEEEEEEEEEEEERRRRRRRRRRRRRRRRROOOOOOOOOOOOOOOOOORRRRRRRRR");
