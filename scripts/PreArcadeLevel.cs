@@ -89,12 +89,14 @@ public class PreArcadeLevel : Control
         if(@event is InputEventScreenTouch){
             TextureButton tbt = (TextureButton)GetNode("Bt_saveandexit");
             if(!tbt.IsHovered()){
-                GetTree().ChangeScene("res://levels/World.tscn");
+                globale.chargement("res://levels/World.tscn");
+                //GetTree().ChangeScene("res://levels/World.tscn");
             }
         }
         else if(@event is InputEventKey ie){
             if(Input.IsActionPressed("jump")){
-                GetTree().ChangeScene("res://levels/World.tscn");
+                globale.chargement("res://levels/World.tscn");
+                //GetTree().ChangeScene("res://levels/World.tscn");
             }
         }
     }

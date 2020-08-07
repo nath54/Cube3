@@ -218,6 +218,7 @@ public class Global : Node
     public override void _Ready()
     {
         //
+        //
         LoadGame();
         //
         timer_message=new Timer();
@@ -225,6 +226,20 @@ public class Global : Node
         AddChild(timer_message);
         timer_message.Connect("timeout", this, nameof(on_timer_message));
         timer_message.Start();
+    }
+
+    public void chargement_fini(LoadingScreen l){
+        l.QueueFree();
+        RemoveChild(l);
+    }
+
+    public void chargement(string path){
+        PackedScene packed = ResourceLoader.Load("res://menus/LoadingScreen.tscn") as PackedScene;
+        LoadingScreen loading = (LoadingScreen)packed.Instance();
+        AddChild(loading);
+        loading.Connect("chargement_fini", this, nameof(chargement_fini));
+        loading.goto_scene(path);
+        
     }
 
     public void on_timer_message(){

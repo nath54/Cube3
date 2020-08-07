@@ -81,7 +81,6 @@ public class level : Node
             env.SsaoEnabled=true;
             Godot.Environment.SSAOQuality ssaoqual=env.SsaoQuality;
             GD.Print(ssaoqual.GetType());
-            
             if(globale.sao_quality==0){
                 
             }

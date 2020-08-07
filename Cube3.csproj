@@ -68,6 +68,7 @@
     <Compile Include="scripts\IdButton.cs" />
     <Compile Include="scripts\Joystick_Button.cs" />
     <Compile Include="scripts\level.cs" />
+    <Compile Include="scripts\LoadingScreen.cs" />
     <Compile Include="scripts\MainMenu.cs" />
     <Compile Include="scripts\MenuLCats.cs" />
     <Compile Include="scripts\MenuLevels.cs" />
