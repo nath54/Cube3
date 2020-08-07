@@ -7,12 +7,13 @@ public class LoadingScreen : Control
     public ProgressBar progressBar;
     public float new_percente=0.0F;
     public int wait_frames;
-    public float time_max = 100; //# msec
+    public float time_max = 1; //# msec
     public Godot.ResourceInteractiveLoader loader;
     public Label l_description;
     public Node current_scene;
     public Global globale;
     public bool is_charging=false;
+    //public Thread thread;
     public string[] tips={
         "Building a cube world...",
         "Cubes modeling in progress ...",
@@ -31,6 +32,7 @@ public class LoadingScreen : Control
         SetProcess(true);
         Visible=true;
         //
+        //thread=new Thread();
     }
     
     public void _on_LoadingScreen_gui_input(InputEvent @event){
@@ -83,6 +85,7 @@ public class LoadingScreen : Control
     }    
 
     public override void _Process(float time){
+        GD.Print("process");
         animationPlayer=(AnimationPlayer)GetNode("LoadScreenAnim");
         progressBar=(ProgressBar)GetNode("ProgressBar");
         //
@@ -96,6 +99,7 @@ public class LoadingScreen : Control
             wait_frames -= 1;
             return;
         }
+        update_progress();
         var t = OS.GetTicksMsec();
         // Use "time_max" to control for how long we block this thread.
         while(OS.GetTicksMsec() < t + time_max){
@@ -104,13 +108,12 @@ public class LoadingScreen : Control
             if(err.ToString() == "FileEof"){ // Finished loading.
                 PackedScene resource = loader.GetResource() as PackedScene;
                 loader.Dispose();
-                loader = null;
                 Visible=false;
                 set_new_scene(resource);
                 break;
             }
             else if(err.ToString() == "Ok"){
-                update_progress();
+                //update_progress();
             }
             else{ // Error during loading.
                 //show_error();
