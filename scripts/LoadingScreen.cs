@@ -28,8 +28,8 @@ public class LoadingScreen : Control
         //
         globale=(Global)GetNode("/root/Global");
         //
-        SetProcess(false);
-        Visible=false;
+        SetProcess(true);
+        Visible=true;
         //
     }
     
@@ -47,6 +47,8 @@ public class LoadingScreen : Control
     }
 
     public void goto_scene(string path){  // Game requests to switch to this scene.
+
+        SetProcess(true);
         //
         animationPlayer=(AnimationPlayer)GetNode("LoadScreenAnim");
         progressBar=(ProgressBar)GetNode("ProgressBar");
@@ -78,7 +80,6 @@ public class LoadingScreen : Control
         //
         wait_frames = 1;
         //
-        SetProcess(true);
     }    
 
     public override void _Process(float time){

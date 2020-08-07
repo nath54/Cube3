@@ -151,11 +151,17 @@ public class Player : KinematicBody
 	}
 
 	public void updateflechedir(){
-		if(globale.difficulty<1){
+		if(globale.difficulty<=1){
 			flecheBase.LookAt(globale.finnive.GlobalTransform.origin, Vector3.Up);
+		}
+		else if(flecheBase.Visible){
+			flecheBase.Visible=false;
 		}
 	}
 
+	public override void _Process(float delta){
+		updateflechedir();
+	}
 
 	public override void _PhysicsProcess(float delta)
 	{
@@ -247,7 +253,7 @@ public class Player : KinematicBody
 				playerDeath();
 			}
 			//
-			updateflechedir();
+			
 		}
 	}
 
