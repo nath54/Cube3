@@ -14,7 +14,6 @@ public class mur : Spatial
         if(body is Player){
             death();
         }
-        GD.Print("body entered : ",body);
     }
 
     public void death(){

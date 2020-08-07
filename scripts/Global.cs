@@ -204,7 +204,6 @@ public class Global : Node
     //
 
     public string actu_cat="";
-
     public Player player;
     public level levele;
     public finNiv finnive;
@@ -212,10 +211,8 @@ public class Global : Node
     public string controller_mode="keyboard";
     public LoadingScreen loadingScreen;
     public bool is_loading=false;
-
     [Signal]
     public delegate void playerDeath();
-
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {

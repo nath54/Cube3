@@ -31,9 +31,9 @@ public class Player : KinematicBody
 	public Spatial flecheBase;
 	public float joysticke_x=0;
 	public float joysticke_y=0;
-
 	[Signal]
 	public delegate void onPauseBtPress();
+	public const float rayLength = 10;
 
 	public bool is_mobile(){
 		return (OS.GetName()=="Android" || OS.GetName()=="iOS");
@@ -248,7 +248,14 @@ public class Player : KinematicBody
 			if( Translation.y <= hauteur_min){
 				playerDeath();
 			}
-			//			
+			//camera
+			/*
+			Vector2 pos = new Vector2((float)ProjectSettings.GetSetting("display/window/size/width")/2,(float)ProjectSettings.GetSetting("display/window/size/height")/2);
+			var from = camerae.ProjectRayOrigin(pos);
+	        var to = from + camerae.ProjectRayNormal(pos) * rayLength;
+			var spaceState = GetWorld().DirectSpaceState;
+        	var result = spaceState.IntersectRay(camerae.Translation, camerae.Translation, new object[] { this });
+			*/
 		}
 	}
 

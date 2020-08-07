@@ -148,6 +148,86 @@ public class GenerateArcade : Node
         return (level,player_spawn,pos_finniv,final_nb_plats);
     }
 
+    public (Spatial,Vector3,Vector3,int) generate_maze_1(){
+        // 0 = vide , 1=floor , 2=fake floor , 3=wall
+        Vector3 tc = new Vector3(1.5F,3F,1.5F);
+        Vector3 dc=tc*2;
+        if(globale.difficulty==0){
+            dc = new Vector3(5F,3F,5F);
+            dc=tc*2;
+        }
+        else if(globale.difficulty==1){
+            tc = new Vector3(3F,3F,3F);
+            dc=tc*2;
+        }
+        else if(globale.difficulty==3){
+            dc = new Vector3(1.1F,3F,1.1F);
+            dc=tc*2;
+        }
+        int mtx=globale.mtx;
+        int mty=2;
+        int mtz=globale.mtz;
+        int nb_plats=globale.nb_plats;
+        int[, ,] mape = new int[mtx, mty, mtz];
+        
+        Spatial level=new Spatial();
+
+        //creation
+
+        PackedScene packedSceneFloor = (PackedScene)ResourceLoader.Load("res://assets/floor.tscn");
+        MeshInstance floor=(MeshInstance)packedSceneFloor.Instance();
+        floor.Name="tile-"+0+"-"+0+"-"+0;
+        level.AddChild(floor);
+        floor.Translation = new Vector3(0,0,0);
+        floor.Scale=new Vector3(mtx*dc.x,1,mtz*dc.z); 
+
+        for(int x=0; x<mtx; x++){
+            for(int z=0; z<mtz; z++){
+                //
+                PackedScene packedSceneWall = (PackedScene)ResourceLoader.Load("res://assets/mur.tscn");
+                mur wall=(mur)packedSceneWall.Instance();
+                wall.Name="tile-"+x+"-"+1+"-"+z;
+                level.AddChild(wall);                
+                wall.Translation = new Vector3(x,1,z)*dc;
+                wall.Scale=tc;            
+                mape[x,1,z]=3;
+            }   
+        }
+
+        Random rand = new Random();
+        int apx=rand.Next(1,mtx-2);
+        int apz=rand.Next(1,mtz-2);
+        Vector3 player_spawn=new Vector3(apx,2,apz)*dc;
+        mur walle = (mur)level.GetNode("tile-"+apx+"-"+1+"-"+apz);
+        if(walle!=null){
+            walle.QueueFree();
+        }
+        //
+        for(int w=0; w<nb_plats; w++){
+            
+            if(rand.Next(0,2)==0){
+                if(rand.Next(0,2)==0){ apx-=1; }
+                else{ apx+=1; }   
+            }
+            else{
+                if(rand.Next(0,2)==0){ apz-=1; }
+                else{ apz+=1; }   
+            }
+            if(apx<1){ apx=1; }
+            else if(apx>mtx-2){ apx=mtx-2; }
+            if(apz<1){ apz=1; }
+            else if(apz>mtz-2){ apz=mtz-2; }
+
+            walle = (mur)level.GetNode("tile-"+apx+"-"+1+"-"+apz);
+            if(walle!=null){
+                walle.QueueFree();
+            }
+
+        }
+        Vector3 pos_finniv=new Vector3(apx,1,apz)*dc;
+
+        return (level,player_spawn,pos_finniv,nb_plats);
+    }
 
 
 

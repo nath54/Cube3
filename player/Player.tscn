@@ -33,8 +33,13 @@ shape = SubResource( 1 )
 [node name="CamBase" type="Spatial" parent="."]
 
 [node name="Camera" type="Camera" parent="CamBase"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8.44074 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8 )
 environment = ExtResource( 1 )
+
+[node name="RayCast" type="RayCast" parent="CamBase/Camera"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.647248 )
+enabled = true
+cast_to = Vector3( 0, 0, -7 )
 
 [node name="FlechBase" type="Spatial" parent="."]
 
@@ -83,4 +88,3 @@ __meta__ = {
 [node name="CollisionShape" type="CollisionShape" parent="Area"]
 shape = SubResource( 5 )
 [connection signal="pressed" from="TSB_menu" to="." method="_on_TSB_menu_pressed"]
-[connection signal="body_entered" from="Area" to="." method="collided"]

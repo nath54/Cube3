@@ -24,9 +24,7 @@ public class World : Spatial
         //
         player= (Player)GetNode("Player");
         finNiv = (finNiv)GetNode("finNiv");
-        
         int finale_nb_plats=20;
-
         if(globale.tipe=="platforms"){
             Spatial mape;
             Vector3 player_pos;
@@ -37,8 +35,16 @@ public class World : Spatial
             finNiv.Translation = finniv_pos;
             AddChild(mape);
         }
-
-
+         if(globale.tipe=="maze"){
+            Spatial mape;
+            Vector3 player_pos;
+            Vector3 finniv_pos;    
+            (mape,player_pos,finniv_pos,finale_nb_plats) = generateArcade.generate_maze_1();
+            player.Translation = player_pos;
+            player.spawnpoint=player.Translation;
+            finNiv.Translation = finniv_pos;
+            AddChild(mape);
+        }
         //time
         globale.levele.timeTotal=finale_nb_plats*6;
         //
