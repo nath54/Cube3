@@ -75,6 +75,10 @@ public class Player : KinematicBody
 			bt_respawn.Visible=false;
 			bt_respawn.SetProcessUnhandledInput(false);
 		}
+		if(!globale.respawn){
+			bt_respawn.Visible=false;
+			bt_respawn.SetProcessUnhandledInput(false);
+		}
 		//
 		spawnpoint=Translation;
 		spawnpoint.y-=0.05F;
