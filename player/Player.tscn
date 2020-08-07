@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://default_env.tres" type="Environment" id=1]
 [ext_resource path="res://scripts/Player.cs" type="Script" id=2]
@@ -8,16 +8,21 @@
 [ext_resource path="res://imgs/pause_pressed.png" type="Texture" id=6]
 [ext_resource path="res://menus/joystick.tscn" type="PackedScene" id=7]
 [ext_resource path="res://assets/flechedir.tscn" type="PackedScene" id=8]
+[ext_resource path="res://imgs/to_default_pressed.png" type="Texture" id=9]
+[ext_resource path="res://imgs/to_default.png" type="Texture" id=10]
 
 [sub_resource type="BoxShape" id=1]
 
 [sub_resource type="CircleShape2D" id=2]
 radius = 40.0
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="CircleShape2D" id=3]
+radius = 30.0
+
+[sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 25, 25 )
 
-[sub_resource type="BoxShape" id=4]
+[sub_resource type="BoxShape" id=5]
 
 [node name="Player" type="KinematicBody"]
 script = ExtResource( 2 )
@@ -43,18 +48,26 @@ position = Vector2( 199.146, 538.133 )
 scale = Vector2( 1.13348, 1.13348 )
 
 [node name="TSB_jump" type="TouchScreenButton" parent="."]
-position = Vector2( 974.393, 439.889 )
-scale = Vector2( 3, 3 )
+position = Vector2( 986.285, 449.403 )
+scale = Vector2( 2.5, 2.5 )
 normal = ExtResource( 4 )
 pressed = ExtResource( 3 )
 shape = SubResource( 2 )
 action = "jump"
 
+[node name="TSB_respawn" type="TouchScreenButton" parent="."]
+position = Vector2( 1153.53, 192.652 )
+scale = Vector2( 1.5, 1.5 )
+normal = ExtResource( 10 )
+pressed = ExtResource( 9 )
+shape = SubResource( 3 )
+action = "respawn"
+
 [node name="TSB_menu" type="TouchScreenButton" parent="."]
 position = Vector2( 42.8373, 37.7976 )
 normal = ExtResource( 5 )
 pressed = ExtResource( 6 )
-shape = SubResource( 3 )
+shape = SubResource( 4 )
 
 [node name="debug" type="Label" parent="."]
 margin_left = 445.836
@@ -68,6 +81,6 @@ __meta__ = {
 [node name="Area" type="Area" parent="."]
 
 [node name="CollisionShape" type="CollisionShape" parent="Area"]
-shape = SubResource( 4 )
+shape = SubResource( 5 )
 [connection signal="pressed" from="TSB_menu" to="." method="_on_TSB_menu_pressed"]
 [connection signal="body_entered" from="Area" to="." method="collided"]

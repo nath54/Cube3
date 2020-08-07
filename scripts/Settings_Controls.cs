@@ -16,8 +16,8 @@ public class Settings_Controls : Control
     public Button bt_keyboard;
     public Button bt_controller;
     public string mode = "keyboard";
-    public string[] liste_strings={"move_forward","move_backward","move_left","move_right","jump","respawn","suicide"};
-    public bool[] exclusive_keyboard={true,true,true,true,false,false,false};
+    public string[] liste_strings={"move_forward","move_backward","move_left","move_right","jump","respawn"};
+    public bool[] exclusive_keyboard={true,true,true,true,false,false};
     public Global globale;
 
     // Called when the node enters the scene tree for the first time.
@@ -138,31 +138,6 @@ public class Settings_Controls : Control
         changing=true;
         changinge.Visible=changing;
         input_changing=5;
-    }
-    public void on_bt_change_7(){        
-        changing=true;
-        changinge.Visible=changing;
-        input_changing=6;
-    }
-    public void on_bt_change_8(){        
-        changing=true;
-        changinge.Visible=changing;
-        input_changing=7;
-    }
-    public void on_bt_change_9(){        
-        changing=true;
-        changinge.Visible=changing;
-        input_changing=8;
-    }
-    public void on_bt_change_10(){        
-        changing=true;
-        changinge.Visible=changing;
-        input_changing=9;
-    }
-    public void on_bt_change_11(){        
-        changing=true;
-        changinge.Visible=changing;
-        input_changing=10;
     }
 
     public void on_bt_keyboard(){

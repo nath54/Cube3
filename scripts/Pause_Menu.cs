@@ -25,6 +25,6 @@ public class Pause_Menu : Control
     }
 
     public void onBtQuitToMenuPress(){
-        GetTree().ChangeScene("res://menus/MainMenu.tscn");
+        GetTree().ChangeScene("res://menus/MenuPerdu.tscn");
     }
 }

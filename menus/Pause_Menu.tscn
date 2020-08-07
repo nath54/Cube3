@@ -64,7 +64,7 @@ margin_top = 121.5
 margin_right = 210.0
 margin_bottom = 246.5
 custom_fonts/font = SubResource( 2 )
-text = "Menu"
+text = "End of the Game"
 __meta__ = {
 "_edit_use_anchors_": false
 }

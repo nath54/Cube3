@@ -18,6 +18,7 @@ public class Player : KinematicBody
 	public Sprite global_joystick;
 	public TouchScreenButton bt_menu;
 	public TouchScreenButton bt_jump;
+	public TouchScreenButton bt_respawn;
 	public Vector3 spawnpoint;
 	public CollisionShape cubeshape;
 	public Label debug;
@@ -54,6 +55,7 @@ public class Player : KinematicBody
 		global_joystick = (Sprite)GetNode("joystick");
 		bt_jump = (TouchScreenButton)GetNode("TSB_jump");
 		bt_menu = (TouchScreenButton)GetNode("TSB_menu");
+		bt_respawn = (TouchScreenButton)GetNode("TSB_respawn");
 		flecheBase = (Spatial)GetNode("FlechBase");
 		debug = (Label)GetNode("debug");
 
@@ -70,6 +72,8 @@ public class Player : KinematicBody
 			bt_jump.SetProcessUnhandledInput(false);
 			bt_menu.Visible=false;
 			bt_menu.SetProcessUnhandledInput(false);
+			bt_respawn.Visible=false;
+			bt_respawn.SetProcessUnhandledInput(false);
 		}
 		//
 		spawnpoint=Translation;
@@ -81,6 +85,10 @@ public class Player : KinematicBody
 		//
 		setSkin(globale.skin_id_equipe);
 		//
+	}
+
+	public void respawn(){
+		Translation=spawnpoint;
 	}
 
 	public void setSkin(int idskin){
@@ -95,24 +103,14 @@ public class Player : KinematicBody
 		cube.AddChild(skin);
 	}
 
-	public void collided(Node body){
-		GD.Print(body);
-		if(body is GridMap grid){
-			//print("collided with: ", body);
-			Vector3 pos =  GlobalTransform.origin - grid.Translation;//this.global_transform.origin - grid.translation;
-			Vector3 gridPos = grid.WorldToMap(pos);//grid.world_to_map( pos );
-			var item = grid.GetCellItem(Convert.ToInt32(gridPos.x),Convert.ToInt32(gridPos.y),Convert.ToInt32(gridPos.z));//grid.get_cell_item(gridPos.x, gridPos.y, gridPos.z);
-			if(item != GridMap.InvalidCellItem){
-				GD.Print("gridPos ", gridPos, "item: ", item );
-				// so some logic here
-			}
-		}
-	}
-		
-
 	public override void _Input(InputEvent @event)
 	{
 		if(!paused){
+
+			if(Input.IsActionJustPressed("respawn")){
+				respawn();
+			}
+
 			if(is_mobile()){
 				if(@event is InputEventScreenDrag ie){
 					if(ie.Index==joystick.ongoing_drag){
@@ -143,7 +141,7 @@ public class Player : KinematicBody
 	
 	public void playerDeath(){
 		if(globale.respawn){
-			Translation=spawnpoint;
+			respawn();
 		}
 		else{
 			globale.levele.partiePerdue();
