@@ -1,26 +1,561 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://assets/finNiv.tscn" type="PackedScene" id=1]
 [ext_resource path="res://player/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://levels/level.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/fake_floor.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/floor.tscn" type="PackedScene" id=6]
 
 [node name="level" type="Spatial"]
 
 [node name="levele" type="Spatial" parent="."]
 
-[node name="floor" parent="levele" instance=ExtResource( 6 )]
-transform = Transform( 4, 0, 0, 0, 1, 0, 0, 0, 4, 0, 0, 16 )
+[node name="f-e0" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 25, 0, 0, 0, 1, 0, 0, 0, 25, 0, 0, 0 )
 
-[node name="floor2" parent="levele" instance=ExtResource( 6 )]
-transform = Transform( 4, 0, 0, 0, 1, 0, 0, 0, 4, 0, 0, -16 )
+[node name="f-mur1" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 25, 0, 0, 0, 1.32795e-07, -75.95, 0, -1, -1.09278e-06, 0, 65, -26 )
 
-[node name="floor3" parent="levele" instance=ExtResource( 6 )]
+[node name="f-mur2" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 25, 0, 0, 0, 1.32795e-07, -75.95, 0, -1, -1.09278e-06, 0, 65, 26 )
+
+[node name="f-mur3" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( -1.09278e-06, 1, 1.09278e-06, 0, 1.32795e-07, -75.95, 26.8642, 4.69709e-08, 5.13291e-14, 26.0836, 65, 0 )
+
+[node name="f-mur4" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( -1.09278e-06, 1, 1.09278e-06, 0, 1.32795e-07, -75.95, 26.8642, 4.69709e-08, 5.13291e-14, -25.9164, 65, 0 )
+
+[node name="f-1-1-e1" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, -20, 20, -20 )
+
+[node name="f-2-1-e1" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, -10, 20, -20 )
+
+[node name="f-3-1-e1" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, 0, 20, -20 )
+
+[node name="f-4-1-e1" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, 10, 20, -20 )
+
+[node name="f-5-1-e1" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, 20, 20, -20 )
+
+[node name="f-1-2-e1" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, -20, 20, -10 )
+
+[node name="f-2-2-e1" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, -10, 20, -10 )
+
+[node name="f-3-2-e1" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, 0, 20, -10 )
+
+[node name="f-4-2-e1" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, 10, 20, -10 )
+
+[node name="f-5-2-e1" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, 20, 20, -10 )
+
+[node name="f-1-3-e1" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, -20, 20, 0 )
+
+[node name="f-2-3-e1" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, -10, 20, 0 )
+
+[node name="f-3-3-e1" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, 0, 20, 0 )
+
+[node name="f-4-3-e1" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, 10, 20, 0 )
+
+[node name="f-5-3-e1" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, 20, 20, 0 )
+
+[node name="f-1-4-e1" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, -20, 20, 10 )
+
+[node name="f-3-4-e1" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, 0, 20, 10 )
+
+[node name="f-4-4-e1" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, 10, 20, 10 )
+
+[node name="f-5-4-e1" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, 20, 20, 10 )
+
+[node name="f-1-5-e1" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, -20, 20, 20 )
+
+[node name="f-2-5-e1" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, -10, 20, 20 )
+
+[node name="f-3-5-e1" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, 0, 20, 20 )
+
+[node name="f-4-5-e1" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, 10, 20, 20 )
+
+[node name="f-5-5-e1" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, 20, 20, 20 )
+
+[node name="f-1-1-e2" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, -20, 40, -20 )
+
+[node name="f-2-1-e2" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, -10, 40, -20 )
+
+[node name="f-3-1-e2" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, 0, 40, -20 )
+
+[node name="f-4-1-e2" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, 10, 40, -20 )
+
+[node name="f-1-2-e2" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, -20, 40, -10 )
+
+[node name="f-2-2-e2" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, -10, 40, -10 )
+
+[node name="f-3-2-e2" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, 0, 40, -10 )
+
+[node name="f-4-2-e2" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, 10, 40, -10 )
+
+[node name="f-5-2-e2" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, 20, 40, -10 )
+
+[node name="f-1-3-e2" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, -20, 40, 0 )
+
+[node name="f-2-3-e2" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, -10, 40, 0 )
+
+[node name="f-3-3-e2" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, 0, 40, 0 )
+
+[node name="f-4-3-e2" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, 10, 40, 0 )
+
+[node name="f-5-3-e2" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, 20, 40, 0 )
+
+[node name="f-1-4-e2" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, -20, 40, 10 )
+
+[node name="f-2-4-e2" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, -10, 40, 10 )
+
+[node name="f-3-4-e2" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, 0, 40, 10 )
+
+[node name="f-4-4-e2" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, 10, 40, 10 )
+
+[node name="f-5-4-e2" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, 20, 40, 10 )
+
+[node name="f-1-5-e2" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, -20, 40, 20 )
+
+[node name="f-2-5-e2" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, -10, 40, 20 )
+
+[node name="f-3-5-e2" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, 0, 40, 20 )
+
+[node name="f-4-5-e2" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, 10, 40, 20 )
+
+[node name="f-5-5-e2" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, 20, 40, 20 )
+
+[node name="f-1-1-e3" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, -20, 60, -20 )
+
+[node name="f-2-1-e3" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, -10, 60, -20 )
+
+[node name="f-3-1-e3" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, 0, 60, -20 )
+
+[node name="f-4-1-e3" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, 10, 60, -20 )
+
+[node name="f-5-1-e3" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, 20, 60, -20 )
+
+[node name="f-1-2-e3" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, -20, 60, -10 )
+
+[node name="f-2-2-e3" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, -10, 60, -10 )
+
+[node name="f-3-2-e3" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, 0, 60, -10 )
+
+[node name="f-4-2-e3" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, 10, 60, -10 )
+
+[node name="f-5-2-e3" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, 20, 60, -10 )
+
+[node name="f-1-3-e3" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, -20, 60, 0 )
+
+[node name="f-3-3-e3" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, 0, 60, 0 )
+
+[node name="f-4-3-e3" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, 10, 60, 0 )
+
+[node name="f-5-3-e3" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, 20, 60, 0 )
+
+[node name="f-1-4-e3" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, -20, 60, 10 )
+
+[node name="f-2-4-e3" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, -10, 60, 10 )
+
+[node name="f-3-4-e3" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, 0, 60, 10 )
+
+[node name="f-4-4-e3" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, 10, 60, 10 )
+
+[node name="f-5-4-e3" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, 20, 60, 10 )
+
+[node name="f-1-5-e3" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, -20, 60, 20 )
+
+[node name="f-2-5-e3" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, -10, 60, 20 )
+
+[node name="f-3-5-e3" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, 0, 60, 20 )
+
+[node name="f-4-5-e3" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, 10, 60, 20 )
+
+[node name="f-5-5-e3" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, 20, 60, 20 )
+
+[node name="f-1-1-e4" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, -20, 80, -20 )
+
+[node name="f-2-1-e4" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, -10, 80, -20 )
+
+[node name="f-3-1-e4" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, 0, 80, -20 )
+
+[node name="f-4-1-e4" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, 10, 80, -20 )
+
+[node name="f-5-1-e4" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, 20, 80, -20 )
+
+[node name="f-1-2-e4" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, -20, 80, -10 )
+
+[node name="f-2-2-e4" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, -10, 80, -10 )
+
+[node name="f-3-2-e4" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, 0, 80, -10 )
+
+[node name="f-4-2-e4" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, 10, 80, -10 )
+
+[node name="f-5-2-e4" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, 20, 80, -10 )
+
+[node name="f-1-3-e4" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, -20, 80, 0 )
+
+[node name="f-2-3-e4" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, -10, 80, 0 )
+
+[node name="f-3-3-e4" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, 0, 80, 0 )
+
+[node name="f-4-3-e4" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, 10, 80, 0 )
+
+[node name="f-5-3-e4" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, 20, 80, 0 )
+
+[node name="f-1-4-e4" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, -20, 80, 10 )
+
+[node name="f-2-4-e4" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, -10, 80, 10 )
+
+[node name="f-3-4-e4" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, 0, 80, 10 )
+
+[node name="f-4-4-e4" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, 10, 80, 10 )
+
+[node name="f-1-5-e4" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, -20, 80, 20 )
+
+[node name="f-2-5-e4" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, -10, 80, 20 )
+
+[node name="f-3-5-e4" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, 0, 80, 20 )
+
+[node name="f-4-5-e4" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, 10, 80, 20 )
+
+[node name="f-5-5-e4" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, 20, 80, 20 )
+
+[node name="f-2-1-e5" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, -10, 100, -20 )
+
+[node name="f-3-1-e5" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, 0, 100, -20 )
+
+[node name="f-4-1-e5" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, 10, 100, -20 )
+
+[node name="f-5-1-e5" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, 20, 100, -20 )
+
+[node name="f-1-2-e5" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, -20, 100, -10 )
+
+[node name="f-2-2-e5" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, -10, 100, -10 )
+
+[node name="f-3-2-e5" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, 0, 100, -10 )
+
+[node name="f-4-2-e5" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, 10, 100, -10 )
+
+[node name="f-5-2-e5" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, 20, 100, -10 )
+
+[node name="f-1-3-e5" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, -20, 100, 0 )
+
+[node name="f-2-3-e5" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, -10, 100, 0 )
+
+[node name="f-3-3-e5" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, 0, 100, 0 )
+
+[node name="f-4-3-e5" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, 10, 100, 0 )
+
+[node name="f-5-3-e5" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, 20, 100, 0 )
+
+[node name="f-1-4-e5" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, -20, 100, 10 )
+
+[node name="f-2-4-e5" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, -10, 100, 10 )
+
+[node name="f-3-4-e5" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, 0, 100, 10 )
+
+[node name="f-4-4-e5" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, 10, 100, 10 )
+
+[node name="f-5-4-e5" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, 20, 100, 10 )
+
+[node name="f-1-5-e5" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, -20, 100, 20 )
+
+[node name="f-2-5-e5" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, -10, 100, 20 )
+
+[node name="f-3-5-e5" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, 0, 100, 20 )
+
+[node name="f-4-5-e5" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, 10, 100, 20 )
+
+[node name="f-5-5-e5" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, 20, 100, 20 )
+
+[node name="f-1-1-e6" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, -20, 120, -20 )
+
+[node name="f-2-1-e6" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, -10, 120, -20 )
+
+[node name="f-3-1-e6" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, 0, 120, -20 )
+
+[node name="f-4-1-e6" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, 10, 120, -20 )
+
+[node name="f-5-1-e6" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, 20, 120, -20 )
+
+[node name="f-1-2-e6" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, -20, 120, -10 )
+
+[node name="f-2-2-e6" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, -10, 120, -10 )
+
+[node name="f-3-2-e6" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, 0, 120, -10 )
+
+[node name="f-4-2-e6" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, 10, 120, -10 )
+
+[node name="f-5-2-e6" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, 20, 120, -10 )
+
+[node name="f-1-3-e6" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, -20, 120, 0 )
+
+[node name="f-2-3-e6" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, -10, 120, 0 )
+
+[node name="f-3-3-e6" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, 0, 120, 0 )
+
+[node name="f-4-3-e6" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, 10, 120, 0 )
+
+[node name="f-5-3-e6" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, 20, 120, 0 )
+
+[node name="f-1-4-e6" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, -20, 120, 10 )
+
+[node name="f-3-4-e6" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, 0, 120, 10 )
+
+[node name="f-4-4-e6" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, 10, 120, 10 )
+
+[node name="f-5-4-e6" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, 20, 120, 10 )
+
+[node name="f-1-5-e6" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, -20, 120, 20 )
+
+[node name="f-2-5-e6" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, -10, 120, 20 )
+
+[node name="f-3-5-e6" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, 0, 120, 20 )
+
+[node name="f-4-5-e6" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, 10, 120, 20 )
+
+[node name="f-5-5-e6" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, 20, 120, 20 )
+
+[node name="f-1-1-e7" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, -20, 140, -20 )
+
+[node name="f-2-1-e7" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, -10, 140, -20 )
+
+[node name="f-3-1-e7" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, 0, 140, -20 )
+
+[node name="f-4-1-e7" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, 10, 140, -20 )
+
+[node name="f-1-2-e7" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, -20, 140, -10 )
+
+[node name="f-2-2-e7" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, -10, 140, -10 )
+
+[node name="f-3-2-e7" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, 0, 140, -10 )
+
+[node name="f-4-2-e7" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, 10, 140, -10 )
+
+[node name="f-5-2-e7" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, 20, 140, -10 )
+
+[node name="f-1-3-e7" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, -20, 140, 0 )
+
+[node name="f-2-3-e7" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, -10, 140, 0 )
+
+[node name="f-3-3-e7" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, 0, 140, 0 )
+
+[node name="f-4-3-e7" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, 10, 140, 0 )
+
+[node name="f-5-3-e7" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, 20, 140, 0 )
+
+[node name="f-1-4-e7" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, -20, 140, 10 )
+
+[node name="f-2-4-e7" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, -10, 140, 10 )
+
+[node name="f-3-4-e7" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, 0, 140, 10 )
+
+[node name="f-4-4-e7" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, 10, 140, 10 )
+
+[node name="f-5-4-e7" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, 20, 140, 10 )
+
+[node name="f-1-5-e7" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, -20, 140, 20 )
+
+[node name="f-2-5-e7" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, -10, 140, 20 )
+
+[node name="f-3-5-e7" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, 0, 140, 20 )
+
+[node name="f-4-5-e7" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, 10, 140, 20 )
+
+[node name="f-5-5-e7" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, 20, 140, 20 )
+
+[node name="obstacles" type="Spatial" parent="."]
+
+[node name="fake_floor" parent="obstacles" instance=ExtResource( 4 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, 20, 140, -20 )
+
+[node name="fake_floor2" parent="obstacles" instance=ExtResource( 4 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, -10, 120, 10 )
+
+[node name="fake_floor3" parent="obstacles" instance=ExtResource( 4 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, -20, 100, -20 )
+
+[node name="fake_floor4" parent="obstacles" instance=ExtResource( 4 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, 20, 80, 10 )
+
+[node name="fake_floor5" parent="obstacles" instance=ExtResource( 4 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, -10, 60, 0 )
+
+[node name="fake_floor6" parent="obstacles" instance=ExtResource( 4 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, 20, 40, -20 )
+
+[node name="fake_floor7" parent="obstacles" instance=ExtResource( 4 )]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 5, -10, 20, 10 )
 
 [node name="finNiv" parent="." instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -16 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12.661, 2.5, -16 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 16 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 150, 16 )
 
 [node name="level" parent="." instance=ExtResource( 3 )]

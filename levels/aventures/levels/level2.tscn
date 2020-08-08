@@ -16,9 +16,10 @@ transform = Transform( 4, 0, 0, 0, 1, 0, 0, 0, 4, 0, 0, 16 )
 transform = Transform( 4, 0, 0, 0, 1, 0, 0, 0, 4, 32, 10, -16 )
 
 [node name="floor3" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1 )
 
 [node name="floor4" parent="levele" instance=ExtResource( 6 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -16 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -11 )
 
 [node name="floor5" parent="levele" instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 4, -16 )

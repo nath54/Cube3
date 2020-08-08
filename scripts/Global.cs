@@ -163,8 +163,8 @@ public class Global : Node
         "3 - I don't want to fall !", //7
         "4 - It is high !", //8
         "5 - I need to jump !", //9
-        "6 - ", //10
-        "7 - ", //11
+        "6 - The dangerous road", //10
+        "7 - Where I must go ?", //11
     };
     public string[] levels_category={
         "tutos", //0
@@ -254,10 +254,10 @@ public class Global : Node
         80, //5
         80, //6
         80, //7
-        80, //8
-        80, //9
-        80, //10
-        80, //11
+        100, //8
+        200, //9
+        600, //10
+        200, //11
         80, //12
         80, //13
     };
