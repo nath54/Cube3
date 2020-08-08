@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://assets/finNiv.tscn" type="PackedScene" id=1]
+[ext_resource path="res://player/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://levels/level.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/floor.tscn" type="PackedScene" id=6]
+
+[node name="level" type="Spatial"]
+
+[node name="levele" type="Spatial" parent="."]
+
+[node name="floor" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 4, 0, 0, 0, 1, 0, 0, 0, 4, 0, 0, 16 )
+
+[node name="floor2" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 4, 0, 0, 0, 1, 0, 0, 0, 4, 32, 10, -16 )
+
+[node name="floor3" parent="levele" instance=ExtResource( 6 )]
+
+[node name="floor4" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -16 )
+
+[node name="floor5" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 4, -16 )
+
+[node name="floor6" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 8, -16 )
+
+[node name="finNiv" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 32, 12.5, -16 )
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 16 )
+
+[node name="level" parent="." instance=ExtResource( 3 )]

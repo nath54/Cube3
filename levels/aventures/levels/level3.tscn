@@ -1,0 +1,48 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://assets/finNiv.tscn" type="PackedScene" id=1]
+[ext_resource path="res://player/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://levels/level.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/floor.tscn" type="PackedScene" id=6]
+
+[node name="level" type="Spatial"]
+
+[node name="levele" type="Spatial" parent="."]
+
+[node name="floor" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 4, 0, 0, 0, 1, 0, 0, 0, 4, 0, 0, 16 )
+
+[node name="floor2" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 4, 0, 0, 0, 1, 0, 0, 0, 4, 0, 0, 50 )
+
+[node name="floor3" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 6 )
+
+[node name="floor4" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9, -3 )
+
+[node name="floor5" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 13, -11 )
+
+[node name="floor6" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 13, -21 )
+
+[node name="floor7" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 10, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 15, 13, -21 )
+
+[node name="floor8" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( -4.37114e-07, 0, -0.2, 0, 0.2, 0, 10, 0, -8.74228e-09, 25, 13, -5 )
+
+[node name="floor9" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( -4.37114e-07, 0, -0.2, 0, 0.2, 0, 10, 0, -8.74228e-09, 25, 13, 19 )
+
+[node name="floor10" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( -7.07107, 0, -0.141421, 0, 0.2, 0, 7.07107, 0, -0.141421, 17, 13, 39 )
+
+[node name="finNiv" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 50 )
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 16 )
+
+[node name="level" parent="." instance=ExtResource( 3 )]

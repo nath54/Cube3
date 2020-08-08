@@ -1,0 +1,72 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://assets/finNiv.tscn" type="PackedScene" id=1]
+[ext_resource path="res://player/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://levels/level.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/floor.tscn" type="PackedScene" id=6]
+
+[node name="level" type="Spatial"]
+
+[node name="levele" type="Spatial" parent="."]
+
+[node name="floor" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 4, 0, 0, 0, 1, 0, 0, 0, 4, 0, 0, 16 )
+
+[node name="floor2" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 4, 0, 0, 0, 1, 0, 0, 0, 4, 0, 75, -10 )
+
+[node name="floor3" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4 )
+
+[node name="floor4" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 4 )
+
+[node name="floor5" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 4 )
+
+[node name="floor6" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 15, 4 )
+
+[node name="floor7" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20, 4 )
+
+[node name="floor8" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 25, 4 )
+
+[node name="floor9" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 30, 4 )
+
+[node name="floor10" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 35, 4 )
+
+[node name="floor11" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 40, 4 )
+
+[node name="floor12" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 45, 4 )
+
+[node name="floor13" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 50, 4 )
+
+[node name="floor14" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 55, 4 )
+
+[node name="floor15" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 60, 4 )
+
+[node name="floor16" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 65, 4 )
+
+[node name="floor17" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 70, 4 )
+
+[node name="floor18" parent="levele" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 75, 4 )
+
+[node name="finNiv" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 77.5, -10 )
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 16 )
+
+[node name="level" parent="." instance=ExtResource( 3 )]

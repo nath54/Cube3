@@ -153,25 +153,46 @@ public class Global : Node
 
     //levels
     public string[] levels_names={
-        "tuto-1",
-        "tuto-2",
-        "tuto-3",
-        "tuto-4",
-        "tuto-5",
+        "tuto-1", //0
+        "tuto-2", //1
+        "tuto-3", //2
+        "tuto-4", //3
+        "tuto-5", //4
+        "1 - Little platforms", //5
+        "2 - Another little platforms", //6
+        "3 - I don't want to fall !", //7
+        "4 - It is high !", //8
+        "5 - I need to jump !", //9
+        "6 - ", //10
+        "7 - ", //11
     };
     public string[] levels_category={
-        "tutos",
-        "tutos",
-        "tutos",
-        "tutos",
-        "tutos",
+        "tutos", //0
+        "tutos", //1
+        "tutos", //2
+        "tutos", //3
+        "tutos", //4
+        "levels", //5
+        "levels", //6
+        "levels", //7
+        "levels", //8
+        "levels", //9
+        "levels", //10
+        "levels", //11
     };
     public string[] levels_path={
-        "res://levels/aventures/tuto/tuto1.tscn",
-        "res://levels/aventures/tuto/tuto2.tscn",
-        "res://levels/aventures/tuto/tuto3.tscn",
-        "res://levels/aventures/tuto/tuto4.tscn",
-        "res://levels/aventures/tuto/tuto5.tscn",
+        "res://levels/aventures/tuto/tuto1.tscn", //0
+        "res://levels/aventures/tuto/tuto2.tscn", //1
+        "res://levels/aventures/tuto/tuto3.tscn", //2
+        "res://levels/aventures/tuto/tuto4.tscn", //3
+        "res://levels/aventures/tuto/tuto5.tscn", //4
+        "res://levels/aventures/levels/level1.tscn", //5
+        "res://levels/aventures/levels/level2.tscn", //6
+        "res://levels/aventures/levels/level3.tscn", //7
+        "res://levels/aventures/levels/level4.tscn", //8
+        "res://levels/aventures/levels/level5.tscn", //9
+        "res://levels/aventures/levels/level6.tscn", //10
+        "res://levels/aventures/levels/level7.tscn", //11
     };
     public int[] levels_requirements={ //id of required level, -1 = not required
         -1,
@@ -179,27 +200,94 @@ public class Global : Node
         1,
         2,
         3,
+        -1,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
     };
     public bool[] levels_finis={
-        false,
-        false,
-        false,
-        false,
-        false,
+        false, //0
+        false, //1
+        false, //2
+        false, //3
+        false, //4
+        false, //5
+        false, //6
+        false, //7
+        false, //8
+        false, //9
+        false, //10
+        false, //11
+        false, //12
+        false, //13
+        false, //14
+        false, //15
+        false, //16
+        false, //17
+        false, //18
+        false, //19
+        false, //20
+        false, //21
+        false, //22
+        false, //23
+        false, //24
+        false, //25
+        false, //26
+        false, //27
+        false, //28
+        false, //29
+        false, //30
+        false, //31
+        false, //32
+        false, //33
+        false, //34
     };
     public float[] levels_time={
-        80,
-        80,
-        80,
-        80,
-        80,
+        80, //0
+        80, //1
+        80, //2
+        80, //3
+        80, //4
+        80, //5
+        80, //6
+        80, //7
+        80, //8
+        80, //9
+        80, //10
+        80, //11
+        80, //12
+        80, //13
     };
     public int[] levels_recomp_ncubes={
-        10,
-        20,
-        30,
-        40,
-        50,
+        10, //0
+        20, //1
+        30, //2
+        40, //3
+        50, //4
+        50, //5
+        50, //6
+        50, //7
+        50, //8
+        50, //9
+        50, //10
+        50, //11
+    };
+    public int[,,] levels_recomp_skins={
+        {}, //0
+        {}, //1
+        {}, //2
+        {}, //3
+        {}, //4
+        {}, //5
+        {}, //6
+        {}, //7
+        {}, //8
+        {}, //9
+        {}, //10
+        {}, //11
     };
     //
 
