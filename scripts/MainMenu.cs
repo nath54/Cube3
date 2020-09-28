@@ -47,5 +47,9 @@ public class MainMenu : Control
         GetTree().ChangeScene("res://menus/MenuSkins.tscn");
     }
 
+    public void _on_Bt_Code_pressed(){
+        GetTree().ChangeScene("res://menus/MenuCode.tscn");
+    }
+
 }
 

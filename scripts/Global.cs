@@ -19,7 +19,7 @@ public class Global : Node
     public Vector3 grid_scale = new Vector3(1,1,1);
     public float grid_cell_scale = 1;
     public int skin_id_equipe=0;
-    public int max_skin=9;
+    public int max_skin=10;
     public int ms_cam=0;
     public int highscore_plats=1;
     public int highscore_easy=1;
@@ -68,6 +68,7 @@ public class Global : Node
         "halo",
         "transblue",
         "ncubes",
+        "ninja",
     };
     public string[] skins_preview={
         "res://img_skins/base.png",
@@ -79,6 +80,7 @@ public class Global : Node
         "res://img_skins/halo.png",
         "res://img_skins/transp_blue.png",
         "res://img_skins/ncubes.png",
+        "res://img_skins/ninja.png",
     };
     public string[] skins_path={
         "res://player/skins/skin_0.tscn",
@@ -90,6 +92,7 @@ public class Global : Node
         "res://player/skins/skin_6.tscn",
         "res://player/skins/skin_7.tscn",
         "res://player/skins/skin_8.tscn",
+        "res://player/skins/skin_9.tscn",
     };
     public bool[] skins_unlocked={
         true,
@@ -101,8 +104,10 @@ public class Global : Node
         false,
         false,
         false,
+        false,
     };
     public bool[] skins_secret={
+        false,
         false,
         false,
         false,
@@ -124,6 +129,7 @@ public class Global : Node
         2,
         2,
         3,
+        2,
     };
 
     public string[] skins_recup={
@@ -135,6 +141,7 @@ public class Global : Node
         "arcade",
         "arcade",
         "arcade",
+        "pay",
         "pay",
     };
 
@@ -149,6 +156,7 @@ public class Global : Node
         0,
         0,
         9999,
+        1000,
     };
 
     //levels
@@ -164,7 +172,7 @@ public class Global : Node
         "4 - It is high !", //8
         "5 - I need to jump !", //9
         "6 - The dangerous road", //10
-        "7 - Where I must go ?", //11
+        "7 - Thick lines", //11
     };
     public string[] levels_category={
         "tutos", //0

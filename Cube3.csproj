@@ -70,6 +70,7 @@
     <Compile Include="scripts\level.cs" />
     <Compile Include="scripts\LoadingScreen.cs" />
     <Compile Include="scripts\MainMenu.cs" />
+    <Compile Include="scripts\MenuCode.cs" />
     <Compile Include="scripts\MenuLCats.cs" />
     <Compile Include="scripts\MenuLevels.cs" />
     <Compile Include="scripts\MenuPerdu.cs" />
