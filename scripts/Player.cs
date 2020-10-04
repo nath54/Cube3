@@ -31,6 +31,7 @@ public class Player : KinematicBody
 	public Spatial flecheBase;
 	public float joysticke_x=0;
 	public float joysticke_y=0;
+	public int current_camera=0; //0=normal camera ; 1=topdown camera
 	[Signal]
 	public delegate void onPauseBtPress();
 	public const float rayLength = 10;
@@ -48,7 +49,7 @@ public class Player : KinematicBody
 
 		//
 		cam = (Spatial)GetNode("CamBase");
-		camerae = (Camera)GetNode("CamBase/Camera");
+		camerae = (Camera)GetNode("CamBase/Camera"+ToString(current_camera));
 		cube = (Spatial)GetNode("cube");
 		cubeshape = (CollisionShape)GetNode("CollisionShape");
 		joystick = (Joystick_Button)GetNode("joystick/Joystick_Button");
@@ -139,6 +140,14 @@ public class Player : KinematicBody
 				}
 			}
 			
+		}
+
+		if(Input.IsActionJustPressed("change_cam")){
+			current_camera+=1;
+			if(current_camera>2){ current_camera=1; }
+			camerae.current = false;
+			camerae = (Camera)GetNode("CamBase/Camera"+ToString(current_camera));
+			camerae.current = true;
 		}
 		
 	}
