@@ -19,7 +19,7 @@ public class Global : Node
     public Vector3 grid_scale = new Vector3(1,1,1);
     public float grid_cell_scale = 1;
     public int skin_id_equipe=0;
-    public int max_skin=10;
+    public int max_skin=14;
     public int ms_cam=0;
     public int highscore_plats=1;
     public int highscore_easy=1;
@@ -69,6 +69,10 @@ public class Global : Node
         "transblue",
         "ncubes",
         "ninja",
+        "france",
+        "de",
+        "de_noir",
+        "redline"
     };
     public string[] skins_preview={
         "res://img_skins/base.png",
@@ -81,6 +85,10 @@ public class Global : Node
         "res://img_skins/transp_blue.png",
         "res://img_skins/ncubes.png",
         "res://img_skins/ninja.png",
+        "res://img_skins/france.png",
+        "res://img_skins/de.png",
+        "res://img_skins/de_noir.png",
+        "res://img_skins/redline.png",
     };
     public string[] skins_path={
         "res://player/skins/skin_0.tscn",
@@ -93,6 +101,10 @@ public class Global : Node
         "res://player/skins/skin_7.tscn",
         "res://player/skins/skin_8.tscn",
         "res://player/skins/skin_9.tscn",
+        "res://player/skins/skin_10.tscn",
+        "res://player/skins/skin_11.tscn",
+        "res://player/skins/skin_12.tscn",
+        "res://player/skins/skin_13.tscn",
     };
     public bool[] skins_unlocked={
         true,
@@ -105,8 +117,16 @@ public class Global : Node
         false,
         false,
         false,
+        false,
+        false,
+        false,
+        false,
     };
     public bool[] skins_secret={
+        false,
+        false,
+        false,
+        false,
         false,
         false,
         false,
@@ -130,6 +150,10 @@ public class Global : Node
         2,
         3,
         2,
+        1,
+        0,
+        1,
+        2,
     };
 
     public string[] skins_recup={
@@ -143,6 +167,10 @@ public class Global : Node
         "arcade",
         "pay",
         "pay",
+        "arcade",
+        "arcade",
+        "arcade",
+        "arcade",
     };
 
     // cost if recup="pay", level if recup="level", else 0
@@ -157,6 +185,10 @@ public class Global : Node
         0,
         9999,
         1000,
+        0,
+        0,
+        0,
+        0,
     };
 
     //levels
