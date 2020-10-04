@@ -98,14 +98,14 @@ public class level : Node
 
     public void Resume(){
         pause_menu.Visible=false;
-        if(!globale.player.is_mobile()){ Input.SetMouseMode(Input.MouseMode.Captured); }
+        if(!globale.is_mobile()){ Input.SetMouseMode(Input.MouseMode.Captured); }
         globale.player.paused=false;
         //ui_in_game.changeDebugText("visible : "+Convert.ToString(pause_menu.Visible));
     }
 
     public void Pause(){
         pause_menu.Visible=true;
-        if(!globale.player.is_mobile()){ Input.SetMouseMode(Input.MouseMode.Visible); }
+        if(!globale.is_mobile()){ Input.SetMouseMode(Input.MouseMode.Visible); }
         globale.player.paused=true;
         //ui_in_game.changeDebugText("visible : "+Convert.ToString(pause_menu.Visible));
     }
@@ -131,7 +131,7 @@ public class level : Node
     }
 
     public void partiePerdue(){
-        if(!globale.player.is_mobile()){ Input.SetMouseMode(Input.MouseMode.Visible); }
+        if(!globale.is_mobile()){ Input.SetMouseMode(Input.MouseMode.Visible); }
         GetTree().ChangeScene("res://menus/MenuPerdu.tscn");
     }
 
@@ -151,11 +151,11 @@ public class level : Node
         string[] worlds = {"maze","platforms"};
         if(worlds.Contains(globale.tipe)){
             globale.level+=1;
-            if(!globale.player.is_mobile()){ Input.SetMouseMode(Input.MouseMode.Visible); }
+            if(!globale.is_mobile()){ Input.SetMouseMode(Input.MouseMode.Visible); }
             GetTree().ChangeScene("res://menus/PreArcadeLevel.tscn");
         }
         else if(globale.tipe=="levels"){
-            if(!globale.player.is_mobile()){ Input.SetMouseMode(Input.MouseMode.Visible); }
+            if(!globale.is_mobile()){ Input.SetMouseMode(Input.MouseMode.Visible); }
             if(!globale.levels_finis[globale.actu_id_niv]){
                 globale.ncubes+=globale.levels_recomp_ncubes[globale.actu_id_niv];
                 List<string> m = new List<string>();

@@ -34,10 +34,10 @@ tracks/0/keys = {
 "values": [ true, false ]
 }
 
-[sub_resource type="StyleBoxFlat" id=6]
+[sub_resource type="StyleBoxFlat" id=5]
 bg_color = Color( 0.0745098, 0.0745098, 0.0745098, 1 )
 
-[sub_resource type="DynamicFont" id=5]
+[sub_resource type="DynamicFont" id=6]
 size = 25
 font_data = ExtResource( 1 )
 
@@ -133,7 +133,7 @@ margin_left = 391.0
 margin_top = 375.0
 margin_right = 1083.0
 margin_bottom = 561.0
-custom_styles/panel = SubResource( 6 )
+custom_styles/panel = SubResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -142,7 +142,7 @@ __meta__ = {
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = 10.0
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
 text = "If you don't  pass this level, you will reward a skin of this rarity :"
 align = 1
 autowrap = true
@@ -155,7 +155,7 @@ __meta__ = {
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = 53.0
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
 text = "Rarity"
 align = 1
 valign = 1
@@ -187,4 +187,12 @@ text = "Save and exit"
 align = 1
 valign = 1
 autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+autostart = true
 [connection signal="pressed" from="Bt_saveandexit" to="." method="_on_Bt_saveandexit_pressed"]

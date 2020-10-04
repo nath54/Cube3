@@ -364,6 +364,7 @@ public class Global : Node
         EmitSignal("playerDeath");
     }
     public bool is_mobile(){
+        //return true;
 		return (OS.GetName()=="Android" || OS.GetName()=="iOS");
 	}
 

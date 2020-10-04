@@ -4,13 +4,17 @@ using System;
 
 public class PreArcadeLevel : Control
 {
-    Global globale;
+    public Global globale;
+    public Timer timer;
+    public bool click=false;
     AnimationPlayer animationPlayer;
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
         //
         globale = (Global)GetNode("/root/Global");
+        //
+        timer = (Timer)GetNode("Timer");
         //
         animationPlayer=(AnimationPlayer)GetNode("L_click/AnimationPlayer");
         animationPlayer.CurrentAnimation="clignotement";
@@ -102,24 +106,30 @@ public class PreArcadeLevel : Control
     }
 
     public override void _Input(InputEvent @event){
-        if(@event is InputEventScreenTouch){
-            TextureButton tbt = (TextureButton)GetNode("Bt_saveandexit");
-            if(!tbt.IsHovered()){
-                globale.chargement("res://levels/World.tscn");
-                //GetTree().ChangeScene("res://levels/World.tscn");
+        if(click){
+            if(@event is InputEventScreenTouch){
+                TextureButton tbt = (TextureButton)GetNode("Bt_saveandexit");
+                if(!tbt.IsHovered()){
+                    globale.chargement("res://levels/World.tscn");
+                    //GetTree().ChangeScene("res://levels/World.tscn");
+                }
             }
-        }
-        else if(@event is InputEventKey ie){
-            if(Input.IsActionPressed("jump")){
-                globale.chargement("res://levels/World.tscn");
-                //GetTree().ChangeScene("res://levels/World.tscn");
+            else if(@event is InputEventKey ie){
+                if(Input.IsActionPressed("jump")){
+                    globale.chargement("res://levels/World.tscn");
+                    //GetTree().ChangeScene("res://levels/World.tscn");
+                }
             }
-        }
+        }        
     }
 
     public void _on_Bt_saveandexit_pressed(){
         globale.quick_save();
         GetTree().ChangeScene("res://menus/MainMenu.tscn");
+    }
+
+    public void _on_Timer_timeout(){
+        click=true;
     }
 
 }

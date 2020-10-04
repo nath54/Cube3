@@ -19,6 +19,7 @@ public class Player : KinematicBody
 	public TouchScreenButton bt_menu;
 	public TouchScreenButton bt_jump;
 	public TouchScreenButton bt_respawn;
+	public TouchScreenButton bt_cam;
 	public Vector3 spawnpoint;
 	public CollisionShape cubeshape;
 	public Label debug;
@@ -32,13 +33,10 @@ public class Player : KinematicBody
 	public float joysticke_x=0;
 	public float joysticke_y=0;
 	public int current_camera=0; //0=normal camera ; 1=topdown camera
+	public string[] cams = {"CamBase/Camera1", "Camera2"};
 	[Signal]
 	public delegate void onPauseBtPress();
 	public const float rayLength = 10;
-
-	public bool is_mobile(){
-		return (OS.GetName()=="Android" || OS.GetName()=="iOS");
-	}
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -49,7 +47,7 @@ public class Player : KinematicBody
 
 		//
 		cam = (Spatial)GetNode("CamBase");
-		camerae = (Camera)GetNode("CamBase/Camera"+ToString(current_camera));
+		camerae = (Camera)GetNode(cams[current_camera]);
 		cube = (Spatial)GetNode("cube");
 		cubeshape = (CollisionShape)GetNode("CollisionShape");
 		joystick = (Joystick_Button)GetNode("joystick/Joystick_Button");
@@ -57,6 +55,7 @@ public class Player : KinematicBody
 		bt_jump = (TouchScreenButton)GetNode("TSB_jump");
 		bt_menu = (TouchScreenButton)GetNode("TSB_menu");
 		bt_respawn = (TouchScreenButton)GetNode("TSB_respawn");
+		bt_cam = (TouchScreenButton)GetNode("TSB_cam");
 		flecheBase = (Spatial)GetNode("FlechBase");
 		debug = (Label)GetNode("debug");
 
@@ -64,7 +63,7 @@ public class Player : KinematicBody
 			flecheBase.Visible=false;
 		}
 
-		if( is_mobile() ){
+		if( globale.is_mobile() ){
 		}
 		else{
 			global_joystick.Visible=false;
@@ -75,6 +74,8 @@ public class Player : KinematicBody
 			bt_menu.SetProcessUnhandledInput(false);
 			bt_respawn.Visible=false;
 			bt_respawn.SetProcessUnhandledInput(false);
+			bt_cam.Visible=false;
+			bt_cam.SetProcessUnhandledInput(false);
 		}
 		if(!globale.respawn){
 			bt_respawn.Visible=false;
@@ -116,38 +117,40 @@ public class Player : KinematicBody
 			if(Input.IsActionJustPressed("respawn")){
 				respawn();
 			}
-			if(is_mobile()){
-				if(@event is InputEventScreenDrag ie){
-					if(ie.Index==joystick.ongoing_drag){
-						return ;	
+			if(current_camera==0){
+				if(globale.is_mobile()){
+					if(@event is InputEventScreenDrag ie){
+						if(ie.Index==joystick.ongoing_drag){
+							return ;	
+						}
+						Vector3 rot_deg=cam.RotationDegrees;
+						rot_deg.x -= ie.Relative.y * V_LOOK_SENS;
+						if(rot_deg.x < -90){ rot_deg.x=-90; }
+						if(rot_deg.x > 90){ rot_deg.x=90; }
+						rot_deg.y -= ie.Relative.x * H_LOOK_SENS;
+						cam.RotationDegrees=rot_deg;
 					}
-					Vector3 rot_deg=cam.RotationDegrees;
-					rot_deg.x -= ie.Relative.y * V_LOOK_SENS;
-					if(rot_deg.x < -90){ rot_deg.x=-90; }
-					if(rot_deg.x > 90){ rot_deg.x=90; }
-					rot_deg.y -= ie.Relative.x * H_LOOK_SENS;
-					cam.RotationDegrees=rot_deg;
 				}
-			}
-			else{
-				if(@event is InputEventMouseMotion ie ){
-					Vector3 rot_deg=cam.RotationDegrees;
-					rot_deg.x -= ie.Relative.y * V_LOOK_SENS;
-					if(rot_deg.x < -90){ rot_deg.x=-90; }
-					if(rot_deg.x > 90){ rot_deg.x=90; }
-					rot_deg.y -= ie.Relative.x * H_LOOK_SENS;
-					cam.RotationDegrees=rot_deg;
+				else{
+					if(@event is InputEventMouseMotion ie ){
+						Vector3 rot_deg=cam.RotationDegrees;
+						rot_deg.x -= ie.Relative.y * V_LOOK_SENS;
+						if(rot_deg.x < -90){ rot_deg.x=-90; }
+						if(rot_deg.x > 90){ rot_deg.x=90; }
+						rot_deg.y -= ie.Relative.x * H_LOOK_SENS;
+						cam.RotationDegrees=rot_deg;
+					}
 				}
-			}
+			}			
 			
 		}
 
 		if(Input.IsActionJustPressed("change_cam")){
 			current_camera+=1;
-			if(current_camera>2){ current_camera=1; }
-			camerae.current = false;
-			camerae = (Camera)GetNode("CamBase/Camera"+ToString(current_camera));
-			camerae.current = true;
+			if(current_camera>1){ current_camera=0; }
+			camerae.Current = false;
+			camerae = (Camera)GetNode(cams[current_camera]);
+			camerae.Current = true;
 		}
 		
 	}
@@ -186,7 +189,7 @@ public class Player : KinematicBody
 			move_vec.x=0;
 			move_vec.y=0;
 			move_vec.z=0;
-			if(is_mobile()){
+			if(globale.is_mobile()){
 				Vector2 joymov=joystick.get_value();
 				move_vec.x=joymov.x;
 				move_vec.z=joymov.y;
@@ -228,11 +231,19 @@ public class Player : KinematicBody
 				}
 			}			
 			move_vec=move_vec.Normalized();
-			move_vec=move_vec.Rotated(new Vector3(0,1,0), cam.RotationDegrees.y*3.141592654F/180.0F);
+			if(current_camera==0){
+				move_vec=move_vec.Rotated(new Vector3(0,1,0), cam.RotationDegrees.y*3.141592654F/180.0F);
+			}
 			move_vec *= MOVE_SPEED;
 			if(move_vec.Length() >= 0.1F){
 				Vector3 rot_deg=cube.RotationDegrees;
-				rot_deg.y=cam.RotationDegrees.y;
+				if(current_camera==0){
+					rot_deg.y=cam.RotationDegrees.y;
+				}				
+				else{
+					float r = 0;
+					rot_deg.y=r;
+				}
 				cube.RotationDegrees=rot_deg;
 				Vector3 rote_deg=cubeshape.RotationDegrees;
 				rote_deg.y=cam.RotationDegrees.y;
