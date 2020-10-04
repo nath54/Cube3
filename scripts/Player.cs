@@ -111,6 +111,14 @@ public class Player : KinematicBody
 		cube.AddChild(skin);
 	}
 
+	public void change_cam(){
+		current_camera+=1;
+		if(current_camera>1){ current_camera=0; }
+		camerae.Current = false;
+		camerae = (Camera)GetNode(cams[current_camera]);
+		camerae.Current = true;
+	}
+
 	public override void _Input(InputEvent @event)
 	{
 		if(!paused){
@@ -146,11 +154,7 @@ public class Player : KinematicBody
 		}
 
 		if(Input.IsActionJustPressed("change_cam")){
-			current_camera+=1;
-			if(current_camera>1){ current_camera=0; }
-			camerae.Current = false;
-			camerae = (Camera)GetNode(cams[current_camera]);
-			camerae.Current = true;
+			change_cam();
 		}
 		
 	}
@@ -282,6 +286,10 @@ public class Player : KinematicBody
 	public void _on_TSB_menu_pressed(){
 		EmitSignal("onPauseBtPress");
 		//debug.Text="menu";
+	}
+
+	public void _on_TSB_cam_pressed(){
+		change_cam();
 	}
 
 }
