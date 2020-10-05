@@ -1,8 +1,7 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://fonts/Xeliard.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://scripts/MainMenu.cs" type="Script" id=2]
-[ext_resource path="res://menus/Loading.tscn" type="PackedScene" id=3]
 [ext_resource path="res://menus/Aff_ncubes.tscn" type="PackedScene" id=4]
 [ext_resource path="res://img_skins/imgs/bt_rects/Bt_base_pressed.png" type="Texture" id=5]
 [ext_resource path="res://img_skins/imgs/bt_rects/Bt_base_normal.png" type="Texture" id=6]
@@ -240,9 +239,6 @@ valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="Loading" parent="." instance=ExtResource( 3 )]
-visible = false
 [connection signal="pressed" from="Bt_play_arcade" to="." method="_on_Bt_play_arcade_pressed"]
 [connection signal="pressed" from="Bt_play_adventure" to="." method="_on_Bt_play_adventure_pressed"]
 [connection signal="pressed" from="Bt_settings" to="." method="_on_Bt_settings_pressed"]
