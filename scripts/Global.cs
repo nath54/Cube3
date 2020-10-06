@@ -198,14 +198,15 @@ public class Global : Node
         "tuto-3", //2
         "tuto-4", //3
         "tuto-5", //4
-        "1 - Little platforms", //5
-        "2 - Another little platforms", //6
-        "3 - I don't want to fall !", //7
-        "4 - It is high !", //8
-        "5 - I need to jump !", //9
-        "6 - The dangerous road", //10
-        "7 - Thick lines", //11
+        "Little platforms", //5
+        "Another little platforms", //6
+        "I don't want to fall !", //7
+        "It is high !", //8
+        "I need to jump !", //9
+        "The dangerous road", //10
+        "Thick lines", //11
     };
+
     public string[] levels_category={
         "tutos", //0
         "tutos", //1
@@ -217,9 +218,10 @@ public class Global : Node
         "levels", //7
         "levels", //8
         "levels", //9
-        "levels", //10
+        "memory-error", //10
         "levels", //11
     };
+
     public string[] levels_path={
         "res://levels/aventures/tuto/tuto1.tscn", //0
         "res://levels/aventures/tuto/tuto2.tscn", //1
