@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://fonts/Xeliard.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://scripts/MainMenu.cs" type="Script" id=2]
+[ext_resource path="res://imgs/bt_rects/Bt_base_normal.png" type="Texture" id=3]
 [ext_resource path="res://menus/Aff_ncubes.tscn" type="PackedScene" id=4]
 [ext_resource path="res://img_skins/imgs/bt_rects/Bt_base_pressed.png" type="Texture" id=5]
 [ext_resource path="res://img_skins/imgs/bt_rects/Bt_base_normal.png" type="Texture" id=6]
@@ -17,7 +18,7 @@ outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=3]
-size = 120
+size = 200
 outline_size = 5
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 1 )
@@ -172,7 +173,7 @@ margin_left = 184.0
 margin_top = 180.0
 margin_right = 604.0
 margin_bottom = 305.0
-texture_normal = ExtResource( 7 )
+texture_normal = ExtResource( 3 )
 texture_pressed = ExtResource( 5 )
 texture_hover = ExtResource( 7 )
 expand = true
@@ -203,7 +204,7 @@ margin_left = 184.0
 margin_top = 36.0
 margin_right = 604.0
 margin_bottom = 161.0
-texture_normal = ExtResource( 7 )
+texture_normal = ExtResource( 3 )
 texture_pressed = ExtResource( 5 )
 texture_hover = ExtResource( 7 )
 expand = true
@@ -225,13 +226,37 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Title" type="Label" parent="."]
+[node name="Control" type="Control" parent="."]
+margin_left = 414.7
+margin_top = 86.567
+margin_right = 1077.7
+margin_bottom = 273.567
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="Control"]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = 31.0
-margin_top = 192.0
-margin_right = 321.0
-margin_bottom = 272.0
+margin_left = -211.0
+margin_top = 17.0
+margin_right = 225.0
+margin_bottom = 137.0
+custom_fonts/font = SubResource( 3 )
+text = "Cube 3"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title2" type="Label" parent="Control"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -220.183
+margin_top = 27.6315
+margin_right = 324.817
+margin_bottom = 178.632
 custom_fonts/font = SubResource( 3 )
 text = "Cube 3"
 align = 1

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/C.png-2b872e0d70d693a13168321910994c66.stex"
+path="res://.import/cube-man.png-5923c4ef24a34ff126a8b957aac77f89.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://imgs/C.png"
-dest_files=[ "res://.import/C.png-2b872e0d70d693a13168321910994c66.stex" ]
+source_file="res://img_skins/cube-man.png"
+dest_files=[ "res://.import/cube-man.png-5923c4ef24a34ff126a8b957aac77f89.stex" ]
 
 [params]
 
