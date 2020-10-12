@@ -20,7 +20,6 @@ public class MainMenu : Control
         bt_start_adventure = (TextureButton)GetNode("Bt_play_adventure");
         bt_settings = (TextureButton)GetNode("Bt_settings");
         bt_quit = (TextureButton)GetNode("Bt_quit");
-
         loading = (Control)GetNode("Loading");
         loading.Visible=false;
 
