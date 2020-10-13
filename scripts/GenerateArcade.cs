@@ -33,7 +33,7 @@ public class GenerateArcade : Node
             dz=0;
         int minxz=2;
         int maxxz=10;
-        int miny=2;
+        int miny=0;
         int maxy=8;
         double jump_distance=0;
         double max_jump_distance=10;
@@ -69,8 +69,7 @@ public class GenerateArcade : Node
             if(rand.Next(0,2)==1){ dz=rand.Next(minxz,maxxz); }
             else if(rand.Next(0,2)==1){ dz=rand.Next(-maxxz,-minxz); }
             //DY
-            if(rand.Next(0,2)==1){ dy=rand.Next(miny,maxy); }
-            else if(rand.Next(0,2)==1){ dy=rand.Next(-8,-1); }        
+            dy=rand.Next(miny,maxy);
             //JUMP DISTANCE
             jump_distance=Math.Sqrt( Math.Pow(dx,2) + Math.Pow(dy,3) + Math.Pow(dz,2) );
         } while(jump_distance<max_jump_distance);

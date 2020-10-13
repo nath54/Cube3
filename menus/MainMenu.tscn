@@ -18,7 +18,7 @@ outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=3]
-size = 200
+size = 180
 outline_size = 5
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 1 )
@@ -226,22 +226,22 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Control" type="Control" parent="."]
-margin_left = 414.7
-margin_top = 86.567
-margin_right = 1077.7
-margin_bottom = 273.567
+[node name="Titre" type="Control" parent="."]
+margin_left = 505.0
+margin_top = 100.0
+margin_right = 1276.0
+margin_bottom = 311.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Title" type="Label" parent="Control"]
+[node name="Title" type="Label" parent="Titre"]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -211.0
+margin_left = -357.0
 margin_top = 17.0
-margin_right = 225.0
-margin_bottom = 137.0
+margin_right = 369.0
+margin_bottom = 217.0
 custom_fonts/font = SubResource( 3 )
 text = "Cube 3"
 align = 1
@@ -250,13 +250,13 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Title2" type="Label" parent="Control"]
+[node name="Title2" type="Label" parent="Titre"]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -220.183
+margin_left = -366.183
 margin_top = 27.6315
-margin_right = 324.817
-margin_bottom = 178.632
+margin_right = 359.817
+margin_bottom = 227.632
 custom_fonts/font = SubResource( 3 )
 text = "Cube 3"
 align = 1
