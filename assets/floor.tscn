@@ -1,16 +1,17 @@
 [gd_scene load_steps=4 format=2]
 
-[sub_resource type="CubeMesh" id=1]
+[sub_resource type="SpatialMaterial" id=4]
+albedo_color = Color( 0.207843, 0.788235, 0.364706, 1 )
 
-[sub_resource type="SpatialMaterial" id=2]
-albedo_color = Color( 0.176471, 0.792157, 0.203922, 1 )
+[sub_resource type="CubeMesh" id=1]
+material = SubResource( 4 )
 
 [sub_resource type="ConcavePolygonShape" id=3]
 data = PoolVector3Array( -1, 1, 1, 1, 1, 1, -1, -1, 1, 1, 1, 1, 1, -1, 1, -1, -1, 1, 1, 1, -1, -1, 1, -1, 1, -1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, 1, 1, 1, 1, 1, -1, 1, -1, 1, 1, 1, -1, 1, -1, -1, 1, -1, 1, -1, 1, -1, -1, 1, 1, -1, -1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1, 1, 1, 1, -1, 1, 1, 1, 1, -1, -1, 1, 1, -1, 1, -1, 1, 1, -1, -1, -1, 1, 1, -1, 1, -1, -1, -1, 1, -1, 1, 1, -1, -1, -1, -1, -1 )
 
 [node name="floor" type="MeshInstance"]
 mesh = SubResource( 1 )
-material/0 = SubResource( 2 )
+material/0 = null
 
 [node name="StaticBody" type="StaticBody" parent="."]
 
