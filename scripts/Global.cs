@@ -16,6 +16,7 @@ public class Global : Node
     public int nb_plats=20;
     public string tipe="platforms";
     public float player_taille=1;
+    public int p_fixes_r=0;
     public Vector3 grid_scale = new Vector3(1,1,1);
     public float grid_cell_scale = 1;
     public int skin_id_equipe=0;
@@ -207,6 +208,22 @@ public class Global : Node
         "Thick lines", //11
     };
 
+    public int[] levels_nb_fixes={
+        0, //0
+        0, //1
+        0, //2
+        0, //3
+        0, //4
+        0, //5
+        0, //6
+        0, //7
+        0, //8
+        0, //9
+        0, //10
+        0, //11
+        0, //12
+    };
+
     public string[] levels_category={
         "tutos", //0
         "tutos", //1
@@ -237,18 +254,18 @@ public class Global : Node
         "res://levels/aventures/levels/level7.tscn", //11
     };
     public int[] levels_requirements={ //id of required level, -1 = not required
-        -1,
-        0,
-        1,
-        2,
-        3,
-        -1,
-        5,
-        6,
-        7,
-        8,
-        9,
-        10,
+        -1, //0
+        0, //1
+        1, //2
+        2, //3
+        3, //4
+        -1, //5
+        5, //6
+        6, //7
+        7, //8
+        8, //9
+        -1, //10
+        9, //11
     };
     public bool[] levels_finis={
         false, //0
