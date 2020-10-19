@@ -208,6 +208,31 @@ public class Global : Node
         "Thick lines", //11
     };
 
+    public string[] levels_envs={
+        "normal", //0
+        "normal", //1
+        "normal", //2
+        "normal", //3
+        "normal", //4
+        "normal", //5
+        "normal", //6
+        "normal", //7
+        "normal", //8
+        "normal", //9
+        "normal", //10
+        "normal", //11
+        "normal", //12
+        "normal", //13
+        "normal", //14
+        "normal", //15
+        "normal", //16
+        "normal", //17
+        "normal", //18
+        "normal", //19
+        "normal", //20
+        "normal", //21
+    };
+
     public int[] levels_nb_fixes={
         0, //0
         0, //1
@@ -372,6 +397,14 @@ public class Global : Node
         AddChild(timer_message);
         timer_message.Connect("timeout", this, nameof(on_timer_message));
         timer_message.Start();
+    }
+
+    public string arcalcenv(){
+        if(level<3){ return "lava"; }
+        else if(level<8){ return "lava_rock"; }
+        else if(level<15){ return "rock_lava"; }
+        else if(level<20){ return "stone_dirt"; }
+        else{ return "normal"; }
     }
 
     public void chargement_fini(){

@@ -70,8 +70,16 @@ public class level : Node
         globale.finnive.Connect("bodyTouched", this, nameof(onFinNiv));
         globale.player.Connect("onPauseBtPress", this, nameof(Pause));
         //
+        string te="normal";
+        if(globale.tipe=="level"){
+            te=globale.levels_envs[globale.actu_id_niv];
+        }
+        else{
+            te=globale.arcalcenv();
+        }
+        Godot.Environment env=(Godot.Environment)ResourceLoader.Load("res://themes/"+te+"/env.tres");
         Camera cam=globale.player.camerae;
-        Godot.Environment env = cam.Environment;
+        cam.Environment=env;
         cam.Far=globale.cam_far;
         env.GlowIntensity=globale.glow_intensity;
         env.GlowStrength=globale.glow_strength;
