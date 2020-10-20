@@ -117,6 +117,7 @@ public class Player : KinematicBody
 		camerae.Current = false;
 		camerae = (Camera)GetNode(cams[current_camera]);
 		camerae.Current = true;
+		camerae.Environment=globale.camenv;
 	}
 
 	public override void _Input(InputEvent @event)

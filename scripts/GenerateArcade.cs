@@ -47,13 +47,13 @@ public class GenerateArcade : Node
             minxz=2;
             maxxz=7;
             maxy=5;
-            max_jump_distance=9;
+            max_jump_distance=8;
         }
         else if(globale.difficulty==2){
             minxz=2;
             maxxz=8;
             maxy=5;
-            max_jump_distance=8;
+            max_jump_distance=6.5;
         }
         else if(globale.difficulty==3){
             minxz=2;
@@ -114,7 +114,7 @@ public class GenerateArcade : Node
             //création de la platforme
             final_nb_plats=w;
             act_platform_pos=act_platform_pos+dec;
-            PackedScene packedScene = (PackedScene)ResourceLoader.Load("res://assets/floor.tscn");
+            PackedScene packedScene = (PackedScene)ResourceLoader.Load(globale.themes_objects[globale.arcalcenv()]["floor"]);
             MeshInstance floor=(MeshInstance)packedScene.Instance();
             level.AddChild(floor);
             floor.Translation = act_platform_pos*dc;

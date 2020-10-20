@@ -77,17 +77,18 @@ public class level : Node
         else{
             te=globale.arcalcenv();
         }
-        Godot.Environment env=(Godot.Environment)ResourceLoader.Load("res://themes/"+te+"/env.tres");
+        globale.camenv=(Godot.Environment)ResourceLoader.Load("res://themes/"+te+"/env.tres");
+
         Camera cam=globale.player.camerae;
-        cam.Environment=env;
+        cam.Environment=globale.camenv;
         cam.Far=globale.cam_far;
-        env.GlowIntensity=globale.glow_intensity;
-        env.GlowStrength=globale.glow_strength;
-        env.AdjustmentSaturation=globale.saturation;
-        env.AdjustmentBrightness=globale.luminosity;
+        globale.camenv.GlowIntensity=globale.glow_intensity;
+        globale.camenv.GlowStrength=globale.glow_strength;
+        globale.camenv.AdjustmentSaturation=globale.saturation;
+        globale.camenv.AdjustmentBrightness=globale.luminosity;
         if(globale.sao){            
-            env.SsaoEnabled=true;
-            Godot.Environment.SSAOQuality ssaoqual=env.SsaoQuality;
+            globale.camenv.SsaoEnabled=true;
+            Godot.Environment.SSAOQuality ssaoqual=globale.camenv.SsaoQuality;
             GD.Print(ssaoqual.GetType());
             if(globale.sao_quality==0){
                 

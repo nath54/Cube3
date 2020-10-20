@@ -45,7 +45,17 @@ public class Global : Node
     public float saturation=1;
     public float luminosity=1;
     public float cam_far=100;
+    public Godot.Environment camenv;
     // skins
+
+    public Dictionary<string, Dictionary<string, string>> themes_objects = new Dictionary<string, Dictionary<string, string>>(){
+        {"lava",new Dictionary<string, string>(){{"floor","res://themes/lava/floor.tscn"},}},
+        {"lava_rock", new Dictionary<string, string>(){{"floor","res://themes/lava_rock/floor.tscn"},}},
+        {"rock_lava",new Dictionary<string, string>(){{"floor","res://themes/rock_lava/floor.tscn"},}},
+        {"stone_dirt",new Dictionary<string, string>(){{"floor","res://themes/stone_dirt/floor.tscn"},}},
+        {"grass",new Dictionary<string, string>(){{"floor","res://assets/floor.tscn"},}},
+        {"normal",new Dictionary<string, string>(){{"floor","res://assets/floor.tscn"},}},
+    };
 
     public Dictionary<string, object> quick_saved_game = new Dictionary<string, object>(){
         {"name","quick_saved_game"},
@@ -400,10 +410,10 @@ public class Global : Node
     }
 
     public string arcalcenv(){
-        if(level<3){ return "lava"; }
-        else if(level<8){ return "lava_rock"; }
-        else if(level<15){ return "rock_lava"; }
-        else if(level<20){ return "stone_dirt"; }
+        if(level<=3){ return "lava"; }
+        else if(level<=8){ return "lava_rock"; }
+        else if(level<=15){ return "rock_lava"; }
+        else if(level<=20){ return "stone_dirt"; }
         else{ return "normal"; }
     }
 
