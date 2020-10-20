@@ -207,6 +207,11 @@ public class Global : Node
         "arcade", //12
         "arcade", //13
         "arcade", //14
+        "arcade", //15
+        "arcade", //16
+        "arcade", //17
+        "arcade", //18
+        "arcade", //19
     };
 
     // cost if recup="pay", level if recup="level", else 0

@@ -71,7 +71,7 @@ public class level : Node
         globale.player.Connect("onPauseBtPress", this, nameof(Pause));
         //
         string te="normal";
-        if(globale.tipe=="level"){
+        if(globale.tipe=="levels"){
             te=globale.levels_envs[globale.actu_id_niv];
         }
         else{
