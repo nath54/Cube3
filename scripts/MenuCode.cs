@@ -24,9 +24,9 @@ public class MenuCode : Control
 
     public void _on_Bt_ok_pressed(){
         String code = textEdit.Text;
-        if(code=="romja"){
-            popupe("Cool ! Vous avez débloqué le skin ninja !");
-            globale.skins_unlocked[9]=true;
+        if(code=="cubloween"){
+            popupe("Cool ! Vous avez débloqué le skin pumpkin !");
+            globale.skins_unlocked[15]=true;
             globale.SaveGame();
         }
     }

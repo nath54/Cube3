@@ -20,7 +20,7 @@ public class Global : Node
     public Vector3 grid_scale = new Vector3(1,1,1);
     public float grid_cell_scale = 1;
     public int skin_id_equipe=0;
-    public int max_skin=14;
+    public int max_skin=16;
     public int ms_cam=0;
     public int highscore_plats=1;
     public int highscore_easy=1;
@@ -70,136 +70,167 @@ public class Global : Node
     public List<List<string>> messages_skins_queue = new List<List<string>>();
 
     public string[] skins_names={
-        "base",
-        "smile",
-        "smileye",
-        "ssj",
-        "carreaux",
-        "furnace",
-        "halo",
-        "transblue",
-        "ncubes",
-        "ninja",
-        "france",
-        "de",
-        "de_noir",
-        "redline"
+        "base", //0
+        "smile",  //1
+        "smileye",  //2
+        "ssj",  //3
+        "carreaux",  //4
+        "furnace",  //5
+        "halo",  //6
+        "transblue",  //7
+        "ncubes",  //8
+        "ninja",  //9
+        "france",  //10
+        "de",  //11
+        "de_noir",  //12
+        "redline",  //13
+        "cubeman", //14
+        "pumpkin", //15
     };
     public string[] skins_preview={
-        "res://img_skins/base.png",
-        "res://img_skins/smile.png",
-        "res://img_skins/smileye.png",
-        "res://img_skins/ssj.png",
-        "res://img_skins/carreaux.png",
-        "res://img_skins/furnace.png",
-        "res://img_skins/halo.png",
-        "res://img_skins/transp_blue.png",
-        "res://img_skins/ncubes.png",
-        "res://img_skins/ninja.png",
-        "res://img_skins/france.png",
-        "res://img_skins/de.png",
-        "res://img_skins/de_noir.png",
-        "res://img_skins/redline.png",
+        "res://img_skins/base.png", //0
+        "res://img_skins/smile.png", //1
+        "res://img_skins/smileye.png", //2
+        "res://img_skins/ssj.png", //3
+        "res://img_skins/carreaux.png", //4
+        "res://img_skins/furnace.png", //5
+        "res://img_skins/halo.png", //6
+        "res://img_skins/transp_blue.png", //7
+        "res://img_skins/ncubes.png", //8
+        "res://img_skins/ninja.png", //9
+        "res://img_skins/france.png", //10
+        "res://img_skins/de.png", //11
+        "res://img_skins/de_noir.png", //12
+        "res://img_skins/redline.png", //13
+        "res://img_skins/cubeman.png", //14
+        "res://img_skins/pumpkin.png", //15
     };
     public string[] skins_path={
-        "res://player/skins/skin_0.tscn",
-        "res://player/skins/skin_1.tscn",
-        "res://player/skins/skin_2.tscn",
-        "res://player/skins/skin_3.tscn",
-        "res://player/skins/skin_4.tscn",
-        "res://player/skins/skin_5.tscn",
-        "res://player/skins/skin_6.tscn",
-        "res://player/skins/skin_7.tscn",
-        "res://player/skins/skin_8.tscn",
-        "res://player/skins/skin_9.tscn",
-        "res://player/skins/skin_10.tscn",
-        "res://player/skins/skin_11.tscn",
-        "res://player/skins/skin_12.tscn",
-        "res://player/skins/skin_13.tscn",
+        "res://player/skins/skin_0.tscn", //0
+        "res://player/skins/skin_1.tscn", //1
+        "res://player/skins/skin_2.tscn", //2
+        "res://player/skins/skin_3.tscn", //3
+        "res://player/skins/skin_4.tscn", //4
+        "res://player/skins/skin_5.tscn", //5
+        "res://player/skins/skin_6.tscn", //6
+        "res://player/skins/skin_7.tscn", //7
+        "res://player/skins/skin_8.tscn", //8
+        "res://player/skins/skin_9.tscn", //9
+        "res://player/skins/skin_10.tscn", //10
+        "res://player/skins/skin_11.tscn", //11
+        "res://player/skins/skin_12.tscn", //12
+        "res://player/skins/skin_13.tscn", //13
+        "res://player/skins/skin_14.tscn", //14
+        "res://player/skins/skin_15.tscn", //15
+        "res://player/skins/skin_16.tscn", //16
+        "res://player/skins/skin_17.tscn", //17
+        "res://player/skins/skin_18.tscn", //18
+        "res://player/skins/skin_19.tscn", //19
     };
     public bool[] skins_unlocked={
-        true,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
+        true, //0
+        false, //1
+        false, //2
+        false, //3
+        false, //4
+        false, //5
+        false, //6
+        false, //7
+        false, //8
+        false, //9
+        false, //10
+        false, //11
+        false, //12
+        false, //13
+        false, //14
+        false, //15
+        false, //16
+        false, //17
+        false, //18
+        false, //19
     };
     public bool[] skins_secret={
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
+        false, //0
+        false, //1
+        false, //2
+        false, //3
+        false, //4
+        false, //5
+        false, //6
+        false, //7
+        false, //8
+        false, //9
+        false, //10
+        false, //11
+        false, //12
+        false, //13
+        false, //14
+        false, //15
+        false, //16
+        false, //17
+        false, //18
+        false, //19
     };
 
     public int[] skins_rarity={ //0=common 1=rare 2=epic 3=legendary 4=divine 5=mythical
-        0,
-        0,
-        0,
-        3,
-        1,
-        1,
-        2,
-        2,
-        3,
-        2,
-        1,
-        0,
-        1,
-        2,
+        0, //0
+        0, //1
+        0, //2
+        3, //3
+        1, //4
+        1, //5
+        2, //6
+        2, //7
+        3, //8
+        2, //9
+        1, //10
+        0, //11
+        1, //12
+        2, //13
+        1, //14
+        3, //15
     };
 
     public string[] skins_recup={
-        "none",
-        "arcade",
-        "arcade",
-        "arcade",
-        "arcade",
-        "arcade",
-        "arcade",
-        "arcade",
-        "pay",
-        "pay",
-        "arcade",
-        "arcade",
-        "arcade",
-        "arcade",
+        "none", //0
+        "arcade", //1
+        "arcade", //2
+        "arcade", //3
+        "arcade", //4
+        "arcade", //5
+        "arcade", //6
+        "arcade", //7
+        "pay", //8
+        "pay", //9
+        "arcade", //10
+        "arcade", //11
+        "arcade", //12
+        "arcade", //13
+        "arcade", //14
     };
 
     // cost if recup="pay", level if recup="level", else 0
     public int[] skins_value={
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        9999,
-        1000,
-        0,
-        0,
-        0,
-        0,
+        0, //0
+        0, //1
+        0, //2
+        0, //3
+        0, //4
+        0, //5
+        0, //6
+        0, //7
+        9999, //8
+        1000, //9
+        0, //10
+        0, //11
+        0, //12
+        0, //13
+        0, //14
+        0, //15
+        0, //16
+        0, //17
+        0, //18
+        0, //19
     };
 
     //levels
